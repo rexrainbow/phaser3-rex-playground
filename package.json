@@ -33,7 +33,7 @@
         "source-map-support": "0.5.12"
     },
     "dependencies": {
-        "phaser": "3.16.2",
+        "phaser": "3.17.0",
         "phaser3-rex-notes": "github:rexrainbow/phaser3-rex-notes",
         "phaser3-nineslice": "jdotrjs/phaser3-nineslice",
         "firebase": "^5.0.4",
