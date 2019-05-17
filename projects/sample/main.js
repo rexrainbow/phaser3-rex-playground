@@ -1,4 +1,4 @@
-import GetAllPlugins from '../../plugins/GetAllPlugins.js';
+import AllPlugins from '../../plugins/AllPlugins.js';
 
 import Boot from './scenes/Boot.js';
 import Game from './scenes/Game.js';
@@ -12,7 +12,7 @@ var config = {
         mode: Phaser.Scale.ENVELOP,
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
-    plugins: GetAllPlugins(),
+    plugins: AllPlugins,
     scene: [Boot, Game]
 };
 
