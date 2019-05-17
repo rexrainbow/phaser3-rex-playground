@@ -1,5 +1,4 @@
-// Example of installing plugin
-import RexUI from '../../node_modules/phaser3-rex-notes/templates/ui/ui-plugin.js';
+import GetAllPlugins from '../../plugins/GetAllPlugins.js';
 
 import Boot from './scenes/Boot.js';
 import Game from './scenes/Game.js';
@@ -13,15 +12,7 @@ var config = {
         mode: Phaser.Scale.ENVELOP,
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
-    plugins: {
-        scene: [
-            {
-                key: 'rexUI',
-                plugin: RexUI,
-                mapping: 'rexUI'     // member name in each scene instance
-            },
-        ]
-    },
+    plugins: GetAllPlugins(),
     scene: [Boot, Game]
 };
 
