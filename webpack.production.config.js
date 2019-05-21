@@ -9,12 +9,12 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const phaserModule = path.join(__dirname, '/node_modules/phaser/');
 const phaser = path.join(phaserModule, 'src/phaser.js');
 
-const projectName = process.env.myprojname;
+const dist = process.env.dist;
 const projectMain = process.env.main;
 const assetsFolder = process.env.assets;
 const htmlTemplate = process.env.htmltemplate || './examples/index.tmpl';
 
-const distFolder = path.resolve(__dirname, 'app/' + projectName);
+const distFolder = path.resolve(__dirname, dist);
 
 module.exports = {
     mode: 'production',
