@@ -19,8 +19,8 @@ class Game extends Phaser.Scene {
         paddle = AddPaddle(paddle);
         ball = AddBall(ball, {
             speed: 300,
-            paddles: paddle,
-        })
+            paddles: [paddle],
+        });
     }
 
     update() { }

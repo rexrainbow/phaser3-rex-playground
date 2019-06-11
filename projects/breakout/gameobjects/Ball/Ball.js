@@ -7,6 +7,7 @@ export default {
         this.setSpeed(GetValue(config, 'speed', 300));
         this.setFireConeAngle(GetValue(config, 'fireConeAngle', 120));
         this.setPaddles(GetValue(config, 'paddles', undefined));
+        this.setBricks(GetValue(config, 'bricks', undefined));
 
         let scene = this.scene;
         scene.physics.add.existing(this, false);
@@ -34,10 +35,20 @@ export default {
     },
 
     setPaddles(paddles) {
-        if (!Array.isArray(paddles)) {
-            paddles = [paddles];
+        if (paddles === undefined) {
+            this.paddles = [];
+        } else {
+            this.paddles = paddles;
         }
-        this.paddles = paddles;
+        return this;
+    },
+
+    setBricks(bricks) {
+        if (bricks === undefined) {
+            this.bricks = [];
+        } else {
+            this.bricks = bricks;
+        }
         return this;
     },
 };

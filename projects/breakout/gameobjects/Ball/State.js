@@ -21,6 +21,7 @@ class State extends FSM {
         return this;
     }
 
+    // IDLE
     enter_IDLE() {
         this.scene.events.on('postupdate', this.followPaddle, this);
         this.scene.input.on('pointerup', this.fire, this);
@@ -47,16 +48,21 @@ class State extends FSM {
         let ball = this.parent;
         let angle = DegToRad(ball.startAngle + (Math.random() * ball.coneAngle));
         ball.body.setVelocity(ball.speed * Math.cos(angle), ball.speed * Math.sin(angle));
+        ball.emit('fire');
         this.goto('BOUNCE');
     }
+    // IDLE
 
+    // BOUNCE
     enter_BOUNCE() {
         let ball = this.parent;
         this.paddlesCollider = this.scene.physics.add.collider(ball, ball.paddles, this.hitPaddle, null, this);
+        this.bricksCollider = this.scene.physics.add.collider(ball, ball.bricks, this.hitBrick, null, this);
     }
 
     exit_BOUNCE() {
         this.scene.physics.world.removeCollider(this.paddlesCollider);
+        this.scene.physics.world.removeCollider(this.bricksCollider);
     }
 
     hitPaddle(ball, paddle) {
@@ -76,6 +82,11 @@ class State extends FSM {
         }
         ball.body.setVelocityX(velocityX);
     }
+
+    hitBrick(ball, brick) {
+
+    }
+    // BOUNCE
 }
 
 export default State;
