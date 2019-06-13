@@ -56,13 +56,24 @@ class State extends FSM {
     // BOUNCE
     enter_BOUNCE() {
         let ball = this.parent;
-        this.paddlesCollider = this.scene.physics.add.collider(ball, ball.paddles, this.hitPaddle, null, this);
-        this.bricksCollider = this.scene.physics.add.collider(ball, ball.bricks, this.hitBrick, null, this);
+
+        if (ball.paddles) {
+            this.paddlesCollider = this.scene.physics.add.collider(ball, ball.paddles, this.hitPaddle, null, this);
+        }
+        if (ball.bricks) {
+            this.bricksCollider = this.scene.physics.add.collider(ball, ball.bricks, this.hitBrick, null, this);
+        }
     }
 
     exit_BOUNCE() {
-        this.scene.physics.world.removeCollider(this.paddlesCollider);
-        this.scene.physics.world.removeCollider(this.bricksCollider);
+        if (this.paddlesCollider) {
+            this.scene.physics.world.removeCollider(this.paddlesCollider);
+            this.paddlesCollider = undefined;
+        }
+        if (this.bricksCollider) {
+            this.scene.physics.world.removeCollider(this.bricksCollider);
+            this.bricksCollider = undefined;
+        }
     }
 
     hitPaddle(ball, paddle) {
@@ -84,7 +95,7 @@ class State extends FSM {
     }
 
     hitBrick(ball, brick) {
-
+        brick.kill();
     }
     // BOUNCE
 }

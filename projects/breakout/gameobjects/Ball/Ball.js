@@ -36,7 +36,7 @@ export default {
 
     setPaddles(paddles) {
         if (paddles === undefined) {
-            this.paddles = [];
+            this.paddles = undefined;
         } else {
             this.paddles = paddles;
         }
@@ -45,7 +45,7 @@ export default {
 
     setBricks(bricks) {
         if (bricks === undefined) {
-            this.bricks = [];
+            this.bricks = undefined;
         } else {
             this.bricks = bricks;
         }
