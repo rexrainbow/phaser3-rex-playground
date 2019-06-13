@@ -1,4 +1,4 @@
-import FSM from 'phaser3-rex-notes/plugins/fsm.js';
+import FSM from 'phaser3-rex-plugins/plugins/fsm.js';
 
 const DegToRad = Phaser.Math.DegToRad;
 

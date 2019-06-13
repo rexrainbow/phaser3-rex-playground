@@ -12,7 +12,7 @@ class Boot extends Phaser.Scene {
     create() {
         console.log('Boot');
         this.scene.start('game');  // Shutdown this Scene and run the given one 
-        // See more : https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scenemanager/#start-scene        
+        // See more : https://rexrainbow.github.io/phaser3-rex-plugins/docs/site/scenemanager/#start-scene        
     }
 
     update() {}

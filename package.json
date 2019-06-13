@@ -10,7 +10,7 @@
         "phaser3"
     ],
     "devDependencies": {
-        "@babel/core": "^7.3.4",
+        "@babel/core": "^7.4.5",
         "@babel/polyfill": "^7.0.0",
         "@babel/preset-env": "^7.3.4",
         "babel-eslint": "^9.0.0",
