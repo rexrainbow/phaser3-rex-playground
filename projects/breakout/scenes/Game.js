@@ -42,11 +42,11 @@ class Game extends Phaser.Scene {
         // Compose game objects
         Build(paddle, Paddle);
         Build(bricks, Brick);
-        Build(ball, {
+        Build(ball, Ball, {
             speed: 300,
             paddles: [paddle],
             bricks: bricksPool,
-        }, Ball);
+        });
     }
 
     update() { }

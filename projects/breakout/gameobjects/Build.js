@@ -1,14 +1,11 @@
 const GetValue = Phaser.Utils.Objects.GetValue;
 const IsPlainObject = Phaser.Utils.Objects.IsPlainObject;
 
-export default function (gameObject, config, decorator) {
+export default function (gameObject, decorator, config) {
     if (IsPlainObject(gameObject)) {
         config = gameObject;
         gameObject = undefined;
         decorator = undefined;
-    } else if (decorator === undefined) {
-        decorator = config;
-        config = undefined;
     }
 
     if (gameObject === undefined) {
