@@ -47,6 +47,9 @@ class Game extends Phaser.Scene {
                 // Speed up ball
                 ball.applySpeed(ball.speed * 1.1);
             })
+            .on('outofbound', function (ball) {
+                console.log('out-of-bound');
+            })
         // ---- Custom logic ----
 
         // Build gameplay

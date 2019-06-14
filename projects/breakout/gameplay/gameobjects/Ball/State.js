@@ -65,6 +65,7 @@ class State extends FSM {
         if (ball.bricks) {
             this.bricksCollider = this.scene.physics.add.collider(ball, ball.bricks, this.hitBrick, null, this);
         }
+        this.scene.events.on('postupdate', this.outOfBound, this);
     }
 
     exit_BOUNCE() {
@@ -76,6 +77,7 @@ class State extends FSM {
             this.scene.physics.world.removeCollider(this.bricksCollider);
             this.bricksCollider = undefined;
         }
+        this.scene.events.off('postupdate', this.outOfBound, this);
     }
 
     hitPaddle(ball, paddle) {
@@ -83,6 +85,13 @@ class State extends FSM {
     }
     hitBrick(ball, brick) {
         ball.emit('hit-brick', brick, ball);
+    }
+
+    outOfBound() {
+        let ball = this.parent;
+        if (ball.y > ball.body.world.bounds.bottom) {
+            ball.emit('outofbound', ball);
+        }
     }
     // BOUNCE
 }
