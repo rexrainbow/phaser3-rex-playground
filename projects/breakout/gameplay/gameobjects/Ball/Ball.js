@@ -47,9 +47,9 @@ export default {
     },
 
     applySpeed(speed) {
+        let factor = speed / this.speed;
         this.speed = speed;
-        let ballVelocity = this.body.velocity;
-        ballVelocity.setToPolar(ballVelocity.angle(), speed);
+        this.body.velocity.scale(factor);
         return this;
     }
 };
