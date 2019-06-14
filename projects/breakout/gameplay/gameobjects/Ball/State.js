@@ -65,6 +65,7 @@ class State extends FSM {
         if (ball.bricks) {
             this.bricksCollider = this.scene.physics.add.collider(ball, ball.bricks, this.hitBrick, null, this);
         }
+        this.exceedBottomBound = false;
         this.scene.events.on('postupdate', this.outOfBound, this);
     }
 
@@ -89,7 +90,8 @@ class State extends FSM {
 
     outOfBound() {
         let ball = this.parent;
-        if (ball.y > ball.body.world.bounds.bottom) {
+        if (!this.exceedBottomBound && (ball.y > ball.body.world.bounds.bottom)) {
+            this.exceedBottomBound = true;
             ball.emit('outofbound', ball);
         }
     }

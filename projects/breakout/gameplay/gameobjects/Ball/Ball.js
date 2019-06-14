@@ -51,5 +51,9 @@ export default {
         this.speed = speed;
         this.body.velocity.scale(factor);
         return this;
+    },
+
+    resetState() {
+        this._state.goto('IDLE');
     }
 };
