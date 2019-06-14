@@ -27,11 +27,6 @@ export default {
 
     setSpeed(speed) {
         this.speed = speed;
-
-        let ballVelocity = this.body.velocity;
-        if ((ballVelocity.x !== 0) || (ballVelocity.y !== 0)) {
-            ballVelocity.setToPolar(ballVelocity.angle(), speed);
-        }
         return this;
     },
 
@@ -58,4 +53,13 @@ export default {
         }
         return this;
     },
+
+    applySpeed(speed) {
+        this.speed = speed;
+        let ballVelocity = this.body.velocity;
+        if ((ballVelocity.x !== 0) || (ballVelocity.y !== 0)) {
+            ballVelocity.setToPolar(ballVelocity.angle(), speed);
+        }
+        return this;
+    }
 };

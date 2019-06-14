@@ -1,7 +1,4 @@
-import Build from '../gameobjects/Build.js';
-import Paddle from '../gameobjects/Paddle/Paddle.js';
-import Ball from '../gameobjects/Ball/Ball.js';
-import Brick from '../gameobjects/Brick/Brick.js';
+import BuildGameplay from '../gameplay/BuildGameplay.js';
 
 const COLOR_PRIMARY = 0xe0e0e0;
 const COLOR_LIGHT = 0xffffff;
@@ -38,30 +35,27 @@ class Game extends Phaser.Scene {
             x: 112,
             y: 100
         });
-        let bricksPool = this.add.group(bricks);
+        // let bricksPool = this.add.group(bricks);
 
         // Event handlers
         ball
-            .on('hit-brick', function (brick) {
+            .on('hit-brick', function (brick, ball) {
                 // Disable brick
                 brick.kill();
             })
             .on('hit-paddle', function (paddle, ball) {
                 // Speed up ball
-                ball.setSpeed(ball.speed * 1.1);
+                ball.applySpeed(ball.speed * 1.1);
             })
         // ---- Custom logic ----
 
-        // Compose game objects
-        Build(paddle, Paddle);
-        Build(bricks, Brick);
-        Build(ball, Ball, {
+        // Build gameplay
+        BuildGameplay({
             speed: 300,
             paddles: [paddle],
-            bricks: bricksPool,
+            bricks: bricks,
+            balls: [ball],
         });
-
-
     }
 
     update() { }
