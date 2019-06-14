@@ -37,20 +37,12 @@ export default {
     },
 
     setPaddles(paddles) {
-        if (paddles === undefined) {
-            this.paddles = undefined;
-        } else {
-            this.paddles = paddles;
-        }
+        this.paddles = paddles;
         return this;
     },
 
     setBricks(bricks) {
-        if (bricks === undefined) {
-            this.bricks = undefined;
-        } else {
-            this.bricks = bricks;
-        }
+        this.bricks = bricks;
         return this;
     },
 
