@@ -3,7 +3,7 @@ const EnableComponent = Phaser.Physics.Arcade.Components.Enable;
 export default {
     _init(config) {
         let scene = this.scene;
-        scene.physics.add.existing(this, false);
+        scene.physics.add.existing(this, true); // Static object for bouncing
     },
 
     enableBody: EnableComponent.enableBody,

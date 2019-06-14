@@ -4,27 +4,34 @@ const GetValue = Phaser.Utils.Objects.GetValue;
 
 export default {
     _init(config) {
+        this.scene.physics.add.existing(this, false);
+
         this.setSpeed(GetValue(config, 'speed', 300));
         this.setFireConeAngle(GetValue(config, 'fireConeAngle', 120));
         this.setPaddles(GetValue(config, 'paddles', undefined));
         this.setBricks(GetValue(config, 'bricks', undefined));
 
-        let scene = this.scene;
-        scene.physics.add.existing(this, false);
-        scene.physics.world.setBoundsCollision(
+        this.scene.physics.world.setBoundsCollision(
             true, // Left
             true, // Right
             true, // Up
             false // Down
         );
 
-        this.body.setCollideWorldBounds(true).setBounce(1);
+        this.body
+            .setCollideWorldBounds(true)
+            .setBounce(1);
 
         this._state = new State(this);
     },
 
     setSpeed(speed) {
         this.speed = speed;
+
+        let ballVelocity = this.body.velocity;
+        if ((ballVelocity.x !== 0) || (ballVelocity.y !== 0)) {
+            ballVelocity.setToPolar(ballVelocity.angle(), speed);
+        }
         return this;
     },
 

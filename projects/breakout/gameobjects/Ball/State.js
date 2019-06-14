@@ -1,10 +1,12 @@
-import FSM from 'phaser3-rex-plugins/plugins/fsm.js';
+import FSM from 'phaser3-rex-notes/plugins/fsm.js';
 
 const DegToRad = Phaser.Math.DegToRad;
 
 class State extends FSM {
     constructor(parent) {
-        super();
+        super({
+            eventEmitter: false
+        });
         this.parent = parent; // Ball
         this.scene = parent.scene;
         this.goto('IDLE');
@@ -47,7 +49,7 @@ class State extends FSM {
     fire() {
         let ball = this.parent;
         let angle = DegToRad(ball.startAngle + (Math.random() * ball.coneAngle));
-        ball.body.setVelocity(ball.speed * Math.cos(angle), ball.speed * Math.sin(angle));
+        ball.body.velocity.setToPolar(angle, ball.speed);
         ball.emit('fire');
         this.goto('BOUNCE');
     }
@@ -77,25 +79,10 @@ class State extends FSM {
     }
 
     hitPaddle(ball, paddle) {
-        let velocityX;
-        if (ball.x < paddle.x) {
-            //  Ball is on the left-hand side of the paddle
-            velocityX = -10 * (paddle.x - ball.x);
-        }
-        else if (ball.x > paddle.x) {
-            //  Ball is on the right-hand side of the paddle
-            velocityX = 10 * (ball.x - paddle.x);
-        }
-        else {
-            //  Ball is perfectly in the middle
-            //  Add a little random X to stop it bouncing straight up!
-            velocityX = 2 + (Math.random() * 8);
-        }
-        ball.body.setVelocityX(velocityX);
+        ball.emit('hit-paddle', paddle, ball);
     }
-
     hitBrick(ball, brick) {
-        brick.kill();
+        ball.emit('hit-brick', brick, ball);
     }
     // BOUNCE
 }

@@ -19,6 +19,7 @@ class Game extends Phaser.Scene {
     }
 
     create() {
+        // ---- Custom logic ----
         // Create paddle game object
         let paddle = this.add.rectangle(400, 580, 100, 10).setStrokeStyle(2, COLOR_PRIMARY);
         // Create ball game object
@@ -39,6 +40,18 @@ class Game extends Phaser.Scene {
         });
         let bricksPool = this.add.group(bricks);
 
+        // Event handlers
+        ball
+            .on('hit-brick', function (brick) {
+                // Disable brick
+                brick.kill();
+            })
+            .on('hit-paddle', function (paddle, ball) {
+                // Speed up ball
+                ball.setSpeed(ball.speed * 1.1);
+            })
+        // ---- Custom logic ----
+
         // Compose game objects
         Build(paddle, Paddle);
         Build(bricks, Brick);
@@ -47,6 +60,8 @@ class Game extends Phaser.Scene {
             paddles: [paddle],
             bricks: bricksPool,
         });
+
+
     }
 
     update() { }
