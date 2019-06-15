@@ -47,7 +47,7 @@ export default {
     },
 
     applySpeed(speed) {
-        let factor = speed / this.speed;
+        var factor = speed / this.speed;
         this.speed = speed;
         this.body.velocity.scale(factor);
         return this;

@@ -16,8 +16,8 @@ export default function (gameObject, decorator, config) {
     }
 
     if (Array.isArray(gameObject)) {
-        let gameObjects = gameObject;
-        for (let i = 0, cnt = gameObjects.length; i < cnt; i++) {
+        var gameObjects = gameObject;
+        for (var i = 0, cnt = gameObjects.length; i < cnt; i++) {
             gameObject = gameObjects[i];
             Object.assign(gameObject, decorator);
             gameObject._init(config);

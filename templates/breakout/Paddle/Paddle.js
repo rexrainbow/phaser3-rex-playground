@@ -2,7 +2,7 @@ import AddControl from './AddControl.js';
 
 export default {
     _init(config) {
-        let scene = this.scene;
+        var scene = this.scene;
         scene.physics.add.existing(this, false);
         this.body.setImmovable();
 

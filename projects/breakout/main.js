@@ -1,7 +1,7 @@
 import RexUI from 'phaser3-rex-notes/templates/ui/ui-plugin'; 
 import Game from './scenes/Game.js';
 
-let config = {
+var config = {
     type: Phaser.AUTO,
     parent: 'game',
     width: 800,
@@ -25,4 +25,4 @@ let config = {
     }
 };
 
-let game = new Phaser.Game(config);
+var game = new Phaser.Game(config);

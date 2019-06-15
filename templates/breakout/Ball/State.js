@@ -35,8 +35,8 @@ class State extends FSM {
     }
 
     followPaddle() {
-        let ball = this.parent;
-        let myPaddle = ball.paddles[0];
+        var ball = this.parent;
+        var myPaddle = ball.paddles[0];
         if (myPaddle === undefined) {
             return;
         }
@@ -47,8 +47,8 @@ class State extends FSM {
     }
 
     fire() {
-        let ball = this.parent;
-        let angle = DegToRad(ball.startAngle + (Math.random() * ball.coneAngle));
+        var ball = this.parent;
+        var angle = DegToRad(ball.startAngle + (Math.random() * ball.coneAngle));
         ball.body.velocity.setToPolar(angle, ball.speed);
         ball.emit('fire');
         this.goto('BOUNCE');
@@ -57,7 +57,7 @@ class State extends FSM {
 
     // BOUNCE
     enter_BOUNCE() {
-        let ball = this.parent;
+        var ball = this.parent;
 
         if (ball.paddles) {
             this.paddlesCollider = this.scene.physics.add.collider(ball, ball.paddles, this.hitPaddle, null, this);
@@ -89,7 +89,7 @@ class State extends FSM {
     }
 
     outOfBound() {
-        let ball = this.parent;
+        var ball = this.parent;
         if (!this.exceedBottomBound && (ball.y > ball.body.world.bounds.bottom)) {
             this.exceedBottomBound = true;
             ball.emit('outofbound', ball);

@@ -1,4 +1,4 @@
-import BuildGameplay from '../gameplay/BuildGameplay.js';
+import Breatout from '../../../templates/dist/rexbreakout.min.js';
 
 const COLOR_PRIMARY = 0xe0e0e0;
 const COLOR_LIGHT = 0xffffff;
@@ -18,12 +18,12 @@ class Game extends Phaser.Scene {
     create() {
         // ---- Custom logic ----
         // Create paddle game object
-        let paddle = this.add.rectangle(400, 580, 100, 10).setStrokeStyle(2, COLOR_PRIMARY);
+        var paddle = this.add.rectangle(400, 580, 100, 10).setStrokeStyle(2, COLOR_PRIMARY);
         // Create ball game object
-        let ball = this.add.circle(400, 560, 10).setStrokeStyle(2, COLOR_LIGHT);
+        var ball = this.add.circle(400, 560, 10).setStrokeStyle(2, COLOR_LIGHT);
         // Create brick game objects
-        let bricks = [], rowCnt = 6, colCnt = 10;
-        for (let i = 0, cnt = rowCnt * colCnt; i < cnt; i++) {
+        var bricks = [], rowCnt = 6, colCnt = 10;
+        for (var i = 0, cnt = rowCnt * colCnt; i < cnt; i++) {
             bricks.push(this.add.rectangle(0, 0, 64, 32).setStrokeStyle(2, COLOR_DARK));
         }
         Phaser.Actions.GridAlign(bricks, {
@@ -35,13 +35,16 @@ class Game extends Phaser.Scene {
             x: 112,
             y: 100
         });
-        // let bricksPool = this.add.group(bricks);
+        var bricksPool = this.add.group(bricks);
 
         // Event handlers
         ball
             .on('hit-brick', function (brick, ball) {
                 // Disable brick
                 brick.kill();
+                if (bricksPool.countActive() === 0) {
+
+                }
             })
             .on('hit-paddle', function (paddle, ball) {
                 // Speed up ball
@@ -53,8 +56,8 @@ class Game extends Phaser.Scene {
             })
         // ---- Custom logic ----
 
-        // Build gameplay
-        BuildGameplay({
+        // Build breakout system
+        var breakout = new Breatout({
             speed: 300,
             paddles: [paddle],
             bricks: bricks,

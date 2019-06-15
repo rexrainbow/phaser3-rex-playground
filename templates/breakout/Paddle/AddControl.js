@@ -10,7 +10,7 @@ export default function (config) {
         );
     }).bind(this);
 
-    let scene = this.scene;
+    var scene = this.scene;
     scene.input.on('pointermove', move);
 
     this.on('destroy', function () {
