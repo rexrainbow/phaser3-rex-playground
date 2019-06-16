@@ -1,11 +1,12 @@
 import FSM from 'phaser3-rex-notes/plugins/fsm.js';
 
+const GetValue = Phaser.Utils.Objects.GetValue;
 const DegToRad = Phaser.Math.DegToRad;
 
 class State extends FSM {
-    constructor(parent) {
+    constructor(parent, config) {
         super({
-            eventEmitter: false
+            eventEmitter: GetValue(config, 'eventEmitter', parent)
         });
         this.parent = parent; // Ball
         this.scene = parent.scene;
@@ -50,7 +51,7 @@ class State extends FSM {
         var ball = this.parent;
         var angle = DegToRad(ball.startAngle + (Math.random() * ball.coneAngle));
         ball.body.velocity.setToPolar(angle, ball.speed);
-        ball.emit('fire');
+        this.emit('fire');
         this.goto('BOUNCE');
     }
     // IDLE
@@ -82,17 +83,17 @@ class State extends FSM {
     }
 
     hitPaddle(ball, paddle) {
-        ball.emit('hit-paddle', paddle, ball);
+        this.emit('ball-hit-paddle', ball, paddle);
     }
     hitBrick(ball, brick) {
-        ball.emit('hit-brick', brick, ball);
+        this.emit('ball-hit-brick', ball, brick);
     }
 
     outOfBound() {
         var ball = this.parent;
         if (!this.exceedBottomBound && (ball.y > ball.body.world.bounds.bottom)) {
             this.exceedBottomBound = true;
-            ball.emit('outofbound', ball);
+            this.emit('ball-outofbound', ball);
         }
     }
     // BOUNCE

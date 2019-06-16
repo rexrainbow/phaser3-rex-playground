@@ -22,7 +22,7 @@ export default {
             .setCollideWorldBounds(true)
             .setBounce(1);
 
-        this._state = new State(this);
+        this._state = new State(this, config);
     },
 
     setSpeed(speed) {

@@ -1,4 +1,4 @@
-import Breatout from '../../../templates/dist/rexbreakout.min.js';
+import Breatout from '../../../templates/breakout/Breakout.js';
 
 const COLOR_PRIMARY = 0xe0e0e0;
 const COLOR_LIGHT = 0xffffff;
@@ -36,24 +36,6 @@ class Game extends Phaser.Scene {
             y: 100
         });
         var bricksPool = this.add.group(bricks);
-
-        // Event handlers
-        ball
-            .on('hit-brick', function (brick, ball) {
-                // Disable brick
-                brick.kill();
-                if (bricksPool.countActive() === 0) {
-
-                }
-            })
-            .on('hit-paddle', function (paddle, ball) {
-                // Speed up ball
-                ball.applySpeed(ball.speed * 1.1);
-            })
-            .on('outofbound', function (ball) {
-                ball.resetState();
-                ball.setSpeed(300);
-            })
         // ---- Custom logic ----
 
         // Build breakout system
@@ -63,6 +45,26 @@ class Game extends Phaser.Scene {
             bricks: bricks,
             balls: [ball],
         });
+
+        // ---- Custom logic ----
+        // Event handlers
+        breakout
+            .on('ball-hit-brick', function (ball, brick) {
+                // Disable brick
+                brick.kill();
+                if (bricksPool.countActive() === 0) {
+
+                }
+            })
+            .on('ball-hit-paddle', function (ball, paddle) {
+                // Speed up ball
+                ball.applySpeed(ball.speed * 1.1);
+            })
+            .on('ball-outofbound', function (ball) {
+                ball.resetState();
+                ball.setSpeed(300);
+            });
+        // ---- Custom logic ----
     }
 
     update() { }
