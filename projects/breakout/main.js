@@ -1,4 +1,3 @@
-import RexUI from 'phaser3-rex-plugins/templates/ui/ui-plugin.js';
 import Game from './scenes/Game.js';
 
 var config = {
@@ -9,15 +8,6 @@ var config = {
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
-    },
-    plugins: {
-        scene: [
-            {
-                key: 'rexUI',
-                plugin: RexUI,
-                mapping: 'rexUI'
-            },
-        ]
     },
     scene: [Game],
     physics: {
