@@ -1,4 +1,4 @@
-import RexUI from 'phaser3-rex-notes/templates/ui/ui-plugin'; 
+import RexUI from 'phaser3-rex-plugins/templates/ui/ui-plugin'; 
 import Game from './scenes/Game.js';
 
 var config = {
@@ -20,9 +20,6 @@ var config = {
         ]
     },
     scene: [Game],
-    physics: {
-        default: 'arcade'
-    }
 };
 
 var game = new Phaser.Game(config);

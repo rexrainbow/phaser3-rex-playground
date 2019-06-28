@@ -1,0 +1,3 @@
+@echo off
+ehco Installing dependencies......
+npm install https://github.com/rexrainbow/phaser3-rex-notes

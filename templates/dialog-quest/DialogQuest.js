@@ -1,10 +1,11 @@
 import QuestionManager from 'phaser3-rex-plugins/plugins/quest.js';
+import DataMethods from './DataMethods.js';
 
 const EE = Phaser.Events.EventEmitter;
 const GetValue = Phaser.Utils.Objects.GetValue;
 
 class DialogQuest extends EE {
-    consturcto(scene, config) {
+    constructor(config) {
         super();
 
         if (config === undefined) {
@@ -14,34 +15,46 @@ class DialogQuest extends EE {
             config.quest = true;
         }
 
-        this.scene = scene;
-        this.createDialogCallback = GetValue(config, 'createDialogCallback', undefined);
-        this.createDialogCallbackScope = GetValue(config, 'createDialogCallbackScope', undefined);
+        this.dialog = GetValue(config, 'dialog', undefined);
         this.questionManager = new QuestionManager(config);
+
+        // Attach events
         this.questionManager
-            .on('quest', function (question, questionManager, quest) {
-                var dialog;
-                if (this.createDialogCallback) {
-                    if (this.createDialogCallbackScope) {
-                        dialog = this.createDialogCallback.call(this.createDialogCallbackScope, scene, question, questionManager);
+            .on('quest', function (question) {
+                this.emit('update-dialog', this.dialog, question);
+                var choices = this.dialog.getElement('choices');
+                var options = question.options, option;
+                for (var i = 0, cnt = choices.length; i < cnt; i++) {
+                    option = options[i];
+                    if (option) {
+                        this.dialog.showChoice(i);
+                        this.emit('update-choice', choices[i], option);
                     } else {
-                        dialog = this.createDialogCallback(scene, question, questionManager);
+                        this.dialog.hideChoice(i);
                     }
                 }
-                if (dialog) {
-                    dialog.layout();
-                } else {
-                    questionManager.emit('complete', questionManager, quest); // User defined event
-                }
+                this.dialog.layout();
+            }, this);
+
+        this.dialog
+            .on('button.click', function (button, groupName, index) {
+                var eventName = (groupName === 'choices') ? 'choice' : 'action';
+                this.emit(eventName, button, index);
             }, this)
     }
 
-    startQuest() {
+    start() {
         this.questionManager
             .restartQuest()
             .getNextQuestion();
         return this;
     }
 }
+
+Object.assign(
+    DialogQuest.prototype,
+    DataMethods,
+);
+
 
 export default DialogQuest;
