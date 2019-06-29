@@ -16,25 +16,43 @@ class Game extends Phaser.Scene {
     create() {
         var dialog = CreateDialog(this)
             .layout();
+        dialog.clearChoices = function () {
+            dialog.forEachChoice(function (choice) {
+                choice.getElement('background').setStrokeStyle();
+            });
+            return dialog;
+        }
 
         var quest = new DialogQuest({
             dialog: dialog,
             questions: Questions,
-        })
-            .on('update-dialog', function (dialog, question) {
-                dialog.getElement('title').setText(question.key);
-                quest.setData('nextKey', null);
-            })
+        });
+        quest
             .on('update-choice', function (choice, option) {
                 choice
                     .setText(option.key)
                     .setData('nextKey', option.next);
             })
-            .on('choice', function (choice) {
+            .on('update-dialog', function (dialog, question) {
+                dialog.getElement('title').setText(question.key);
+                dialog.getElement('actions')[0].setText((question.end) ? 'End' : 'Next')
+                quest.setData('nextKey', null);
+                dialog
+                    .clearChoices()
+                    .layout();
+            })
+            .on('choice', function (choice, dialog) {
+                dialog.clearChoices();
+                choice.getElement('background').setStrokeStyle(1, 0xffffff);
                 quest.setData('nextKey', choice.getData('nextKey'));
             })
             .on('action', function (action) {
-
+                if (action.text === 'Next') {
+                    var nextKey = quest.getData('nextKey');
+                    if (nextKey !== null) {
+                        quest.next(nextKey);
+                    }
+                }
             })
             .start();
     }

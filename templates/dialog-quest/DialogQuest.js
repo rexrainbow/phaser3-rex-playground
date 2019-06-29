@@ -20,8 +20,7 @@ class DialogQuest extends EE {
 
         // Attach events
         this.questionManager
-            .on('quest', function (question) {
-                this.emit('update-dialog', this.dialog, question);
+            .on('quest', function (question) {                
                 var choices = this.dialog.getElement('choices');
                 var options = question.options, option;
                 for (var i = 0, cnt = choices.length; i < cnt; i++) {
@@ -33,20 +32,26 @@ class DialogQuest extends EE {
                         this.dialog.hideChoice(i);
                     }
                 }
-                this.dialog.layout();
+                this.emit('update-dialog', this.dialog, question);
             }, this);
 
         this.dialog
             .on('button.click', function (button, groupName, index) {
                 var eventName = (groupName === 'choices') ? 'choice' : 'action';
-                this.emit(eventName, button, index);
+                this.emit(eventName, button, this.dialog);
             }, this)
     }
 
-    start() {
+    start(key) {
         this.questionManager
             .restartQuest()
-            .getNextQuestion();
+            .getNextQuestion(key);
+        return this;
+    }
+
+    next(key) {
+        this.questionManager
+            .getNextQuestion(key);
         return this;
     }
 }

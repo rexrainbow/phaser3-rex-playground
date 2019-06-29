@@ -1,4 +1,4 @@
-import RexUI from 'phaser3-rex-plugins/templates/ui/ui-plugin'; 
+import RexUI from 'phaser3-rex-plugins/templates/ui/ui-plugin.js';
 import Game from './scenes/Game.js';
 
 var config = {
