@@ -26,13 +26,13 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                use: ['babel-loader'],
-                include: path.join(__dirname, 'src')
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
             },
-            {
-                test: [/\.vert$/, /\.frag$/],
-                use: 'raw-loader'
-            }
         ]
     },
     externals: [nodeExternals()],
