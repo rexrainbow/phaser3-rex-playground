@@ -36,10 +36,7 @@
         "webpack-node-externals": "1.7.2"
     },
     "dependencies": {
-        "@colyseus/monitor": "0.10.0",
         "chart.js": "^2.8.0",
-        "colyseus": "0.10.7",
-        "colyseus.js": "0.10.5",
         "express": "^4.14.0",
         "firebase": "^5.0.4",
         "parse": "^2.1.0",
