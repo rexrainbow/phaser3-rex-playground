@@ -1,3 +1,5 @@
+import UiBg0Config from '../assets/nine-patch.json';
+
 class Game extends Phaser.Scene {
     constructor() {
         super({
@@ -8,6 +10,8 @@ class Game extends Phaser.Scene {
 
     preload() {
         this.load.image('classroom', 'assets/classroom.png');
+
+        this.load.image(UiBg0Config.key, UiBg0Config.url);
     }
 
     create() {
@@ -22,9 +26,15 @@ class Game extends Phaser.Scene {
             y: 'center',
             orientation: 'x',
 
-            background: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x4e342e),
+            background: this.rexUI.add.ninePatch({
+                key: UiBg0Config.key,
+                columns: [UiBg0Config.left, undefined, UiBg0Config.right],
+                rows: [UiBg0Config.top, undefined, UiBg0Config.bottom]
+            }),
             icon: this.rexUI.add.roundRectangle(0, 0, 40, 40, 10, 0x7b5e57),
-            text: this.add.text(0, 0, 'Label'),
+            text: this.add.text(0, 0, 'Label', {
+                color: 'black',
+            }),
             space: {
                 left: 10,
                 right: 10,
