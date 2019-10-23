@@ -1,4 +1,3 @@
-import UiBg0Config from '../assets/nine-patch.json';
 import Create3x3NinePatch from '../../utils/Create3x3NinePatch.js';
 
 class Game extends Phaser.Scene {
@@ -12,7 +11,8 @@ class Game extends Phaser.Scene {
     preload() {
         this.load.image('classroom', 'assets/classroom.png');
 
-        this.load.image(UiBg0Config.key, UiBg0Config.url);
+        this.load.image('uiBg0', 'assets/nine-patch.png');
+        this.load.json('uiBg0', 'assets/nine-patch.json');
     }
 
     create() {
@@ -27,7 +27,7 @@ class Game extends Phaser.Scene {
             y: 'center',
             orientation: 'x',
 
-            background: Create3x3NinePatch(this, UiBg0Config),
+            background: Create3x3NinePatch(this, 'uiBg0', this.cache.json.get('uiBg0')),
             icon: this.rexUI.add.roundRectangle(0, 0, 40, 40, 10, 0x7b5e57),
             text: this.add.text(0, 0, 'Label', {
                 color: 'black',

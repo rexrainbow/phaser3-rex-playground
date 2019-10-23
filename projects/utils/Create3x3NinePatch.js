@@ -1,6 +1,6 @@
-var Create3x3NinePatch = function (scene, config) {
+var Create3x3NinePatch = function (scene, key, config) {
     return scene.rexUI.add.ninePatch({
-        key: config.key,
+        key: key,
         columns: [config.left, undefined, config.right],
         rows: [config.top, undefined, config.bottom]
     });
