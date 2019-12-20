@@ -35,10 +35,6 @@
         "webpack-node-externals": "1.7.2"
     },
     "dependencies": {
-        "chart.js": "^2.8.0",
-        "firebase": "^5.11.1",
-        "parse": "^2.8.0",
-        "phaser": "3.20.1",
-        "phaser3-rex-plugins": "git+https://github.com/rexrainbow/phaser3-rex-notes.git"
+        "phaser": "3.20.1"
     }
 }
