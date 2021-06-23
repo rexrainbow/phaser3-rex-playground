@@ -62,6 +62,10 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.ts$/,
+                loaders: ['babel-loader', 'awesome-typescript-loader'],
+            },
+            {
                 test: /\.js$/,
                 use: ['babel-loader'],
                 include: path.join(__dirname, 'src')
