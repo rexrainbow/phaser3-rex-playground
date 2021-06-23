@@ -1,3 +1,4 @@
+import 'phaser'
 import AllPlugins from '../../plugins/AllPlugins.js';
 
 import Boot from './scenes/Boot.js';

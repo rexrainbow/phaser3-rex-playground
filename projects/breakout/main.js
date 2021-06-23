@@ -1,3 +1,4 @@
+import 'phaser'
 import Game from './scenes/Game.js';
 
 var config = {

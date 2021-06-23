@@ -12,8 +12,7 @@
     "devDependencies": {
         "@babel/core": "^7.14.6",
         "@babel/polyfill": "^7.12.1",
-        "@babel/preset-env": "^7.14.5",
-        "@electron-forge/plugin-webpack": "^6.0.0-beta.57",
+        "@babel/preset-env": "^7.14.7",
         "babel-eslint": "^9.0.0",
         "babel-loader": "^8.2.2",
         "babel-preset-env": "^1.7.0",
@@ -36,6 +35,6 @@
     },
     "dependencies": {
         "phaser": "^3.55.2",
-        "phaser3-rex-plugins": "^1.1.52"
+        "phaser3-rex-plugins": "^1.1.53"
     }
 }

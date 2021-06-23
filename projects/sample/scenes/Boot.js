@@ -1,3 +1,5 @@
+import 'phaser'
+
 class Boot extends Phaser.Scene {
     constructor() {
         super({

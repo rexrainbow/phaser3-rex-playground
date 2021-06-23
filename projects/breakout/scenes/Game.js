@@ -1,3 +1,4 @@
+import 'phaser'
 import Breatout from '../../../templates/breakout/Breakout.js';
 
 const COLOR_PRIMARY = 0xe0e0e0;

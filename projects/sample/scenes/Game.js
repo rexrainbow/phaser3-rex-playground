@@ -1,3 +1,4 @@
+import 'phaser'
 import Create3x3NinePatch from '../../utils/Create3x3NinePatch.js';
 
 class Game extends Phaser.Scene {
@@ -23,8 +24,7 @@ class Game extends Phaser.Scene {
 
         // Example of creating ui component
         this.rexUI.add.label({
-            x: 'left',
-            y: 'center',
+            anchor: { x: 'left', y: 'center' },
             orientation: 'x',
 
             background: Create3x3NinePatch(this, 'uiBg0', this.cache.json.get('uiBg0')),
