@@ -1,32 +1,29 @@
-import * as Phaser from 'phaser';
-import CustomShapes from 'phaser3-rex-plugins/plugins/customshapes';
-import { CustomShapesGeoms } from 'phaser3-rex-plugins/plugins/customshapes';
+import 'phaser';
+import UIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin';
+import { CustomShapes, CustomShapesGeoms } from 'phaser3-rex-plugins/templates/ui/ui-components';
 
+const COLOR_PRIMARY = 0x4e342e;
+const COLOR_LIGHT = 0x7b5e57;
+const COLOR_DARK = 0x260e04;
 
 class SpeechBubble extends CustomShapes {
     constructor(
         scene: Phaser.Scene,
-        x: number, y: number,
-        width: number, height: number
+        fillColor?: number,
+        strokeColor?: number
     ) {
-
         super(scene, {
-            x: x, y: y,
-            width: width, height,
-            type: 'SpeechBubble',
             create: { lines: 1 },
             update: function () {
                 var radius = 20;
                 var indent = 15;
-                var strokeColor = this.getData('strokeColor');
-                var fillColor = this.getData('fillColor');
 
                 var left = 0, right = this.width,
                     top = 0, bottom = this.height, boxBottom = bottom - indent;
                 var lines = this.getShapes()[0] as CustomShapesGeoms.Lines;
                 lines
-                    .lineStyle(2, strokeColor, 1)
-                    .fillStyle(fillColor, 1)
+                    .lineStyle(2, this.getData('strokeColor'), 1)
+                    .fillStyle(this.getData('fillColor'), 1)
                     // top line, right arc
                     .startAt(left + radius, top).lineTo(right - radius, top).arc(right - radius, top + radius, radius, 270, 360)
                     // right line, bottom arc
@@ -40,33 +37,65 @@ class SpeechBubble extends CustomShapes {
                     .close();
 
             }
-        });
+        })
+
+        this
+            .setData('fillColor', fillColor)
+            .setData('strokeColor', strokeColor)
 
         scene.add.existing(this);
     }
 }
 
 class Demo extends Phaser.Scene {
+    rexUI: UIPlugin;
+
     constructor() {
         super({
             key: 'examples'
         })
+
     }
 
     preload() { }
 
     create() {
-        var speechBubble = new SpeechBubble(this, 400, 300, 200, 100)
-            .setData('strokeColor', 0xffffff)
-            .setData('fillColor', 0x008800)
+        var content = `Phaser is a fast, free, and fun open source HTML5 game framework that offers WebGL and Canvas rendering across desktop and mobile web browsers. Games can be compiled to iOS, Android and native apps by using 3rd party tools. You can use JavaScript or TypeScript for development.`;
 
-        var graphics = this.add.graphics({
-            lineStyle: {
-                width: 2, color: 0xff0000, alpha: 1
-            }
+        this.rexUI.add.sizer({
+            x: 400, y: 300,
+            width: 500,
+            orientation: 'x',
+
+            space: { left: 10, right: 10, top: 10, bottom: 25, item: 10 }
         })
-            .strokeRectShape(speechBubble.getBounds())
-
+            .addBackground(
+                new SpeechBubble(this, COLOR_PRIMARY, 0xffffff)
+            )
+            .add(
+                this.rexUI.add.roundRectangle(0, 0, 0, 0, 20, COLOR_LIGHT),
+                {
+                    proportion: 0,
+                    align: 'bottom'
+                }
+            )
+            .add(
+                this.rexUI.wrapExpandText(this.add.text(0, 0, content)),
+                {
+                    proportion: 1,
+                    align: 'center',
+                    expand: true
+                }
+            )
+            .add(
+                this.rexUI.add.roundRectangle(0, 0, 0, 0, 20, COLOR_LIGHT),
+                {
+                    proportion: 0,
+                    align: 'bottom'
+                }
+            )
+            .layout()
+            .drawBounds(this.add.graphics(), 0xff0000);
     }
 
     update() { }
@@ -81,7 +110,14 @@ var config = {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
-    scene: Demo
+    scene: Demo,
+    plugins: {
+        scene: [{
+            key: 'rexUI',
+            plugin: UIPlugin,
+            mapping: 'rexUI'
+        }]
+    }
 };
 
 var game = new Phaser.Game(config);
