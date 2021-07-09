@@ -11,7 +11,6 @@ module.exports = {
     mode: 'development',
     entry: {
         app: [
-            '@babel/polyfill',
             projectMain
         ]
     },
@@ -28,8 +27,6 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
-            WEBGL_RENDERER: true, // I did this to make webpack work, but I'm not really sure it should always be true
-            CANVAS_RENDERER: true // I did this to make webpack work, but I'm not really sure it should always be true
         }),
         new HtmlWebpackPlugin({
             filename: '../index.html',
@@ -62,13 +59,25 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.ts$/,
-                loaders: ['babel-loader', 'awesome-typescript-loader'],
+                test: /\.ts$/i,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                options: {
+                    presets: [
+                        '@babel/preset-env',
+                        '@babel/preset-typescript'
+                    ]
+                }
             },
             {
-                test: /\.js$/,
-                use: ['babel-loader'],
-                include: path.join(__dirname, 'src')
+                test: /\.js$/i,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                options: {
+                    presets: [
+                        '@babel/preset-env',
+                    ]
+                }
             },
             {
                 test: /phaser-split\.js$/,
@@ -82,5 +91,8 @@ module.exports = {
     },
     node: {
         fs: 'empty'
+    },
+    resolve: {
+        extensions: ['.ts', '.js']
     }
 }
