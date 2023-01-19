@@ -36,7 +36,7 @@ class ContainerPanel extends OverlapSizer {
             for (var i = 0, cnt = files.length; i < cnt; i++) {
                 var image = CreateImageFromFile(scene, files[i], waitEvents.waitCallback());
                 image.setVisible(false);
-                imageContainer.add(image);
+                imageContainer.addLocal(image);
                 newImages.push(image);
             }
         })

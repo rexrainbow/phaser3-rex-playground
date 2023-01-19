@@ -1,61 +1,57 @@
 import ContainerLite from '../../../../../phaser3-rex-notes/plugins/containerlite.js';
-import { GetDisplayWidth, GetDisplayHeight } from '../../../../../phaser3-rex-notes/plugins/utils/size/GetDisplaySize.js';
-import Methods from './Methods.js';
+import Potpack from '../../lib/potpack.js';
+import AlignIn from '../../../../../phaser3-rex-notes/plugins/utils/actions/AlignIn.js';
+import FitToSize from '../../../../../phaser3-rex-notes/plugins/utils/size/FitTo.js';
 
 
 class ImageContainer extends ContainerLite {
-    get left() {
-        return this.x - (GetDisplayWidth(this) * this.originX);
-    }
+    layout(outerWidth, outerHeight) {
+        var children = this.getChildren();
 
-    set left(value) {
-        this.x += (value - this.left);
-    }
+        if (children.length === 0) {
+            this.setSize(outerWidth, outerHeight).setScale(1);
+            return;
+        }
 
-    get right() {
-        return this.left + GetDisplayWidth(this);
-    }
+        // Rectangle packing
+        var boxes = [];
+        for (var i = 0, cnt = children.length; i < cnt; i++) {
+            var child = children[i];
+            boxes.push({ w: child.width, h: child.height });
+        }
+        var result = Potpack(boxes);
+        this.setSize(result.w, result.h);
 
-    set right(value) {
-        this.x += (value - this.right);
-    }
+        // Layout children
+        this.setScale(1, 1);
 
-    get centerX() {
-        return this.left + (GetDisplayWidth(this) / 2);
-    }
+        var startX = this.x - (this.width * this.originX);
+        var startY = this.y - (this.height * this.originY);
+        for (var i = 0, cnt = boxes.length; i < cnt; i++) {
+            var box = boxes[i];
+            var child = children[i];
 
-    set centerX(value) {
-        this.x += (value - this.centerX);
-    }
+            AlignIn(
+                child,
+                startX + box.x,
+                startY + box.y,
+                box.w,
+                box.h,
+                0
+            );
 
-    get top() {
-        return this.y - (GetDisplayHeight(this) * this.originY);
-    }
+            this.resetChildPositionState(child);
+        }
 
-    set top(value) {
-        this.y += (value - this.top);
-    }
+        // Fit to outer size, keep ratio
+        var result = FitToSize(this, {
+            width: outerWidth,
+            height: outerHeight
+        }, true);
+        this.setDisplaySize(result.width, result.height);
 
-    get bottom() {
-        return this.top + GetDisplayHeight(this);
-    }
-
-    set bottom(value) {
-        this.y += (value - this.bottom);
-    }
-
-    get centerY() {
-        return this.top + (GetDisplayHeight(this) / 2);
-    }
-
-    set centerY(value) {
-        this.y += (value - this.centerY);
+        return this;
     }
 }
-
-Object.assign(
-    ImageContainer.prototype,
-    Methods,
-)
 
 export default ImageContainer;
