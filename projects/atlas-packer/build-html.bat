@@ -1,8 +1,8 @@
 @echo off
-set dist=./app/export-html-test
+set dist=./app/atlas-packer
 set htmlTemplate=./projects/atlas-packer/index.tmpl
-set main=./projects/atlas-packer/main.js
+set main=./projects/atlas-packer/test.js
 set assets=./projects/atlas-packer/assets
 cd ..
 cd ..
-webpack --config webpack.production.config.js
+npm run production

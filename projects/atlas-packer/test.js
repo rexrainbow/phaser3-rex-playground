@@ -1,5 +1,5 @@
 import 'phaser';
-import ImageContainer from './gameobjects/imagecontainer/ImageContainer.js';
+import ContainerPanel from './gameobjects/containerpanel/ContainerPanel.js';
 
 class TestScene extends Phaser.Scene {
     constructor() {
@@ -10,32 +10,17 @@ class TestScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('A-anger', 'assets/characters/A-anger.png');
-        this.load.image('A-confuse', 'assets/characters/A-confuse.png');
-        this.load.image('A-dizzy', 'assets/characters/A-dizzy.png');
-        this.load.image('A-happy', 'assets/characters/A-happy.png');
-        this.load.image('A-none', 'assets/characters/A-none.png');
-        this.load.image('A-shock', 'assets/characters/A-shock.png');
-        this.load.image('A-smile', 'assets/characters/A-smile.png');
+
     }
 
     create() {
-        var container = new ImageContainer(this, 400, 300);
+        var container = new ContainerPanel(this, {
+            x: 400, y: 300,
+            width: 800, height: 600
+        })
         this.add.existing(container);
 
-        container
-            .add(this.add.image(0, 0, 'A-anger'))
-            .add(this.add.image(0, 0, 'A-confuse'))
-            .add(this.add.image(0, 0, 'A-dizzy'))
-            .add(this.add.image(0, 0, 'A-happy'))
-            .add(this.add.image(0, 0, 'A-none'))
-            .add(this.add.image(0, 0, 'A-shock'))
-            .add(this.add.image(0, 0, 'A-smile'))
-            .layout()
-            .fitTo({ width: 800 - 10, height: 600 - 10 })
-            .drawBounds(this.add.graphics())
-
-        console.log(container.width, container.height)
+        container.layout()
     }
 
     update() { }
@@ -49,6 +34,9 @@ var config = {
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
+    },
+    dom: {
+        createContainer: true
     },
     plugins: {},
     scene: [TestScene],

@@ -5,4 +5,4 @@ set main=./projects/breakout/main.js
 set assets=./projects/breakout/assets
 cd ..
 cd ..
-webpack --config webpack.production.config.js
+npm run production

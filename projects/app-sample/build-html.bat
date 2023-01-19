@@ -5,4 +5,4 @@ set main=./projects/app-sample/main.js
 set assets=./projects/app-sample/assets
 cd ..
 cd ..
-webpack --config webpack.production.config.js
+npm run production

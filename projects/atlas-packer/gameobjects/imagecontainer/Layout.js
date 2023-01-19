@@ -2,6 +2,8 @@ import Potpack from '../../lib/potpack.js';
 import AlignIn from '../../../../../phaser3-rex-notes/plugins/utils/actions/AlignIn.js';
 
 var Layout = function (factor) {
+    this.emit('prelayout');
+
     var children = this.getChildren();
 
     // Rectangle packing
@@ -37,6 +39,8 @@ var Layout = function (factor) {
     }
 
     this.setScale(scaleXSave, scaleYSave);
+
+    this.emit('postlayout');
 
     return this;
 }

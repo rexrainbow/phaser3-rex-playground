@@ -1,3 +1,4 @@
+const fs = require('fs')
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -61,39 +62,52 @@ module.exports = {
             CANVAS_RENDERER: true // I did this to make webpack work, but I'm not really sure it should always be true
         }),
         new CleanWebpackPlugin([distFolder]),
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+        new webpack.IgnorePlugin({
+            resourceRegExp: /^\.\/locale$/,
+            contextRegExp: /moment$/,
+        }),
         new HtmlWebpackPlugin({
             filename: distFolder + '/index.html',
             template: htmlTemplate,
             chunks: ['vendor', 'app'],
             chunksSortMode: 'manual',
-            minify: {
-                removeAttributeQuotes: true,
-                collapseWhitespace: true,
-                html5: true,
-                minifyCSS: true,
-                minifyJS: true,
-                minifyURLs: true,
-                removeComments: true,
-                removeEmptyAttributes: true
-            },
+            // minify: {
+            //     removeAttributeQuotes: true,
+            //     collapseWhitespace: true,
+            //     html5: true,
+            //     minifyCSS: true,
+            //     minifyJS: true,
+            //     minifyURLs: true,
+            //     removeComments: true,
+            //     removeEmptyAttributes: true
+            // },
             hash: true
         }),
-        new CopyWebpackPlugin([{
-            from: assetsFolder,
-            to: distFolder + '/assets/'
-        }])
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: assetsFolder, to: distFolder + '/assets/' },
+            ],
+        })
     ],
     module: {
         rules: [
             {
+                test: /\.ts$/,
+                use: [
+                    { loader: 'babel-loader' },
+                    { loader: 'awesome-typescript-loader' },
+                ]
+            },
+            {
                 test: /\.js$/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env']
+                        }
                     }
-                }
+                ]
             },
             {
                 test: /phaser-split\.js$/,
@@ -106,8 +120,9 @@ module.exports = {
         ]
     },
     resolve: {
-        alias: {
-            'phaser': phaser,
+        extensions: ['.ts', '.js'],
+        fallback: {
+            fs: false
         }
     }
 }
