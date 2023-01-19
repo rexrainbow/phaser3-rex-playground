@@ -3,7 +3,7 @@ import { GetDisplayWidth, GetDisplayHeight } from '../../../../../phaser3-rex-no
 import Methods from './Methods.js';
 
 
-class ImageBoard extends ContainerLite {
+class ImageContainer extends ContainerLite {
     get left() {
         return this.x - (GetDisplayWidth(this) * this.originX);
     }
@@ -54,8 +54,8 @@ class ImageBoard extends ContainerLite {
 }
 
 Object.assign(
-    ImageBoard.prototype,
+    ImageContainer.prototype,
     Methods,
 )
 
-export default ImageBoard;
+export default ImageContainer;

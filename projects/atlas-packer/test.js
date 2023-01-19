@@ -1,5 +1,5 @@
 import 'phaser';
-import ImageBoard from './gameobjects/imageboard/imageboard';
+import ImageContainer from './gameobjects/imagecontainer/ImageContainer.js';
 
 class TestScene extends Phaser.Scene {
     constructor() {
@@ -20,10 +20,10 @@ class TestScene extends Phaser.Scene {
     }
 
     create() {
-        var board = new ImageBoard(this, 400, 300);
-        this.add.existing(board);
+        var container = new ImageContainer(this, 400, 300);
+        this.add.existing(container);
 
-        board
+        container
             .add(this.add.image(0, 0, 'A-anger'))
             .add(this.add.image(0, 0, 'A-confuse'))
             .add(this.add.image(0, 0, 'A-dizzy'))
@@ -34,6 +34,8 @@ class TestScene extends Phaser.Scene {
             .layout()
             .fitTo({ width: 800 - 10, height: 600 - 10 })
             .drawBounds(this.add.graphics())
+
+        console.log(container.width, container.height)
     }
 
     update() { }
