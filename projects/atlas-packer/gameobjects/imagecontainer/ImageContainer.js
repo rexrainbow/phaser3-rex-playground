@@ -6,10 +6,14 @@ import FitToSize from '../../../../../phaser3-rex-notes/plugins/utils/size/FitTo
 
 class ImageContainer extends ContainerLite {
     layout(outerWidth, outerHeight) {
+        var parent = this.getParent();
+        var outerWidth = parent.displayWidth,
+            outerHeight = parent.displayHeight;
+
         var children = this.getChildren();
 
         if (children.length === 0) {
-            this.setSize(outerWidth, outerHeight).setScale(1);
+            this.setScale(1).setSize(outerWidth, outerHeight);
             return;
         }
 
