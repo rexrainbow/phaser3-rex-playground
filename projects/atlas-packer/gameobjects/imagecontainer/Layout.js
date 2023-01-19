@@ -1,10 +1,14 @@
 import Potpack from '../../lib/potpack.js';
 import AlignIn from '../../../../../phaser3-rex-notes/plugins/utils/actions/AlignIn.js';
+import FitToSize from '../../../../../phaser3-rex-notes/plugins/utils/size/FitTo.js';
 
-var Layout = function (factor) {
-    this.emit('prelayout');
-
+var Layout = function (outerWidth, outerHeight) {
     var children = this.getChildren();
+
+    if (children.length === 0) {
+        this.setSize(outerWidth, outerHeight).setScale(1);
+        return;
+    }
 
     // Rectangle packing
     var boxes = [];
@@ -12,12 +16,10 @@ var Layout = function (factor) {
         var child = children[i];
         boxes.push({ w: child.width, h: child.height });
     }
-    var result = Potpack(boxes, factor);
+    var result = Potpack(boxes);
     this.setSize(result.w, result.h);
 
     // Layout children
-    var scaleXSave = this.scaleX,
-        scaleYSave = this.scaleY;
     this.setScale(1, 1);
 
     var startX = this.left,
@@ -38,9 +40,12 @@ var Layout = function (factor) {
         this.resetChildPositionState(child);
     }
 
-    this.setScale(scaleXSave, scaleYSave);
-
-    this.emit('postlayout');
+    // Fit to outer size, keep ratio
+    var result = FitToSize(this, {
+        width: outerWidth,
+        height: outerHeight
+    }, true);
+    this.setDisplaySize(result.width, result.height);
 
     return this;
 }

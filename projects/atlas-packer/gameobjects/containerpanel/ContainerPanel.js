@@ -9,7 +9,7 @@ import WaitEvents from '../../../../../phaser3-rex-notes/plugins/waitevents.js';
 class ContainerPanel extends OverlapSizer {
     constructor(scene, config) {
         super(scene, config);
-
+       
         var background = CreateBackground(scene, 0x555555);
         this.addBackground(background);
 
@@ -22,23 +22,24 @@ class ContainerPanel extends OverlapSizer {
             { align: 'center', expand: false }
         )
 
+        var containerPanel = this;
         imageDropZone.on('drop.image', function (files) {
+            var newImages = [];
+
             var waitEvents = new WaitEvents(function () {
-                imageContainer.layout();
+                for (var i = 0, cnt = newImages.length; i < cnt; i++) {
+                    newImages[i].setVisible(true);
+                }
+                imageContainer.layout(containerPanel.displayWidth, containerPanel.displayHeight);
             });
 
             for (var i = 0, cnt = files.length; i < cnt; i++) {
-                var canvas = CreateImageFromFile(scene, files[i], waitEvents.waitCallback());
-                imageContainer.add(canvas);
+                var image = CreateImageFromFile(scene, files[i], waitEvents.waitCallback());
+                image.setVisible(false);
+                imageContainer.add(image);
+                newImages.push(image);
             }
         })
-
-        imageContainer.on('postlayout', function () {
-            imageContainer.fitTo({
-                width: this.displayWidth,
-                height: this.displayHeight
-            })
-        }, this);
     }
 }
 
