@@ -22,6 +22,7 @@ class ContainerPanel extends OverlapSizer {
             { align: 'center', expand: false }
         )
 
+        var containerPanel = this;
         imageDropZone.on('drop.image', function (files) {
             var newImages = [];
 
@@ -29,13 +30,12 @@ class ContainerPanel extends OverlapSizer {
                 for (var i = 0, cnt = newImages.length; i < cnt; i++) {
                     newImages[i].setVisible(true);
                 }
-                imageContainer.layout();
+                containerPanel.addImages(newImages);
             });
 
             for (var i = 0, cnt = files.length; i < cnt; i++) {
-                var image = CreateImageFromFile(scene, files[i], waitEvents.waitCallback());
-                image.setVisible(false);
-                imageContainer.addLocal(image);
+                var image = CreateImageFromFile(scene, files[i], waitEvents.waitCallback())
+                    .setVisible(false);
                 newImages.push(image);
             }
         })
@@ -43,6 +43,19 @@ class ContainerPanel extends OverlapSizer {
         this.addChildrenMap('background', background);
         this.addChildrenMap('imageDropZone', imageDropZone)
         this.addChildrenMap('imageContainer', imageContainer);
+    }
+
+    addImages(newImages) {
+        var imageContainer = this.childrenMap.imageContainer;
+
+        for (var i = 0, cnt = newImages.length; i < cnt; i++) {
+            imageContainer.addLocal(newImages[i]);
+        }
+
+        imageContainer.layout();
+        this.resetChildScaleState(imageContainer);
+
+        return this;
     }
 }
 
