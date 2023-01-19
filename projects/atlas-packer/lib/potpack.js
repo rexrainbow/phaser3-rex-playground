@@ -1,23 +1,31 @@
 // https://github.com/mapbox/potpack/blob/main/index.js
 // ISC License
 
-export default function potpack(boxes) {
-
+export default function potpack(boxes, factor) {
     // calculate total box area and maximum box width
-    let area = 0;
+    let totalArea = 0;
     let maxWidth = 0;
+    let maxArea = -1;
+    let maxAreaBox;
 
     for (const box of boxes) {
-        area += box.w * box.h;
+        let area = box.w * box.h;
+        totalArea += area;
         maxWidth = Math.max(maxWidth, box.w);
+
+        if (area > maxArea) {
+            maxAreaBox = box;
+        }
     }
 
     // sort the boxes for insertion by height, descending
     boxes.sort((a, b) => b.h - a.h);
 
-    // aim for a squarish resulting container,
-    // slightly adjusted for sub-100% space utilization
-    const startWidth = Math.max(Math.ceil(Math.sqrt(area / 0.95)), maxWidth);
+    // Modify startWidth via ratio of maxAreaBox
+    if (factor === undefined) {
+        factor = maxAreaBox.h / maxAreaBox.w;
+    }
+    const startWidth = Math.max(Math.ceil(Math.sqrt(totalArea * factor)), maxWidth);
 
     // start with a single empty space, unbounded at the bottom
     const spaces = [{ x: 0, y: 0, w: startWidth, h: Infinity }];
@@ -91,6 +99,6 @@ export default function potpack(boxes) {
     return {
         w: width, // container width
         h: height, // container height
-        fill: (area / (width * height)) || 0 // space utilization
+        fill: (totalArea / (width * height)) || 0 // space utilization
     };
 }

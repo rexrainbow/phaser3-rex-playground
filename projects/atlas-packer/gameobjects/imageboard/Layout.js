@@ -1,16 +1,19 @@
 import Potpack from '../../lib/potpack.js';
 import AlignIn from '../../../../../phaser3-rex-notes/plugins/utils/actions/AlignIn.js';
 
-var Layout = function () {
+var Layout = function (factor) {
     var children = this.getChildren();
+
+    // Rectangle packing
     var boxes = [];
     for (var i = 0, cnt = children.length; i < cnt; i++) {
         var child = children[i];
         boxes.push({ w: child.width, h: child.height });
     }
-    var result = Potpack(boxes);
+    var result = Potpack(boxes, factor);
     this.setSize(result.w, result.h);
 
+    // Layout children
     var scaleXSave = this.scaleX,
         scaleYSave = this.scaleY;
     this.setScale(1, 1);
