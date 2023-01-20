@@ -3,6 +3,7 @@ import CreateBackground from './CreateBackground.js';
 import CreateImageDropZone from './CreateImageDropZone.js';
 import CreateImageContainer from './CreateImageContainer.js';
 import CreateImageFromFile from './CreateImageFromFile.js';
+import GetFileName from '../../utils/GetFileName.js';
 import WaitEvents from '../../../../../phaser3-rex-notes/plugins/waitevents.js';
 
 
@@ -25,31 +26,52 @@ class ContainerPanel extends OverlapSizer {
         var imageContainerBackground = CreateBackground(scene, 0x555555);
         imageContainer.addBackground(imageContainerBackground);
 
-        var containerPanel = this;
-        imageDropZone.on('drop.image', function (files) {
-            var newImages = [];
-
-            var waitEvents = new WaitEvents(function () {
-                for (var i = 0, cnt = newImages.length; i < cnt; i++) {
-                    newImages[i].setVisible(true);
-                }
-                containerPanel.addImages(newImages);
-            });
-
-            for (var i = 0, cnt = files.length; i < cnt; i++) {
-                var image = CreateImageFromFile(scene, files[i], waitEvents.waitCallback())
-                    .setVisible(false);
-                newImages.push(image);
-            }
-        })
-
         this.addChildrenMap('imageDropZone', imageDropZone);
         this.addChildrenMap('imageContainer', imageContainer);
         this.addChildrenMap('background', imageContainerBackground);
 
+
+        imageDropZone.on('drop.image', this.addImageFile, this);
     }
 
-    addImages(newImages) {
+    addImageFile(files) {
+        var scene = this.scene;
+        var containerPanel = this;
+
+        files = files.filter(function (file) {
+            return !containerPanel.hasImage(GetFileName(file));
+        });
+        if (files.length === 0) {
+            return this;
+        }
+
+
+        var newImages = [];
+
+        var waitEvents = new WaitEvents(function () {
+            for (var i = 0, cnt = newImages.length; i < cnt; i++) {
+                newImages[i].setVisible(true);
+            }
+            containerPanel.updateImages(newImages);
+        });
+
+        for (var i = 0, cnt = files.length; i < cnt; i++) {
+            var file = files[i];
+            var image = CreateImageFromFile(scene, file, waitEvents.waitCallback())
+                .setName(GetFileName(file))
+                .setVisible(false);
+            newImages.push(image);
+        }
+
+        return this;
+    }
+
+    hasImage(name) {
+        var imageContainer = this.childrenMap.imageContainer;
+        return imageContainer.hasImage(name);
+    }
+
+    updateImages(newImages, removeImages) {
         var imageContainer = this.childrenMap.imageContainer;
 
         for (var i = 0, cnt = newImages.length; i < cnt; i++) {
@@ -65,5 +87,7 @@ class ContainerPanel extends OverlapSizer {
         return this;
     }
 }
+
+
 
 export default ContainerPanel;

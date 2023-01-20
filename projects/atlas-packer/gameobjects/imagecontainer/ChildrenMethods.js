@@ -15,5 +15,9 @@ export default {
         this.images.remove(gameObject);
         this.remove(gameObject, true);
         return this;
+    },
+
+    hasImage(name) {
+        return !!this.images.getByName(name);
     }
 }
