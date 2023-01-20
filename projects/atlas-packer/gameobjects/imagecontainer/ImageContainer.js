@@ -1,63 +1,36 @@
 import ContainerLite from '../../../../../phaser3-rex-notes/plugins/containerlite.js';
-import Potpack from '../../lib/potpack.js';
-import AlignIn from '../../../../../phaser3-rex-notes/plugins/utils/actions/AlignIn.js';
-import FitToSize from '../../../../../phaser3-rex-notes/plugins/utils/size/FitTo.js';
+import Methods from './Methods.js';
 
+const List = Phaser.Structs.List;
 
 class ImageContainer extends ContainerLite {
-    layout() {
-        var children = this.getChildren();
+    constructor(scene) {
+        super(scene);
 
-        if (children.length === 0) {
-            this.setScale(1).setSize(1, 1);
+        this.backgrounds = new List();
+        this.images = new List();
+    }
+
+    destroy(fromScene) {
+        //  This Game Object has already been destroyed
+        if (!this.scene) {
             return;
         }
 
-        // Rectangle packing
-        var boxes = [];
-        for (var i = 0, cnt = children.length; i < cnt; i++) {
-            var child = children[i];
-            boxes.push({ w: child.width, h: child.height });
-        }
-        var result = Potpack(boxes);
-        this.setSize(result.w, result.h);
+        this.backgrounds.removeAll();
+        this.backgrounds = null;
 
-        // Layout children
+        this.images.removeAll();
+        this.images = null;
 
-        // Save scale and rotation
-        var scaleXSave = this.scaleX,
-            scaleYSave = this.scaleY;
-        this.setScale(1, 1);
-
-        var startX = this.x - (this.width * this.originX);
-        var startY = this.y - (this.height * this.originY);
-        for (var i = 0, cnt = boxes.length; i < cnt; i++) {
-            var box = boxes[i];
-            var child = children[i];
-
-            AlignIn(
-                child,
-                startX + box.x,
-                startY + box.y,
-                box.w,
-                box.h,
-                0
-            );
-
-            this.resetChildPositionState(child);
-        }
-
-        // Restore scale and rotation
-        this.setScale(scaleXSave, scaleYSave);
-
-        return this;
+        super.destroy(fromScene);
     }
 
-    fitTo(width, height) {
-        var result = FitToSize(this, { width: width, height: height }, true);
-        this.setDisplaySize(result.width, result.height);
-        return this;
-    }
 }
+
+Object.assign(
+    ImageContainer.prototype,
+    Methods,
+)
 
 export default ImageContainer;

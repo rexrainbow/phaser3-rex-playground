@@ -10,7 +10,7 @@ class ContainerPanel extends OverlapSizer {
     constructor(scene, config) {
         super(scene, config);
 
-        var background = CreateBackground(scene, 0x555555);
+        var background = CreateBackground(scene, 0x333333);
         this.addBackground(background);
 
         var imageDropZone = CreateImageDropZone(scene);
@@ -21,6 +21,9 @@ class ContainerPanel extends OverlapSizer {
             imageContainer,
             { align: 'center', expand: false }
         )
+
+        var imageContainerBackground = CreateBackground(scene, 0x555555);
+        imageContainer.addBackground(imageContainerBackground);
 
         var containerPanel = this;
         imageDropZone.on('drop.image', function (files) {
@@ -40,16 +43,17 @@ class ContainerPanel extends OverlapSizer {
             }
         })
 
-        this.addChildrenMap('background', background);
-        this.addChildrenMap('imageDropZone', imageDropZone)
+        this.addChildrenMap('imageDropZone', imageDropZone);
         this.addChildrenMap('imageContainer', imageContainer);
+        this.addChildrenMap('background', imageContainerBackground);
+
     }
 
     addImages(newImages) {
         var imageContainer = this.childrenMap.imageContainer;
 
         for (var i = 0, cnt = newImages.length; i < cnt; i++) {
-            imageContainer.addLocal(newImages[i]);
+            imageContainer.addImage(newImages[i]);
         }
 
         imageContainer
