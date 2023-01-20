@@ -52,7 +52,10 @@ class ContainerPanel extends OverlapSizer {
             imageContainer.addLocal(newImages[i]);
         }
 
-        imageContainer.layout();
+        imageContainer
+            .layout()
+            .fitTo(this.displayWidth, this.displayHeight);
+
         this.resetChildScaleState(imageContainer);
 
         return this;
