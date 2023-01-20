@@ -1,5 +1,5 @@
 @echo off
-set dist=./app/export-html-test
+set dist=./apps/export-html-test
 set htmlTemplate=./projects/app-sample/index.tmpl
 set main=./projects/app-sample/main.js
 set assets=./projects/app-sample/assets
