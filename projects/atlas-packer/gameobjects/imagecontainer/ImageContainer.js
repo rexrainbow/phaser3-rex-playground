@@ -23,6 +23,8 @@ class ImageContainer extends ContainerLite {
         this.setSize(result.w, result.h);
 
         // Layout children
+
+        // Save scale and rotation
         var scaleXSave = this.scaleX,
             scaleYSave = this.scaleY;
         this.setScale(1, 1);
@@ -45,6 +47,7 @@ class ImageContainer extends ContainerLite {
             this.resetChildPositionState(child);
         }
 
+        // Restore scale and rotation
         this.setScale(scaleXSave, scaleYSave);
 
         return this;

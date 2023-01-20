@@ -17,6 +17,57 @@ const htmlTemplate = process.env.htmltemplate || './examples/index.tmpl';
 
 const distFolder = path.resolve(__dirname, dist);
 
+var plugins = [];
+
+plugins.push(
+    new webpack.DefinePlugin({
+        __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
+        WEBGL_RENDERER: true, // I did this to make webpack work, but I'm not really sure it should always be true
+        CANVAS_RENDERER: true // I did this to make webpack work, but I'm not really sure it should always be true
+    })
+)
+
+plugins.push(
+    new CleanWebpackPlugin([distFolder])
+)
+
+plugins.push(
+    new webpack.IgnorePlugin({
+        resourceRegExp: /^\.\/locale$/,
+        contextRegExp: /moment$/,
+    })
+)
+
+plugins.push(
+    new HtmlWebpackPlugin({
+        filename: distFolder + '/index.html',
+        template: htmlTemplate,
+        chunks: ['vendor', 'app'],
+        chunksSortMode: 'manual',
+        minify: {
+            removeAttributeQuotes: true,
+            collapseWhitespace: true,
+            html5: true,
+            minifyCSS: true,
+            minifyJS: true,
+            minifyURLs: true,
+            removeComments: true,
+            removeEmptyAttributes: true
+        },
+        hash: true
+    })
+)
+
+if (fs.existsSync(assetsFolder)) {
+    plugins.push(
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: assetsFolder, to: distFolder + '/assets/' },
+            ],
+        })
+    )
+}
+
 module.exports = {
     mode: 'production',
     entry: {
@@ -55,69 +106,41 @@ module.exports = {
             })
         ]
     },
-    plugins: [
-        new webpack.DefinePlugin({
-            __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
-            WEBGL_RENDERER: true, // I did this to make webpack work, but I'm not really sure it should always be true
-            CANVAS_RENDERER: true // I did this to make webpack work, but I'm not really sure it should always be true
-        }),
-        new CleanWebpackPlugin([distFolder]),
-        new webpack.IgnorePlugin({
-            resourceRegExp: /^\.\/locale$/,
-            contextRegExp: /moment$/,
-        }),
-        new HtmlWebpackPlugin({
-            filename: distFolder + '/index.html',
-            template: htmlTemplate,
-            chunks: ['vendor', 'app'],
-            chunksSortMode: 'manual',
-            // minify: {
-            //     removeAttributeQuotes: true,
-            //     collapseWhitespace: true,
-            //     html5: true,
-            //     minifyCSS: true,
-            //     minifyJS: true,
-            //     minifyURLs: true,
-            //     removeComments: true,
-            //     removeEmptyAttributes: true
-            // },
-            hash: true
-        }),
-        new CopyWebpackPlugin({
-            patterns: [
-                { from: assetsFolder, to: distFolder + '/assets/' },
-            ],
-        })
-    ],
+    plugins: plugins,
     module: {
         rules: [
             {
-                test: /\.ts$/,
-                use: [
-                    { loader: 'babel-loader' },
-                    { loader: 'awesome-typescript-loader' },
-                ]
+                test: /\.ts$/i,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                options: {
+                    presets: [
+                        '@babel/preset-env',
+                        '@babel/preset-typescript'
+                    ]
+                }
             },
             {
-                test: /\.js$/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['@babel/preset-env']
-                        }
-                    }
-                ]
+                test: /\.js$/i,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                options: {
+                    presets: [
+                        '@babel/preset-env',
+                    ]
+                }
             },
             {
                 test: /phaser-split\.js$/,
-                use: 'raw-loader'
+                use: ['expose-loader?Phaser']
             },
             {
                 test: [/\.vert$/, /\.frag$/],
                 use: 'raw-loader'
             }
         ]
+    },
+    node: {
     },
     resolve: {
         extensions: ['.ts', '.js'],
