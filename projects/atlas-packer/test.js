@@ -1,5 +1,6 @@
 import 'phaser';
 import ContainerPanel from './gameobjects/containerpanel/ContainerPanel.js';
+import TopPanel from './gameobjects/toppanel/TopPanel.js';
 
 class TestScene extends Phaser.Scene {
     constructor() {
@@ -14,13 +15,17 @@ class TestScene extends Phaser.Scene {
     }
 
     create() {
-        var container = new ContainerPanel(this, {
+        var ui = new TopPanel(this, {
             x: 400, y: 300,
-            width: 800, height: 600
-        })
-        this.add.existing(container);
+            width: 800, height: 600,
 
-        container.layout()
+            leftSide: {
+                width: 200,
+            }
+        })
+        this.add.existing(ui);
+
+        ui.layout()
     }
 
     update() { }

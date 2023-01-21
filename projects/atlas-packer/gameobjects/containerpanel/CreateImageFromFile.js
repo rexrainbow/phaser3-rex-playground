@@ -1,5 +1,4 @@
 import { Canvas } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
-import GetFileName from '../../utils/GetFileName.js';
 
 var CreateImageFromFile = function (scene, file, onComplete) {
     var canvas = new Canvas(scene);

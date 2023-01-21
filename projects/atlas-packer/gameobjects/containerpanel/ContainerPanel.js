@@ -11,6 +11,8 @@ class ContainerPanel extends OverlapSizer {
     constructor(scene, config) {
         super(scene, config);
 
+        this.commandHub = config.commandHub;
+
         var background = CreateBackground(scene, 0x333333);
         this.addBackground(background);
 
@@ -72,10 +74,30 @@ class ContainerPanel extends OverlapSizer {
     }
 
     updateImages(newImages, removeImages) {
+        if (!newImages && !removeImages) {
+            return this;
+        }
+
         var imageContainer = this.childrenMap.imageContainer;
 
-        for (var i = 0, cnt = newImages.length; i < cnt; i++) {
-            imageContainer.addImage(newImages[i]);
+        if (newImages) {
+            if (!Array.isArray(newImages)) {
+                newImages = [newImages];
+            }
+
+            for (var i = 0, cnt = newImages.length; i < cnt; i++) {
+                imageContainer.addImage(newImages[i]);
+            }
+        }
+
+        if (removeImages) {
+            if (!Array.isArray(removeImages)) {
+                removeImages = [removeImages];
+            }
+
+            for (var i = 0, cnt = removeImages.length; i < cnt; i++) {
+                imageContainer.removeImage(removeImages[i]);
+            }
         }
 
         imageContainer
