@@ -1,8 +1,8 @@
 import { OverlapSizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
-import CreateBackground from './CreateBackground.js';
-import CreateImageDropZone from './CreateImageDropZone.js';
-import CreateImageContainer from './CreateImageContainer.js';
-import CreateImageFromFile from './CreateImageFromFile.js';
+import CreateBackground from '../builders/CreateBackground.js';
+import CreateImageDropZone from '../builders/CreateImageDropZone.js';
+import CreateImageContainer from '../builders/CreateImageContainer.js';
+import CreateImageFromFile from '../builders/CreateImageFromFile.js';
 import GetFileName from '../../utils/GetFileName.js';
 import WaitEvents from '../../../../../phaser3-rex-notes/plugins/waitevents.js';
 
