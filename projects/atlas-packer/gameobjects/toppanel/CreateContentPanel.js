@@ -2,7 +2,7 @@ import ContainerPanel from '../containerpanel/ContainerPanel';
 
 var CreateContentPanel = function (scene, config) {
     var contentConfig = config.content || {};
-    contentConfig.commandHub = config.commandHub;
+    contentConfig.model = config.model;
     var contentPanel = new ContainerPanel(scene, contentConfig);
     scene.add.existing(contentPanel);
 

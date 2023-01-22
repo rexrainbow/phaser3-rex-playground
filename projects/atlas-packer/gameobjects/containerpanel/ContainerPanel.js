@@ -2,7 +2,7 @@ import { OverlapSizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-c
 import CreateBackground from '../builders/CreateBackground.js';
 import CreateImageDropZone from '../builders/CreateImageDropZone.js';
 import CreateImageContainer from '../builders/CreateImageContainer.js';
-import CreateImageFromFile from '../builders/CreateImageFromFile.js';
+// import CreateImageFromFile from '../builders/CreateImageFromFile.js';
 import GetFileName from '../../utils/GetFileName.js';
 import WaitEvents from '../../../../../phaser3-rex-notes/plugins/waitevents.js';
 
@@ -11,7 +11,7 @@ class ContainerPanel extends OverlapSizer {
     constructor(scene, config) {
         super(scene, config);
 
-        this.commandHub = config.commandHub;
+        this.model = config.model;
 
         var background = CreateBackground(scene, 0x333333);
         this.addBackground(background);
@@ -32,48 +32,21 @@ class ContainerPanel extends OverlapSizer {
         this.addChildrenMap('imageContainer', imageContainer);
         this.addChildrenMap('background', imageContainerBackground);
 
+        imageDropZone.on('drop.image', function (files) {
+            this.model.addImageFiles(this.scene, files);
+        }, this);
 
-        imageDropZone.on('drop.image', this.addImageFile, this);
-    }
-
-    addImageFile(files) {
-        var scene = this.scene;
-        var containerPanel = this;
-
-        files = files.filter(function (file) {
-            return !containerPanel.hasImage(GetFileName(file));
-        });
-        if (files.length === 0) {
-            return this;
-        }
-
-
-        var newImages = [];
-
-        var waitEvents = new WaitEvents(function () {
-            for (var i = 0, cnt = newImages.length; i < cnt; i++) {
-                newImages[i].setVisible(true);
-            }
-            containerPanel.updateImages(newImages);
-        });
-
-        for (var i = 0, cnt = files.length; i < cnt; i++) {
-            var file = files[i];
-            var image = CreateImageFromFile(scene, file, waitEvents.waitCallback())
-                .setName(GetFileName(file))
-                .setVisible(false);
-            newImages.push(image);
-        }
-
-        return this;
-    }
-
-    hasImage(name) {
-        var imageContainer = this.childrenMap.imageContainer;
-        return imageContainer.hasImage(name);
+        this.model.on('addimages', function (imageKeys) {
+            var scene = this.scene;
+            var images = imageKeys.map(function (key) {
+                return scene.add.image(0, 0, key);
+            })
+            this.updateImages(images);
+        }, this)
     }
 
     updateImages(newImages, removeImages) {
+        // newImages, removeImages : Array of Image game object
         if (!newImages && !removeImages) {
             return this;
         }
