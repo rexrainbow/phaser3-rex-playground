@@ -1,6 +1,11 @@
 import 'phaser';
 import Model from './model/Model.js';
-import TopPanel from './gameobjects/toppanel/TopPanel.js';
+import CreateTopPanel from './gameobjects/builders/CreateTopPanel.js';
+
+
+const COLOR_PRIMARY = 0x4e342e;
+const COLOR_LIGHT = 0x7b5e57;
+const COLOR_DARK = 0x260e04;
 
 class TestScene extends Phaser.Scene {
     constructor() {
@@ -16,22 +21,41 @@ class TestScene extends Phaser.Scene {
 
     create() {
         var model = new Model();
-        var ui = new TopPanel(this, {
-            x: 400, y: 300,
-            width: 800, height: 600,
 
-            leftSide: {
-                width: 200,
-            },
-
-            model: model,
-        })
-        this.add.existing(ui);
-
-        ui.layout()
+        var ui = CreateUI(this, model)
+            .setMinSize(800, 600)
+            .setPosition(400, 300)
+            .layout()
     }
 
     update() { }
+}
+
+var CreateUI = function (scene, model) {
+    config = {
+        leftSide: {
+            width: 250,
+
+            imageList: {
+                table: {
+                    cellHeight: 80
+                },
+
+                slider: {
+                    track: { width: 20, radius: 10, color: COLOR_DARK },
+                    thumb: { radius: 13, color: COLOR_LIGHT }
+                },
+            }
+        },
+
+        content: {
+            backgroundColor: COLOR_PRIMARY,
+            imageBackgroundColor: 0x555555
+        },
+    }
+
+    config.model = model;
+    return CreateTopPanel(scene, config);
 }
 
 var config = {

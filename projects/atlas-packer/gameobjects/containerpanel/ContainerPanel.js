@@ -2,10 +2,8 @@ import { OverlapSizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-c
 import CreateBackground from '../builders/CreateBackground.js';
 import CreateImageDropZone from '../builders/CreateImageDropZone.js';
 import CreateImageContainer from '../builders/CreateImageContainer.js';
-// import CreateImageFromFile from '../builders/CreateImageFromFile.js';
-import GetFileName from '../../utils/GetFileName.js';
-import WaitEvents from '../../../../../phaser3-rex-notes/plugins/waitevents.js';
 
+const GetValue = Phaser.Utils.Objects.GetValue;
 
 class ContainerPanel extends OverlapSizer {
     constructor(scene, config) {
@@ -13,7 +11,8 @@ class ContainerPanel extends OverlapSizer {
 
         this.model = config.model;
 
-        var background = CreateBackground(scene, 0x333333);
+        var backgroundColor = GetValue(config, 'backgroundColor', 0x333333);
+        var background = CreateBackground(scene, backgroundColor);
         this.addBackground(background);
 
         var imageDropZone = CreateImageDropZone(scene);
@@ -25,7 +24,8 @@ class ContainerPanel extends OverlapSizer {
             { align: 'center', expand: false }
         )
 
-        var imageContainerBackground = CreateBackground(scene, 0x555555);
+        var imageBackgroundColor = GetValue(config, 'imageBackgroundColor', 0x555555);
+        var imageContainerBackground = CreateBackground(scene, imageBackgroundColor);
         imageContainer.addBackground(imageContainerBackground);
 
         this.addChildrenMap('imageDropZone', imageDropZone);
