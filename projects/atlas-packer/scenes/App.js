@@ -1,4 +1,6 @@
-import 'phaser'
+import 'phaser';
+import UIConfig from './UIConfig.js';
+import CreateApp from '../app/CreateApp.js';
 
 class App extends Phaser.Scene {
     constructor() {
@@ -12,6 +14,11 @@ class App extends Phaser.Scene {
     }
 
     create() {
+        var { width, height } = this.scale;
+        var ui = CreateApp(this, UIConfig)
+            .setMinSize(width, height)
+            .setPosition(width / 2, height / 2)
+            .layout()
     }
 
     update() { }
