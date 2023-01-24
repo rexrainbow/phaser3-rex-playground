@@ -1,6 +1,5 @@
 import 'phaser';
-import Model from './model/Model.js';
-import CreateTopPanel from './gameobjects/builders/CreateTopPanel.js';
+import CreateApp from './app/CreateApp.js';
 
 
 const COLOR_PRIMARY = 0x4e342e;
@@ -20,42 +19,45 @@ class TestScene extends Phaser.Scene {
     }
 
     create() {
-        var model = new Model();
+        var config = {
+            leftSide: {
+                width: 250,
 
-        var ui = CreateUI(this, model)
+                imageList: {
+                    table: {
+                        cellHeight: 80
+                    },
+
+                    slider: {
+                        track: { width: 20, radius: 10, color: COLOR_DARK },
+                        thumb: { radius: 13, color: COLOR_LIGHT }
+                    },
+
+                    label: {
+                        background: {
+                            strokeColor: COLOR_LIGHT,
+                        },
+                        space: {
+                            left: 5, right: 5, top: 5, bottom: 5,
+                            icon: 5,
+                        }
+                    }
+                }
+            },
+
+            content: {
+                backgroundColor: COLOR_PRIMARY,
+                imageBackgroundColor: 0x555555
+            },
+        };
+
+        var ui = CreateApp(this, config)
             .setMinSize(800, 600)
             .setPosition(400, 300)
             .layout()
     }
 
     update() { }
-}
-
-var CreateUI = function (scene, model) {
-    config = {
-        leftSide: {
-            width: 250,
-
-            imageList: {
-                table: {
-                    cellHeight: 80
-                },
-
-                slider: {
-                    track: { width: 20, radius: 10, color: COLOR_DARK },
-                    thumb: { radius: 13, color: COLOR_LIGHT }
-                },
-            }
-        },
-
-        content: {
-            backgroundColor: COLOR_PRIMARY,
-            imageBackgroundColor: 0x555555
-        },
-    }
-
-    config.model = model;
-    return CreateTopPanel(scene, config);
 }
 
 var config = {

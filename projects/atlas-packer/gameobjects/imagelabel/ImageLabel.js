@@ -9,6 +9,7 @@ class ImageLabel extends Label {
         }
 
         if (config.hasOwnProperty('background')) {
+            config = { ...config };
             config.background = CreateBackground(scene, config.background);
         }
         config.icon = CreateImageIcon(scene);

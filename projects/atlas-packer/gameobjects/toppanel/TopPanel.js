@@ -9,8 +9,8 @@ class TopPanel extends HolyGrail {
         }
 
         // Add elements later
-        config.leftSide = CreateLeftSidePanel(scene, config);
         config.content = CreateContentPanel(scene, config);
+        config.leftSide = CreateLeftSidePanel(scene, config);
         super(scene, config);
 
         this.model = config.model;
