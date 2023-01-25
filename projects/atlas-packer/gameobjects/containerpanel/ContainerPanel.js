@@ -2,6 +2,7 @@ import { OverlapSizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-c
 import CreateBackground from '../builders/CreateBackground.js';
 import CreateImageDropZone from '../builders/CreateImageDropZone.js';
 import CreateImageContainer from '../builders/CreateImageContainer.js';
+import Methods from './Methods.js';
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
@@ -44,45 +45,12 @@ class ContainerPanel extends OverlapSizer {
             this.updateImages(images);
         }, this)
     }
-
-    updateImages(newImages, removeImages) {
-        // newImages, removeImages : Array of Image game object
-        if (!newImages && !removeImages) {
-            return this;
-        }
-
-        var imageContainer = this.childrenMap.imageContainer;
-
-        if (newImages) {
-            if (!Array.isArray(newImages)) {
-                newImages = [newImages];
-            }
-
-            for (var i = 0, cnt = newImages.length; i < cnt; i++) {
-                imageContainer.addImage(newImages[i]);
-            }
-        }
-
-        if (removeImages) {
-            if (!Array.isArray(removeImages)) {
-                removeImages = [removeImages];
-            }
-
-            for (var i = 0, cnt = removeImages.length; i < cnt; i++) {
-                imageContainer.removeImage(removeImages[i]);
-            }
-        }
-
-        imageContainer
-            .layout()
-            .fitTo(this.displayWidth, this.displayHeight);
-
-        this.resetChildScaleState(imageContainer);
-
-        return this;
-    }
 }
 
+Object.assign(
+    ContainerPanel.prototype,
+    Methods,
+)
 
 
 export default ContainerPanel;

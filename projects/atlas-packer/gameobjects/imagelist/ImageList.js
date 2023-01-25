@@ -29,8 +29,11 @@ class ImageList extends GridTable {
                 cellContainer = CreateImageLabel(scene, imageLabelConfig)
             }
 
-            cellContainer.setMinSize(width, height);
-            cellContainer.setTexture(item);
+            cellContainer
+                .setMinSize(width, height)
+                .setTexture(item)
+                .setText(item);
+
             return cellContainer;
 
         }
