@@ -1,9 +1,9 @@
-import ContainerPanel from '../containerpanel/ContainerPanel';
+import ContentPanel from '../contentpanel/ContentPanel.js';
 
 var CreateContentPanel = function (scene, config) {
     var contentConfig = config.content || {};
     contentConfig.model = config.model;
-    var contentPanel = new ContainerPanel(scene, contentConfig);
+    var contentPanel = new ContentPanel(scene, contentConfig);
     scene.add.existing(contentPanel);
 
     return contentPanel;

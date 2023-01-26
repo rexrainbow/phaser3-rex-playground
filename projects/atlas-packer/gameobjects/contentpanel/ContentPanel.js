@@ -6,7 +6,7 @@ import Methods from './Methods.js';
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
-class ContainerPanel extends OverlapSizer {
+class ContentPanel extends OverlapSizer {
     constructor(scene, config) {
         super(scene, config);
 
@@ -48,9 +48,9 @@ class ContainerPanel extends OverlapSizer {
 }
 
 Object.assign(
-    ContainerPanel.prototype,
+    ContentPanel.prototype,
     Methods,
 )
 
 
-export default ContainerPanel;
+export default ContentPanel;
