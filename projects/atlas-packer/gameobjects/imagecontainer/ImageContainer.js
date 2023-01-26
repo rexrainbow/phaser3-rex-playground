@@ -12,8 +12,8 @@ class ImageContainer extends ContainerLite {
 
         this.enableLayer();
 
-        // Don't add graphics as children of ImageContainer
         this.graphics = scene.add.graphics();
+        this.pin(this.graphics, false)
     }
 
     destroy(fromScene) {
@@ -27,8 +27,6 @@ class ImageContainer extends ContainerLite {
 
         this.images.removeAll();
         this.images = null;
-
-        this.graphics.destroy();
 
         super.destroy(fromScene);
     }
