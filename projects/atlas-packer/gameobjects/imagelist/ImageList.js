@@ -16,6 +16,7 @@ class ImageList extends GridTable {
         if (!config.table.hasOwnProperty('cellHeight')) {
             config.table.cellHeight = 80;
         }
+        config.table.enableLayer = true;
         config.table.reuseCellContainer = true;
 
         var imageLabelConfig = config.label || {};

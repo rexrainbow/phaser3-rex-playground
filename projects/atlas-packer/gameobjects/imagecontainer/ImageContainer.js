@@ -9,6 +9,11 @@ class ImageContainer extends ContainerLite {
 
         this.backgrounds = new List();
         this.images = new List();
+
+        this.enableLayer();
+
+        // Don't add graphics as children of ImageContainer
+        this.graphics = scene.add.graphics();
     }
 
     destroy(fromScene) {
@@ -22,6 +27,8 @@ class ImageContainer extends ContainerLite {
 
         this.images.removeAll();
         this.images = null;
+
+        this.graphics.destroy();
 
         super.destroy(fromScene);
     }

@@ -28,7 +28,8 @@ var UpdateImages = function (newImages, removeImages) {
 
     imageContainer
         .layout()
-        .fitTo(this.displayWidth, this.displayHeight);
+        .fitTo(this.displayWidth, this.displayHeight)
+        .drawImagesBounds();
 
     this.resetChildScaleState(imageContainer);
 
