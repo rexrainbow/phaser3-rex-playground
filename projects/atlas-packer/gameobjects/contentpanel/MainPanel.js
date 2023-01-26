@@ -5,11 +5,12 @@ import CreateImageContainer from '../builders/CreateImageContainer.js';
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
-class MainSizer extends OverlapSizer {
+class MainPanel extends OverlapSizer {
     constructor(scene, config) {
         super(scene, config);
 
         this.model = config.model;
+        this._outlineEnable = false;
 
         var backgroundColor = GetValue(config, 'backgroundColor', 0x333333);
         var background = CreateBackground(scene, backgroundColor);
@@ -79,12 +80,46 @@ class MainSizer extends OverlapSizer {
         imageContainer
             .layout()
             .fitTo(this.displayWidth, this.displayHeight)
-            .drawImagesBounds(this.graphics);
+
+        if (this.outlineEnable) {
+            imageContainer.drawImagesBounds(this.graphics);
+        }
 
         this.resetChildScaleState(imageContainer);
 
         return this;
     }
+
+    // backgroundColor
+    get backgroundColor() {
+        var imageContainerBackground = this.childrenMap.background;
+        return imageContainerBackground.fillColor;
+    }
+
+    set backgroundColor(value) {
+        var imageContainerBackground = this.childrenMap.background;
+        imageContainerBackground.setFillStyle(value);
+    }
+
+    // outlineEnable
+    get outlineEnable() {
+        return this._outlineEnable;
+    }
+
+    set outlineEnable(value) {
+        if (this._outlineEnable === value) {
+            return;
+        }
+
+        this._outlineEnable = value;
+        if (value) {
+            var imageContainer = this.childrenMap.imageContainer;
+            imageContainer.drawImagesBounds(this.graphics);
+        } else {
+            this.graphics.clear();
+        }
+    }
+
 }
 
-export default MainSizer;
+export default MainPanel;
