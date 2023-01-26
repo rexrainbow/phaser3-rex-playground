@@ -1,12 +1,9 @@
-var DrawImagesBounds = function () {
-    this.graphics.clear();
+var DrawImagesBounds = function (graphics) {
+    graphics.clear();
 
-    this.drawBounds(this.graphics, {
+    this.drawBounds(graphics, {
         children: this.images.list
     })
-
-    var layer = this.getLayer();
-    layer.bringToTop(this.graphics);
 
     return this;
 }

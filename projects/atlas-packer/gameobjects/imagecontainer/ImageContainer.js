@@ -11,9 +11,6 @@ class ImageContainer extends ContainerLite {
         this.images = new List();
 
         this.enableLayer();
-
-        this.graphics = scene.add.graphics();
-        this.pin(this.graphics, false)
     }
 
     destroy(fromScene) {
