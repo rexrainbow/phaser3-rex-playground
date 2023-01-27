@@ -21,17 +21,8 @@ class ContentPanel extends Sizer {
         scene.add.existing(configurationPanel);
         this.add(
             configurationPanel,
-            {
-                index: 0,
-                proportion: 0, expand: true,
-                padding: { left: 10, right: 10, top: 10, bottom: 10 }
-            }
+            { index: 0, proportion: 0, expand: false, align:'left' }
         );
-    }
-
-    layoutChildren() {
-        debugger;
-        super.layoutChildren();
     }
 }
 

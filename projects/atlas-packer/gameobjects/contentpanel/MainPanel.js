@@ -81,11 +81,20 @@ class MainPanel extends OverlapSizer {
             .layout()
             .fitTo(this.displayWidth, this.displayHeight)
 
+        this.resetChildScaleState(imageContainer);
+
+        this.updateImagesOutline();
+
+        return this;
+    }
+
+    updateImagesOutline() {
+        this.graphics.clear();
+
         if (this.outlineEnable) {
+            var imageContainer = this.childrenMap.imageContainer;
             imageContainer.drawImagesBounds(this.graphics);
         }
-
-        this.resetChildScaleState(imageContainer);
 
         return this;
     }
@@ -112,12 +121,8 @@ class MainPanel extends OverlapSizer {
         }
 
         this._outlineEnable = value;
-        if (value) {
-            var imageContainer = this.childrenMap.imageContainer;
-            imageContainer.drawImagesBounds(this.graphics);
-        } else {
-            this.graphics.clear();
-        }
+
+        this.updateImagesOutline();
     }
 
 }

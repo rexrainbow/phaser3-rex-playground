@@ -10,54 +10,44 @@ class ConfigurationPanel extends Tweaker {
 
         super(scene, {
             orientation: 0,
-            height: 30,
+            height: 40,
 
             styles: {
-                itemWidth: 200,
+                space: { left: 10, right: 10, top: 10, bottom: 10 },
 
-                //background: {
-                //    strokeColor: COLOR_PRIMARY
-                //},
-
-                //title: {
-                //    space: { left: 5 }
-                //},
-
-                checkbox: {
-                    color: COLOR_LIGHT,
-                    boxStrokeColor: COLOR_DARK,
-                    uncheckedColor: COLOR_DARK,
-                },
-
-                colorInput: {
-                    colorPicker: {
-                        background: { color: 0x0, strokeColor: COLOR_LIGHT },
+                inputRow: {
+                    background: {
+                        strokeColor: COLOR_PRIMARY
                     },
 
-                    colorComponents: {
-                        inputText: {
-                            background: {
-                                color: COLOR_DARK
-                            },
-                            focusStyle: {
-                                color: COLOR_PRIMARY,
-                            },
-                            style: {
-                                backgroundBottomY: 4,
-                                backgroundHeight: 18,
-                            },
-                            cursorStyle: {
-                                color: 'black',
-                                backgroundColor: 'white',
-                            }
-                        }
-                    }
-                },
+                    title: {
+                        space: { left: 5, right: 5 }
+                    },
 
-                proportion: {
-                    title: 1,
-                    inputField: 1,
-                    range: { slider: 3, inputText: 2 }
+                    checkbox: {
+                        size: 30,
+                        color: COLOR_LIGHT,
+                        boxStrokeColor: COLOR_DARK,
+                        uncheckedColor: COLOR_DARK,
+                    },
+
+                    colorInput: {
+                        swatchSize: 30,
+
+                        inputText: false,
+
+                        colorPicker: {
+                            background: { color: 0x0, strokeColor: COLOR_LIGHT },
+                        },
+
+                        colorComponents: false
+                    },
+
+                    proportion: {
+                        title: 0,
+                        inputField: 0,
+                        range: { slider: 0, inputText: 0 }
+                    }
                 }
             }
         });

@@ -1,6 +1,4 @@
-var DrawImagesBounds = function (graphics) {
-    graphics.clear();
-
+var DrawImagesBounds = function (graphics) {   
     this.drawBounds(graphics, {
         children: this.images.list
     })
