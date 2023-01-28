@@ -13,10 +13,14 @@ var Layout = function () {
     }
 
     // Rectangle packing
+    var padding = this.imagePadding;
     var boxes = [];
     for (var i = 0, cnt = images.length; i < cnt; i++) {
         var child = images[i];
-        boxes.push({ w: child.width, h: child.height });
+        boxes.push({
+            w: child.width + padding,
+            h: child.height + padding,
+        });
     }
     var result = Potpack(boxes);
     this.setSize(result.w, result.h);
@@ -41,7 +45,7 @@ var Layout = function () {
         AlignIn(
             child,
             (startX + box.x), (startY + box.y),
-            box.w, box.h,
+            child.width, child.height,
             0
         );
 

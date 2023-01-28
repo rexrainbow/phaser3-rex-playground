@@ -9,6 +9,7 @@ class ImageContainer extends ContainerLite {
 
         this.backgrounds = new List();
         this.images = new List();
+        this.imagePadding = 1;
 
         this.enableLayer();
     }
