@@ -28,6 +28,9 @@ class ImageContainer extends ContainerLite {
         super.destroy(fromScene);
     }
 
+    get empty() {
+        return (this.images.length === 0);
+    }
 }
 
 Object.assign(

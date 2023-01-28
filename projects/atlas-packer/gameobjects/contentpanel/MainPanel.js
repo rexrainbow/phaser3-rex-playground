@@ -29,12 +29,27 @@ class MainPanel extends OverlapSizer {
         var imageContainerBackground = CreateBackground(scene, imageBackgroundColor);
         imageContainer.addBackground(imageContainerBackground);
 
-        this.graphics = scene.add.graphics();
-        this.pin(this.graphics, false);
+        var placeHolderStyle = GetValue(config, 'placeHolderStyle');
+        if (placeHolderStyle === undefined) {
+            placeHolderStyle = {
+                fontSize: 32
+            }
+        }
+        var placeHolderContent = 'Drag & drop image files here'
+        var placeholder = scene.add.text(0, 0, placeHolderContent, placeHolderStyle).setOrigin(0.5);
+        this.add(
+            placeholder,
+            { align: 'center', expand: false }
+        )
+
+        var graphics = scene.add.graphics();
+        this.pin(graphics, false);
 
         this.addChildrenMap('imageDropZone', imageDropZone);
         this.addChildrenMap('imageContainer', imageContainer);
         this.addChildrenMap('background', imageContainerBackground);
+        this.addChildrenMap('placeholder', placeholder);
+        this.addChildrenMap('outline', graphics)
 
         imageDropZone.on('drop.image', function (files) {
             this.model.addImageFiles(this.scene, files);
@@ -89,15 +104,20 @@ class MainPanel extends OverlapSizer {
 
         this.updateImagesOutline();
 
+        var placeholder = this.childrenMap.placeholder;
+        this.setChildVisible(placeholder, imageContainer.empty);
+
         return this;
     }
 
     updateImagesOutline() {
-        this.graphics.clear();
+        var graphics = this.childrenMap.outline;
+
+        graphics.clear();
 
         if (this.outlineEnable) {
             var imageContainer = this.childrenMap.imageContainer;
-            imageContainer.drawImagesBounds(this.graphics);
+            imageContainer.drawImagesBounds(graphics);
         }
 
         return this;
@@ -140,6 +160,9 @@ class MainPanel extends OverlapSizer {
         this.resetChildScaleState(imageContainer);
 
         this.updateImagesOutline();
+
+        var placeholder = this.childrenMap.placeholder;
+        this.setChildVisible(placeholder, true);
 
         return this;
     }
