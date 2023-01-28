@@ -13,11 +13,12 @@ class ConfigurationPanel extends Tweaker {
             height: 40,
 
             styles: {
-                space: { left: 10, right: 10, top: 10, bottom: 10 },
+                space: { left: 10, right: 5, top: 5, bottom: 5, item: 10 },
 
                 inputRow: {
                     background: {
-                        strokeColor: COLOR_PRIMARY
+                        strokeColor: COLOR_PRIMARY,
+                        radius: 10
                     },
 
                     title: {
@@ -43,11 +44,7 @@ class ConfigurationPanel extends Tweaker {
                         colorComponents: false
                     },
 
-                    proportion: {
-                        title: 0,
-                        inputField: 0,
-                        range: { slider: 0, inputText: 0 }
-                    }
+                    space: { left: 10, right: 10, top: 10, bottom: 10 },
                 }
             }
         });
