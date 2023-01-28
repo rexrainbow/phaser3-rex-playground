@@ -1,6 +1,7 @@
 import GetFileName from '../utils/GetFileName.js';
 import WaitEvents from '../../../../phaser3-rex-notes/plugins/waitevents.js';
 import FileObjectToCache from '../../../../phaser3-rex-notes/plugins/utils/loader/FileObjectToCache';
+import GetCache from '../../../../phaser3-rex-notes/plugins/utils/system/GetCache.js';
 
 const EE = Phaser.Events.EventEmitter;
 const List = Phaser.Structs.List;
@@ -52,8 +53,15 @@ class Model extends EE {
         return this;
     }
 
-    clearImages() {
-        this.emit('clearimages', this.imageKeys.list);
+    clearImages(scene) {
+        var imageKeys = this.imageKeys.list;
+        this.emit('clearimages', imageKeys);
+
+        var cache = GetCache(scene, 'image');
+        for (var i = 0, cnt = imageKeys.length; i < cnt; i++) {
+            cache.remove(imageKeys[i]);
+        }
+
         this.imageKeys.removeAll();
         return this;
     }

@@ -73,7 +73,7 @@ class ConfigurationPanel extends Tweaker {
                 title: '',
                 label: 'Clear',
                 callback: function (model) {
-                    model.clearImages();
+                    model.clearImages(scene);
                 }
             })
     }
