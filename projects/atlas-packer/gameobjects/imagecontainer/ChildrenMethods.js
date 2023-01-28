@@ -16,4 +16,13 @@ export default {
         this.remove(gameObject, true);
         return this;
     },
+
+    clearImages() {
+        var gameObjects = this.images.list;
+        for (var i = 0, cnt = gameObjects.length; i < cnt; i++) {
+            this.remove(gameObjects[i], true);
+        }
+        this.images.removeAll();
+        return this;
+    }
 }

@@ -28,14 +28,24 @@ class LeftSidePanel extends OverlapSizer {
         //    this.model.addImageFiles(this.scene, files);
         //}, this);
 
-        this.model.on('addimages', function (imageKeys) {
-            this.updateImages(this.model.imageKeys.list);
-        }, this)
+        this.model
+            .on('addimages', function (imageKeys) {
+                this.updateImages(this.model.imageKeys.list);
+            }, this)
+            .on('clearimages', function () {
+                this.clearImages();
+            }, this)
     }
 
     updateImages(imageKeys) {
         var imageList = this.childrenMap.imageList;
         imageList.setItems(imageKeys);
+        return this;
+    }
+
+    clearImages() {
+        var imageList = this.childrenMap.imageList;
+        imageList.setItems();
         return this;
     }
 }

@@ -51,6 +51,8 @@ class ConfigurationPanel extends Tweaker {
             }
         });
 
+        this.model = mainPanel.model;
+
         this
             .addInput(
                 mainPanel, 'backgroundColor',
@@ -66,6 +68,14 @@ class ConfigurationPanel extends Tweaker {
                     // view: 'toggleSwitch'        // Toggle-switch
                 }
             )
+            .addButton({
+                bindingTarget: this.model,
+                title: '',
+                label: 'Clear',
+                callback: function (model) {
+                    model.clearImages();
+                }
+            })
     }
 }
 

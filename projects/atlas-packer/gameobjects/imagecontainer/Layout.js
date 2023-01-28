@@ -1,11 +1,14 @@
 import Potpack from '../../lib/potpack.js';
 import AlignIn from '../../../../../phaser3-rex-notes/plugins/utils/actions/AlignIn.js';
+import LayoutBackground from './LayoutBackground.js';
 
 var Layout = function () {
     var images = this.images.list;
 
     if (images.length === 0) {
         this.setScale(1).setSize(1, 1);
+        // Layout background
+        LayoutBackground.call(this, 0, 0, 0, 0);
         return;
     }
 
@@ -25,7 +28,8 @@ var Layout = function () {
         scaleYSave = this.scaleY;
     this.setScale(1, 1);
 
-    var width = this.width, height = this.height;
+    var width = this.width;
+    var height = this.height;
     var startX = this.x - (width * this.originX);
     var startY = this.y - (height * this.originY);
 
@@ -45,18 +49,7 @@ var Layout = function () {
     }
 
     // Layout background
-    var backgrounds = this.backgrounds.list;
-    for (var i = 0, cnt = backgrounds.length; i < cnt; i++) {
-        var child = backgrounds[i];
-
-        child.resize(width, height);
-        AlignIn(
-            child,
-            startX, startY,
-            width, height,
-            0
-        );
-    }
+    LayoutBackground.call(this, startX, startY, width, height);
 
     // Restore scale and rotation
     this.setScale(scaleXSave, scaleYSave);

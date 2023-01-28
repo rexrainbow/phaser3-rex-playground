@@ -40,13 +40,17 @@ class MainPanel extends OverlapSizer {
             this.model.addImageFiles(this.scene, files);
         }, this);
 
-        this.model.on('addimages', function (imageKeys) {
-            var scene = this.scene;
-            var images = imageKeys.map(function (key) {
-                return scene.add.image(0, 0, key);
-            })
-            this.updateImages(images);
-        }, this)
+        this.model
+            .on('addimages', function (imageKeys) {
+                var scene = this.scene;
+                var images = imageKeys.map(function (key) {
+                    return scene.add.image(0, 0, key);
+                })
+                this.updateImages(images);
+            }, this)
+            .on('clearimages', function () {
+                this.clearImages();
+            }, this)
     }
 
     updateImages(newImages, removeImages) {
@@ -123,6 +127,21 @@ class MainPanel extends OverlapSizer {
         this._outlineEnable = value;
 
         this.updateImagesOutline();
+    }
+
+    // Clear images
+    clearImages() {
+        var imageContainer = this.childrenMap.imageContainer;
+
+        imageContainer
+            .clearImages()
+            .layout()
+
+        this.resetChildScaleState(imageContainer);
+
+        this.updateImagesOutline();
+
+        return this;
     }
 
 }

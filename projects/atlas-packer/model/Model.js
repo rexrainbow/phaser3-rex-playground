@@ -51,6 +51,12 @@ class Model extends EE {
 
         return this;
     }
+
+    clearImages() {
+        this.emit('clearimages', this.imageKeys.list);
+        this.imageKeys.removeAll();
+        return this;
+    }
 }
 
 export default Model;

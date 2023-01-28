@@ -1,6 +1,5 @@
 import { GridTable } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
 import CreateImageLabel from '../builders/CreateImageLabel.js';
-import DeepClone from '../../../../../phaser3-rex-notes/plugins/utils/object/DeepClone.js';
 
 class ImageList extends GridTable {
     constructor(scene, config) {
