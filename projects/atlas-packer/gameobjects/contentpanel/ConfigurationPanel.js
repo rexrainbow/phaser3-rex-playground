@@ -13,7 +13,7 @@ class ConfigurationPanel extends Tweaker {
             height: 40,
 
             styles: {
-                space: { left: 10, right: 5, top: 5, bottom: 5, item: 10 },
+                space: { left: 10, right: 5, top: 5, bottom: 5, item: 5 },
 
                 inputRow: {
                     background: {
@@ -33,7 +33,9 @@ class ConfigurationPanel extends Tweaker {
                     },
 
                     colorInput: {
-                        swatchSize: 30,
+                        swatch: {
+                            radius: 10, size: 30
+                        },
 
                         inputText: false,
 
