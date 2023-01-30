@@ -1,7 +1,4 @@
-import GetFileName from '../utils/GetFileName.js';
-import WaitEvents from '../../../../phaser3-rex-notes/plugins/waitevents.js';
-import FileObjectToCache from '../../../../phaser3-rex-notes/plugins/utils/loader/FileObjectToCache';
-import GetCache from '../../../../phaser3-rex-notes/plugins/utils/system/GetCache.js';
+import Methods from './Methods.js';
 
 const EE = Phaser.Events.EventEmitter;
 const List = Phaser.Structs.List;
@@ -10,61 +7,26 @@ class Model extends EE {
     constructor() {
         super();
 
-        this.imageKeys = new List();
+        this.imageDataList = new List();
     }
 
     destroy() {
-        this.imageKeys.removeAll();
-        this.imageKeys = null;
+        this.imageDataList.removeAll();
+        this.imageDataList = null;
 
         super.destroy();
     }
 
+    // Internal
     hasImage(key) {
-        return this.imageKeys.exists(key);
+        return !!this.imageDataList.getByName(key);
     }
 
-    addImageFiles(scene, files) {
-        var self = this;
-        files = files.filter(function (file) {
-            var key = GetFileName(file);
-            file.imageKey = key;
-            return !self.hasImage(key);
-        });
-        if (files.length === 0) {
-            return this;
-        }
-
-        var newImageKeys = [];
-
-        var waitEvents = new WaitEvents(function () {
-            self.emit('addimages', newImageKeys);
-        });
-
-        for (var i = 0, cnt = files.length; i < cnt; i++) {
-            var file = files[i];
-            var key = file.imageKey;
-            this.imageKeys.add(key);
-            newImageKeys.push(key);
-            FileObjectToCache(scene, file, 'image', key, undefined, waitEvents.waitCallback());
-
-        }
-
-        return this;
-    }
-
-    clearImages(scene) {
-        var imageKeys = this.imageKeys.list;
-        this.emit('clearimages', imageKeys);
-
-        var cache = GetCache(scene, 'image');
-        for (var i = 0, cnt = imageKeys.length; i < cnt; i++) {
-            cache.remove(imageKeys[i]);
-        }
-
-        this.imageKeys.removeAll();
-        return this;
-    }
 }
+
+Object.assign(
+    Model.prototype,
+    Methods,
+)
 
 export default Model;

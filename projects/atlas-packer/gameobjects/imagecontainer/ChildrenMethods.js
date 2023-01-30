@@ -6,6 +6,7 @@ export default {
     },
 
     addImage(gameObject) {
+        gameObject.setOrigin(0);
         this.images.add(gameObject);
         this.addLocal(gameObject);
         return this;
@@ -23,6 +24,15 @@ export default {
             this.remove(gameObjects[i], true);
         }
         this.images.removeAll();
+        return this;
+    },
+
+    getImage(name) {
+        return this.images.getByName(name);
+    },
+
+    renameImage(oldName, newName) {
+        this.images.getByName(oldName).setName(newName);
         return this;
     }
 }

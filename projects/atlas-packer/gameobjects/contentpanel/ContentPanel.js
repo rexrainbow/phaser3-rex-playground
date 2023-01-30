@@ -1,5 +1,5 @@
 import { Sizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
-import MainPanel from './MainPanel';
+import MainPanel from './mainpanel/MainPanel';
 import ConfigurationPanel from './ConfigurationPanel.js';
 
 class ContentPanel extends Sizer {

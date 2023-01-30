@@ -29,8 +29,8 @@ class LeftSidePanel extends OverlapSizer {
         //}, this);
 
         this.model
-            .on('addimages', function (imageKeys) {
-                this.updateImages(this.model.imageKeys.list);
+            .on('addimages', function (newImageDataArray, imageDataArray) {
+                this.updateImages(imageDataArray);
             }, this)
             .on('clearimages', function () {
                 this.clearImages();

@@ -31,8 +31,7 @@ class ImageList extends GridTable {
 
             cellContainer
                 .setMinSize(width, height)
-                .setTexture(item)
-                .setText(item);
+                .setTexture(item.key).setText(item.name);
 
             return cellContainer;
 

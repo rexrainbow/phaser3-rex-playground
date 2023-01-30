@@ -76,6 +76,14 @@ class ConfigurationPanel extends Tweaker {
                     model.clearImages(scene);
                 }
             })
+            //.addButton({
+            //    bindingTarget: this.model,
+            //    title: '',
+            //    label: 'Export',
+            //    callback: function (model) {
+            //        model.export(scene);
+            //    }
+            //})
     }
 }
 
