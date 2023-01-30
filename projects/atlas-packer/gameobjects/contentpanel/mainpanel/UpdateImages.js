@@ -1,28 +1,28 @@
-var UpdateImages = function (newImages, removeImages) {
+var UpdateImages = function (newImageDataArray, removeImageDataArray) {
     // newImages, removeImages : Array of Image game object
-    if (!newImages && !removeImages) {
+    if (!newImageDataArray && !removeImageDataArray) {
         return this;
     }
 
     var imageContainer = this.childrenMap.imageContainer;
 
-    if (newImages) {
-        if (!Array.isArray(newImages)) {
-            newImages = [newImages];
+    if (newImageDataArray) {
+        if (!Array.isArray(newImageDataArray)) {
+            newImageDataArray = [newImageDataArray];
         }
 
-        for (var i = 0, cnt = newImages.length; i < cnt; i++) {
-            imageContainer.addImage(newImages[i]);
+        for (var i = 0, cnt = newImageDataArray.length; i < cnt; i++) {
+            imageContainer.addImage(newImageDataArray[i]);
         }
     }
 
-    if (removeImages) {
-        if (!Array.isArray(removeImages)) {
-            removeImages = [removeImages];
+    if (removeImageDataArray) {
+        if (!Array.isArray(removeImageDataArray)) {
+            removeImageDataArray = [removeImageDataArray];
         }
 
-        for (var i = 0, cnt = removeImages.length; i < cnt; i++) {
-            imageContainer.removeImage(removeImages[i]);
+        for (var i = 0, cnt = removeImageDataArray.length; i < cnt; i++) {
+            imageContainer.removeImage(removeImageDataArray[i]);
         }
     }
 

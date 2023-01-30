@@ -20,7 +20,7 @@ class MainPanel extends OverlapSizer {
         var imageDropZone = CreateImageDropZone(scene);
         this.addBackground(imageDropZone);
 
-        var imageContainer = CreateImageContainer(scene);
+        var imageContainer = CreateImageContainer(scene, { model: this.model });
         this.add(
             imageContainer,
             { align: 'center', expand: false }
@@ -58,12 +58,9 @@ class MainPanel extends OverlapSizer {
 
         this.model
             .on('addimages', function (newImageDataArray, imageDataArray) {
-                var scene = this.scene;
-                var images = newImageDataArray.map(function (imageData) {
-                    return scene.add.image(0, 0, imageData.key).setName(imageData.name);
-                })
-                this.updateImages(images, undefined);
-                this.updateImageDataArray(imageDataArray);
+                this
+                    .updateImages(newImageDataArray)
+                    .updateImageDataArray(imageDataArray);
             }, this)
             .on('clearimages', function () {
                 this.clearImages();

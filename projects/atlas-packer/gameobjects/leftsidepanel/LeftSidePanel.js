@@ -1,6 +1,5 @@
 import { OverlapSizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
-import CreateBackground from '../builders/CreateBackground.js';
-import CreateImageDropZone from '../builders/CreateImageDropZone.js';
+// import CreateImageDropZone from '../builders/CreateImageDropZone.js';
 import CreateImageList from '../builders/CreateImageList.js';
 
 class LeftSidePanel extends OverlapSizer {
@@ -8,14 +7,16 @@ class LeftSidePanel extends OverlapSizer {
         super(scene, config);
         this.model = config.model;
 
-        // var background = CreateBackground(scene, 0x333333);
-        // this.addBackground(background);
-
         // Can't add image drop zone below image list
         //var imageDropZone = CreateImageDropZone(scene);
         //this.addBackground(imageDropZone);
 
-        var imageList = CreateImageList(scene, config.imageList);
+        var imageListConfig = config.imageList;
+        if (imageListConfig === undefined) {
+            imageListConfig = {};
+        }
+        imageListConfig.model = this.model;
+        var imageList = CreateImageList(scene, imageListConfig);
         this.add(
             imageList,
             { align: 'center', expand: true }
@@ -27,26 +28,6 @@ class LeftSidePanel extends OverlapSizer {
         //imageDropZone.on('drop.image', function (files) {
         //    this.model.addImageFiles(this.scene, files);
         //}, this);
-
-        this.model
-            .on('addimages', function (newImageDataArray, imageDataArray) {
-                this.updateImages(imageDataArray);
-            }, this)
-            .on('clearimages', function () {
-                this.clearImages();
-            }, this)
-    }
-
-    updateImages(imageKeys) {
-        var imageList = this.childrenMap.imageList;
-        imageList.setItems(imageKeys);
-        return this;
-    }
-
-    clearImages() {
-        var imageList = this.childrenMap.imageList;
-        imageList.setItems();
-        return this;
     }
 }
 

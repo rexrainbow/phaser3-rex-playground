@@ -5,14 +5,28 @@ export default {
         return this;
     },
 
-    addImage(gameObject) {
-        gameObject.setOrigin(0);
+    addImage(imageData) {
+        var gameObject = this.scene.add.image(0, 0, imageData.key)
+            .setName(imageData.name)
+            .setOrigin(0)
+
+        gameObject
+            .setInteractive()
+            .on('pointerdown', function () {
+                this.model.selectImage(gameObject.name);
+            }, this);
+
         this.images.add(gameObject);
         this.addLocal(gameObject);
         return this;
     },
 
-    removeImage(gameObject) {
+    removeImage(imageData) {
+        var gameObject = this.getImage(imageData.name);
+        if (!gameObject) {
+            return this;
+        }
+
         this.images.remove(gameObject);
         this.remove(gameObject, true);
         return this;

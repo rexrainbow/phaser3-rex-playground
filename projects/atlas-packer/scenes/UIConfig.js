@@ -4,7 +4,7 @@ const COLOR_DARK = 0x260e04;
 
 var config = {
     leftSide: {
-        width: 250,
+        width: 300,
 
         imageList: {
             table: {

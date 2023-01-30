@@ -31,13 +31,28 @@ class ImageList extends GridTable {
 
             cellContainer
                 .setMinSize(width, height)
-                .setTexture(item.key).setText(item.name);
+                .setTexture(item.key).setText(item.name)
 
             return cellContainer;
 
         }
 
         super(scene, config);
+
+        this.model = config.model;
+
+        this.model
+            .on('addimages', function (newImageDataArray, imageDataArray) {
+                this.setItems(imageDataArray);
+            }, this)
+            .on('clearimages', function () {
+                this.setItems();
+            }, this)
+
+        this.on('cell.down', function (cellContainer, cellIndex, pointer, event) {
+            this.model.selectImage(cellContainer.text);
+        }, this);
+
     }
 }
 
