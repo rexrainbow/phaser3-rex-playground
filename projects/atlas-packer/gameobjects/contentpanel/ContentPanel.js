@@ -1,5 +1,5 @@
 import { Sizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
-import MainPanel from './mainpanel/MainPanel';
+import ImagesPanel from './imagespanel/ImagesPanel';
 import ConfigurationPanel from './ConfigurationPanel.js';
 
 class ContentPanel extends Sizer {
@@ -10,7 +10,7 @@ class ContentPanel extends Sizer {
 
         this.model = config.model;
 
-        var mainPanel = new MainPanel(scene, config);
+        var mainPanel = new ImagesPanel(scene, config);
         scene.add.existing(mainPanel);
         this.add(
             mainPanel,
