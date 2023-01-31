@@ -1,5 +1,4 @@
 import { OverlapSizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
-// import CreateImageDropZone from '../builders/CreateImageDropZone.js';
 import CreateImageList from '../builders/CreateImageList.js';
 
 class LeftSidePanel extends OverlapSizer {
@@ -7,10 +6,7 @@ class LeftSidePanel extends OverlapSizer {
         super(scene, config);
         this.model = config.model;
 
-        // Can't add image drop zone below image list
-        //var imageDropZone = CreateImageDropZone(scene);
-        //this.addBackground(imageDropZone);
-
+        // ImageList(a grid-table) can't scroll under fileDragZone.
         var imageListConfig = config.imageList;
         if (imageListConfig === undefined) {
             imageListConfig = {};
@@ -22,12 +18,7 @@ class LeftSidePanel extends OverlapSizer {
             { align: 'center', expand: true }
         )
 
-        //this.addChildrenMap('imageDropZone', imageDropZone);
         this.addChildrenMap('imageList', imageList);
-
-        //imageDropZone.on('drop.image', function (files) {
-        //    this.model.addImageFiles(this.scene, files);
-        //}, this);
     }
 }
 
