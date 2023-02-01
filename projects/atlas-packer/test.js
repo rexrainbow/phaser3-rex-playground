@@ -1,10 +1,5 @@
 import 'phaser';
-import CreateApp from './app/CreateApp.js';
-
-
-const COLOR_PRIMARY = 0x4e342e;
-const COLOR_LIGHT = 0x7b5e57;
-const COLOR_DARK = 0x260e04;
+import ImageDataDialog from './gameobjects/imagedatadialog/ImageDataDialog.js';
 
 class TestScene extends Phaser.Scene {
     constructor() {
@@ -19,42 +14,13 @@ class TestScene extends Phaser.Scene {
     }
 
     create() {
-        var config = {
-            leftSide: {
-                width: 250,
+        var dialog = new ImageDataDialog(this, {
+            x: 400, y: 300,
+            width: 100,
+        })
+        this.add.existing(dialog);
 
-                imageList: {
-                    table: {
-                        cellHeight: 80
-                    },
-
-                    slider: {
-                        track: { width: 20, radius: 10, color: COLOR_DARK },
-                        thumb: { radius: 13, color: COLOR_LIGHT }
-                    },
-
-                    label: {
-                        background: {
-                            strokeColor: COLOR_LIGHT,
-                        },
-                        space: {
-                            left: 5, right: 5, top: 5, bottom: 5,
-                            icon: 5,
-                        }
-                    }
-                }
-            },
-
-            content: {
-                backgroundColor: COLOR_PRIMARY,
-                imageBackgroundColor: 0x555555
-            },
-        };
-
-        var ui = CreateApp(this, config)
-            .setMinSize(800, 600)
-            .setPosition(400, 300)
-            .layout()
+        dialog.layout()
     }
 
     update() { }
