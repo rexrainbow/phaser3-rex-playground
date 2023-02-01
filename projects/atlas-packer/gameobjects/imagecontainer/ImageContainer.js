@@ -1,9 +1,9 @@
-import ContainerLite from '../../../../../phaser3-rex-notes/plugins/containerlite.js';
+import { Container } from '../../../../../phaser3-rex-notes/templates/ui/ui-components';
 import Methods from './Methods.js';
 
 const List = Phaser.Structs.List;
 
-class ImageContainer extends ContainerLite {
+class ImageContainer extends Container {
     constructor(scene, config) {
         super(scene);
 
