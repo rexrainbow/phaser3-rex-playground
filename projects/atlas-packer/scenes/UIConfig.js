@@ -25,13 +25,51 @@ var config = {
                     icon: 5,
                 }
             }
-        }
+        },
     },
 
     content: {
         backgroundColor: COLOR_PRIMARY,
-        imageBackgroundColor: 0x555555
+        imageBackgroundColor: 0x555555,
     },
+
+    imageDataDialog: {
+        space: { left: 5, right: 5, top: 5, bottom: 5, item: 5 },
+
+        background: {
+            color: 0x0,
+            strokeColor: COLOR_LIGHT,
+        },
+
+        inputRow: {
+            title: {
+            },
+
+            inputText: {
+                background: {
+                    color: COLOR_DARK
+                },
+                focusStyle: {
+                    color: COLOR_PRIMARY,
+                },
+                style: {
+                    backgroundBottomY: 4,
+                    backgroundHeight: 18,
+                },
+                cursorStyle: {
+                    color: 'black',
+                    backgroundColor: 'white',
+                }
+            },
+
+            space: { item: 5 }
+        },
+
+        separator: {
+            height: 5,
+            color: COLOR_DARK
+        },
+    }
 }
 
 export default config;
