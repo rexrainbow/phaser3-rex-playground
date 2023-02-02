@@ -1,7 +1,7 @@
-import ImageIcon from '../imageicon/ImageIcon.js';
+import { ImageBox } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
 
 var CreateImageIcon = function (scene, config) {
-    var imageIcon = new ImageIcon(scene, config);    
+    var imageIcon = new ImageBox(scene, config);
     scene.add.existing(imageIcon);
 
     return imageIcon;
