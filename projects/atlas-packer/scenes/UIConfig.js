@@ -34,6 +34,7 @@ var config = {
     },
 
     imageDataDialog: {
+        width: 300, height: 300,
         space: { left: 5, right: 5, top: 5, bottom: 5, item: 5 },
 
         background: {

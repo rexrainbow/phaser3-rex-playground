@@ -3,7 +3,14 @@ import CreateImageIcon from '../builders/CreateImageIcon.js';
 
 class ImageDataDialog extends Tweaker {
     constructor(scene, config) {
-        super(scene, config);
+        if (config === undefined) {
+            config = {};
+        }
+        super(scene, {
+            width: config.width, height: config.height,
+
+            styles: config
+        });
 
         this
             .add(
