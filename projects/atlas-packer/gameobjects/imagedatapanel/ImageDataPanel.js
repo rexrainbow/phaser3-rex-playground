@@ -10,9 +10,7 @@ class ImageDataPanel extends ImageDataPanelBase {
                 this.setBindingTarget(imageData);
             }, this)
             .on('clearimages', function () {
-                this.setBindingTarget({
-                    x: '', y: '', width: '', height: ''
-                });
+                this.setBindingTarget({ x: '', y: '', width: '', height: '' });
             }, this)
     }
 }

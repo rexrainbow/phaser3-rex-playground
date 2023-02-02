@@ -45,7 +45,7 @@ class ImageList extends GridTable {
                 this.setItems();
             }, this)
 
-        this.on('cell.down', function (cellContainer, cellIndex, pointer, event) {
+        this.on('cell.click', function (cellContainer, cellIndex, pointer, event) {
             this.model.selectImage(cellContainer.text);
         }, this);
 
