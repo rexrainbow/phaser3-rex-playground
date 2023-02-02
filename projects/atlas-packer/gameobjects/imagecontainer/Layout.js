@@ -49,6 +49,11 @@ var Layout = function () {
             0
         );
 
+        child.imageData = {
+            x: box.x, y: box.y,
+            width: child.width, height: child.height
+        }
+
         this.resetChildPositionState(child);
     }
 
