@@ -1,12 +1,9 @@
 import { Sizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
 import CreateImageList from '../builders/CreateImageList.js';
-import CreateImageDataDialog from '../builders/CreateImageDataDialog.js';
+import CreateImageDataPanel from '../builders/CreateImageDataPanel.js';
 
 class LeftSidePanel extends Sizer {
     constructor(scene, config) {
-        if (config === undefined) {
-            config = {};
-        }
         config.orientation = 1;
         super(scene, config);
         this.model = config.model;
@@ -23,20 +20,19 @@ class LeftSidePanel extends Sizer {
             { proportion: 1, expand: true }
         )
 
-        var imageDataDialogConfig = config.imageDataDialog;
-        var imageDataDialog = CreateImageDataDialog(scene, imageDataDialogConfig);
+        var imageDataPanelConfig = config.imageDataPanel;
+        if (imageDataPanelConfig === undefined) {
+            imageDataPanelConfig = {};
+        }
+        imageDataPanelConfig.model = this.model;
+        var imageDataPanel = CreateImageDataPanel(scene, imageDataPanelConfig);
         this.add(
-            imageDataDialog,
+            imageDataPanel,
             { proportion: 0, expand: true }
         )
 
         this.addChildrenMap('imageList', imageList);
-        this.addChildrenMap('imageDataDialog', imageDataDialog);
-
-        this.model
-            .on('selectimage', function (imageData) {
-                imageDataDialog.setBindingTarget(imageData);
-            })
+        this.addChildrenMap('imageDataPanel', imageDataPanel);
     }
 }
 

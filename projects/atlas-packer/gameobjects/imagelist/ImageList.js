@@ -3,10 +3,6 @@ import CreateImageLabel from '../builders/CreateImageLabel.js';
 
 class ImageList extends GridTable {
     constructor(scene, config) {
-        if (config === undefined) {
-            config = {};
-        }
-
         config.scrollMode = 0;
 
         if (!config.table) {

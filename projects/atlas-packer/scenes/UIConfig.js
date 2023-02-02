@@ -27,9 +27,9 @@ var config = {
             }
         },
 
-        imageDataDialog: {
+        imageDataPanel: {
             width: 300, height: 300,
-            space: { left: 5, right: 5, top: 5, bottom: 5, item: 5 },
+            space: { left: 10, right: 10, top: 10, bottom: 10, item: 5 },
 
             background: {
                 color: 0x0,
