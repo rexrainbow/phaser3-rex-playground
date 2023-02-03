@@ -40,6 +40,7 @@
     "dependencies": {
         "phaser": "^3.55.2",
         "phaser3-rex-plugins": "^1.1.79",
-        "file-saver": "2.0.5"
+        "file-saver": "^2.0.5",
+        "jszip": "^3.10.1"
     }
 }

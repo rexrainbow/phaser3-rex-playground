@@ -20,6 +20,7 @@ class HeaderPanel extends Sizer {
             .add(
                 CreateClearImagesButton(scene, buttonConfig, model)
             )
+            .addSpace()
             .add(
                 CreateExportButton(scene, buttonConfig, model)
             )
