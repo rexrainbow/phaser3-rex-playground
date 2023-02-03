@@ -4,6 +4,9 @@ import CreateClearImagesButton from '../builders/CreateClearImagesButton.js';
 
 class HeaderPanel extends Sizer {
     constructor(scene, config, model) {
+        if (config === undefined) {
+            config = {};
+        }
         config.orientation = 0;
         super(scene, config);
 

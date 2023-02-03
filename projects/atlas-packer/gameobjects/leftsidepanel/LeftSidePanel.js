@@ -4,6 +4,9 @@ import CreateImageDataPanel from '../builders/CreateImageDataPanel.js';
 
 class LeftSidePanel extends Sizer {
     constructor(scene, config, model) {
+        if (config === undefined) {
+            config = {};
+        }
         config.orientation = 1;
         super(scene, config);
 
