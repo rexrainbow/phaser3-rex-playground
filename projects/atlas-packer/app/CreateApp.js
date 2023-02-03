@@ -5,8 +5,8 @@ var CreateApp = function (scene, config) {
     if (config === undefined) {
         config = {};
     }
-    config.model = new Model();
-    var view = CreateTopPanel(scene, config);
+    var model = new Model();
+    var view = CreateTopPanel(scene, config, model);
     return view;
 }
 

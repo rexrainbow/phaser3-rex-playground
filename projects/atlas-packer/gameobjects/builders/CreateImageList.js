@@ -1,7 +1,7 @@
 import ImageList from '../imagelist/ImageList.js';
 
-var CreateImageList = function (scene, config) {    
-    var imageList = new ImageList(scene, config)
+var CreateImageList = function (scene, config, model) {    
+    var imageList = new ImageList(scene, config, model)
     scene.add.existing(imageList);
 
     return imageList;

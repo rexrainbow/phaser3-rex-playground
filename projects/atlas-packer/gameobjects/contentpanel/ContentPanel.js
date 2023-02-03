@@ -3,25 +3,23 @@ import ImagesPanel from './imagespanel/ImagesPanel';
 import ConfigurationPanel from './ConfigurationPanel.js';
 
 class ContentPanel extends Sizer {
-    constructor(scene, config) {
+    constructor(scene, config, model) {
         super(scene, {
             orientation: 1
         });
 
-        this.model = config.model;
-
-        var mainPanel = new ImagesPanel(scene, config);
+        var mainPanel = new ImagesPanel(scene, config, model);
         scene.add.existing(mainPanel);
         this.add(
             mainPanel,
             { proportion: 1, expand: true }
         );
 
-        var configurationPanel = new ConfigurationPanel(mainPanel, config);
+        var configurationPanel = new ConfigurationPanel(mainPanel, config, model);
         scene.add.existing(configurationPanel);
         this.add(
             configurationPanel,
-            { index: 0, proportion: 0, expand: false, align:'left' }
+            { proportion: 0, expand: false, align: 'left' }
         );
     }
 }

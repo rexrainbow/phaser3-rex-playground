@@ -7,10 +7,9 @@ import Methods from './Methods.js';
 const GetValue = Phaser.Utils.Objects.GetValue;
 
 class ImagesPanel extends OverlapSizer {
-    constructor(scene, config) {
+    constructor(scene, config, model) {
         super(scene, config);
 
-        this.model = config.model;
         this._outlineEnable = false;
 
         var backgroundColor = GetValue(config, 'backgroundColor', 0x333333);
@@ -53,10 +52,10 @@ class ImagesPanel extends OverlapSizer {
         this.addChildrenMap('outline', graphics)
 
         imageDropZone.on('drop.image', function (files) {
-            this.model.addImageFiles(this.scene, files);
-        }, this);
+            model.addImageFiles(scene, files);
+        });
 
-        this.model
+        model
             .on('addimages', function (newImageDataArray, imageDataArray) {
                 this
                     .updateImages(newImageDataArray)

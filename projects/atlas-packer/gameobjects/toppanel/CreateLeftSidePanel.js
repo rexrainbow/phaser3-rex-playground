@@ -1,9 +1,7 @@
 import LeftSidePanel from '../leftsidepanel/LeftSidePanel.js';
 
-var CreateLeftSidePanel = function (scene, config) {
-    var leftSideConfig = config.leftSide || {};
-    leftSideConfig.model = config.model;
-    var leftSidePanel = new LeftSidePanel(scene, leftSideConfig);
+var CreateLeftSidePanel = function (scene, config, model) {
+    var leftSidePanel = new LeftSidePanel(scene, config.leftSide, model);
     scene.add.existing(leftSidePanel);
 
     return leftSidePanel;

@@ -3,6 +3,18 @@ const COLOR_LIGHT = 0x7b5e57;
 const COLOR_DARK = 0x260e04;
 
 var config = {
+    header: {
+        space: { item: 10 },
+
+        button: {
+            background: {
+                radius: 10,
+                strokeColor: COLOR_LIGHT
+            },
+            space: { left: 10, right: 10, top: 10, bottom: 10 }
+        }
+    },
+
     leftSide: {
         width: 300,
 

@@ -1,7 +1,7 @@
 import ImageContainer from '../imagecontainer/ImageContainer.js';
 
-var CreateImageContainer = function (scene, config) {
-    var imageContainer = new ImageContainer(scene, config);
+var CreateImageContainer = function (scene, config, model) {
+    var imageContainer = new ImageContainer(scene, config, model);
     scene.add.existing(imageContainer);
     return imageContainer;
 }

@@ -1,11 +1,10 @@
 import ImageDataPanelBase from './ImageDataPanelBase.js';
 
 class ImageDataPanel extends ImageDataPanelBase {
-    constructor(scene, config) {
+    constructor(scene, config, model) {
         super(scene, config);
-        this.model = config.model;
 
-        this.model
+        model
             .on('selectimage', function (imageData) {
                 this.setBindingTarget(imageData);
             }, this)

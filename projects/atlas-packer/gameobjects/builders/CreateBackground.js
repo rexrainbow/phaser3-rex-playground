@@ -1,6 +1,6 @@
 import { RoundRectangle } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
 
-var CreateBackground = function (scene, config) {
+var CreateBackground = function (scene, config, model) {
     if (typeof (config) === 'number') {
         config = {
             color: config

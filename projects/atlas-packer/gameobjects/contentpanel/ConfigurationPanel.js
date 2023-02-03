@@ -5,7 +5,7 @@ const COLOR_LIGHT = 0x6d6d6d;
 const COLOR_DARK = 0x1b1b1b;
 
 class ConfigurationPanel extends Tweaker {
-    constructor(mainPanel, config) {
+    constructor(mainPanel, config, model) {
         var scene = mainPanel.scene;
 
         super(scene, {
@@ -51,8 +51,6 @@ class ConfigurationPanel extends Tweaker {
             }
         });
 
-        this.model = mainPanel.model;
-
         this
             .addInput(
                 mainPanel, 'backgroundColor',
@@ -68,22 +66,6 @@ class ConfigurationPanel extends Tweaker {
                     // view: 'toggleSwitch'        // Toggle-switch
                 }
             )
-            .addButton({
-                bindingTarget: this.model,
-                title: '',
-                label: 'Clear',
-                callback: function (model) {
-                    model.clearImages(scene);
-                }
-            })
-            //.addButton({
-            //    bindingTarget: this.model,
-            //    title: '',
-            //    label: 'Export',
-            //    callback: function (model) {
-            //        model.export(scene);
-            //    }
-            //})
     }
 }
 

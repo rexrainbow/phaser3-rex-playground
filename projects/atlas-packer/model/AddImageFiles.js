@@ -1,9 +1,10 @@
 import GetFileName from '../utils/GetFileName.js';
 import WaitEvents from '../../../../phaser3-rex-notes/plugins/waitevents.js';
 import FileObjectToCache from '../../../../phaser3-rex-notes/plugins/utils/loader/FileObjectToCache';
+import CreateImageData from './CreateImageData.js';
 
 var AddImageFiles = function (scene, files) {
-    var self = this;
+    var self = this;    
     files = files.filter(function (file) {
         var key = GetFileName(file);
         file.imageKey = key;
@@ -22,12 +23,14 @@ var AddImageFiles = function (scene, files) {
     for (var i = 0, cnt = files.length; i < cnt; i++) {
         var file = files[i];
         var key = file.imageKey;
-        var imageData = {
-            name: key,
-            key: key,
-        }
+
+        var imageData = CreateImageData();
+        imageData.name = key;
+        imageData.key = key;
+
         this.imageDataList.add(imageData);
         newImageDataArray.push(imageData);
+
         FileObjectToCache(scene, file, 'image', key, undefined, waitEvents.waitCallback());
 
     }

@@ -4,10 +4,10 @@ import Methods from './Methods.js';
 const List = Phaser.Structs.List;
 
 class ImageContainer extends Container {
-    constructor(scene, config) {
+    constructor(scene, config, model) {
         super(scene);
 
-        this.model = config.model;
+        this.model = model;
         this.backgrounds = new List();
         this.images = new List();
         this.imagePadding = 1;

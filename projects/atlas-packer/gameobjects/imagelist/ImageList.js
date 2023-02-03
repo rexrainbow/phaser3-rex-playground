@@ -2,7 +2,7 @@ import { GridTable } from '../../../../../phaser3-rex-notes/templates/ui/ui-comp
 import CreateImageLabel from '../builders/CreateImageLabel.js';
 
 class ImageList extends GridTable {
-    constructor(scene, config) {
+    constructor(scene, config, model) {
         config.scrollMode = 0;
 
         if (!config.table) {
@@ -35,9 +35,7 @@ class ImageList extends GridTable {
 
         super(scene, config);
 
-        this.model = config.model;
-
-        this.model
+        model
             .on('addimages', function (newImageDataArray, imageDataArray) {
                 this.setItems(imageDataArray);
             }, this)
@@ -46,7 +44,7 @@ class ImageList extends GridTable {
             }, this)
 
         this.on('cell.click', function (cellContainer, cellIndex, pointer, event) {
-            this.model.selectImage(cellContainer.text);
+            model.selectImage(cellContainer.text);
         }, this);
 
     }
