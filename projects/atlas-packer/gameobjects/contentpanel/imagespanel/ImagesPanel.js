@@ -19,7 +19,7 @@ class ImagesPanel extends OverlapSizer {
         var imageDropZone = CreateImageDropZone(scene);
         this.addBackground(imageDropZone);
 
-        var imageContainer = CreateImageContainer(scene, { model: this.model });
+        var imageContainer = CreateImageContainer(scene, undefined, model);
         this.add(
             imageContainer,
             { align: 'center', expand: false }
