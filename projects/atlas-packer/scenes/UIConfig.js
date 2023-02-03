@@ -4,7 +4,7 @@ const COLOR_DARK = 0x260e04;
 
 var config = {
     header: {
-        space: { item: 10 },
+        space: { left: 10, right: 10, top: 10, bottom: 10, item: 5 },
 
         button: {
             background: {
