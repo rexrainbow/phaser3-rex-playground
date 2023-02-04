@@ -16,12 +16,6 @@ class Model extends EE {
 
         super.destroy();
     }
-
-    // Internal
-    hasImage(key) {
-        return !!this.imageDataList.getByName(key);
-    }
-
 }
 
 Object.assign(

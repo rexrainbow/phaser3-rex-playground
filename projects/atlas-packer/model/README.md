@@ -42,7 +42,9 @@ model.selectImage(name);
 
 - `'addimages'`
     - Parameters : newImageDataArray, totalImageDataArray
+- `'renameimage'`
+    - Parameters : newName, oldName, imageData
 - `'clearimages'`
     - Parameters : totalImageDataArray
 - `'selectimage'`
-    - Parameters : imageData 
+    - Parameters : imageData

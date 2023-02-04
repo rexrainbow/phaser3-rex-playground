@@ -2,7 +2,7 @@ import { Tweaker } from '../../../../../phaser3-rex-notes/templates/ui/ui-compon
 import CreateImageIcon from '../builders/CreateImageIcon.js';
 
 class ImageDataDialog extends Tweaker {
-    constructor(scene, config) {
+    constructor(scene, config, model) {
         if (config === undefined) {
             config = {};
         }
@@ -20,7 +20,15 @@ class ImageDataDialog extends Tweaker {
             .addInput(
                 {
                     bindingKey: 'name',
-                    inputTextReadOnly: true  // Uneditable
+                    view: 'string',
+
+                    autoUpdate: false,
+                    onValidate(newValue, oldValue) {
+                        return !model.hasImage(newValue);
+                    },
+                    onValueChange(newValue, oldValue) {
+                        model.changeImageName(oldValue, newValue);
+                    },
                 }
             )
             .addInput(

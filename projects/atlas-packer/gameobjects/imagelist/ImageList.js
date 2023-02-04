@@ -42,6 +42,9 @@ class ImageList extends GridTable {
             .on('clearimages', function () {
                 this.setItems();
             }, this)
+            .on('renameimage', function () {
+                this.refresh();
+            }, this)
 
         this.on('cell.click', function (cellContainer, cellIndex, pointer, event) {
             model.selectImage(cellContainer.text);
