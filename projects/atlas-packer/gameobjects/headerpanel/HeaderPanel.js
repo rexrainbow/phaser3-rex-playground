@@ -11,24 +11,22 @@ class HeaderPanel extends Sizer {
         config.orientation = 0;
         super(scene, config);
 
-        var buttonConfig = config.button;
-        if (buttonConfig === undefined) {
-            buttonConfig = configObj.cloneValue('button');
-        }
+        var buttonConfigRefPath = (configObj.hasKey('.button'))? '.button' : 'button';
+        var buttonConfigObj = configObj.setRefPath(buttonConfigRefPath);
 
         this
             .add(
-                CreateLoadImageFilesButton(scene, buttonConfig, model)
+                CreateLoadImageFilesButton(scene, buttonConfigObj, model)
             )
             .add(
-                CreateClearImagesButton(scene, buttonConfig, model)
+                CreateClearImagesButton(scene, buttonConfigObj, model)
             )
             .add(
-                CreateExportButton(scene, buttonConfig, model)
+                CreateExportButton(scene, buttonConfigObj, model)
             )
             .addSpace()
             .add(
-                CreateAboutButton(scene, buttonConfig, model)
+                CreateAboutButton(scene, buttonConfigObj, model)
             )
     }
 }
