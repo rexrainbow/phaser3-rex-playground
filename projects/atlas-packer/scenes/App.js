@@ -1,11 +1,12 @@
 import 'phaser';
+import { SCENE_APP } from './const.js';
 import UIConfig from './UIConfig.js';
 import CreateApp from '../app/CreateApp.js';
 
 class App extends Phaser.Scene {
     constructor() {
         super({
-            key: 'app'
+            key: SCENE_APP
         })
 
     }

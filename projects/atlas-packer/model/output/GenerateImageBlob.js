@@ -8,7 +8,7 @@ var GenerateImageBlob = function (scene, imageDataArray) {
         totalHeight = Math.max(totalHeight, imageData.y + imageData.height);
     }
 
-    var canvas = new Canvas(scene, 0, 0, totalWidth, totalHeight);
+    var canvas = new Canvas(scene, 0, 0, totalWidth + 1, totalHeight + 1);
     for (var i = 0, cnt = imageDataArray.length; i < cnt; i++) {
         var imageData = imageDataArray[i];
         canvas.drawFrame(

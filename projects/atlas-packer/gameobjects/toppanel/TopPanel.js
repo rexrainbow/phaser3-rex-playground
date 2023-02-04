@@ -1,7 +1,7 @@
 import { HolyGrail } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
-import CreateHeaderPanel from './CreateHeaderPanel.js';
-import CreateLeftSidePanel from './CreateLeftSidePanel.js';
-import CreateContentPanel from './CreateContentPanel.js';
+import CreateHeaderPanel from '../builders/CreateHeaderPanel.js';
+import CreateLeftSidePanel from '../builders/CreateLeftSidePanel.js';
+import CreateContentPanel from '../builders/CreateContentPanel.js';
 
 class TopPanel extends HolyGrail {
     constructor(scene, config, model) {
@@ -10,9 +10,9 @@ class TopPanel extends HolyGrail {
         }
 
         // Add elements later
-        config.content = CreateContentPanel(scene, config, model);
-        config.leftSide = CreateLeftSidePanel(scene, config, model);
-        config.header = CreateHeaderPanel(scene, config, model);
+        config.content = CreateContentPanel(scene, config.content, model);
+        config.leftSide = CreateLeftSidePanel(scene, config.leftSide, model);
+        config.header = CreateHeaderPanel(scene, config.header, model);
         super(scene, config);
 
         this.model = model;

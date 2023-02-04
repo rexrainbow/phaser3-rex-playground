@@ -1,5 +1,6 @@
 import 'phaser'
-import App from './scenes/App.js'
+import Boot from './scenes/Boot.js';
+import App from './scenes/App.js';
 
 var config = {
     type: Phaser.AUTO,
@@ -14,7 +15,7 @@ var config = {
         createContainer: true
     },
     plugins: {},
-    scene: [App],
+    scene: [Boot, App],
 };
 
 var game = new Phaser.Game(config);
