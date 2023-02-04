@@ -2,7 +2,8 @@ import { GridTable } from '../../../../../phaser3-rex-notes/templates/ui/ui-comp
 import CreateImageLabel from '../builders/CreateImageLabel.js';
 
 class ImageList extends GridTable {
-    constructor(scene, config, model) {
+    constructor(scene, configObj, model) {
+        var config = configObj.cloneValue('.');
         config.scrollMode = 0;
 
         if (!config.table) {

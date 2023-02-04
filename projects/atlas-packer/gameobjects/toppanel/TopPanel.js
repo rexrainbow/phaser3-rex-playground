@@ -4,15 +4,15 @@ import CreateLeftSidePanel from '../builders/CreateLeftSidePanel.js';
 import CreateContentPanel from '../builders/CreateContentPanel.js';
 
 class TopPanel extends HolyGrail {
-    constructor(scene, config, model) {
-        if (config === undefined) {
-            config = {};
-        }
-
+    constructor(scene, configObj, model) {
+        var config = configObj.cloneValue('.');
         // Add elements later
-        config.content = CreateContentPanel(scene, config.content, model);
-        config.leftSide = CreateLeftSidePanel(scene, config.leftSide, model);
-        config.header = CreateHeaderPanel(scene, config.header, model);
+        config.content = CreateContentPanel(scene, configObj.clone().setRefPath('.content'), model);
+
+        config.leftSide = CreateLeftSidePanel(scene, configObj.clone().setRefPath('.leftSide'), model);
+
+        config.header = CreateHeaderPanel(scene, configObj.clone().setRefPath('.header'), model);
+
         super(scene, config);
 
         this.model = model;

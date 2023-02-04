@@ -3,21 +3,21 @@ import CreateImageList from '../builders/CreateImageList.js';
 import CreateImageDataPanel from '../builders/CreateImageDataPanel.js';
 
 class LeftSidePanel extends Sizer {
-    constructor(scene, config, model) {
-        if (config === undefined) {
-            config = {};
-        }
+    constructor(scene, configObj, model) {
+        var config = configObj.cloneValue('.');
+
         config.orientation = 1;
         super(scene, config);
 
         // ImageList(a grid-table) can't scroll under fileDragZone.
-        var imageList = CreateImageList(scene, config.imageList, model);
+        var imageList = CreateImageList(scene, configObj.clone().setRefPath('.imageList'), model);
+
         this.add(
             imageList,
             { proportion: 1, expand: true }
         )
 
-        var imageDataPanel = CreateImageDataPanel(scene, config.imageDataPanel, model);
+        var imageDataPanel = CreateImageDataPanel(scene, configObj.clone().setRefPath('.imageDataPanel'), model);
         this.add(
             imageDataPanel,
             { proportion: 0, expand: true }

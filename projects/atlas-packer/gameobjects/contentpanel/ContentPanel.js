@@ -3,7 +3,9 @@ import ImagesPanel from './imagespanel/ImagesPanel';
 import ConfigurationPanel from './ConfigurationPanel.js';
 
 class ContentPanel extends Sizer {
-    constructor(scene, config, model) {
+    constructor(scene, configObj, model) {
+        var config = configObj.cloneValue('.');
+
         super(scene, {
             orientation: 1
         });

@@ -1,7 +1,7 @@
 import HeaderPanel from '../headerpanel/HeaderPanel.js';
 
-var CreateHeaderPanel = function (scene, config, model) {   
-    var headerPanel = new HeaderPanel(scene, config, model);
+var CreateHeaderPanel = function (scene, configObj, model) {   
+    var headerPanel = new HeaderPanel(scene, configObj, model);
     scene.add.existing(headerPanel);
 
     return headerPanel;

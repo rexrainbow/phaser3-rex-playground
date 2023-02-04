@@ -5,14 +5,16 @@ import CreateExportButton from '../builders/CreateExportButton.js';
 import CreateAboutButton from '../builders/CreateAboutButton.js';
 
 class HeaderPanel extends Sizer {
-    constructor(scene, config, model) {
-        if (config === undefined) {
-            config = {};
-        }
+    constructor(scene, configObj, model) {
+        var config = configObj.cloneValue('.');
+
         config.orientation = 0;
         super(scene, config);
 
         var buttonConfig = config.button;
+        if (buttonConfig === undefined) {
+            buttonConfig = configObj.cloneValue('button');
+        }
 
         this
             .add(

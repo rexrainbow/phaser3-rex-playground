@@ -2,10 +2,9 @@ import { Tweaker } from '../../../../../phaser3-rex-notes/templates/ui/ui-compon
 import CreateImageIcon from '../builders/CreateImageIcon.js';
 
 class ImageDataPanel extends Tweaker {
-    constructor(scene, config, model) {
-        if (config === undefined) {
-            config = {};
-        }
+    constructor(scene, configObj, model) {
+        var config = configObj.cloneValue('.');
+
         super(scene, {
             width: config.width, height: config.height,
 
@@ -62,7 +61,7 @@ class ImageDataPanel extends Tweaker {
                 this.setBindingTarget(target);
             }, this)
             .on('clearimages', function () {
-                Object.assign(target, { x: '', y: '', width: '', height: '' });
+                Object.assign(target, { x: '', y: '', width: '', height: '', key: undefined, name: '' });
                 this.setBindingTarget(target);
             }, this)
 

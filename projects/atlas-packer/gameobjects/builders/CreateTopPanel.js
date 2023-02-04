@@ -1,7 +1,7 @@
 import TopPanel from '../toppanel/TopPanel.js';
 
-var CreateTopPanel = function (scene, config, model) {       
-    var topPanel = new TopPanel(scene, config, model)
+var CreateTopPanel = function (scene, configObj, model) {
+    var topPanel = new TopPanel(scene, configObj, model)
     scene.add.existing(topPanel);
 
     return topPanel;
