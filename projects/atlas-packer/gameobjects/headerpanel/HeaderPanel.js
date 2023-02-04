@@ -2,6 +2,7 @@ import { Sizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-componen
 import CreateLoadImageFilesButton from '../builders/CreateLoadImageFilesButton.js';
 import CreateClearImagesButton from '../builders/CreateClearImagesButton.js';
 import CreateExportButton from '../builders/CreateExportButton.js';
+import CreateAboutButton from '../builders/CreateAboutButton.js';
 
 class HeaderPanel extends Sizer {
     constructor(scene, config, model) {
@@ -20,9 +21,12 @@ class HeaderPanel extends Sizer {
             .add(
                 CreateClearImagesButton(scene, buttonConfig, model)
             )
-            .addSpace()
             .add(
                 CreateExportButton(scene, buttonConfig, model)
+            )
+            .addSpace()
+            .add(
+                CreateAboutButton(scene, buttonConfig, model)
             )
     }
 }
