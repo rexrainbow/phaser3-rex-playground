@@ -64,6 +64,9 @@ class ImagesPanel extends OverlapSizer {
             .on('clearimages', function () {
                 this.clearImages();
             }, this)
+            .on('renameimage', function (newName, oldName) {
+                this.renameImage(oldName, newName);
+            }, this)
     }
 
     // backgroundColor
