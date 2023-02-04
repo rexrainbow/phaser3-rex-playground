@@ -4,12 +4,18 @@ const COLOR_DARK = 0x260e04;
 
 var config = {
     holyGrail: {
+        space: {
+            left: 10, right: 10, top: 10, bottom: 10,
+            header: 10, leftSide: 10,
+        },
+
         header: {
-            space: { left: 10, right: 10, top: 10, bottom: 10, item: 5 },
+            space: { item: 5 },
         },
 
         leftSide: {
             width: 300,
+            space: { item: 5 },
 
             imageList: {
                 table: {
