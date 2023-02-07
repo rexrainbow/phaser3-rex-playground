@@ -90,6 +90,38 @@ var config = {
             strokeColor: COLOR_LIGHT
         },
         space: { left: 10, right: 10, top: 10, bottom: 10 }
+    },
+
+    dialog: {
+        space: {
+            left: 30, right: 30, top: 30, bottom: 30,
+            title: 25, content: 30,
+        },
+        background: {
+            radius: 20,
+            color: COLOR_DARK,
+            strokeColor: COLOR_LIGHT
+        },
+        title: {
+            space: { left: 10, right: 10, top: 10, bottom: 10 },
+            background: {
+                color: COLOR_PRIMARY
+            },
+            text: {
+                fontSize: 24
+            }
+        },
+        content: {
+
+        },
+        button: {
+            space: { left: 10, right: 10, top: 10, bottom: 10 },
+            background: {
+                radius: 10,
+                color: COLOR_PRIMARY,
+                strokeColor: COLOR_LIGHT
+            },
+        },
     }
 }
 
