@@ -29,13 +29,8 @@ class ImagesPanel extends OverlapSizer {
         var imageContainerBackground = CreateBackground(scene, imageBackgroundColor);
         imageContainer.addBackground(imageContainerBackground);
 
-        var placeHolderStyle = GetValue(config, 'placeHolderStyle');
-        if (placeHolderStyle === undefined) {
-            placeHolderStyle = {
-                fontSize: 32
-            }
-        }
-        var placeHolderContent = 'Drag & drop image files here'
+        var placeHolderContent = 'Drag & drop image files here';
+        var placeHolderStyle = GetValue(config, 'placeHolder');
         var placeholder = scene.add.text(0, 0, placeHolderContent, placeHolderStyle).setOrigin(0.5);
         this.add(
             placeholder,

@@ -2,6 +2,12 @@ const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = 0x7b5e57;
 const COLOR_DARK = 0x260e04;
 
+const FONTSIZE_XL = 36;
+const FONTSIZE_L = 30;
+const FONTSIZE_M = 24;
+const FONTSIZE_S = 20;
+
+
 var config = {
     holyGrail: {
         space: {
@@ -28,12 +34,15 @@ var config = {
                 },
 
                 label: {
-                    background: {
-                        strokeColor: COLOR_LIGHT,
-                    },
                     space: {
                         left: 5, right: 5, top: 5, bottom: 5,
                         icon: 5,
+                    },
+                    background: {
+                        strokeColor: COLOR_LIGHT,
+                    },
+                    text: {
+                        fontSize: FONTSIZE_M,
                     }
                 }
             },
@@ -49,6 +58,7 @@ var config = {
 
                 inputRow: {
                     title: {
+                        fontSize: FONTSIZE_M,
                     },
 
                     inputText: {
@@ -81,15 +91,21 @@ var config = {
         content: {
             backgroundColor: COLOR_PRIMARY,
             imageBackgroundColor: 0x555555,
+            placeHolder: {
+                fontSize: FONTSIZE_XL,
+            }
         },
     },
 
     button: {
+        space: { left: 10, right: 10, top: 10, bottom: 10 },
         background: {
             radius: 10,
             strokeColor: COLOR_LIGHT
         },
-        space: { left: 10, right: 10, top: 10, bottom: 10 }
+        text: {
+            fontSize: FONTSIZE_M,
+        }
     },
 
     dialog: {
@@ -108,11 +124,14 @@ var config = {
                 color: COLOR_PRIMARY
             },
             text: {
-                fontSize: 24
+                fontSize: FONTSIZE_L
             }
         },
         content: {
-
+            space: { left: 10, right: 10, top: 10, bottom: 10 },
+            text: {
+                fontSize: FONTSIZE_M,
+            }
         },
         button: {
             space: { left: 10, right: 10, top: 10, bottom: 10 },
@@ -121,6 +140,9 @@ var config = {
                 color: COLOR_PRIMARY,
                 strokeColor: COLOR_LIGHT
             },
+            text: {
+                fontSize: FONTSIZE_M,
+            }
         },
     }
 }
