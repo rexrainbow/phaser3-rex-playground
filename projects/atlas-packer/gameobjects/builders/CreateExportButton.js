@@ -7,6 +7,7 @@ var CreateExportButton = function (scene, configObj, model) {
 
     button
         .resetDisplayContent({
+            icon: 'sprites', iconFrame: 'arrow-down',
             text: 'Export'
         })
         .onClick(function () {

@@ -90,7 +90,7 @@ var config = {
 
         content: {
             backgroundColor: COLOR_PRIMARY,
-            imageBackgroundColor: 0x555555,
+            imageBackgroundColor: 0x333333,
             placeHolder: {
                 fontSize: FONTSIZE_XL,
             }
@@ -98,11 +98,15 @@ var config = {
     },
 
     button: {
-        space: { left: 10, right: 10, top: 10, bottom: 10 },
+        space: { left: 10, right: 10, top: 10, bottom: 10, icon: 5 },
+        width: 140,
+        align: 'center',
+
         background: {
             radius: 10,
             strokeColor: COLOR_LIGHT
         },
+        iconSize: FONTSIZE_M,
         text: {
             fontSize: FONTSIZE_M,
         }

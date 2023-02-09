@@ -7,6 +7,7 @@ var CreateClearImagesButton = function (scene, configObj, model) {
 
     button
         .resetDisplayContent({
+            icon: 'sprites', iconFrame: 'close',
             text: 'Clear'
         })
         .onClick(function () {

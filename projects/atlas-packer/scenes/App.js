@@ -12,6 +12,7 @@ class App extends Phaser.Scene {
     }
 
     preload() {
+        this.load.atlas('sprites', 'assets/images/sprites.png', 'assets/images/sprites.json');
     }
 
     create() {

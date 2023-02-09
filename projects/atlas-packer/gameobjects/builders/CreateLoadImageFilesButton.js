@@ -9,7 +9,8 @@ var CreateLoadImageFilesButton = function (scene, configObj, model) {
 
     button
         .resetDisplayContent({
-            text: 'Import files'
+            icon: 'sprites', iconFrame: 'add',
+            text: 'Import'
         })
         .setAccept('image/*')
         .setMultiple(true)
