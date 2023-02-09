@@ -42,7 +42,7 @@ var config = {
                         strokeColor: COLOR_LIGHT,
                     },
                     text: {
-                        fontSize: FONTSIZE_M,
+                        fontSize: FONTSIZE_S,
                     }
                 }
             },

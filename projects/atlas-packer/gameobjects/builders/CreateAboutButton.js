@@ -7,7 +7,6 @@ var CreateAboutButton = function (scene, configObj, model) {
 
     var dialogConfigObj = configObj.clone().setRefPath('dialog');
 
-    debugger
     button
         .resetDisplayContent({
             icon: 'sprites', iconFrame: 'info',

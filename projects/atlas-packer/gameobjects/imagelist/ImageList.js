@@ -23,12 +23,16 @@ class ImageList extends GridTable {
                 item = cell.item,
                 index = cell.index;
             if (cellContainer === null) {
+                imageLabelConfig.width = width;
+                imageLabelConfig.height = height;
                 cellContainer = CreateImageLabel(scene, imageLabelConfig)
             }
 
             cellContainer
-                .setMinSize(width, height)
-                .setTexture(item.key).setText(item.name)
+                .resetDisplayContent({
+                    icon: item.key,
+                    text: item.name
+                })
 
             return cellContainer;
 
