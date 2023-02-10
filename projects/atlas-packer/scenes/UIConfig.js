@@ -20,7 +20,7 @@ var config = {
         },
 
         leftSide: {
-            width: 300,
+            width: 350,
             space: { item: 5 },
 
             imageList: {
@@ -43,7 +43,8 @@ var config = {
                     },
                     text: {
                         fontSize: FONTSIZE_S,
-                    }
+                    },
+                    actionSize: 24,
                 }
             },
 

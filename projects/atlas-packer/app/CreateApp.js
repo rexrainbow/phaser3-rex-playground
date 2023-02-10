@@ -7,7 +7,7 @@ var CreateApp = function (scene, config) {
         config = {};
     }
     var configObj = new Tree(config);
-    var model = new Model();
+    var model = new Model(scene);
     var view = CreateTopPanel(scene, configObj.setRefPath('.holyGrail'), model);
     return view;
 }

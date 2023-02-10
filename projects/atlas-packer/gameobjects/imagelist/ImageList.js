@@ -31,7 +31,9 @@ class ImageList extends GridTable {
             cellContainer
                 .resetDisplayContent({
                     icon: item.key,
-                    text: item.name
+                    text: item.name,
+
+                    action: 'sprites', actionFrame: 'close',
                 })
 
             return cellContainer;
@@ -50,10 +52,18 @@ class ImageList extends GridTable {
             .on('renameimage', function () {
                 this.refresh();
             }, this)
+            .on('removeimage', function () {
+                this.refresh();
+            }, this)
 
-        this.on('cell.click', function (cellContainer, cellIndex, pointer, event) {
-            model.selectImage(cellContainer.text);
-        }, this);
+        this
+            .on('cell.click', function (cellContainer, cellIndex, pointer, event) {
+                if (cellContainer.isPointerInBounds('action')) {
+                    model.removeImage(cellContainer.text);
+                } else {
+                    model.selectImage(cellContainer.text);
+                }
+            }, this);
 
     }
 }

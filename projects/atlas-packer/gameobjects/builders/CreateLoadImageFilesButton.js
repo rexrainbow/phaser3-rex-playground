@@ -15,7 +15,7 @@ var CreateLoadImageFilesButton = function (scene, configObj, model) {
         .setAccept('image/*')
         .setMultiple(true)
         .on('select', function (files) {
-            model.addImageFiles(scene, files);
+            model.addImageFiles(files);
         });
 
     return button;

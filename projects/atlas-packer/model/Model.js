@@ -4,9 +4,10 @@ const EE = Phaser.Events.EventEmitter;
 const List = Phaser.Structs.List;
 
 class Model extends EE {
-    constructor() {
+    constructor(scene) {
         super();
 
+        this.scene = scene;
         this.imageDataList = new List();
     }
 

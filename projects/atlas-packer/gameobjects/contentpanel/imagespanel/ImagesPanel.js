@@ -47,7 +47,7 @@ class ImagesPanel extends OverlapSizer {
         this.addChildrenMap('outline', graphics)
 
         imageDropZone.on('drop.image', function (files) {
-            model.addImageFiles(scene, files);
+            model.addImageFiles(files);
         });
 
         model
@@ -61,6 +61,9 @@ class ImagesPanel extends OverlapSizer {
             }, this)
             .on('renameimage', function (newName, oldName) {
                 this.renameImage(oldName, newName);
+            }, this)
+            .on('removeimage', function (imageData) {
+                this.removeImage(imageData);
             }, this)
     }
 

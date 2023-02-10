@@ -64,6 +64,13 @@ class ImageDataPanel extends Tweaker {
                 Object.assign(target, { x: '', y: '', width: '', height: '', key: undefined, name: '' });
                 this.setBindingTarget(target);
             }, this)
+            .on('removeimage', function (imageData) {
+                if (imageData.name !== target.name) {
+                    return;
+                }
+                Object.assign(target, { x: '', y: '', width: '', height: '', key: undefined, name: '' });
+                this.setBindingTarget(target);
+            }, this)
 
     }
 

@@ -7,13 +7,19 @@ Global data manager/methods/event emitter
 ### Add image files
 
 ```javascript
-model.addImageFiles(scene, files);
+model.addImageFiles(files);
+```
+
+### Remove an image
+
+```javascript
+model.removeImage(name);
 ```
 
 ### Clear all image files
 
 ```javascript
-model.clearImages(scene);
+model.clearImages();
 ```
 
 ### Select image
@@ -44,7 +50,9 @@ model.selectImage(name);
     - Parameters : newImageDataArray, totalImageDataArray
 - `'renameimage'`
     - Parameters : newName, oldName, imageData
+- `'removeimage'`
+    - Parameters : imageData
 - `'clearimages'`
-    - Parameters : totalImageDataArray
+    - Parameters : 
 - `'selectimage'`
     - Parameters : imageData

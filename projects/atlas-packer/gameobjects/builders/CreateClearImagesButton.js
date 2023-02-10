@@ -11,7 +11,7 @@ var CreateClearImagesButton = function (scene, configObj, model) {
             text: 'Clear'
         })
         .onClick(function () {
-            model.clearImages(scene);
+            model.clearImages();
         });
 
     return button;
