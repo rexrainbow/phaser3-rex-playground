@@ -1,21 +1,15 @@
-import { Label, WrapExpandText } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
-import DeepClone from '../../../../../phaser3-rex-notes/plugins/utils/object/DeepClone.js';
+import { SimpleLabel } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
 import SetValue from '../../../../../phaser3-rex-notes/plugins/utils/object/SetValue.js';
-import CreateBackground from '../builders/CreateBackground.js';
 import CreateImageIcon from '../builders/CreateImageIcon.js';
-import CreateText from '../builders/CreateText.js';
 
 const GetValue = Phaser.Utils.Objects.GetValue;
+const Creators = {
+    icon: CreateImageIcon,
+}
 
-class ImageLabel extends Label {
+class ImageLabel extends SimpleLabel {
     constructor(scene, config) {
-        config = (config) ? DeepClone(config) : {};
-
-        if (config.hasOwnProperty('background')) {
-            config.background = CreateBackground(scene, config.background);
-        }
-
-        var iconSize = config.iconSize;
+        var iconSize = GetValue(config, 'iconSize');
         if (iconSize !== undefined) {
             delete config.iconSize;
         } else {
@@ -24,16 +18,12 @@ class ImageLabel extends Label {
             var height = GetValue(config, 'height', 0);
             iconSize = height - top - bottom;
         }
+        SetValue(config, 'icon.width', iconSize);
+        SetValue(config, 'icon.height', iconSize);
 
-        config.icon = CreateImageIcon(scene, {
-            width: iconSize, height: iconSize
-        });
+        SetValue(config, 'wrapText', 'char');
 
-        SetValue(config, 'text.wrap.mode', 'char');
-        config.text = WrapExpandText(CreateText(scene, config.text));
-        config.expandTextWidth = true;
-
-        super(scene, config);
+        super(scene, config, Creators);
     }
 }
 
