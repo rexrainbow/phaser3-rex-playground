@@ -10,15 +10,18 @@ class ImagesPanel extends OverlapSizer {
     constructor(scene, config, model) {
         super(scene, config);
 
-        this._outlineEnable = false;
 
+
+        // Background
         var backgroundColor = GetValue(config, 'backgroundColor', 0x333333);
         var background = CreateBackground(scene, backgroundColor);
         this.addBackground(background);
 
+        // Image drop zone
         var imageDropZone = CreateImageDropZone(scene);
         this.addBackground(imageDropZone);
 
+        // Image container
         var imageContainer = CreateImageContainer(scene, undefined, model);
         this.add(
             imageContainer,
@@ -29,13 +32,26 @@ class ImagesPanel extends OverlapSizer {
         var imageContainerBackground = CreateBackground(scene, imageBackgroundColor);
         imageContainer.addBackground(imageContainerBackground);
 
+        // Outline graphics
+        this._outlineEnable = false;
+        this.outlineStyle = {
+            color: GetValue(config, 'outlineColor')
+        }
         var outlineGraphics = scene.add.graphics();
         this.pin(outlineGraphics, false);
 
+        // image marker graphics
         this.markedImageData = null;
+        this.imageMarkerStyle = {
+            color: GetValue(config, 'imageMarkerStrokeColor', 0xff0000),
+            lineWidth: GetValue(config, 'imageMarkerStrokeLineWidth', 3),
+            fillColor: GetValue(config, 'imageMarkerFillColor', 0x333333),
+            fillAlpha: GetValue(config, 'imageMarkerFillAlpha', 0.5),
+        }
         var imageMarkerGraphics = scene.add.graphics();
         this.pin(imageMarkerGraphics, false);
 
+        // PlaceHolder text
         var placeHolderContent = 'Drag & drop image files here';
         var placeHolderStyle = GetValue(config, 'placeHolder');
         var placeholder = scene.add.text(0, 0, placeHolderContent, placeHolderStyle).setOrigin(0.5);

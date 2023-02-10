@@ -7,7 +7,7 @@ var DrawImagesOutline = function () {
     }
 
     var imageContainer = this.childrenMap.imageContainer;
-    imageContainer.drawImagesBounds(graphics);
+    imageContainer.drawImagesBounds(graphics, this.outlineStyle);
 
     return this;
 }

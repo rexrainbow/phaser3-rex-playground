@@ -11,17 +11,10 @@ var DrawImageMarker = function (imageData) {
     }
 
     var imageContainer = this.childrenMap.imageContainer;
-    imageContainer.drawImageMarker(graphics, this.markedImageData.name, MarkerStyle);
+    imageContainer.drawImageMarker(graphics, this.markedImageData.name, this.imageMarkerStyle);
 
     return this;
 
-}
-
-var MarkerStyle = {
-    color: 0xff0000,
-    lineWidth: 3,
-    fillColor: 0x333333,
-    fillAlpha: 0.5,
 }
 
 export default DrawImageMarker;
