@@ -33,6 +33,7 @@ var UpdateImages = function (newImageDataArray, removeImageDataArray) {
     this.resetChildScaleState(imageContainer);
 
     this.drawImagesOutline();
+    this.drawImageMarker();
 
     var placeholder = this.childrenMap.placeholder;
     this.setChildVisible(placeholder, imageContainer.empty);

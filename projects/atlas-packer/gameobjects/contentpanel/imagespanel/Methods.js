@@ -4,6 +4,7 @@ import RemoveImage from './RemoveImage.js';
 import ClearImages from './ClearImages.js';
 import UpdateImageDataArray from './UpdateImageDataArray.js';
 import RenameImage from './RenameImage.js';
+import DrawImageMarker from './DrawImageMarker.js';
 
 var Methods = {
     updateImages: UpdateImages,
@@ -12,6 +13,7 @@ var Methods = {
     clearImages: ClearImages,
     updateImageDataArray: UpdateImageDataArray,
     renameImage: RenameImage,
+    drawImageMarker: DrawImageMarker,
 }
 
 export default Methods;

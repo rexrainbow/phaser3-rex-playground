@@ -8,6 +8,7 @@ var ClearImages = function () {
     this.resetChildScaleState(imageContainer);
 
     this.drawImagesOutline();
+    this.drawImageMarker(null);
 
     var placeholder = this.childrenMap.placeholder;
     this.setChildVisible(placeholder, true);

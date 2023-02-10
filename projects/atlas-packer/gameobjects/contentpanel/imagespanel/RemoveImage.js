@@ -9,6 +9,13 @@ var RemoveImage = function (imageData) {
 
     this.drawImagesOutline();
 
+    if (this.markedImageData && (imageData.name === this.markedImageData.name)) {
+        this.drawImageMarker(null);
+    } else {
+        this.drawImageMarker();
+    }
+
+
     var placeholder = this.childrenMap.placeholder;
     this.setChildVisible(placeholder, imageContainer.empty);
 

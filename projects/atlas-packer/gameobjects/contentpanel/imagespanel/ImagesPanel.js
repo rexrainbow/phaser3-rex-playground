@@ -29,6 +29,13 @@ class ImagesPanel extends OverlapSizer {
         var imageContainerBackground = CreateBackground(scene, imageBackgroundColor);
         imageContainer.addBackground(imageContainerBackground);
 
+        var outlineGraphics = scene.add.graphics();
+        this.pin(outlineGraphics, false);
+
+        this.markedImageData = null;
+        var imageMarkerGraphics = scene.add.graphics();
+        this.pin(imageMarkerGraphics, false);
+
         var placeHolderContent = 'Drag & drop image files here';
         var placeHolderStyle = GetValue(config, 'placeHolder');
         var placeholder = scene.add.text(0, 0, placeHolderContent, placeHolderStyle).setOrigin(0.5);
@@ -37,14 +44,12 @@ class ImagesPanel extends OverlapSizer {
             { align: 'center', expand: false }
         )
 
-        var graphics = scene.add.graphics();
-        this.pin(graphics, false);
-
         this.addChildrenMap('imageDropZone', imageDropZone);
         this.addChildrenMap('imageContainer', imageContainer);
         this.addChildrenMap('background', imageContainerBackground);
         this.addChildrenMap('placeholder', placeholder);
-        this.addChildrenMap('outline', graphics)
+        this.addChildrenMap('outline', outlineGraphics);
+        this.addChildrenMap('imageMarker', imageMarkerGraphics);
 
         imageDropZone.on('drop.image', function (files) {
             model.addImageFiles(files);
@@ -65,6 +70,10 @@ class ImagesPanel extends OverlapSizer {
             .on('removeimage', function (imageData) {
                 this.removeImage(imageData);
             }, this)
+            .on('selectimage', function (imageData) {
+                this.drawImageMarker(imageData);
+            }, this)
+
     }
 
     // backgroundColor
