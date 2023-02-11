@@ -1,6 +1,4 @@
 import phaser from './lib/phaser.js';
-import UIConfig from './scenes/UIConfig.js';
-import ImageDataDialog from './gameobjects/imagedatadialog/ImageDataDialog.js';
 
 class TestScene extends Phaser.Scene {
     constructor() {
@@ -15,20 +13,6 @@ class TestScene extends Phaser.Scene {
     }
 
     create() {
-        var dialog = new ImageDataDialog(this, {
-            x: 400, y: 300,
-            width: 200, height: 200,
-
-            styles: UIConfig.imageDataDialog
-        })
-        this.add.existing(dialog);
-
-        dialog.layout()
-
-        dialog.setBindingTarget({
-            name: 'aaa',
-            x: 0, y: 0, width: 100, height: 100,
-        })
     }
 
     update() { }
