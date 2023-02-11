@@ -1,6 +1,6 @@
 import 'phaser';
 import { SCENE_APP } from './const.js';
-import UIConfig from './UIConfig.js';
+import UIStyle from './UIStyle/UIStyle.js';
 import CreateApp from '../app/CreateApp.js';
 
 class App extends Phaser.Scene {
@@ -17,7 +17,7 @@ class App extends Phaser.Scene {
 
     create() {
         var { width, height } = this.scale;
-        var ui = CreateApp(this, UIConfig)
+        var ui = CreateApp(this, UIStyle)
             .setMinSize(width, height)
             .setPosition(width / 2, height / 2)
             .layout()
