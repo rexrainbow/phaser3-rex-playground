@@ -1,4 +1,4 @@
-import 'phaser';
+import phaser from '../lib/phaser.js';
 import { SCENE_APP } from './const.js';
 import UIStyle from './UIStyle/UIStyle.js';
 import { FONTFAMILY } from './UIStyle/const.js';

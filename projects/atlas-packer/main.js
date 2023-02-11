@@ -1,4 +1,4 @@
-import 'phaser'
+import phaser from './lib/phaser.js';
 import Boot from './scenes/Boot.js';
 import App from './scenes/App.js';
 

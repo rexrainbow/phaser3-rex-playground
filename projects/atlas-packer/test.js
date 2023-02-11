@@ -1,4 +1,4 @@
-import 'phaser';
+import phaser from './lib/phaser.js';
 import UIConfig from './scenes/UIConfig.js';
 import ImageDataDialog from './gameobjects/imagedatadialog/ImageDataDialog.js';
 
