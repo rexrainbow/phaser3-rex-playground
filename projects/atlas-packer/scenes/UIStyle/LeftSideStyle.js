@@ -40,6 +40,8 @@ const ImageDataPanelStyle = {
     },
 
     inputRow: {
+        space: { title: 10 },
+
         title: {
             text: {
                 fontSize: FONTSIZE_S,
@@ -65,8 +67,6 @@ const ImageDataPanelStyle = {
                 backgroundColor: 'white',
             }
         },
-
-        space: { item: 5 }
     },
 
     separator: {
