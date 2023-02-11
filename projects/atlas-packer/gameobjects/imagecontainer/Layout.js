@@ -16,10 +16,11 @@ var Layout = function () {
     var padding = this.imagePadding;
     var boxes = [];
     for (var i = 0, cnt = images.length; i < cnt; i++) {
-        var child = images[i];
+        var image = images[i];
         boxes.push({
-            w: child.width + padding,
-            h: child.height + padding,
+            w: image.width + padding,
+            h: image.height + padding,
+            image: image
         });
     }
     var result = Potpack(boxes);
@@ -40,21 +41,21 @@ var Layout = function () {
     // Layout images
     for (var i = 0, cnt = boxes.length; i < cnt; i++) {
         var box = boxes[i];
-        var child = images[i];
+        var image = box.image;
 
         AlignIn(
-            child,
+            image,
             (startX + box.x), (startY + box.y),
-            child.width, child.height,
+            image.width, image.height,
             0
         );
 
-        child.imageData = {
+        image.imageData = {
             x: box.x, y: box.y,
-            width: child.width, height: child.height
+            width: image.width, height: image.height
         }
 
-        this.resetChildPositionState(child);
+        this.resetChildPositionState(image);
     }
 
     // Layout background
