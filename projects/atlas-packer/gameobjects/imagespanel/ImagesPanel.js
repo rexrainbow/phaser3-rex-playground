@@ -1,16 +1,16 @@
-import { OverlapSizer } from '../../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
-import CreateBackground from '../../builders/CreateBackground.js';
-import CreateImageDropZone from '../../builders/CreateImageDropZone.js';
-import CreateImageContainer from '../../builders/CreateImageContainer.js';
+import { OverlapSizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
+import CreateBackground from '../builders/CreateBackground.js';
+import CreateImageDropZone from '../builders/CreateImageDropZone.js';
+import CreateImageContainer from '../builders/CreateImageContainer.js';
 import Methods from './Methods.js';
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
 class ImagesPanel extends OverlapSizer {
-    constructor(scene, config, model) {
+    constructor(scene, configObj, model) {
+        var config = configObj.cloneValue('.');
+
         super(scene, config);
-
-
 
         // Background
         var backgroundColor = GetValue(config, 'backgroundColor', 0x333333);

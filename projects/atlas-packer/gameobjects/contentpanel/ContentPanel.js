@@ -1,26 +1,23 @@
 import { Sizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
-import ImagesPanel from './imagespanel/ImagesPanel';
-import ConfigurationPanel from './ConfigurationPanel.js';
+import CreateImagesPanel from '../builders/CreateImagesPanel.js';
+import CreateImagesPanelSettingPanel from '../builders/CreateImagesPanelSettingPanel.js';
 
 class ContentPanel extends Sizer {
     constructor(scene, configObj, model) {
-        var config = configObj.cloneValue('.');
-
         super(scene, {
             orientation: 1
         });
 
-        var mainPanel = new ImagesPanel(scene, config, model);
-        scene.add.existing(mainPanel);
+        var mainPanel = CreateImagesPanel(scene, configObj, model);
         this.add(
             mainPanel,
             { proportion: 1, expand: true }
         );
 
-        var configurationPanel = new ConfigurationPanel(mainPanel, config, model);
-        scene.add.existing(configurationPanel);
+        var settingPanel = CreateImagesPanelSettingPanel(scene, configObj.clone().setRefPath('.settingPanel'), model)
+            .setBindingTarget(mainPanel)
         this.add(
-            configurationPanel,
+            settingPanel,
             { proportion: 0, expand: false, align: 'left' }
         );
     }

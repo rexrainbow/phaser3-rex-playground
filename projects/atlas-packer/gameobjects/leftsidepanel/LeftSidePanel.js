@@ -11,7 +11,6 @@ class LeftSidePanel extends Sizer {
 
         // ImageList(a grid-table) can't scroll under fileDragZone.
         var imageList = CreateImageList(scene, configObj.clone().setRefPath('.imageList'), model);
-
         this.add(
             imageList,
             { proportion: 1, expand: true }

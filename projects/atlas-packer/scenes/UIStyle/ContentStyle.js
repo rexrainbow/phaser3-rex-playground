@@ -4,10 +4,47 @@ import {
     FONTSIZE_XL, FONTSIZE_L, FONTSIZE_M, FONTSIZE_S,
 } from './const.js';
 
+const SettingPanelStyle = {
+    height: 40,
+    space: { left: 10, right: 10, top: 10, bottom: 10, item: 5 },
+
+    inputRow: {
+        background: {
+            strokeColor: COLOR_LIGHT,
+            radius: 10
+        },
+
+        title: {
+            space: { left: 5, right: 5 }
+        },
+
+        checkbox: {
+            size: 30,
+            color: COLOR_LIGHT,
+            boxStrokeColor: COLOR_DARK,
+            uncheckedColor: COLOR_DARK,
+        },
+
+        colorInput: {
+            swatch: {
+                radius: 10, size: 30
+            },
+
+            colorPicker: {
+                background: { color: 0x0, strokeColor: COLOR_LIGHT },
+            },
+        },
+
+        space: { left: 10, right: 10, top: 10, bottom: 10 },
+    }
+}
+
 export default {
     backgroundColor: COLOR_PRIMARY,
     imageBackgroundColor: 0x333333,
     placeHolder: {
         fontSize: FONTSIZE_XL,
-    }
+    },
+
+    settingPanel: SettingPanelStyle
 }
