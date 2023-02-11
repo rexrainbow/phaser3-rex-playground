@@ -1,15 +1,20 @@
-import GetCache from '../../../../phaser3-rex-notes/plugins/utils/system/GetCache.js';
+import FreeTexture from './FreeTexture.js';
 
-var ClearImages = function () {
-    var imageDataArray = this.imageDataList.list;
-    var cache = GetCache(this.scene, 'image');
-    for (var i = 0, cnt = imageDataArray.length; i < cnt; i++) {
-        cache.remove(imageDataArray[i].key);
+var ClearImages = function (freeTextureDelayTime) {
+    if (freeTextureDelayTime === undefined) {
+        freeTextureDelayTime = 0;
     }
+
+    var imageData = [...this.imageDataList.list];
+    this.scene.time.delayedCall(
+        freeTextureDelayTime,      // time
+        FreeTexture,               // callback
+        [this.scene, imageData]    // args
+    );
 
     this.imageDataList.removeAll();
 
-    this.emit('clearimages');
+    this.emit('clearimages', freeTextureDelayTime);
 
     return this;
 }

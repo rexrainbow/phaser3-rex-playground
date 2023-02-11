@@ -13,13 +13,13 @@ model.addImageFiles(files);
 ### Remove an image
 
 ```javascript
-model.removeImage(name);
+model.removeImage(name, freeTextureDelayTime);
 ```
 
 ### Clear all image files
 
 ```javascript
-model.clearImages();
+model.clearImages(freeTextureDelayTime);
 ```
 
 ### Select image
@@ -51,8 +51,8 @@ model.selectImage(name);
 - `'renameimage'`
     - Parameters : newName, oldName, imageData
 - `'removeimage'`
-    - Parameters : imageData
+    - Parameters : imageData, freeTextureDelayTime
 - `'clearimages'`
-    - Parameters : 
+    - Parameters : imageDataArray, freeTextureDelayTime
 - `'selectimage'`
     - Parameters : imageData
