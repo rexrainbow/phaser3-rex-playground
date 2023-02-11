@@ -1,5 +1,6 @@
 import 'phaser';
 import { SCENE_BOOT, SCENE_APP } from './const.js';
+import PixelationEffect from '../effects/PixelationEffect.js';
 
 class Boot extends Phaser.Scene {
     constructor() {
@@ -13,9 +14,18 @@ class Boot extends Phaser.Scene {
     }
 
     create() {
-        this.scene.start(SCENE_APP);
+        var nextScene = this.scene.get(SCENE_APP);
+        nextScene.events.once('transitionstart', function (fromScene, duration) {
+            PixelationEffect(nextScene, duration);
+        });
+
+        this.scene.transition({
+            target: SCENE_APP,
+            duration: 500
+        })
     }
 
     update() { }
 }
+
 export default Boot;
