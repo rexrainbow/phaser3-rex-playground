@@ -1,7 +1,7 @@
 import {
     COLOR_PRIMARY, COLOR_LIGHT, COLOR_DARK,
-
     FONTSIZE_XL, FONTSIZE_L, FONTSIZE_M, FONTSIZE_S,
+    FONTFAMILY,
 } from './const.js';
 
 const SettingPanelStyle = {
@@ -20,7 +20,8 @@ const SettingPanelStyle = {
 
         title: {
             text: {
-                fontSize: FONTSIZE_S
+                fontSize: FONTSIZE_S,
+                fontFamily: FONTFAMILY,
             }
         },
 
@@ -48,6 +49,7 @@ export default {
     imageBackgroundColor: 0x333333,
     placeHolder: {
         fontSize: FONTSIZE_XL,
+        fontFamily: FONTFAMILY
     },
 
     settingPanel: SettingPanelStyle

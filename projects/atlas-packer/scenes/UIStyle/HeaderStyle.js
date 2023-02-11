@@ -1,7 +1,7 @@
 import {
     COLOR_PRIMARY, COLOR_LIGHT, COLOR_DARK,
-
     FONTSIZE_XL, FONTSIZE_L, FONTSIZE_M, FONTSIZE_S,
+    FONTFAMILY,
 } from './const.js';
 
 const ButtonStyle = {
@@ -16,6 +16,7 @@ const ButtonStyle = {
     iconSize: FONTSIZE_M,
     text: {
         fontSize: FONTSIZE_M,
+        fontFamily: FONTFAMILY
     }
 }
 

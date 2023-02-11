@@ -1,7 +1,7 @@
 import {
     COLOR_PRIMARY, COLOR_LIGHT, COLOR_DARK,
-
     FONTSIZE_XL, FONTSIZE_L, FONTSIZE_M, FONTSIZE_S,
+    FONTFAMILY,
 } from './const.js';
 
 const ImageListStyle = {
@@ -24,6 +24,7 @@ const ImageListStyle = {
         },
         text: {
             fontSize: FONTSIZE_S,
+            fontFamily: FONTFAMILY,
         },
         actionSize: 24,
     }
@@ -42,6 +43,7 @@ const ImageDataPanelStyle = {
         title: {
             text: {
                 fontSize: FONTSIZE_S,
+                fontFamily: FONTFAMILY,
             }
         },
 
@@ -54,6 +56,7 @@ const ImageDataPanelStyle = {
             },
             style: {
                 fontSize: FONTSIZE_S,
+                // fontFamily: FONTFAMILY,
                 backgroundBottomY: 4,
                 backgroundHeight: 20,
             },

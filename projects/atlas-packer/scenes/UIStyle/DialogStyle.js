@@ -1,7 +1,7 @@
 import {
     COLOR_PRIMARY, COLOR_LIGHT, COLOR_DARK,
-
     FONTSIZE_XL, FONTSIZE_L, FONTSIZE_M, FONTSIZE_S,
+    FONTFAMILY,
 } from './const.js';
 
 
@@ -21,13 +21,15 @@ export default {
             color: COLOR_PRIMARY
         },
         text: {
-            fontSize: FONTSIZE_L
+            fontSize: FONTSIZE_L,
+            fontFamily: FONTFAMILY,
         }
     },
     content: {
         space: { left: 10, right: 10, top: 10, bottom: 10 },
         text: {
             fontSize: FONTSIZE_M,
+            fontFamily: FONTFAMILY,
         }
     },
     button: {
@@ -39,6 +41,7 @@ export default {
         },
         text: {
             fontSize: FONTSIZE_M,
+            fontFamily: FONTFAMILY,
         }
     },
 }
