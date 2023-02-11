@@ -3,14 +3,16 @@ import SetValue from '../../../../../phaser3-rex-notes/plugins/utils/object/SetV
 
 class ImagesPanelSettingPanel extends Tweaker {
     constructor(scene, configObj, model) {
-        var config = {
-            orientation: 0,
-            styles: configObj.cloneValue('.'),
-        }
-        SetValue(config, 'styles.inputRow.colorInput.inputText', false);
-        SetValue(config, 'styles.inputRow.colorInput.colorComponents', false);
+        var styles = configObj.cloneValue('.');
+        // Set necessary styles
+        SetValue(styles, 'inputRow.colorInput.inputText', false);
+        SetValue(styles, 'inputRow.colorInput.colorComponents', false);
 
-        super(scene, config);
+        super(scene, {
+            orientation: 0,
+
+            styles: styles,
+        });
 
         this
             .addInput({

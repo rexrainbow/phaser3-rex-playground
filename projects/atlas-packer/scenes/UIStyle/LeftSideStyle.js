@@ -30,8 +30,8 @@ const ImageListStyle = {
 }
 
 const ImageDataPanelStyle = {
-    width: 300, height: 300,
-    space: { left: 10, right: 10, top: 10, bottom: 10, item: 5 },
+    width: 300, height: 340,
+    space: { left: 10, right: 10, top: 10, bottom: 10, item: 10 },
 
     background: {
         color: 0x0,
@@ -40,7 +40,9 @@ const ImageDataPanelStyle = {
 
     inputRow: {
         title: {
-            fontSize: FONTSIZE_M,
+            text: {
+                fontSize: FONTSIZE_S,
+            }
         },
 
         inputText: {
@@ -51,8 +53,9 @@ const ImageDataPanelStyle = {
                 color: COLOR_PRIMARY,
             },
             style: {
+                fontSize: FONTSIZE_S,
                 backgroundBottomY: 4,
-                backgroundHeight: 18,
+                backgroundHeight: 20,
             },
             cursorStyle: {
                 color: 'black',

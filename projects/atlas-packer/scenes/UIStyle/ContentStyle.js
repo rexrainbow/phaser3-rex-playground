@@ -5,17 +5,23 @@ import {
 } from './const.js';
 
 const SettingPanelStyle = {
-    height: 40,
     space: { left: 10, right: 10, top: 10, bottom: 10, item: 5 },
 
     inputRow: {
+        space: {
+            left: 10, right: 10, top: 10, bottom: 10,
+            title: 5,
+        },
+
         background: {
             strokeColor: COLOR_LIGHT,
             radius: 10
         },
 
         title: {
-            space: { left: 5, right: 5 }
+            text: {
+                fontSize: FONTSIZE_S
+            }
         },
 
         checkbox: {
@@ -34,8 +40,6 @@ const SettingPanelStyle = {
                 background: { color: 0x0, strokeColor: COLOR_LIGHT },
             },
         },
-
-        space: { left: 10, right: 10, top: 10, bottom: 10 },
     }
 }
 
