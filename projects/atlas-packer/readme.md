@@ -20,13 +20,13 @@ AboutButton --> AboutModalDialog["About modal-dialog<br>(ConfirmDialog)"]
 
 Top --> Content["Content<br>(Sizer)"]
 Content --> ImagesPanel["Images panel<br>(OverlapSizer)"]
-ImagesPanel --> ImagesPanelBackground["Background<br>(Round rectangle)"]
+ImagesPanel --> ImagesPanelBackground["Background<br>(RoundRectangle)"]
 ImagesPanel --> ImageDropZone["Image drop-zone<br>(FileDropZone)"]
 ImagesPanel --> ImageContainer["Image container<br>(ContainerLite)"]
 ImagesPanel --> ImagesOutline["Images' outline<br>(Graphics)"]
 ImagesPanel --> ImageMarker["Image marker<br>(Graphics)"]
 
-ImageContainer --> ImageContainerBackground["Background<br>(Round rectangle)"]
+ImageContainer --> ImageContainerBackground["Background<br>(RoundRectangle)"]
 ImageContainer --> Layer
 ImageContainer --> Images["Images<br>(Image)"]
 Images --> |Draw on| Layer["(Layer)"]
