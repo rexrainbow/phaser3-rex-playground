@@ -30,6 +30,12 @@ export default {
         text: {
             fontSize: FONTSIZE_M,
             fontFamily: FONTFAMILY,
+            underline: {
+                color: 'blue',
+                thickness: 4,
+                offset: 1
+            },
+            interactive: true
         }
     },
     button: {

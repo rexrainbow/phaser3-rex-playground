@@ -26,10 +26,11 @@ var CreateAboutDialog = function (scene, configObj) {
     config.buttonMode = 1;
     var dialog = new ConfirmDialog(scene, config)
     scene.add.existing(dialog);
+
     dialog
         .resetDisplayContent({
             title: 'About',
-            content: 'An atlas packer for phaser3 game engine.',
+            content: AboutDialogContent,
             buttonA: 'Close'
         })
         .layout()
@@ -37,5 +38,16 @@ var CreateAboutDialog = function (scene, configObj) {
 
     return dialog;
 }
+
+const AboutDialogContent = `\
+An atlas packer for phaser3 game engine.
+
+Library
+- [u][url=https://github.com/photonstorm/phaser]Phaser3 game engine[/url][/u]
+- [u][url=https://rexrainbow.github.io/phaser3-rex-notes/docs/site/ui-overview/]RexUI[/url][/u]
+- [u][url=https://github.com/mapbox/potpack]potpack[/url][/u]
+
+[u][url=https://github.com/rexrainbow/phaser3-rex-playground/tree/master/projects/atlas-packer]Source code[/url][/u]
+`
 
 export default CreateAboutButton;
