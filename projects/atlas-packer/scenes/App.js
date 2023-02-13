@@ -29,6 +29,8 @@ class App extends Phaser.Scene {
             .setMinSize(width, height)
             .setPosition(width / 2, height / 2)
             .layout()
+
+        ui.broadcastEvent('build.complete', ui);
     }
 
     update() { }

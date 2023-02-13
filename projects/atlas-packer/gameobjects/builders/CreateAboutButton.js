@@ -19,10 +19,10 @@ var CreateAboutButton = function (scene, configObj, model) {
                 .layout()
 
             var topSizer = button.getTopmostSizer();
-            topSizer.broadcastEvent('modal.open');
+            topSizer.emit('modal.open');
             dialog.modalPromise()
                 .then(function () {
-                    topSizer.broadcastEvent('modal.close');
+                    topSizer.emit('modal.close');
                 });
 
 
