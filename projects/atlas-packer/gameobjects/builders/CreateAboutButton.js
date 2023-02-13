@@ -16,6 +16,16 @@ var CreateAboutButton = function (scene, configObj, model) {
             var { width, height } = scene.scale;
             var dialog = CreateAboutDialog(scene, dialogConfigObj)
                 .setPosition(width / 2, height / 2)
+                .layout()
+
+            var topSizer = button.getTopmostSizer();
+            topSizer.broadcastEvent('modal.open');
+            dialog.modalPromise()
+                .then(function () {
+                    topSizer.broadcastEvent('modal.close');
+                });
+
+
         });
 
     return button;
@@ -33,8 +43,6 @@ var CreateAboutDialog = function (scene, configObj) {
             content: AboutDialogContent,
             buttonA: 'Close'
         })
-        .layout()
-        .modal()
 
     return dialog;
 }

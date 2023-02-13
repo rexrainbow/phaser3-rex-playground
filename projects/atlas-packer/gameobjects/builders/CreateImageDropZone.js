@@ -8,6 +8,14 @@ var CreateImageDropZone = function (scene, config, model) {
     })
     scene.add.existing(imageDropZone);
 
+    imageDropZone
+        .on('modal.open', function () {
+            imageDropZone.setVisible(false);
+        })
+        .on('modal.close', function () {
+            imageDropZone.setVisible(true);
+        })
+
     return imageDropZone;
 }
 
