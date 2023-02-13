@@ -4,33 +4,39 @@ Diagram of objects' structure
 graph TD
 
 Top["top<br>(HolyGrail)"]
+Top --> LeftSidePanel["LeftSide<br>(Sizer)"]
+Top --> HeaderPanel["Header<br>(Sizer)"]
+Top --> ContentPanel["Content<br>(Sizer)"]
 
-Top --> LeftSide["LeftSide<br>(Sizer)"]
-LeftSide --> ImageList["Image list<br>(GridTable)"]
-ImageList --> ImageLabel["Cell: Image label<br>(SimpleLabel)"]
-LeftSide --> ImageDataPanel["Image-data panel<br>(Tweaker)"]
+subgraph Content
+  ContentPanel --> ImagesPanel["Images panel<br>(OverlapSizer)"]
+  ImagesPanel --> ImagesPanelBackground["Background<br>(RoundRectangle)"]
+  ImagesPanel --> ImageDropZone["Image drop-zone<br>(FileDropZone)"]
+  ImagesPanel --> ImageContainer["Image container<br>(ContainerLite)"]
+  ImagesPanel --> ImagesOutline["Images' outline<br>(Graphics)"]
+  ImagesPanel --> ImageMarker["Image marker<br>(Graphics)"]
 
-Top --> Header
-Header --> LoadImageFilesButton["Load image button<br>(FileSelectorButton)"]
-Header --> ClearImagesButton["Clear image button<br>(SimpleLabel)"]
-Header --> ExportButton["Export button<br>(SimpleLabel)"]
-Header --> AboutButton["Abour button<br>(SimpleLabel)"]
-AboutButton --> AboutModalDialog["About modal-dialog<br>(ConfirmDialog)"]
+  ImageContainer --> ImageContainerBackground["Background<br>(RoundRectangle)"]
+  ImageContainer --> Layer
+  ImageContainer --> Images["Images<br>(Image)"]
+  Images -.-> |Render on| Layer["(Layer)"]
+
+  ContentPanel --> ImagesPanelSettingPanel["Setting panel of Images panel<br>(Tweaker)"]  
+end
+
+subgraph LeftSide
+  LeftSidePanel --> ImageList["Image list<br>(GridTable)"]
+  ImageList --> ImageLabel["Cell: Image label<br>(SimpleLabel)"]
+  LeftSidePanel --> ImageDataPanel["Image-data panel<br>(Tweaker)"]
+end
+
+subgraph Header
+  HeaderPanel --> LoadImageFilesButton["Load image button<br>(FileSelectorButton)"]
+  HeaderPanel --> ClearImagesButton["Clear image button<br>(SimpleLabel)"]
+  HeaderPanel --> ExportButton["Export button<br>(SimpleLabel)"]
+  HeaderPanel --> AboutButton["Abour button<br>(SimpleLabel)"]
+  AboutButton --> AboutModalDialog["About modal-dialog<br>(ConfirmDialog)"]
+end
 
 
-Top --> Content["Content<br>(Sizer)"]
-Content --> ImagesPanel["Images panel<br>(OverlapSizer)"]
-ImagesPanel --> ImagesPanelBackground["Background<br>(RoundRectangle)"]
-ImagesPanel --> ImageDropZone["Image drop-zone<br>(FileDropZone)"]
-ImagesPanel --> ImageContainer["Image container<br>(ContainerLite)"]
-ImagesPanel --> ImagesOutline["Images' outline<br>(Graphics)"]
-ImagesPanel --> ImageMarker["Image marker<br>(Graphics)"]
-
-ImageContainer --> ImageContainerBackground["Background<br>(RoundRectangle)"]
-ImageContainer --> Layer
-ImageContainer --> Images["Images<br>(Image)"]
-Images --> |Draw on| Layer["(Layer)"]
-
-Content --> ImagesPanelSettingPanel["Setting panel of Images panel<br>(Tweaker)"]
-ImagesPanelSettingPanel --> ImagesPanel
 ```
