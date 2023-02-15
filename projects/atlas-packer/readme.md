@@ -15,10 +15,16 @@ Double click `build-html.bat` file.
 ```mermaid
 graph TD
 
-Top["top<br>(HolyGrail)"]
-Top --> LeftSidePanel["LeftSide<br>(Sizer)"]
-Top --> HeaderPanel["Header<br>(Sizer)"]
-Top --> ContentPanel["Content<br>(Sizer)"]
+subgraph ui
+  Top["top<br>(HolyGrail)"]
+  Top --- LeftSidePanel["LeftSide<br>(Sizer)"]
+  Top --- HeaderPanel["Header<br>(Sizer)"]
+  Top --- ContentPanel["Content<br>(Sizer)"]
+end
+
+style ui color:transparent
+style ui fill:transparent
+style ui stroke:transparent
 ```
 
 ### Left-side panel
@@ -26,10 +32,24 @@ Top --> ContentPanel["Content<br>(Sizer)"]
 ```mermaid
 graph TD
 
-LeftSidePanel["LeftSide<br>(Sizer)"]
-LeftSidePanel --> ImageList["Image list<br>(GridTable)"]
-ImageList --> ImageLabel["Cell: Image label<br>(SimpleLabel)"]
-LeftSidePanel --> ImageDataPanel["Image-data panel<br>(Tweaker)"]
+subgraph ui
+  LeftSidePanel["LeftSide<br>(Sizer)"]
+  
+  LeftSidePanel --- ImageList["Image list<br>(GridTable)"]
+  ImageList --- ImageLabel["Cell: Image label<br>(SimpleLabel)"]
+  LeftSidePanel --- ImageDataPanel["Image-data panel<br>(Tweaker)"]
+end
+
+style ui color:transparent
+style ui fill:transparent
+style ui stroke:transparent
+
+model((model))
+model -.-> ImageList
+ImageList -.-> model
+
+ImageDataPanel -.-> model
+model -.-> ImageDataPanel
 ```
 
 ### Header panel
@@ -37,12 +57,24 @@ LeftSidePanel --> ImageDataPanel["Image-data panel<br>(Tweaker)"]
 ```mermaid
 graph TD
 
-HeaderPanel["Header<br>(Sizer)"]
-HeaderPanel --> LoadImageFilesButton["Load image button<br>(FileSelectorButton)"]
-HeaderPanel --> ClearImagesButton["Clear image button<br>(SimpleLabel)"]
-HeaderPanel --> ExportButton["Export button<br>(SimpleLabel)"]
-HeaderPanel --> AboutButton["Abour button<br>(SimpleLabel)"]
-AboutButton -.-> AboutModalDialog["About modal-dialog<br>(ConfirmDialog)"]
+subgraph ui
+  HeaderPanel["Header<br>(Sizer)"]
+  HeaderPanel --- LoadImageFilesButton["Load image button<br>(FileSelectorButton)"]
+  HeaderPanel --- ClearImagesButton["Clear image button<br>(SimpleLabel)"]
+  HeaderPanel --- ExportButton["Export button<br>(SimpleLabel)"]
+  HeaderPanel --- Space0["Space"]
+  HeaderPanel --- AboutButton["Abour button<br>(SimpleLabel)"]
+  AboutButton -.-> AboutModalDialog["About modal-dialog<br>(ConfirmDialog)"]
+end
+
+style ui color:transparent
+style ui fill:transparent
+style ui stroke:transparent
+
+model((model))
+LoadImageFilesButton -.-> model
+ClearImagesButton -.-> model
+ExportButton -.-> model
 ```
 
 ### Content panel
@@ -50,19 +82,31 @@ AboutButton -.-> AboutModalDialog["About modal-dialog<br>(ConfirmDialog)"]
 ```mermaid
 graph TD
 
-ContentPanel["Content<br>(Sizer)"]
-ContentPanel --> ImagesPanel["Images panel<br>(OverlapSizer)"]
-ImagesPanel --> ImagesPanelBackground["Background<br>(RoundRectangle)"]
-ImagesPanel --> ImageDropZone["Image drop-zone<br>(FileDropZone)"]
-ImagesPanel --> ImageContainer["Image container<br>(ContainerLite)"]
-ImagesPanel --> ImagesOutline["Images' outline<br>(Graphics)"]
-ImagesPanel --> ImageMarker["Image marker<br>(Graphics)"]
+subgraph ui
+  ContentPanel["Content<br>(Sizer)"]
+  ContentPanel --- ImagesPanel["Images panel<br>(OverlapSizer)"]
+  ImagesPanel --- ImagesPanelBackground["Background<br>(RoundRectangle)"]
+  ImagesPanel --- ImageDropZone["Image drop-zone<br>(FileDropZone)"]
+  ImagesPanel --- ImageContainer["Image container<br>(ContainerLite)"]
+  ImagesPanel --- ImagesOutline["Images' outline<br>(Graphics)"]
+  ImagesPanel --- ImageMarker["Image marker<br>(Graphics)"]
 
-ImageContainer --> ImageContainerBackground["Background<br>(RoundRectangle)"]
-ImageContainer --> Layer
-ImageContainer --> Images["Images<br>(Image)"]
-Images -.-> |Render on| Layer["(Layer)"]
+  ImageContainer --- ImageContainerBackground["Background<br>(RoundRectangle)"]
+  ImageContainer --- Layer
+  ImageContainer --- Images["Images<br>(Image)"]
+  Images -.-> |Render on| Layer["(Layer)"]
 
-ContentPanel --> ImagesPanelSettingPanel["Setting panel of Images panel<br>(Tweaker)"] 
-ImagesPanelSettingPanel -.-> ImagesPanel
+  ContentPanel --- ImagesPanelSettingPanel["Setting panel of Images panel<br>(Tweaker)"] 
+  ImagesPanelSettingPanel -.-> ImagesPanel
+end
+
+style ui color:transparent
+style ui fill:transparent
+style ui stroke:transparent
+
+
+model((model))
+ImagesPanel -.-> model
+model -.-> ImagesPanel
+ImageContainer -.-> model
 ```
