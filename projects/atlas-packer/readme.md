@@ -46,9 +46,9 @@ style ui stroke:transparent
 
 model((model))
 model -.-> ImageList
-ImageList -.-> model
+ImageList -.-> |selectImage<br>removeImage| model
 
-ImageDataPanel -.-> model
+ImageDataPanel -.-> |hasImage<br>changeImageName| model
 model -.-> ImageDataPanel
 ```
 
@@ -72,9 +72,9 @@ style ui fill:transparent
 style ui stroke:transparent
 
 model((model))
-LoadImageFilesButton -.-> model
-ClearImagesButton -.-> model
-ExportButton -.-> model
+LoadImageFilesButton -.-> |addImageFiles| model
+ClearImagesButton -.-> |clearImages| model
+ExportButton -.-> |generateOutput| model
 ```
 
 ### Content panel
@@ -106,7 +106,7 @@ style ui stroke:transparent
 
 
 model((model))
-ImagesPanel -.-> model
+ImageDropZone -.-> |addImageFiles| model
 model -.-> ImagesPanel
-ImageContainer -.-> model
+Images -.-> |selectImage| model
 ```
