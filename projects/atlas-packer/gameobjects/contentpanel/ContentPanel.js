@@ -30,7 +30,8 @@ class ContentPanel extends Sizer {
             .setBindingTarget(imagesPanel)
 
         // Status panel for main panel        
-        var statusPanel = CreateStatusPanel(scene, configObj.clone().setRefPath('.statusPanel'), model);
+        var statusPanel = CreateStatusPanel(scene, configObj.clone().setRefPath('.statusPanel'), model)
+            .setOrigin(1, 0.5);
         imagesPanel.on('updateimages', function () {
             statusPanel.showStatus(imagesPanel);
         })

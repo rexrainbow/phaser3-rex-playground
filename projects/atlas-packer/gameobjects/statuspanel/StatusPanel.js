@@ -2,7 +2,7 @@ import { SimpleLabel } from '../../../../../phaser3-rex-notes/templates/ui/ui-co
 
 class StatusPanel extends SimpleLabel {
     showStatus(imagesPanel) {
-        this.resetDisplayContent(`${imagesPanel.imageCount} images, ${imagesPanel.textureWidth} X ${imagesPanel.textureHeight}`);
+        this.resetDisplayContent(`${imagesPanel.imageCount} images, ${imagesPanel.textureWidth} x ${imagesPanel.textureHeight}`);
         return this;
     }
 }

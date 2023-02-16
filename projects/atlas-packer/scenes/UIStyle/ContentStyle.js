@@ -45,9 +45,12 @@ const SettingPanelStyle = {
 }
 
 const StatusPanelStyle = {
+    space: { left: 10, right: 10, },
     text: {
         fontSize: FONTSIZE_M,
         fontFamily: FONTFAMILY,
+        // backgroundColor: COLOR_DARK,
+        fixedWidth: 300,
     }
 }
 
