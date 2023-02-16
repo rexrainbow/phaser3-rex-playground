@@ -2,6 +2,10 @@
 
 An atlas packer for phaser3 game engine.
 
+## Online demo
+
+[Demo](https://rexrainbow.github.io/phaser3-rex-playground/apps/atlas-packer/)
+
 ## Run project
 
 Double click `preview.bat` file.
