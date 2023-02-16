@@ -20,7 +20,7 @@ const SettingPanelStyle = {
 
         title: {
             text: {
-                fontSize: FONTSIZE_S,
+                fontSize: FONTSIZE_M,
                 fontFamily: FONTFAMILY,
             }
         },
@@ -44,6 +44,13 @@ const SettingPanelStyle = {
     }
 }
 
+const StatusPanelStyle = {
+    text: {
+        fontSize: FONTSIZE_M,
+        fontFamily: FONTFAMILY,
+    }
+}
+
 export default {
     backgroundColor: COLOR_PRIMARY,
     imageBackgroundColor: 0x333333,
@@ -52,5 +59,7 @@ export default {
         fontFamily: FONTFAMILY
     },
 
-    settingPanel: SettingPanelStyle
+    settingPanel: SettingPanelStyle,
+
+    statusPanel: StatusPanelStyle,
 }

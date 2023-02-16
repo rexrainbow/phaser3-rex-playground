@@ -5,7 +5,7 @@ const List = Phaser.Structs.List;
 
 class ImageContainer extends Container {
     constructor(scene, config, model) {
-        super(scene);
+        super(scene, 0, 0, 0, 0);
 
         this.model = model;
         this.backgrounds = new List();

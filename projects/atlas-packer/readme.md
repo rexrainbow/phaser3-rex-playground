@@ -62,7 +62,7 @@ subgraph ui
   HeaderPanel --- LoadImageFilesButton["Load image button<br>(FileSelectorButton)"]
   HeaderPanel --- ClearImagesButton["Clear image button<br>(SimpleLabel)"]
   HeaderPanel --- ExportButton["Export button<br>(SimpleLabel)"]
-  HeaderPanel --- Space0["Space"]
+  HeaderPanel --- Space0["(Space)"]
   HeaderPanel --- AboutButton["Abour button<br>(SimpleLabel)"]
   AboutButton -.-> AboutModalDialog["About modal-dialog<br>(ConfirmDialog)"]
 end
@@ -96,8 +96,10 @@ subgraph ui
   ImageContainer --- Images["Images<br>(Image)"]
   Images -.-> |Render on| Layer["(Layer)"]
 
-  ContentPanel --- ImagesPanelSettingPanel["Setting panel of Images panel<br>(Tweaker)"] 
-  ImagesPanelSettingPanel -.-> ImagesPanel
+  ContentPanel --- BottomSizer
+  BottomSizer --- ImagesPanelSettingPanel["Setting panel<br>(Tweaker)"]
+  BottomSizer --- Space0["(Space)"]
+  BottomSizer --- StatusPanel["Status panel<br>(SimpleLabel)"]
 end
 
 style ui color:transparent
