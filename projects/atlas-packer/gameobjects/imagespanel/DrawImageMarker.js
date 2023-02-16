@@ -6,11 +6,15 @@ var DrawImageMarker = function (imageData) {
     var graphics = this.childrenMap.imageMarker;
     graphics.clear();
 
+    var imageContainer = this.childrenMap.imageContainer;
+
     if (!this.markedImageData) {
+        return this;
+    } else if (!imageContainer.hasImage(this.markedImageData.name)) {
+        this.markedImageData = null;
         return this;
     }
 
-    var imageContainer = this.childrenMap.imageContainer;
     imageContainer.drawImageMarker(graphics, this.markedImageData.name, this.imageMarkerStyle);
 
     return this;

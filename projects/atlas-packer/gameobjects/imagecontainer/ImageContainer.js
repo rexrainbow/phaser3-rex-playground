@@ -30,8 +30,12 @@ class ImageContainer extends Container {
         super.destroy(fromScene);
     }
 
+    get imageCount() {
+        return this.images.length;
+    }
+
     get empty() {
-        return (this.images.length === 0);
+        return (this.imageCount === 0);
     }
 }
 

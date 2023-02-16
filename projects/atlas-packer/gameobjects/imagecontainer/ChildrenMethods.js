@@ -45,6 +45,10 @@ export default {
         return this.images.getByName(name);
     },
 
+    hasImage(name) {
+        return !!this.getImage(name);
+    },
+
     renameImage(oldName, newName) {
         this.images.getByName(oldName).setName(newName);
         return this;

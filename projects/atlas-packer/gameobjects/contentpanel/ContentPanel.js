@@ -8,14 +8,14 @@ class ContentPanel extends Sizer {
             orientation: 1
         });
 
-        var mainPanel = CreateImagesPanel(scene, configObj, model);
+        var imagesPanel = CreateImagesPanel(scene, configObj, model);
         this.add(
-            mainPanel,
+            imagesPanel,
             { proportion: 1, expand: true }
         );
 
         var settingPanel = CreateImagesPanelSettingPanel(scene, configObj.clone().setRefPath('.settingPanel'), model)
-            .setBindingTarget(mainPanel)
+            .setBindingTarget(imagesPanel)
         this.add(
             settingPanel,
             { proportion: 0, expand: false, align: 'left' }

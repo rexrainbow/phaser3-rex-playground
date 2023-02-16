@@ -16,7 +16,12 @@ var UpdateImages = function (newImageDataArray, removeImageDataArray) {
         }
     }
 
-    if (removeImageDataArray) {
+    if (removeImageDataArray === true) {
+        // Clear all images
+        imageContainer.clearImages();
+
+    } else if (removeImageDataArray) {
+        // Remove an image, or some images
         if (!Array.isArray(removeImageDataArray)) {
             removeImageDataArray = [removeImageDataArray];
         }
@@ -24,6 +29,7 @@ var UpdateImages = function (newImageDataArray, removeImageDataArray) {
         for (var i = 0, cnt = removeImageDataArray.length; i < cnt; i++) {
             imageContainer.removeImage(removeImageDataArray[i]);
         }
+
     }
 
     imageContainer

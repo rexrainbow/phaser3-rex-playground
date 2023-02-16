@@ -78,13 +78,14 @@ class ImagesPanel extends OverlapSizer {
                     .updateImageDataArray(imageDataArray);
             }, this)
             .on('clearimages', function () {
-                this.clearImages();
-            }, this)
-            .on('renameimage', function (newName, oldName) {
-                this.renameImage(oldName, newName);
+                this.updateImages(undefined, true);
             }, this)
             .on('removeimage', function (imageData) {
-                this.removeImage(imageData);
+                this.updateImages(undefined, imageData);
+            }, this)
+
+            .on('renameimage', function (newName, oldName) {
+                this.renameImage(oldName, newName);
             }, this)
             .on('selectimage', function (imageData) {
                 this.drawImageMarker(imageData);
@@ -116,6 +117,18 @@ class ImagesPanel extends OverlapSizer {
         this._outlineEnable = value;
 
         this.drawImagesOutline();
+    }
+
+    get imageCount() {
+        return this.childrenMap.imageContainer.imageCount;
+    }
+
+    get textureWidth() {
+        return this.childrenMap.imageContainer.width;
+    }
+
+    get textureHeight() {
+        return this.childrenMap.imageContainer.height;
     }
 }
 

@@ -9,7 +9,7 @@ var Layout = function () {
         this.setScale(1).setSize(1, 1);
         // Layout background
         LayoutBackground.call(this, 0, 0, 0, 0);
-        return;
+        return this;
     }
 
     // Rectangle packing
