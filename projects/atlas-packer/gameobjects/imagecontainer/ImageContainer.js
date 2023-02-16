@@ -1,5 +1,6 @@
 import { Container } from '../../../../../phaser3-rex-notes/templates/ui/ui-components';
 import Methods from './Methods.js';
+// import OnUpdateImages from './OnUpdateImages';
 
 const List = Phaser.Structs.List;
 
@@ -13,6 +14,8 @@ class ImageContainer extends Container {
         this.imagePadding = 1;
 
         this.enableLayer();
+
+        // model.on('postupdateimages', OnUpdateImages, this);
     }
 
     destroy(fromScene) {

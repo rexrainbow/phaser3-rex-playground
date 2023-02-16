@@ -56,3 +56,4 @@ model.selectImage(name);
     - Parameters : imageDataArray, freeTextureDelayTime
 - `'selectimage'`
     - Parameters : imageData
+- `'postupdateimages'` 

@@ -1,12 +1,7 @@
-var UpdateImageContainerEffect = function () {
+var OnUpdateImages = function () {
     if (this.prevImageContainerWidth === undefined) {
         this.prevImageContainerWidth = 0;
         this.prevImageContainerHeight = 0;
-    }
-
-    if (this.updateImageContainerEffectTask) {
-        this.updateImageContainerEffectTask.stop();
-        this.updateImageContainerEffectTask = null;
     }
 
     var imageContainer = this.childrenMap.imageContainer;
@@ -14,7 +9,7 @@ var UpdateImageContainerEffect = function () {
         curDisplayHeight = imageContainer.displayHeight;
 
     imageContainer.setDisplaySize(this.prevImageContainerWidth, this.prevImageContainerHeight)
-    this.updateImageContainerEffectTask = this.scene.tweens.add({
+    this.scene.tweens.add({
         targets: imageContainer,
         displayWidth: currDisplayWidth,
         displayHeight: curDisplayHeight,
@@ -30,4 +25,4 @@ var UpdateImageContainerEffect = function () {
     this.prevImageContainerHeight = curDisplayHeight;
 }
 
-export default UpdateImageContainerEffect;
+export default OnUpdateImages;

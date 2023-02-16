@@ -20,6 +20,8 @@ var RemoveImage = function (name, freeTextureDelayTime) {
 
     this.emit('removeimage', imageData, freeTextureDelayTime);
 
+    this.emit('postupdateimages');
+
     return this;
 }
 

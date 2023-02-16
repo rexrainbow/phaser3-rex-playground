@@ -3,7 +3,7 @@ import CreateBackground from '../builders/CreateBackground.js';
 import CreateImageDropZone from '../builders/CreateImageDropZone.js';
 import CreateImageContainer from '../builders/CreateImageContainer.js';
 import Methods from './Methods.js';
-import UpdateImageContainerEffect from './UpdateImageContainerEffect.js';
+// import OnUpdateImages from './OnUpdateImages.js';
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
@@ -92,7 +92,8 @@ class ImagesPanel extends OverlapSizer {
                 this.drawImageMarker(imageData);
             }, this)
 
-        this.on('updateimages', UpdateImageContainerEffect, this);
+        // model.on('postupdateimages', OnUpdateImages, this)
+
     }
 
     // backgroundColor

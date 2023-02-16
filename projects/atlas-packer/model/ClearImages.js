@@ -16,6 +16,8 @@ var ClearImages = function (freeTextureDelayTime) {
 
     this.emit('clearimages', freeTextureDelayTime);
 
+    this.emit('postupdateimages');
+
     return this;
 }
 
