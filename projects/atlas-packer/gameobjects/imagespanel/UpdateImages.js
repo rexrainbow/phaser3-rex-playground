@@ -44,6 +44,8 @@ var UpdateImages = function (newImageDataArray, removeImageDataArray) {
     var placeholder = this.childrenMap.placeholder;
     this.setChildVisible(placeholder, imageContainer.empty);
 
+    this.emit('updateimages');
+
     return this;
 }
 
