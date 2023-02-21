@@ -1,5 +1,5 @@
 import { Sizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
-import CreateImagesPanel from '../builders/CreateImagesPanel.js';
+import CreateMainPanel from '../builders/CreateMainPanel.js';
 import CreateImagesPanelSettingPanel from '../builders/CreateImagesPanelSettingPanel.js';
 import CreateStatusPanel from '../builders/CreateStatusPanel.js';
 
@@ -10,9 +10,9 @@ class ContentPanel extends Sizer {
         });
 
         // Main panel
-        var imagesPanel = CreateImagesPanel(scene, configObj, model);
+        var mainPanel = CreateMainPanel(scene, configObj, model);
         this.add(
-            imagesPanel,
+            mainPanel,
             { proportion: 1, expand: true }
         );
 
@@ -27,15 +27,15 @@ class ContentPanel extends Sizer {
 
         // Setting panel for main panel
         var settingPanel = CreateImagesPanelSettingPanel(scene, configObj.clone().setRefPath('.settingPanel'), model)
-            .setBindingTarget(imagesPanel)
+            .setBindingTarget(mainPanel)
 
         // Status panel for main panel        
         var statusPanel = CreateStatusPanel(scene, configObj.clone().setRefPath('.statusPanel'), model)
             .setOrigin(1, 0.5);
         model.on('postupdateimages', function () {
-            statusPanel.showStatus(imagesPanel);
+            statusPanel.showStatus(mainPanel);
         })
-        statusPanel.showStatus(imagesPanel);
+        statusPanel.showStatus(mainPanel);
 
         bottomPanel
             .add(settingPanel)

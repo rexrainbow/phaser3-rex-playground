@@ -1,8 +1,8 @@
 import { SimpleLabel } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
 
 class StatusPanel extends SimpleLabel {
-    showStatus(imagesPanel) {
-        this.resetDisplayContent(`${imagesPanel.imageCount} images, ${imagesPanel.textureWidth} x ${imagesPanel.textureHeight}`);
+    showStatus(mainPanel) {
+        this.resetDisplayContent(`${mainPanel.imageCount} images, ${mainPanel.textureWidth} x ${mainPanel.textureHeight}`);
         return this;
     }
 }
