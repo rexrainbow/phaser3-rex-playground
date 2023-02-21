@@ -5,6 +5,7 @@ var CreateImageDropZone = function (scene, config, model) {
         filters: {
             image: function (file) { return file.name.match(/\.(jpg|jpeg|png|gif)$/i) }
         }
+        // Fire `'drop.image'` event
     })
     scene.add.existing(imageDropZone);
 

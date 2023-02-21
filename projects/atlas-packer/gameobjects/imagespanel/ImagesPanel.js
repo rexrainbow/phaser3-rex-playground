@@ -1,5 +1,5 @@
 import { OverlapSizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
-import CreateBackground from '../builders/CreateBackground.js';
+import CreateBackground from '../../../../../phaser3-rex-notes/templates/ui/utils/build/CreateBackground.js';
 import CreateImageDropZone from '../builders/CreateImageDropZone.js';
 import CreateImageContainer from '../builders/CreateImageContainer.js';
 import Methods from './Methods.js';
@@ -14,8 +14,10 @@ class ImagesPanel extends OverlapSizer {
         super(scene, config);
 
         // Background
-        var backgroundColor = GetValue(config, 'backgroundColor', 0x333333);
-        var background = CreateBackground(scene, backgroundColor);
+        var backgroundConfig = {
+            color: GetValue(config, 'backgroundColor', 0x333333)
+        }
+        var background = CreateBackground(scene, backgroundConfig);
         this.addBackground(background);
 
         // Image drop zone
@@ -29,8 +31,10 @@ class ImagesPanel extends OverlapSizer {
             { align: 'center', expand: false }
         )
 
-        var imageBackgroundColor = GetValue(config, 'imageBackgroundColor', 0x555555);
-        var imageContainerBackground = CreateBackground(scene, imageBackgroundColor);
+        var imageBackgroundConfig = {
+            color: GetValue(config, 'imageBackgroundColor', 0x555555)
+        }
+        var imageContainerBackground = CreateBackground(scene, imageBackgroundConfig);
         imageContainer.addBackground(imageContainerBackground);
 
         // Outline graphics
