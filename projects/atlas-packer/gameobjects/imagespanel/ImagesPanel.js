@@ -14,10 +14,9 @@ class ImagesPanel extends OverlapSizer {
         super(scene, config);
 
         // Background
-        var backgroundConfig = {
+        var background = CreateBackground(scene, {
             color: GetValue(config, 'backgroundColor', 0x333333)
-        }
-        var background = CreateBackground(scene, backgroundConfig);
+        });
         this.addBackground(background);
 
         // Image drop zone
@@ -31,10 +30,9 @@ class ImagesPanel extends OverlapSizer {
             { align: 'center', expand: false }
         )
 
-        var imageBackgroundConfig = {
+        var imageContainerBackground = CreateBackground(scene, {
             color: GetValue(config, 'imageBackgroundColor', 0x555555)
-        }
-        var imageContainerBackground = CreateBackground(scene, imageBackgroundConfig);
+        });
         imageContainer.addBackground(imageContainerBackground);
 
         // Outline graphics
