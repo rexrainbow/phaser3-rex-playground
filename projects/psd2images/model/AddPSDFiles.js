@@ -1,44 +1,69 @@
 import PSD from '../lib/psd-standalone.js';
-import WaitEvents from '../../../../phaser3-rex-notes/plugins/waitevents.js';
 
 var AddPSDFiles = function (files) {
-    var waitEvents = new WaitEvents(function () {
-        debugger;
-    });
-
+    // Get layers from psd files
+    var layers = [];
+    var tasks = [];
     for (var i = 0, cnt = files.length; i < cnt; i++) {
-        AddPSDFile.call(this, files[i]).then(waitEvents.waitCallback())
+        var task = LoadPSDPromise(files[i])
+            .then(function (psd) {
+                layers.push(...GetLayers(psd))
+            })
+
+        tasks.push(task);
     }
 
-    return this
+    // Add layers to imageDataList
+    var imageDataList = this.imageDataList;
+    Promise.all(tasks)
+        .then(function () {
+            for (var i = 0, cnt = layers.length; i < cnt; i++) {
+                var layer = layers[i];
+                var sn = 1;
+                while (imageDataList.getByName(layer.name)) {
+                    layer.name = `${layer.key}.${sn}`;
+                    sn++;
+                }
+                imageDataList.add(layer);
+            }
+
+        })
+
+    return this;
 }
 
-var AddPSDFile = function (file) {
+var LoadPSDPromise = function (file) {
     var url = URL.createObjectURL(file);
     return PSD.fromURL(url)
         .then(function (psd) {
             URL.revokeObjectURL(url);
-
-            psd.parse();
-            psd.tree().descendants().forEach(function (node) {
-                if (node.isGroup()) {
-                    return true;
-                }
-
-                var layerData = {
-                    name: node.name,
-                    width: node.width,
-                    height: node.height,
-                    left: node.left,
-                    right: node.right,
-                    top: node.top,
-                    bottom: node.bottom,
-                    image: node.layer.image
-                    // image.width(), image.height(), image.pixelData
-                }
-                console.log(layerData);
-            });
+            return Promise.resolve(psd);
         })
 }
+
+var GetLayers = function (psd) {
+    var layers = [];
+
+    psd.parse();
+    psd.tree().descendants().forEach(function (node) {
+        if (node.isGroup()) {
+            return true;
+        }
+
+        var layer = {
+            name: node.name, key: node.name,
+
+            width: node.width, height: node.height,
+            left: node.left, right: node.right, top: node.top, bottom: node.bottom,
+
+            image: node.layer.image
+            // image.width(), image.height(), image.pixelData
+        }
+        layers.push(layer)
+    });
+
+    return layers;
+}
+
 
 export default AddPSDFiles;
