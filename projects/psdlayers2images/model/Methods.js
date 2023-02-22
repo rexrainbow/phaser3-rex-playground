@@ -1,10 +1,10 @@
 import AddPSDFiles from './AddPSDFiles.js';
-import ClearImages from './ClearImages.js';
+import ClearLayerList from './ClearLayerList.js';
 import GenerateOutput from './output/GenerateOutput.js';
 
 var Methods = {
     addPSDFiles: AddPSDFiles,
-    clearImages: ClearImages,
+    clearLayerList: ClearLayerList,
     generateOutput: GenerateOutput,
 }
 

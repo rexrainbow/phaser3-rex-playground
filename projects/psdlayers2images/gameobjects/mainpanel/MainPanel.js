@@ -37,7 +37,7 @@ class MainPanel extends OverlapSizer {
                 .once('addlayers', function () {
                     model.generateOutput();
                 })
-                .clearImages()
+                .clearLayerList()
                 .addPSDFiles(files)
 
         });

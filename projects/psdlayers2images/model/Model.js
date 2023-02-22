@@ -13,7 +13,7 @@ class Model extends EE {
     }
 
     destroy() {
-        this.layerList.removeAll();
+        this.clearLayerList();
         this.layerList = null;
 
         super.destroy();

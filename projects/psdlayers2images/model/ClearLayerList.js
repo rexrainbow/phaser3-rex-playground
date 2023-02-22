@@ -1,6 +1,6 @@
 const CanvasPool = Phaser.Display.Canvas.CanvasPool;
 
-var ClearImages = function () {
+var ClearLayerList = function () {
     var layers = this.layerList.list;
     for (var i = 0, cnt = layers.length; i < cnt; i++) {
         var layer = layers[i];
@@ -12,4 +12,4 @@ var ClearImages = function () {
     return this;
 }
 
-export default ClearImages;
+export default ClearLayerList;
