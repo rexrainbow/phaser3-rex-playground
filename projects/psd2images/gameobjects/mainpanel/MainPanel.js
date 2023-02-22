@@ -4,7 +4,7 @@ import CreatePSDDropZone from '../builders/CreatePSDDropZone.js';
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
-class SimpleMainPanel extends OverlapSizer {
+class MainPanel extends OverlapSizer {
     constructor(scene, configObj, model) {
         var config = configObj.cloneValue('.');
 
@@ -38,4 +38,4 @@ class SimpleMainPanel extends OverlapSizer {
     }
 }
 
-export default SimpleMainPanel;
+export default MainPanel;
