@@ -8,9 +8,9 @@ var GenerateOutput = function (scene, fileName) {
         fileName = 'sprites';
     }
     var imageDataArray = this.imageDataList.list;
-    var promiseJSONData = GenerateJSONDataBlob(scene, imageDataArray);
+    var promiseJSONDataBlob = GenerateJSONDataBlob(scene, imageDataArray);
     var promiseImageBlob = GenerateImageBlob(scene, imageDataArray);
-    Promise.all([promiseJSONData, promiseImageBlob])
+    Promise.all([promiseJSONDataBlob, promiseImageBlob])
         .then(function (values) {
             var zip = new JSZip();
             zip.file(`${fileName}.json`, values[0]);

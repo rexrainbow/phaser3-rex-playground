@@ -9,12 +9,12 @@ class Model extends EE {
 
         this.scene = scene;
 
-        this.imageDataList = new List();
+        this.layerList = new List();
     }
 
     destroy() {
-        this.imageDataList.removeAll();
-        this.imageDataList = null;
+        this.layerList.removeAll();
+        this.layerList = null;
 
         super.destroy();
     }

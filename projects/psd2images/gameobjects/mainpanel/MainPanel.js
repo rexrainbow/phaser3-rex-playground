@@ -34,8 +34,12 @@ class MainPanel extends OverlapSizer {
 
         psdDropZone.on('drop.psd', function (files) {
             model
+                .once('addlayers', function () {
+                    model.generateOutput();
+                })
                 .clearImages()
                 .addPSDFiles(files)
+
         });
     }
 }

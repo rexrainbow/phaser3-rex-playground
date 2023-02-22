@@ -1,4 +1,5 @@
 import PSD from '../lib/psd-standalone.js';
+import CreateLayerData from './CreateLayerData.js';
 
 var AddPSDFiles = function (files) {
     // Get layers from psd files
@@ -13,20 +14,22 @@ var AddPSDFiles = function (files) {
         tasks.push(task);
     }
 
-    // Add layers to imageDataList
-    var imageDataList = this.imageDataList;
+    // Add layers to layerList
+    var layerList = this.layerList;
+    var self = this;
     Promise.all(tasks)
         .then(function () {
             for (var i = 0, cnt = layers.length; i < cnt; i++) {
                 var layer = layers[i];
                 var sn = 1;
-                while (imageDataList.getByName(layer.name)) {
+                while (layerList.getByName(layer.name)) {
                     layer.name = `${layer.key}.${sn}`;
                     sn++;
                 }
-                imageDataList.add(layer);
+                layerList.add(layer);
             }
 
+            self.emit('addlayers', layers);
         })
 
     return this;
@@ -50,20 +53,10 @@ var GetLayers = function (psd) {
             return true;
         }
 
-        var layer = {
-            name: node.name, key: node.name,
-
-            width: node.width, height: node.height,
-            left: node.left, right: node.right, top: node.top, bottom: node.bottom,
-
-            image: node.layer.image
-            // image.width(), image.height(), image.pixelData
-        }
-        layers.push(layer)
+        layers.push(CreateLayerData(node));
     });
 
     return layers;
 }
-
 
 export default AddPSDFiles;

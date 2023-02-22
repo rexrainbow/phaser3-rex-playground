@@ -12,7 +12,7 @@ class Model extends EE {
     }
 
     destroy() {
-        this.imageDataList.removeAll();
+        this.clearImages();
         this.imageDataList = null;
 
         super.destroy();
