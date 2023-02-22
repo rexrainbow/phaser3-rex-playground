@@ -2,13 +2,14 @@ import PSD from '../lib/psd-standalone.js';
 import CreateLayerData from './CreateLayerData.js';
 
 var AddPSDFiles = function (files) {
+    var self = this;
     // Get layers from psd files
     var layers = [];
     var tasks = [];
     for (var i = 0, cnt = files.length; i < cnt; i++) {
         var task = LoadPSDPromise(files[i])
             .then(function (psd) {
-                layers.push(...GetLayers(psd))
+                layers.push(...GetLayers.call(self, psd))
             })
 
         tasks.push(task);
@@ -23,7 +24,7 @@ var AddPSDFiles = function (files) {
                 var layer = layers[i];
                 var sn = 1;
                 while (layerList.getByName(layer.name)) {
-                    layer.name = `${layer.key}.${sn}`;
+                    layer.name = `${layer.baseName}.${sn}`;
                     sn++;
                 }
                 layerList.add(layer);
@@ -45,6 +46,7 @@ var LoadPSDPromise = function (file) {
 }
 
 var GetLayers = function (psd) {
+    var self = this;
     var layers = [];
 
     psd.parse();
@@ -53,7 +55,8 @@ var GetLayers = function (psd) {
             return true;
         }
 
-        layers.push(CreateLayerData(node));
+        layers.push(CreateLayerData.call(self, node));
+        // Image of layer will be added to texture manager
     });
 
     return layers;
