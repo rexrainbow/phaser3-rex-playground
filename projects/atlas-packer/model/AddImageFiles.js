@@ -1,5 +1,4 @@
 import GetFileName from '../utils/GetFileName.js';
-import WaitEvents from '../../../../phaser3-rex-notes/plugins/waitevents.js';
 import FileObjectToCache from '../../../../phaser3-rex-notes/plugins/utils/loader/FileObjectToCache';
 import CreateImageData from './CreateImageData.js';
 
@@ -16,12 +15,7 @@ var AddImageFiles = function (files) {
 
     var newImageDataArray = [];
 
-    var waitEvents = new WaitEvents(function () {
-        self.emit('addimages', newImageDataArray, self.imageDataList.list);
-
-        self.emit('postupdateimages');
-    });
-
+    var tasks = [];
     var scene = this.scene;
     for (var i = 0, cnt = files.length; i < cnt; i++) {
         var file = files[i];
@@ -34,11 +28,22 @@ var AddImageFiles = function (files) {
         this.imageDataList.add(imageData);
         newImageDataArray.push(imageData);
 
-        FileObjectToCache(scene, file, 'image', key, undefined, waitEvents.waitCallback());
-
+        tasks.push(FileObjectToCachePromise(scene, file, 'image', key));
     }
 
+    Promise.all(tasks)
+        .then(function () {
+            self.emit('addimages', newImageDataArray, self.imageDataList.list);
+            self.emit('postupdateimages');
+        })
+
     return this;
+}
+
+var FileObjectToCachePromise = function (scene, file, loaderType, key, cacheType) {
+    return new Promise(function (resolve, reject) {
+        FileObjectToCache(scene, file, loaderType, key, cacheType, resolve);
+    })
 }
 
 export default AddImageFiles;
