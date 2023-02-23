@@ -1,9 +1,7 @@
 var GenerateImageBlobArray = function (layerList) {
-    var tasks = [];
-    var textures = this.scene.textures;
+    var tasks = [];    
     for (var i = 0, cnt = layerList.length; i < cnt; i++) {
-        // Get canvas from texture manager
-        let canvas = textures.get(layerList[i].key).getCanvas();
+        let canvas = layerList[i].canvas;
         var task = new Promise(function (resolve, reject) {
             canvas.toBlob(function (blob) {
                 resolve(blob);

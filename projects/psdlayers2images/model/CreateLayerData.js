@@ -1,11 +1,9 @@
-const UUID = Phaser.Utils.String.UUID;
+const CanvasPool = Phaser.Display.Canvas.CanvasPool;
 
 var CreateLayerData = function (node) {
-    // this: model
     var layerData = {
         name: node.name,
-        baseName: node.name,
-        key: UUID(),
+        key: node.name,
 
         width: node.width,
         height: node.height,
@@ -13,31 +11,24 @@ var CreateLayerData = function (node) {
         right: node.right,
         top: node.top,
         bottom: node.bottom,
-    }
 
-    AddImageToTextureCache.call(
-        this,
-        layerData.key,
-        node.layer.image.pixelData,
-        node.width, node.height
-    );
+        // Run `CanvasPool.remove(canvas)` to free this canvas object
+        canvas: GetImageCanvas(node.layer.image.pixelData, node.width, node.height),
+    }
 
     return layerData;
 }
 
-var AddImageToTextureCache = function (key, pixelData, width, height) {
-    // this: model
-    var texture = this.scene.textures.createCanvas(key, width, height);
-
-    var context = texture.getContext();
+var GetImageCanvas = function (pixelData, width, height) {
+    var canvas = CanvasPool.create(null, width, height, undefined, true);
+    var context = canvas.getContext('2d');
     var imageData = context.getImageData(0, 0, width, height);
     var canvasPixelData = imageData.data;
     for (var i = 0, cnt = pixelData.length; i < cnt; i++) {
         canvasPixelData[i] = pixelData[i];
     }
     context.putImageData(imageData, 0, 0);
-
-    texture.refresh();
+    return canvas;
 }
 
 export default CreateLayerData;

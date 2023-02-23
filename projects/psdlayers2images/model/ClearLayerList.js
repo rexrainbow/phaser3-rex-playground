@@ -1,8 +1,11 @@
+const CanvasPool = Phaser.Display.Canvas.CanvasPool;
+
 var ClearLayerList = function () {
     var layers = this.layerList.list;
-    var textures = this.scene.textures;
     for (var i = 0, cnt = layers.length; i < cnt; i++) {
-        textures.remove(layers[i].key);
+        var layer = layers[i];
+        CanvasPool.remove(layer.canvas);
+        layer.canvas = null;
     }
 
     this.layerList.removeAll();

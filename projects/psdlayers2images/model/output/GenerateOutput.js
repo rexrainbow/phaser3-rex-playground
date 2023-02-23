@@ -5,8 +5,8 @@ import { saveAs } from 'file-saver';
 
 var GenerateOutput = function () {
     var layerList = this.layerList.list;
-    var promiseJSONDataBlob = GenerateJSONDataBlob.call(this, layerList);
-    var promiseImageBlobArray = GenerateImageBlobArray.call(this, layerList);
+    var promiseJSONDataBlob = GenerateJSONDataBlob(layerList);
+    var promiseImageBlobArray = GenerateImageBlobArray(layerList);
     Promise.all([promiseJSONDataBlob, ...promiseImageBlobArray])
         .then(function (blobArray) {
             var zip = new JSZip();
