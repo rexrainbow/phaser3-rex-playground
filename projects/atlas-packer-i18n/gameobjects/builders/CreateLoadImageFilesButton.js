@@ -19,8 +19,9 @@ var CreateLoadImageFilesButton = function (scene, configObj, model) {
             model.addImageFiles(files);
         });
 
-    var translation = new TextTranslation(button);
-    translation.setText('import');
+    var translation = new TextTranslation(button, {
+        translationKey: 'import'
+    });
 
     return button;
 }

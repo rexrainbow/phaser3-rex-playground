@@ -15,8 +15,9 @@ var CreateClearImagesButton = function (scene, configObj, model) {
             model.clearImages();
         });
 
-    var translation = new TextTranslation(button);
-    translation.setText('clear');
+    var translation = new TextTranslation(button, {
+        translationKey: 'clear'
+    });
 
     return button;
 }

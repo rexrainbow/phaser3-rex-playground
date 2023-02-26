@@ -3,6 +3,7 @@ import { SCENE_BOOT, SCENE_APP } from './const.js';
 import PixelationEffect from '../effects/PixelationEffect.js';
 import i18next from 'i18next';
 import Backend from 'i18next-http-backend';
+import yaml from 'js-yaml';
 import TextTranslation from '../../../../phaser3-rex-notes/plugins/texttranslation.js';
 import Awaitloader from '../../../../phaser3-rex-notes/plugins/awaitloader.js';
 import WebFontLoader from '../../../../phaser3-rex-notes/plugins/webfontloader.js';
@@ -17,25 +18,9 @@ class Boot extends Phaser.Scene {
     }
 
     preload() {
-        Awaitloader.call(this.load, function (successCallback, failureCallback) {
-            i18next
-                .use(Backend)
-                .init({
-                    lng: 'zh-tw',  // 'en', 'zh-tw'
-                    ns: 'ui',
-                    debug: true,
-                    backend: {
-                        loadPath: '/assets/locales/{{lng}}/{{ns}}.json'
-                    },
-                }, successCallback);
-        })
-        TextTranslation.setI18Next(i18next);
+        SetupI18Next(this);
+        LoadWebFont(this);
 
-        WebFontLoader.call(this.load, {
-            google: {
-                families: [FONTFAMILY]
-            }
-        });
     }
 
     create() {
@@ -51,6 +36,32 @@ class Boot extends Phaser.Scene {
     }
 
     update() { }
+}
+
+var SetupI18Next = function (scene) {
+    Awaitloader.call(scene.load, function (successCallback, failureCallback) {
+        i18next
+            .use(Backend)
+            .init({
+                lng: 'zh-tw',  // 'en', 'zh-tw'
+                ns: 'ui',
+                debug: true,
+                backend: {
+                    loadPath: '/assets/locales/{{lng}}/{{ns}}.yaml',
+                    parse: function (data) { return yaml.load(data) },
+
+                },
+            }, successCallback);
+    })
+    TextTranslation.setI18Next(i18next);
+}
+
+var LoadWebFont = function (scene) {
+    WebFontLoader.call(scene.load, {
+        google: {
+            families: [FONTFAMILY]
+        }
+    });
 }
 
 export default Boot;

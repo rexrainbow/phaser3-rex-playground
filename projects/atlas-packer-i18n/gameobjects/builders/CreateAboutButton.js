@@ -29,8 +29,9 @@ var CreateAboutButton = function (scene, configObj, model) {
 
         });
 
-    var translation = new TextTranslation(button);
-    translation.setText('about');
+    var translation = new TextTranslation(button, {
+        translationKey: 'about'
+    });
 
     return button;
 }
@@ -41,18 +42,19 @@ var CreateAboutDialog = function (scene, configObj) {
     var dialog = new ConfirmDialog(scene, config)
     scene.add.existing(dialog);
 
-    dialog
-        .resetDisplayContent({
-            title: 'About',
-            content: AboutDialogContent,
-            buttonA: 'Close'
-        })
+    dialog.resetDisplayContent();
 
-    var translation = new TextTranslation(dialog.getElement('title'));
-    translation.setText('about');
+    var translation = new TextTranslation(dialog.getElement('title'), {
+        translationKey: 'about-dialog.title'
+    });
 
-    var translation = new TextTranslation(dialog.getElement('buttonA'));
-    translation.setText('close');
+    var translation = new TextTranslation(dialog.getElement('content'), {
+        translationKey: 'about-dialog.content'
+    });
+
+    var translation = new TextTranslation(dialog.getElement('buttonA'), {
+        translationKey: 'about-dialog.close'
+    });
 
     return dialog;
 }

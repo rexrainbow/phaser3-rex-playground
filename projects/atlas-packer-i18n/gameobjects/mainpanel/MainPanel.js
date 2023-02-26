@@ -62,8 +62,9 @@ class MainPanel extends OverlapSizer {
             placeholder,
             { align: 'center', expand: false }
         )
-        var translation = new TextTranslation(placeholder);
-        translation.setText('placeholder');
+        var translation = new TextTranslation(placeholder, {
+            translationKey: 'placeholder'
+        });
 
         this.addChildrenMap('imageDropZone', imageDropZone);
         this.addChildrenMap('imageContainer', imageContainer);

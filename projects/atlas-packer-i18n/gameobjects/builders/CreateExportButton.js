@@ -15,8 +15,9 @@ var CreateExportButton = function (scene, configObj, model) {
             model.generateOutput(scene);
         });
 
-    var translation = new TextTranslation(button);
-    translation.setText('export');
+    var translation = new TextTranslation(button, {
+        translationKey: 'export'
+    });
 
     return button;
 }
