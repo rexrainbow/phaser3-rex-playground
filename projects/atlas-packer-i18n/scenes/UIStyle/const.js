@@ -1,0 +1,18 @@
+const COLOR_PRIMARY = 0x4e342e;
+const COLOR_LIGHT = 0x7b5e57;
+const COLOR_DARK = 0x260e04;
+
+const FONTSIZE_XL = 36;
+const FONTSIZE_L = 30;
+const FONTSIZE_M = 24;
+const FONTSIZE_S = 20;
+
+const FONTFAMILY = 'Indie Flower'
+
+export {
+    COLOR_PRIMARY, COLOR_LIGHT, COLOR_DARK,
+
+    FONTSIZE_XL, FONTSIZE_L, FONTSIZE_M, FONTSIZE_S,
+
+    FONTFAMILY
+}

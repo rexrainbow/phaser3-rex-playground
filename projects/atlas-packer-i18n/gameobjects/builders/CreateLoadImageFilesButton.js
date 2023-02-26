@@ -1,0 +1,28 @@
+import { FileSelectorButton } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
+import BuildDisplayLabelConfig from '../../../../../phaser3-rex-notes/templates/ui/utils/build/BuildDisplayLabelConfig.js';
+import TextTranslation from '../../../../../phaser3-rex-notes/plugins/texttranslation.js';
+
+var CreateLoadImageFilesButton = function (scene, configObj, model) {
+    var config = configObj.cloneValue('.');
+    config = BuildDisplayLabelConfig(scene, config);
+    var button = new FileSelectorButton(scene, config);
+    scene.add.existing(button);
+
+    button
+        .resetDisplayContent({
+            icon: 'sprites', iconFrame: 'add',
+            text: 'Import'
+        })
+        .setAccept('image/*')
+        .setMultiple(true)
+        .on('select', function (files) {
+            model.addImageFiles(files);
+        });
+
+    var translation = new TextTranslation(button);
+    translation.setText('import');
+
+    return button;
+}
+
+export default CreateLoadImageFilesButton;
