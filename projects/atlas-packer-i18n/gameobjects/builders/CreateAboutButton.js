@@ -1,4 +1,5 @@
 import { SimpleLabel, ConfirmDialog } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
+import TextTranslation from '../../../../../phaser3-rex-notes/plugins/texttranslation.js';
 
 var CreateAboutButton = function (scene, configObj, model) {
     var config = configObj.cloneValue('.');
@@ -28,6 +29,9 @@ var CreateAboutButton = function (scene, configObj, model) {
 
         });
 
+    var translation = new TextTranslation(button);
+    translation.setText('about');
+
     return button;
 }
 
@@ -43,6 +47,12 @@ var CreateAboutDialog = function (scene, configObj) {
             content: AboutDialogContent,
             buttonA: 'Close'
         })
+
+    var translation = new TextTranslation(dialog.getElement('title'));
+    translation.setText('about');
+
+    var translation = new TextTranslation(dialog.getElement('buttonA'));
+    translation.setText('close');
 
     return dialog;
 }

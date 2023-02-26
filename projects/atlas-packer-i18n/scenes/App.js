@@ -1,10 +1,7 @@
 import phaser from '../lib/phaser.js';
 import { SCENE_APP } from './const.js';
-import UIStyle from './UIStyle/UIStyle.js';
-import { FONTFAMILY } from './UIStyle/const.js';
+import UIStyle from './UIStyle/UIStyle.js';;
 import CreateApp from '../app/CreateApp.js';
-import WebFontLoader from '../../../../phaser3-rex-notes/plugins/webfontloader.js';
-
 
 class App extends Phaser.Scene {
     constructor() {
@@ -16,11 +13,6 @@ class App extends Phaser.Scene {
 
     preload() {
         this.load.atlas('sprites', 'assets/images/sprites.png', 'assets/images/sprites.json');
-        WebFontLoader.call(this.load, {
-            google: {
-                families: [FONTFAMILY]
-            }
-        });
     }
 
     create() {

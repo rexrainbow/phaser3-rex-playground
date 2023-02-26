@@ -3,6 +3,7 @@ import CreateBackground from '../../../../../phaser3-rex-notes/templates/ui/util
 import CreateImageDropZone from '../builders/CreateImageDropZone.js';
 import CreateImageContainer from '../builders/CreateImageContainer.js';
 import Methods from './Methods.js';
+import TextTranslation from '../../../../../phaser3-rex-notes/plugins/texttranslation.js';
 // import OnUpdateImages from './OnUpdateImages.js';
 
 const GetValue = Phaser.Utils.Objects.GetValue;
@@ -55,13 +56,14 @@ class MainPanel extends OverlapSizer {
         this.pin(imageMarkerGraphics, false);
 
         // PlaceHolder text
-        var placeHolderContent = 'Drag & drop image files here';
         var placeHolderStyle = GetValue(config, 'placeHolder');
-        var placeholder = scene.add.text(0, 0, placeHolderContent, placeHolderStyle).setOrigin(0.5);
+        var placeholder = scene.add.text(0, 0, '', placeHolderStyle).setOrigin(0.5);
         this.add(
             placeholder,
             { align: 'center', expand: false }
         )
+        var translation = new TextTranslation(placeholder);
+        translation.setText('placeholder');
 
         this.addChildrenMap('imageDropZone', imageDropZone);
         this.addChildrenMap('imageContainer', imageContainer);

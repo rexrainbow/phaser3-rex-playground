@@ -1,5 +1,9 @@
 {
     "clear": "Clear",
     "export": "Export",
-    "import": "Import"
+    "import": "Import",
+    "about": "About",
+    "close": "Close",
+
+    "placeholder": "Drag & drop image files here"
 }
