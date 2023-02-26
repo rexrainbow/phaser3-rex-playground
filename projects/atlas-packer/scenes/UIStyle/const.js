@@ -7,7 +7,7 @@ const FONTSIZE_L = 30;
 const FONTSIZE_M = 24;
 const FONTSIZE_S = 20;
 
-const FONTFAMILY = 'Indie Flower'
+const FONTFAMILY = 'Open Sans'
 
 export {
     COLOR_PRIMARY, COLOR_LIGHT, COLOR_DARK,
