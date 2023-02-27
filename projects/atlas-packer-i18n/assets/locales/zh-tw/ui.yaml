@@ -4,7 +4,7 @@ import: 匯入
 about: 關於
 about-dialog:
     title: 關於
-    content: |
+    content: |-
         Phaser3 遊戲引擎的圖片打包工具。
 
         函示庫:
@@ -14,3 +14,5 @@ about-dialog:
         [u][url=https://github.com/rexrainbow/phaser3-rex-playground/tree/master/projects/atlas-packer-i18n]原始碼[/url][/u]
     close: 關閉
 placeholder: 拖曳圖片檔案至此
+status: |-
+    {{imageCount}} 張圖, {{textureWidth}} x {{textureHeight}}

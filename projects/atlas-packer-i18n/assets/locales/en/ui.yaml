@@ -4,7 +4,7 @@ import: Import
 about: About
 about-dialog:
     title: About
-    content: |
+    content: |-
         An atlas packer for phaser3 game engine.
 
         Libraries:
@@ -14,3 +14,5 @@ about-dialog:
         [u][url=https://github.com/rexrainbow/phaser3-rex-playground/tree/master/projects/atlas-packer-i18n]Source code[/url][/u]
     close: Close
 placeholder: Drag & drop image files here
+status: |-
+    {{imageCount}} images, {{textureWidth}} x {{textureHeight}}
