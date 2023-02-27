@@ -1,6 +1,9 @@
 clear: Clear
+
 export: Export
+
 import: Import
+
 about: About
 about-dialog:
     title: About
@@ -13,6 +16,19 @@ about-dialog:
         - [u][url=https://github.com/mapbox/potpack]potpack[/url][/u]
         [u][url=https://github.com/rexrainbow/phaser3-rex-playground/tree/master/projects/atlas-packer-i18n]Source code[/url][/u]
     close: Close
+
 placeholder: Drag & drop image files here
+
+imageData:
+    name: Name
+    x: Top-left X
+    y: Top-left y
+    width: Width
+    height: Height
+
+imagePanelSetting:
+    color: Color
+    outline: Outline
+
 status: |-
     {{imageCount}} images, {{textureWidth}} x {{textureHeight}}

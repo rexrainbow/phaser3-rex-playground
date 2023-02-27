@@ -1,5 +1,6 @@
 import { Tweaker } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
 import CreateImageIcon from '../builders/CreateImageIcon.js';
+import TextTranslation from '../../../../../phaser3-rex-notes/plugins/texttranslation.js';
 
 class ImageDataPanel extends Tweaker {
     constructor(scene, configObj, model) {
@@ -27,30 +28,35 @@ class ImageDataPanel extends Tweaker {
                     onValueChange(newValue, oldValue) {
                         model.changeImageName(oldValue, newValue);
                     },
+                    key: 'name'
                 }
             )
             .addInput(target, 'x',
                 {
                     view: 'number',
-                    inputTextReadOnly: true  // Uneditable
+                    inputTextReadOnly: true,  // Uneditable
+                    key: 'x'
                 }
             )
             .addInput(target, 'y',
                 {
                     view: 'number',
-                    inputTextReadOnly: true  // Uneditable
+                    inputTextReadOnly: true,  // Uneditable
+                    key: 'y'
                 }
             )
             .addInput(target, 'width',
                 {
                     view: 'number',
-                    inputTextReadOnly: true  // Uneditable
+                    inputTextReadOnly: true,  // Uneditable
+                    key: 'width'
                 }
             )
             .addInput(target, 'height',
                 {
                     view: 'number',
-                    inputTextReadOnly: true  // Uneditable
+                    inputTextReadOnly: true,  // Uneditable
+                    key: 'height'
                 }
             )
 
@@ -72,6 +78,22 @@ class ImageDataPanel extends Tweaker {
                 this.setBindingTarget(target);
             }, this)
 
+
+        var translation = new TextTranslation(this.getElement('name.title'), {
+            translationKey: 'imageData.name'
+        });
+        var translation = new TextTranslation(this.getElement('x.title'), {
+            translationKey: 'imageData.x'
+        });
+        var translation = new TextTranslation(this.getElement('y.title'), {
+            translationKey: 'imageData.y'
+        });
+        var translation = new TextTranslation(this.getElement('width.title'), {
+            translationKey: 'imageData.width'
+        });
+        var translation = new TextTranslation(this.getElement('height.title'), {
+            translationKey: 'imageData.height'
+        });
     }
 
     setBindingTarget(imageData) {

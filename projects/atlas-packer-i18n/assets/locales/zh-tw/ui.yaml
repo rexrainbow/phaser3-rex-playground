@@ -1,6 +1,9 @@
 clear: 清除
+
 export: 匯出
+
 import: 匯入
+
 about: 關於
 about-dialog:
     title: 關於
@@ -13,6 +16,19 @@ about-dialog:
         - [u][url=https://github.com/mapbox/potpack]potpack[/url][/u]
         [u][url=https://github.com/rexrainbow/phaser3-rex-playground/tree/master/projects/atlas-packer-i18n]原始碼[/url][/u]
     close: 關閉
+
 placeholder: 拖曳圖片檔案至此
+
+imageData:
+    name: 名稱
+    x: 左上X
+    y: 左上y
+    width: 寬
+    height: 高
+
+imagePanelSetting:
+    color: 背景色
+    outline: 外框
+
 status: |-
     {{imageCount}} 張圖, {{textureWidth}} x {{textureHeight}}
