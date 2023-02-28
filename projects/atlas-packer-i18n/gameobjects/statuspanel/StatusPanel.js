@@ -14,9 +14,7 @@ class StatusPanel extends SimpleLabel {
 
     showStatus(mainPanel) {
         this.translation
-            .updateInterpolation('imageCount', mainPanel.imageCount)
-            .updateInterpolation('textureWidth', mainPanel.textureWidth)
-            .updateInterpolation('textureHeight', mainPanel.textureHeight)
+            .setInterpolation(mainPanel)
             .updateText();
 
         return this;
