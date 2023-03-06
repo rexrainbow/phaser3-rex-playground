@@ -1,4 +1,4 @@
-import { FileSelectorButton } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
+import { FileSelectorButton as Base } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
 import BuildLabelConfig from '../../../../../phaser3-rex-notes/templates/ui/utils/build/BuildLabelConfig.js';
 
 var CreateLoadImageFilesButton = function (scene, configObj, model) {
@@ -26,5 +26,17 @@ var CreateLoadImageFilesButton = function (scene, configObj, model) {
 
     return button;
 }
+
+class FileSelectorButton extends Base {
+    setHoverState(enable) {
+        var background = this.childrenMap.background;
+        if (background && background.setHoverState) {
+            background.setHoverState(enable);
+        }
+
+        return this;
+    }
+}
+
 
 export default CreateLoadImageFilesButton;
