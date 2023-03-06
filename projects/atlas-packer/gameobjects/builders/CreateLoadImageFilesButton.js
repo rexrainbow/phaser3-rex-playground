@@ -1,4 +1,4 @@
-import { FileSelectorButton as Base } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
+import { FileSelectorButton } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
 import BuildLabelConfig from '../../../../../phaser3-rex-notes/templates/ui/utils/build/BuildLabelConfig.js';
 
 var CreateLoadImageFilesButton = function (scene, configObj, model) {
@@ -18,25 +18,13 @@ var CreateLoadImageFilesButton = function (scene, configObj, model) {
             model.addImageFiles(files);
         })
         .on('pointerover', function () {
-            button.setHoverState(true);
+            button.getElement('background').setHoverState(true);
         })
         .on('pointerout', function () {
-            button.setHoverState(false);
+            button.getElement('background').setHoverState(false);
         })
 
     return button;
 }
-
-class FileSelectorButton extends Base {
-    setHoverState(enable) {
-        var background = this.childrenMap.background;
-        if (background && background.setHoverState) {
-            background.setHoverState(enable);
-        }
-
-        return this;
-    }
-}
-
 
 export default CreateLoadImageFilesButton;
