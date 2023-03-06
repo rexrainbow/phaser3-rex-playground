@@ -17,6 +17,8 @@ var CreateLoadImageFilesButton = function (scene, configObj, model) {
         .on('select', function (files) {
             model.addImageFiles(files);
         })
+        // Hover state
+        .setInteractive()
         .on('pointerover', function () {
             button.getElement('background').setHoverState(true);
         })

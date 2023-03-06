@@ -14,6 +14,14 @@ var config = {
     dom: {
         createContainer: true
     },
+    input: {
+        mouse: {
+            target: 'game'
+        },
+        touch: {
+            target: 'game'
+        }
+    },
     plugins: {},
     scene: [Boot, App],
 };
