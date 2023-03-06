@@ -12,7 +12,13 @@ var CreateExportButton = function (scene, configObj, model) {
         })
         .onClick(function () {
             model.generateOutput(scene);
-        });
+        })
+        .on('pointerover', function () {
+            button.setHoverState(true);
+        })
+        .on('pointerout', function () {
+            button.setHoverState(false);
+        })
 
     return button;
 }

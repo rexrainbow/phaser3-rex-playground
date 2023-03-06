@@ -25,9 +25,13 @@ var CreateAboutButton = function (scene, configObj, model) {
                 .then(function () {
                     topSizer.emit('modal.close');
                 });
-
-
-        });
+        })
+        .on('pointerover', function () {
+            button.setHoverState(true);
+        })
+        .on('pointerout', function () {
+            button.setHoverState(false);
+        })
 
     var translation = new TextTranslation(button, {
         translationKey: 'about'

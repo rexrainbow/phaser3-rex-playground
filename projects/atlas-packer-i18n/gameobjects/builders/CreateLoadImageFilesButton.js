@@ -1,10 +1,10 @@
 import { FileSelectorButton } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
-import BuildDisplayLabelConfig from '../../../../../phaser3-rex-notes/templates/ui/utils/build/BuildDisplayLabelConfig.js';
+import BuildLabelConfig from '../../../../../phaser3-rex-notes/templates/ui/utils/build/BuildLabelConfig.js';
 import TextTranslation from '../../../../../phaser3-rex-notes/plugins/texttranslation.js';
 
 var CreateLoadImageFilesButton = function (scene, configObj, model) {
     var config = configObj.cloneValue('.');
-    config = BuildDisplayLabelConfig(scene, config);
+    config = BuildLabelConfig(scene, config);
     var button = new FileSelectorButton(scene, config);
     scene.add.existing(button);
 

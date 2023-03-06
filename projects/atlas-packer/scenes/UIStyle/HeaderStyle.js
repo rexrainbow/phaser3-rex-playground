@@ -11,7 +11,10 @@ const ButtonStyle = {
 
     background: {
         radius: 10,
-        strokeColor: COLOR_LIGHT
+        color: null,
+        strokeColor: COLOR_LIGHT,
+
+        'hover.color': COLOR_PRIMARY,
     },
     iconSize: FONTSIZE_M,
     text: {

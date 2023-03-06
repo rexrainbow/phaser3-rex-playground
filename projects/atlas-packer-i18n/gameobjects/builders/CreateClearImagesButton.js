@@ -13,7 +13,13 @@ var CreateClearImagesButton = function (scene, configObj, model) {
         })
         .onClick(function () {
             model.clearImages();
-        });
+        })
+        .on('pointerover', function () {
+            button.setHoverState(true);
+        })
+        .on('pointerout', function () {
+            button.setHoverState(false);
+        })
 
     var translation = new TextTranslation(button, {
         translationKey: 'clear'

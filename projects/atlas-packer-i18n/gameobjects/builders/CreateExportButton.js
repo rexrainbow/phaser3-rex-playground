@@ -13,7 +13,13 @@ var CreateExportButton = function (scene, configObj, model) {
         })
         .onClick(function () {
             model.generateOutput(scene);
-        });
+        })
+        .on('pointerover', function () {
+            button.setHoverState(true);
+        })
+        .on('pointerout', function () {
+            button.setHoverState(false);
+        })
 
     var translation = new TextTranslation(button, {
         translationKey: 'export'

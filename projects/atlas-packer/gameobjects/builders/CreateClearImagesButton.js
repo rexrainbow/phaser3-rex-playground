@@ -12,7 +12,13 @@ var CreateClearImagesButton = function (scene, configObj, model) {
         })
         .onClick(function () {
             model.clearImages();
-        });
+        })
+        .on('pointerover', function () {
+            button.setHoverState(true);
+        })
+        .on('pointerout', function () {
+            button.setHoverState(false);
+        })
 
     return button;
 }

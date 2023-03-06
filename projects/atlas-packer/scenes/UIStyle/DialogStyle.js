@@ -43,7 +43,9 @@ export default {
         background: {
             radius: 10,
             color: COLOR_PRIMARY,
-            strokeColor: COLOR_LIGHT
+            strokeColor: COLOR_LIGHT,
+
+            'hover.strokeColor': 0xffffff,
         },
         text: {
             fontSize: FONTSIZE_M,
