@@ -17,7 +17,15 @@ var CreateLoadImageFilesButton = function (scene, configObj, model) {
         .setMultiple(true)
         .on('select', function (files) {
             model.addImageFiles(files);
-        });
+        })
+        // Hover state
+        .setInteractive()
+        .on('pointerover', function () {
+            button.getElement('background').setHoverState(true);
+        })
+        .on('pointerout', function () {
+            button.getElement('background').setHoverState(false);
+        })
 
     var translation = new TextTranslation(button, {
         translationKey: 'import'
