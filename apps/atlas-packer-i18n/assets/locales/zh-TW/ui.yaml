@@ -1,0 +1,34 @@
+clear: 清除
+
+export: 匯出
+
+import: 匯入
+
+about: 關於
+about-dialog:
+    title: 關於
+    content: |-
+        Phaser3 遊戲引擎的圖片打包工具。
+
+        函示庫:
+        - [u][url=https://github.com/photonstorm/phaser]Phaser3 遊戲引擎[/url][/u]
+        - [u][url=https://rexrainbow.github.io/phaser3-rex-notes/docs/site/ui-overview/]RexUI[/url][/u]
+        - [u][url=https://github.com/mapbox/potpack]potpack[/url][/u]
+        [u][url=https://github.com/rexrainbow/phaser3-rex-playground/tree/master/projects/atlas-packer-i18n]原始碼[/url][/u]
+    close: 關閉
+
+placeholder: 拖曳圖片檔案至此
+
+imageData:
+    name: 名稱
+    x: 左上X
+    y: 左上y
+    width: 寬
+    height: 高
+
+imagePanelSetting:
+    color: 背景色
+    outline: 外框
+
+status: |-
+    {{imageCount}} 張圖, {{textureWidth}} x {{textureHeight}}

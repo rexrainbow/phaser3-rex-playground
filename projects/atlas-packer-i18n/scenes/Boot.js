@@ -43,7 +43,7 @@ var SetupI18Next = function (scene) {
         i18next
             .use(Backend)
             .init({
-                lng: 'zh-TW',  // 'en', 'zh-TW'
+                lng: 'en',  // 'en', 'zh-TW'
                 ns: 'ui',
                 debug: true,
                 backend: {

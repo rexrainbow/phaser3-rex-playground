@@ -2,6 +2,7 @@ import { Sizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-componen
 import CreateLoadImageFilesButton from '../builders/CreateLoadImageFilesButton.js';
 import CreateClearImagesButton from '../builders/CreateClearImagesButton.js';
 import CreateExportButton from '../builders/CreateExportButton.js';
+import CreateSelectLanguageButton from '../builders/CreateSelectLanguageButton.js';
 import CreateAboutButton from '../builders/CreateAboutButton.js';
 
 class HeaderPanel extends Sizer {
@@ -25,6 +26,9 @@ class HeaderPanel extends Sizer {
                 CreateExportButton(scene, buttonConfigObj, model)
             )
             .addSpace()
+            .add(
+                CreateSelectLanguageButton(scene, buttonConfigObj, model)
+            )
             .add(
                 CreateAboutButton(scene, buttonConfigObj, model)
             )
