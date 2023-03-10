@@ -36,11 +36,13 @@ var CreateSelectLanguageButton = function (scene, configObj, model) {
             // Close drop down list
             dropDownList.closeListPanel()
 
-            i18next.changeLanguage(button.value, function () {
+            let text = button.text,
+                value = button.value;
+            i18next.changeLanguage(value, function () {
                 // After changeLanguage completed...
 
                 // Set text
-                dropDownList.setText(button.text)
+                dropDownList.setText(text)
                 // Layout topmost sizer
                 dropDownList.getTopmostSizer().layout();
             });
