@@ -47,7 +47,7 @@ var SetupI18Next = function (scene) {
                 ns: 'ui',
                 debug: true,
                 backend: {
-                    loadPath: '/assets/locales/{{lng}}/{{ns}}.yaml',
+                    loadPath: 'assets/locales/{{lng}}/{{ns}}.yaml',
                     parse: function (data) { return yaml.load(data) },
 
                 },
