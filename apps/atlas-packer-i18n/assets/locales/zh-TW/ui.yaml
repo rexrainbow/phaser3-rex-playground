@@ -22,7 +22,7 @@ placeholder: 拖曳圖片檔案至此
 imageData:
     name: 名稱
     x: 左上X
-    y: 左上y
+    y: 左上Y
     width: 寬
     height: 高
 

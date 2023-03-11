@@ -5,10 +5,14 @@ var CreateSelectLanguageButton = function (scene, configObj, model) {
     var labelConfig = configObj.cloneValue('.');
     delete labelConfig.width; // Use min width
 
-    // var buttonConfig = configObj.clone().setRefPath().cloneValue('.');
+
+    var buttonConfig = configObj.clone().setRefPath('..dropdown').cloneValue('.');
 
     var dropDownList = new SimpleDropDownList(scene, {
         label: labelConfig,
+        button: buttonConfig,
+
+        alignParent: 'label'
     });
     scene.add.existing(dropDownList);
 
@@ -25,7 +29,7 @@ var CreateSelectLanguageButton = function (scene, configObj, model) {
 
 
     var options = [
-        { text: 'EN', value: 'en' },
+        { text: ' EN ', value: 'en' },
         { text: '繁中', value: 'zh-TW' },
     ];
 

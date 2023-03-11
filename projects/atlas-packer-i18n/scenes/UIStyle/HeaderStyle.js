@@ -23,8 +23,29 @@ const ButtonStyle = {
     }
 }
 
+const DropDownButtonStyle = {
+    space: { left: 10, right: 10, top: 10, bottom: 10, icon: 5 },
+    align: 'center',
+
+    background: {
+        color: COLOR_DARK,
+        strokeColor: null,
+        strokeWidth: 0,
+
+        'hover.strokeColor': COLOR_LIGHT,
+        'hover.strokeWidth': 3,
+    },
+    iconSize: FONTSIZE_M,
+    text: {
+        fontSize: FONTSIZE_M,
+        fontFamily: FONTFAMILY
+    },
+}
+
 export default {
     space: { item: 5 },
 
     button: ButtonStyle,
+
+    dropdown: DropDownButtonStyle
 }

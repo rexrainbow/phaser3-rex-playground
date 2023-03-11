@@ -21,8 +21,8 @@ placeholder: Drag & drop image files here
 
 imageData:
     name: Name
-    x: Top-left X
-    y: Top-left y
+    x: X
+    y: Y
     width: Width
     height: Height
 
