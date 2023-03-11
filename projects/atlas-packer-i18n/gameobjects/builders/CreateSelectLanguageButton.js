@@ -5,8 +5,8 @@ var CreateSelectLanguageButton = function (scene, configObj, model) {
     var labelConfig = configObj.cloneValue('.');
     delete labelConfig.width; // Use min width
 
-
     var buttonConfig = configObj.clone().setRefPath('..dropdown').cloneValue('.');
+    delete buttonConfig.width;
 
     var dropDownList = new SimpleDropDownList(scene, {
         label: labelConfig,
@@ -42,14 +42,20 @@ var CreateSelectLanguageButton = function (scene, configObj, model) {
 
             let text = button.text,
                 value = button.value;
-            i18next.changeLanguage(value, function () {
-                // After changeLanguage completed...
+            if (i18next.language !== value) {
+                // Change language
+                i18next.changeLanguage(value, function () {
+                    // After changeLanguage completed...
 
-                // Set text
-                dropDownList.setText(text)
-                // Layout topmost sizer
-                dropDownList.getTopmostSizer().layout();
-            });
+                    // Set text of button
+                    dropDownList.setText(text);
+                    // Layout topmost sizer
+                    dropDownList.getTopmostSizer().layout();
+                });
+            } else {
+                // Only set text of button
+                dropDownList.setText(text);
+            }
         })
         .emitButtonClick(0);
 
