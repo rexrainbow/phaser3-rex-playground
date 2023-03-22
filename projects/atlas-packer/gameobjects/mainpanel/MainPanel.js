@@ -70,9 +70,13 @@ class MainPanel extends OverlapSizer {
         this.addChildrenMap('outline', outlineGraphics);
         this.addChildrenMap('imageMarker', imageMarkerGraphics);
 
-        imageDropZone.on('drop.image', function (files) {
-            model.addImageFiles(files);
-        });
+        imageDropZone
+            .on('drop.image', function (files) {
+                model.addImageFiles(files);
+            })
+            .on('drop.atlas', function (files) {
+                model.addAtlasFiles(files);
+            })
 
         model
             .on('addimages', function (newImageDataArray, imageDataArray) {

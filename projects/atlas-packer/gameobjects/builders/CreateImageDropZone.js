@@ -3,9 +3,18 @@ import { FileDropZone } from '../../../../../phaser3-rex-notes/templates/ui/ui-c
 var CreateImageDropZone = function (scene, config, model) {
     var imageDropZone = new FileDropZone(scene, {
         filters: {
-            image: function (file) { return file.name.match(/\.(jpg|jpeg|png|gif)$/i) }
+            image: function (file, files) {
+                if (AreAltasFiles(files)) {
+                    return false;
+                }
+                return file.name.match(/\.(jpg|png)$/i)
+            },
+
+            atlas: function (file, files) {
+                return AreAltasFiles(files);
+            }
         }
-        // Fire `'drop.image'` event
+        // Fire `'drop.image'`, `'drop.atlas'` event
     })
     scene.add.existing(imageDropZone);
 
@@ -20,6 +29,25 @@ var CreateImageDropZone = function (scene, config, model) {
     });
 
     return imageDropZone;
+}
+
+var AreAltasFiles = function (files) {
+    if (files.length !== 2) {
+        return false;
+    }
+
+    var hasJSONFile = false;
+    var hasIMGFile = false;
+    for (var i = 0; i < 2; i++) {
+        var file = files[i];
+        if (file.name.match(/\.(jpg|png)$/i)) {
+            hasIMGFile = true;
+        } else if (file.name.match(/\.(json)$/i)) {
+            hasJSONFile = true;
+        }
+    }
+
+    return hasJSONFile && hasIMGFile;
 }
 
 export default CreateImageDropZone;
