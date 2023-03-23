@@ -12,7 +12,7 @@ var GenerateImageBlob = function (scene, imageDataArray) {
     for (var i = 0, cnt = imageDataArray.length; i < cnt; i++) {
         var imageData = imageDataArray[i];
         canvas.drawFrame(
-            imageData.key, null,
+            imageData.key, imageData.frame,
             imageData.x, imageData.y,
             imageData.width, imageData.height
         );
