@@ -30,6 +30,8 @@ var AddAtlasFiles = function (files) {
             for (var frameName in frames) {
                 if (frameName === '__BASE') {
                     continue;
+                } else if (self.hasImage(frameName)) {
+                    continue;
                 }
 
                 var imageData = CreateImageData();
