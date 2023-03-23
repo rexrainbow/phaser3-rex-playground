@@ -4,11 +4,17 @@ var FreeTexture = function (scene, imageData) {
     var cache = GetCache(scene, 'image');
 
     if (!Array.isArray(imageData)) {
-        cache.remove(imageData.key);
+        var key = imageData.key;
+        if (cache.exists(key)) {
+            cache.remove(key);
+        }
     } else {
         var imageDataArray = imageData;
         for (var i = 0, cnt = imageDataArray.length; i < cnt; i++) {
-            cache.remove(imageDataArray[i].key);
+            var key = imageDataArray[i].key;
+            if (cache.exists(key)) {
+                cache.remove(key);
+            }
         }
     }
 

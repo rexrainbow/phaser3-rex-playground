@@ -61,14 +61,14 @@ class ImageDataPanel extends Tweaker {
                 this.setBindingTarget(target);
             }, this)
             .on('clearimages', function () {
-                Object.assign(target, { x: '', y: '', width: '', height: '', key: undefined, name: '' });
+                Object.assign(target, GetNullImageData());
                 this.setBindingTarget(target);
             }, this)
             .on('removeimage', function (imageData) {
                 if (imageData.name !== target.name) {
                     return;
                 }
-                Object.assign(target, { x: '', y: '', width: '', height: '', key: undefined, name: '' });
+                Object.assign(target, GetNullImageData());
                 this.setBindingTarget(target);
             }, this)
 
@@ -76,10 +76,19 @@ class ImageDataPanel extends Tweaker {
 
     setBindingTarget(imageData) {
         super.setBindingTarget(imageData);
-        this.childrenMap.image.setTexture(imageData.key);
+        this.childrenMap.image.setTexture(imageData.key, imageData.frame);
         return this;
 
     }
+}
+
+var GetNullImageData = function () {
+    return {
+        x: '', y: '',
+        width: '', height: '',
+        key: undefined, frame: undefined,
+        name: ''
+    };
 }
 
 export default ImageDataPanel;

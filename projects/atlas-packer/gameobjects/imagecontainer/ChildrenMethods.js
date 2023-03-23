@@ -6,7 +6,7 @@ export default {
     },
 
     addImage(imageData) {
-        var gameObject = this.scene.add.image(0, 0, imageData.key)
+        var gameObject = this.scene.add.image(0, 0, imageData.key, imageData.frame)
             .setName(imageData.name)
             .setOrigin(0)
 

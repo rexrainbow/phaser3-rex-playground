@@ -31,6 +31,8 @@ class ImageList extends GridTable {
             cellContainer
                 .resetDisplayContent({
                     icon: item.key,
+                    iconFrame: item.frame,
+
                     text: item.name,
 
                     action: 'sprites', actionFrame: 'close',

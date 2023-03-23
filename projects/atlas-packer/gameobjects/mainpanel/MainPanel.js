@@ -55,7 +55,7 @@ class MainPanel extends OverlapSizer {
         this.pin(imageMarkerGraphics, false);
 
         // PlaceHolder text
-        var placeHolderContent = 'Drag & drop image files here';
+        var placeHolderContent = 'Drag & drop \n* image files, or\n* an image with atlas json files \nhere';
         var placeHolderStyle = GetValue(config, 'placeHolder');
         var placeholder = scene.add.text(0, 0, placeHolderContent, placeHolderStyle).setOrigin(0.5);
         this.add(

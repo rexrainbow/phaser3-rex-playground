@@ -1,4 +1,6 @@
 import { FileDropZone } from '../../../../../phaser3-rex-notes/templates/ui/ui-components';
+import IsImageFile from '../../utils/IsImageFile.js';
+import AreAltasFiles from '../../utils/AreAltasFiles.js';
 
 var CreateImageDropZone = function (scene, config, model) {
     var imageDropZone = new FileDropZone(scene, {
@@ -7,7 +9,7 @@ var CreateImageDropZone = function (scene, config, model) {
                 if (AreAltasFiles(files)) {
                     return false;
                 }
-                return file.name.match(/\.(jpg|png)$/i)
+                return IsImageFile(file);
             },
 
             atlas: function (file, files) {
@@ -29,25 +31,6 @@ var CreateImageDropZone = function (scene, config, model) {
     });
 
     return imageDropZone;
-}
-
-var AreAltasFiles = function (files) {
-    if (files.length !== 2) {
-        return false;
-    }
-
-    var hasJSONFile = false;
-    var hasIMGFile = false;
-    for (var i = 0; i < 2; i++) {
-        var file = files[i];
-        if (file.name.match(/\.(jpg|png)$/i)) {
-            hasIMGFile = true;
-        } else if (file.name.match(/\.(json)$/i)) {
-            hasJSONFile = true;
-        }
-    }
-
-    return hasJSONFile && hasIMGFile;
 }
 
 export default CreateImageDropZone;

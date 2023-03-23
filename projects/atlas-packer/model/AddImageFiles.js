@@ -1,13 +1,13 @@
 import GetFileName from '../utils/GetFileName.js';
-import FileObjectToCache from '../../../../phaser3-rex-notes/plugins/utils/loader/FileObjectToCache';
+import FileObjectToCache from '../../../../phaser3-rex-notes/plugins/utils/loader/FileObjectToCache.js';
 import CreateImageData from './CreateImageData.js';
+
+const UUID = Phaser.Utils.String.UUID;
 
 var AddImageFiles = function (files) {
     var self = this;
     files = files.filter(function (file) {
-        var key = GetFileName(file);
-        file.imageKey = key;
-        return !self.hasImage(key);
+        return !self.hasImage(GetFileName(file));
     });
     if (files.length === 0) {
         return this;
@@ -19,16 +19,16 @@ var AddImageFiles = function (files) {
     var scene = this.scene;
     for (var i = 0, cnt = files.length; i < cnt; i++) {
         var file = files[i];
-        var key = file.imageKey;
 
         var imageData = CreateImageData();
-        imageData.name = key;
-        imageData.key = key;
+        imageData.name = GetFileName(file);
+        imageData.key = UUID();
+        imageData.frame = undefined;
 
         this.imageDataList.add(imageData);
         newImageDataArray.push(imageData);
 
-        tasks.push(FileObjectToCachePromise(scene, file, 'image', key));
+        tasks.push(FileObjectToCachePromise(scene, file, imageData.key));
     }
 
     Promise.all(tasks)
@@ -40,9 +40,9 @@ var AddImageFiles = function (files) {
     return this;
 }
 
-var FileObjectToCachePromise = function (scene, file, loaderType, key, cacheType) {
+var FileObjectToCachePromise = function (scene, file, key) {
     return new Promise(function (resolve, reject) {
-        FileObjectToCache(scene, file, loaderType, key, cacheType, resolve);
+        FileObjectToCache(scene, file, 'image', key, null, resolve);
     })
 }
 
