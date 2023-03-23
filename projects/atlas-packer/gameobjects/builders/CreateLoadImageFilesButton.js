@@ -1,5 +1,6 @@
 import { FileSelectorButton } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
 import BuildLabelConfig from '../../../../../phaser3-rex-notes/templates/ui/utils/build/BuildLabelConfig.js';
+import AreAltasFiles from '../../utils/AreAltasFiles.js';
 
 var CreateLoadImageFilesButton = function (scene, configObj, model) {
     var config = configObj.cloneValue('.');
@@ -12,10 +13,14 @@ var CreateLoadImageFilesButton = function (scene, configObj, model) {
             icon: 'sprites', iconFrame: 'add',
             text: 'Import'
         })
-        .setAccept('image/*')
+        .setAccept('.jpg, .jpeg, .png, .json')
         .setMultiple(true)
         .on('select', function (files) {
-            model.addImageFiles(files);
+            if (AreAltasFiles(files)) {
+                model.addAtlasFiles(files)
+            } else {
+                model.addImageFiles(files);
+            }
         })
         // Hover state
         .setInteractive()
