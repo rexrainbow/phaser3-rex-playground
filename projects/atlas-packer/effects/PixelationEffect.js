@@ -1,4 +1,4 @@
-var PixelationEffect = function (scene, duration) {    
+var PixelationEffect = function (scene, duration) {
     var camera = scene.cameras.main;
     var effect = camera.postFX.addPixelate(100);
     scene.tweens.add({
@@ -8,7 +8,7 @@ var PixelationEffect = function (scene, duration) {
         duration: duration,
 
     })
-        .on('complete', function () {            
+        .on('complete', function () {
             camera.postFX.remove(effect);
         })
 
