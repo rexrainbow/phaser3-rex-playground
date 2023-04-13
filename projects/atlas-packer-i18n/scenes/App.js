@@ -1,4 +1,4 @@
-import phaser from '../lib/phaser.js';
+import phaser from 'phaser/src/phaser.js';
 import { SCENE_APP } from './const.js';
 import UIStyle from './UIStyle/UIStyle.js';;
 import CreateApp from '../app/CreateApp.js';

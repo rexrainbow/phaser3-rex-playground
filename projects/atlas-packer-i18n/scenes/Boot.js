@@ -1,4 +1,4 @@
-import phaser from '../lib/phaser.js';
+import phaser from 'phaser/src/phaser.js';
 import { SCENE_BOOT, SCENE_APP } from './const.js';
 import PixelationEffect from '../effects/PixelationEffect.js';
 import i18next from 'i18next';
