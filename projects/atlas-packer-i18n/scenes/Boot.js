@@ -24,14 +24,13 @@ class Boot extends Phaser.Scene {
     }
 
     create() {
-        var nextScene = this.scene.get(SCENE_APP);
-        nextScene.events.once('transitionstart', function (fromScene, duration) {
-            PixelationEffect(nextScene, duration);
-        });
-
         this.scene.transition({
             target: SCENE_APP,
-            duration: 500
+            duration: 500,
+
+            onStart(fromScene, toScene, duration) {
+                PixelationEffect(toScene, duration);
+            }
         })
     }
 
