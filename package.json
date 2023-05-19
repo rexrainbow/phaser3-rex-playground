@@ -44,6 +44,6 @@
         "js-yaml": "^4.1.0",
         "jszip": "^3.10.1",
         "phaser": "^3.60.0",
-        "phaser3-rex-plugins": "^1.1.85"
+        "phaser3-rex-plugins": "^1.60.1"
     }
 }
