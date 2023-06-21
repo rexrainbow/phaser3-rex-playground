@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 const fileName = process.env.name;
 const projectMain = process.env.main;
@@ -26,21 +26,10 @@ module.exports = {
     },
     optimization: {
         minimizer: [
-            new UglifyJSPlugin({
-                include: /\.min\.js$/,
+            new TerserPlugin({
                 parallel: true,
-                sourceMap: false,
-                uglifyOptions: {
-                    compress: true,
-                    ie8: false,
-                    output: {
-                        comments: false
-                    },
-                    warnings: false
-                },
-                warningsFilter: () => false
-            })
-        ]
+            }),
+        ],
     },
     plugins: [
         new webpack.DefinePlugin({

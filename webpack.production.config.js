@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 // Phaser webpack config
 const phaserModule = path.join(__dirname, '/node_modules/phaser/');
@@ -90,22 +90,10 @@ module.exports = {
     },
     optimization: {
         minimizer: [
-            new UglifyJSPlugin({
-                include: /.js$/,
+            new TerserPlugin({
                 parallel: true,
-                sourceMap: false,
-                uglifyOptions: {
-                    compress: true,
-                    ie8: false,
-                    ecma: 5,
-                    output: {
-                        comments: false
-                    },
-                    warnings: false
-                },
-                warningsFilter: () => false
-            })
-        ]
+            }),
+        ],
     },
     plugins: plugins,
     module: {
