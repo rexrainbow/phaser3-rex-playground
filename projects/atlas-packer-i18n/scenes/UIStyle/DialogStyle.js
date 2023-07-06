@@ -28,6 +28,7 @@ export default {
     content: {
         space: { left: 10, right: 10, top: 10, bottom: 10 },
         text: {
+            $type: 'bbcode',
             fontSize: FONTSIZE_M,
             fontFamily: FONTFAMILY,
             underline: {
