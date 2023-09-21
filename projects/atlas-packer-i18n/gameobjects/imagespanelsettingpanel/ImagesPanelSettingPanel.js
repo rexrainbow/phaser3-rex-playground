@@ -26,6 +26,11 @@ class ImagesPanelSettingPanel extends Tweaker {
                 view: 'boolean',  // 'toggleSwitch'
                 key: 'outline'
             })
+            .addInput({
+                bindingKey: 'imagePadding',                
+                view: 'number',
+                key: 'padding'
+            })
 
 
         var translation = new TextTranslation(this.getElement('color.title'), {
@@ -34,7 +39,9 @@ class ImagesPanelSettingPanel extends Tweaker {
         var translation = new TextTranslation(this.getElement('outline.title'), {
             translationKey: 'imagePanelSetting.outline'
         });
-
+        var translation = new TextTranslation(this.getElement('padding.title'), {
+            translationKey: 'imagePanelSetting.padding'
+        });
     }
 }
 

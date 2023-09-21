@@ -29,6 +29,7 @@ imageData:
 imagePanelSetting:
     color: Color
     outline: Outline
+    padding: Padding
 
 status: |-
     {{imageCount}} images, {{textureWidth}} x {{textureHeight}}

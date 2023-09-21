@@ -1,9 +1,5 @@
 var UpdateImages = function (newImageDataArray, removeImageDataArray) {
     // newImages, removeImages : Array of Image game object
-    if (!newImageDataArray && !removeImageDataArray) {
-        return this;
-    }
-
     var imageContainer = this.childrenMap.imageContainer;
 
     if (newImageDataArray) {

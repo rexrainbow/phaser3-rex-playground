@@ -25,6 +25,11 @@ class ImagesPanelSettingPanel extends Tweaker {
                 title: 'Outline',
                 view: 'boolean'  // 'toggleSwitch'
             })
+            .addInput({
+                bindingKey: 'imagePadding',
+                title: 'Padding',
+                view: 'number',
+            })
     }
 }
 

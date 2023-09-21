@@ -101,6 +101,18 @@ class MainPanel extends OverlapSizer {
 
     }
 
+    // imagePadding
+    get imagePadding() {
+        var imageContainer = this.childrenMap.imageContainer;
+        return imageContainer.imagePadding;
+    }
+
+    set imagePadding(value) {
+        var imageContainer = this.childrenMap.imageContainer;
+        imageContainer.imagePadding = value;
+        this.updateImages();
+    }
+
     // backgroundColor
     get backgroundColor() {
         var imageContainerBackground = this.childrenMap.background;

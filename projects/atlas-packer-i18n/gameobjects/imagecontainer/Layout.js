@@ -14,12 +14,13 @@ var Layout = function () {
 
     // Rectangle packing
     var padding = this.imagePadding;
+    var totalPadding = padding * 2;
     var boxes = [];
     for (var i = 0, cnt = images.length; i < cnt; i++) {
         var image = images[i];
         boxes.push({
-            w: image.width + padding,
-            h: image.height + padding,
+            w: image.width + totalPadding,
+            h: image.height + totalPadding,
             image: image
         });
     }
@@ -45,8 +46,10 @@ var Layout = function () {
 
         AlignIn(
             image,
-            (startX + box.x), (startY + box.y),
-            image.width, image.height,
+            (startX + box.x + padding),
+            (startY + box.y + padding),
+            image.width,
+            image.height,
             0
         );
 

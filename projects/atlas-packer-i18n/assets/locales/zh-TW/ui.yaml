@@ -29,6 +29,7 @@ imageData:
 imagePanelSetting:
     color: 背景色
     outline: 外框
+    padding: 填充
 
 status: |-
     {{imageCount}} 張圖, {{textureWidth}} x {{textureHeight}}
