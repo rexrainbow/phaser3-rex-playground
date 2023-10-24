@@ -4,7 +4,7 @@ const path = require('path');
 
 var PackFolder = function (root, outFile, config) {
     if (outFile === undefined) {
-        outFile = 'pack.json';
+        outFile = path.join(root, 'pack.json');
     }
 
     var result = FolderToJSON(root, config);

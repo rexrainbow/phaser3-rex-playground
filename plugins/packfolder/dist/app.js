@@ -3,9 +3,7 @@
 var require$$1 = require('fs');
 var require$$1$1 = require('path');
 
-function getDefaultExportFromCjs (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}
+var App = {};
 
 const FS = require$$1;
 const PATH = require$$1$1;
@@ -4216,7 +4214,7 @@ const FolderToJSON = FolderToJSON_1;
 const fs = require$$1;
 const path = require$$1$1;
 
-var PackFolder = function (root, outFile, config) {
+var PackFolder$1 = function (root, outFile, config) {
     if (outFile === undefined) {
         outFile = path.join(root, 'pack.json');
     }
@@ -4242,8 +4240,12 @@ export default PackData;`;
 
 };
 
-var PackFolder_1 = PackFolder;
+var PackFolder_1 = PackFolder$1;
 
-var PackFolder$1 = /*@__PURE__*/getDefaultExportFromCjs(PackFolder_1);
+const PackFolder = PackFolder_1;
 
-module.exports = PackFolder$1;
+const args = process.argv.slice(2);
+
+PackFolder(args[0], args[1]);
+
+module.exports = App;
