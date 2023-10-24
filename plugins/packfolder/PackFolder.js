@@ -16,10 +16,14 @@ var PackFolder = function (root, outFile, config) {
 export default PackData;`;
     }
 
-    try {
-        fs.writeFileSync(outFile, content);
-    } catch (err) {
-        console.error(err)
+    if (outFile) {
+        try {
+            fs.writeFileSync(outFile, content);
+        } catch (err) {
+            console.error(err)
+        }
+    } else {
+        console.log(content);
     }
 
 }
