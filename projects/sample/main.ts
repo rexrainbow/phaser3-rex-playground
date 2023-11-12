@@ -1,5 +1,5 @@
 import * as Phaser from 'phaser';
-import AllPlugins from '../../plugins/AllPlugins.js';
+import RexUI from 'phaser3-rex-plugins/templates/ui/ui-plugin';
 
 import Boot from './scenes/Boot.js';
 import Game from './scenes/Game.js';
@@ -13,7 +13,15 @@ var config = {
         mode: Phaser.Scale.ENVELOP,
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
-    plugins: AllPlugins,
+    plugins: {
+        scene: [
+            {
+                key: 'rexUI',
+                plugin: RexUI,
+                mapping: 'rexUI'
+            },
+        ]
+    },
     scene: [Boot, Game]
 };
 

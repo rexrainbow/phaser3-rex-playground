@@ -6,6 +6,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const projectMain = process.env.main;
 const assetsFolder = process.env.assets || './assets';
 const htmlTemplate = process.env.htmltemplate || './examples/index.tmpl';
+const target = process.env.target || 'web';
 
 module.exports = {
     mode: 'development',
@@ -90,6 +91,7 @@ module.exports = {
             }
         ]
     },
+    target: target,
     node: {
     },
     resolve: {
