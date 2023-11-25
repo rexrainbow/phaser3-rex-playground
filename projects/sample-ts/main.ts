@@ -1,8 +1,8 @@
 import * as Phaser from 'phaser';
 import RexUI from 'phaser3-rex-plugins/templates/ui/ui-plugin';
 
-import Boot from './scenes/Boot.js';
-import Game from './scenes/Game.js';
+import Boot from './scenes/Boot';
+import Game from './scenes/Game';
 
 var config = {
     type: Phaser.AUTO,
