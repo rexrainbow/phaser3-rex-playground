@@ -12,6 +12,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 
 /*! js-yaml 4.1.0 https://github.com/nodeca/js-yaml @license MIT */
 
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
 /**
  * @author       Florian Vazelle
  * @author       Geoffrey Glaive
@@ -56,13 +58,6 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 /**
  * @author       Richard Davey <rich@photonstorm.com>
  * @author       Angry Bytes (and contributors)
- * @copyright    2013-2023 Photon Storm Ltd.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
- * @author       Richard Davey <rich@photonstorm.com>
- * @author       Benjamin D. Richards <benjamindrichards@gmail.com>
  * @copyright    2013-2023 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
