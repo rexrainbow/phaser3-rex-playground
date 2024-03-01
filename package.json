@@ -22,7 +22,7 @@
         "@rollup/plugin-typescript": "^11.1.1",
         "babel-eslint": "^9.0.0",
         "babel-loader": "^8.3.0",
-        "browser-sync": "^3.0.2",
+        "browser-sync": "^2.29.3",
         "browser-sync-webpack-plugin": "^2.3.0",
         "clean-webpack-plugin": "^0.1.19",
         "copy-webpack-plugin": "^11.0.0",
@@ -52,7 +52,7 @@
         "i18next-http-backend": "^2.2.0",
         "js-yaml": "^4.1.0",
         "jszip": "^3.10.1",
-        "phaser": "^3.70.0",
-        "phaser3-rex-plugins": "^1.60.7"
+        "phaser": "^3.80.1",
+        "phaser3-rex-plugins": "^1.80.1"
     }
 }
