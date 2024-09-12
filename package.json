@@ -52,7 +52,7 @@
         "i18next-http-backend": "^2.5.2",
         "js-yaml": "^4.1.0",
         "jszip": "^3.10.1",
-        "phaser": "^3.80.1",
+        "phaser": "^3.85.1",
         "phaser3-rex-plugins": "^1.80.1"
     }
 }
