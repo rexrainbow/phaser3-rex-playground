@@ -13,34 +13,36 @@ class Game extends Phaser.Scene {
     }
 
     create() {
-        const elk = new ELK();
-
-        const graph = {
-            id: 'root',
-            layoutOptions: {
-                'elk.algorithm': 'layered',
-            },
-            children: [
-                { id: 'a', width: 100, height: 100 },
-                { id: 'b', width: 100, height: 100 },
-                { id: 'c', width: 100, height: 100 },
-            ],
-            edges: [
-                { id: 'ab', source: 'a', target: 'b' },
-                { id: 'ac', source: 'a', target: 'c' },
-            ],
-        };
-
-        var scene = this;
-        elk.layout(graph).then((result) => {
-            console.log(result);
-            console.log(graph === result);
-            DrawGraph(scene, result);
-        });
-
+        BuildGraph(this, 0, 0, { 'elk.algorithm': 'layered' });
+        BuildGraph(this, 0, 300, { 'elk.algorithm': 'force' });
+        BuildGraph(this, 400, 0, { 'elk.algorithm': 'mrtree' });
+        BuildGraph(this, 400, 300, { 'elk.algorithm': 'stress' });
     }
 
     update() { }
+}
+
+var BuildGraph = async function (scene, x, y, layoutOptions) {
+    var graph = {
+        id: 'root',
+        layoutOptions: layoutOptions,
+        children: [
+            { id: 'a', width: 50, height: 50 },
+            { id: 'b', width: 50, height: 25 },
+            { id: 'c', width: 25, height: 50 },
+            { id: 'd', width: 50, height: 50 },
+        ],
+        edges: [
+            { id: 'ab', source: 'a', target: 'b' },
+            { id: 'ac', source: 'a', target: 'c' },
+            { id: 'bd', source: 'b', target: 'd' },
+            { id: 'cd', source: 'c', target: 'd' },
+        ],
+    };
+    var elk = new ELK();
+    graph = await elk.layout(graph);
+    var graphics = DrawGraph(scene, graph);
+    graphics.setPosition(x, y);
 }
 
 var DrawGraph = function (scene, graph) {
@@ -61,22 +63,21 @@ var DrawGraph = function (scene, graph) {
             var startPoint = line.startPoint;
             graphics.beginPath()
             graphics.moveTo(startPoint.x, startPoint.y);
-            console.log('start', startPoint)
 
             if (line.bendPoints) {
                 line.bendPoints.forEach(function (point) {
                     graphics.lineTo(point.x, point.y);
-                    console.log('bend', point)
                 })
             }
 
             var endPoint = line.endPoint;
             graphics.lineTo(endPoint.x, endPoint.y);
-            console.log('end', endPoint)
 
             graphics.lineStyle(2, 0xFF0000).strokePath()
         })
     })
+
+    return graphics;
 }
 
 var config = {
