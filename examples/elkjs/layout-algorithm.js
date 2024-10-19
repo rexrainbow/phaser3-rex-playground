@@ -1,5 +1,5 @@
 import 'phaser';
-import ELK from 'elkjs';
+import ELK from '../../plugins/elkjs/elk.bundled.js'
 
 class Game extends Phaser.Scene {
     constructor() {
