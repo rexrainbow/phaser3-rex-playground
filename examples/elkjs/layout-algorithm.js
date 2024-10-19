@@ -25,7 +25,6 @@ class Game extends Phaser.Scene {
 var BuildGraph = async function (scene, x, y, layoutOptions) {
     var graph = {
         id: 'root',
-        layoutOptions: layoutOptions,
         children: [
             { id: 'a', width: 50, height: 50 },
             { id: 'b', width: 50, height: 25 },
@@ -40,7 +39,9 @@ var BuildGraph = async function (scene, x, y, layoutOptions) {
         ],
     };
     var elk = new ELK();
-    graph = await elk.layout(graph);
+    graph = await elk.layout(graph, {
+        layoutOptions: layoutOptions,
+    });
     var graphics = DrawGraph(scene, graph);
     graphics.setPosition(x, y);
 }
