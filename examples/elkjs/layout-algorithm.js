@@ -62,7 +62,7 @@ var DrawGraph = function (scene, graph) {
     graph.edges.forEach(function (edge) {
         edge.sections.forEach(function (line) {
             var startPoint = line.startPoint;
-            graphics.beginPath()
+            graphics.beginPath().lineStyle(2, 0xFF0000)
             graphics.moveTo(startPoint.x, startPoint.y);
 
             if (line.bendPoints) {
@@ -74,7 +74,7 @@ var DrawGraph = function (scene, graph) {
             var endPoint = line.endPoint;
             graphics.lineTo(endPoint.x, endPoint.y);
 
-            graphics.lineStyle(2, 0xFF0000).strokePath()
+            graphics.strokePath()
         })
     })
 
