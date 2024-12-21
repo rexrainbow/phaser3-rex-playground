@@ -1,9 +1,11 @@
 const sharp = require('sharp');
 const cbor = require('node-cbor');
+const JSZip = require("jszip");
 const fs = require('fs');
 
-const inputFile = './assets/classroom.png';
-const outputFile = './assets/classroom.cbor';
+const key = 'classroom'
+const inputFile = `./assets/${key}.png`;
+const outputFile = `./assets/${key}.zip`;
 
 sharp(inputFile)
     .raw()
@@ -20,7 +22,22 @@ sharp(inputFile)
 
         const serializedData = cbor.encode(cborData);
 
-        fs.writeFileSync(outputFile, serializedData);
-        console.log(`CBOR file saved to ${outputFile}`);
+        const zip = new JSZip();
+        zip.file(key, serializedData, {
+            compression: 'DEFLATE',
+            compressionOptions: { level: 9 },
+        });
+        zip
+            .generateAsync({ type: 'nodebuffer' })
+            .then((content) => {
+                fs.writeFile(outputFile, content, (err) => {
+                    if (err) {
+                        console.error('Error processing image:', err)
+                    } else {
+                        console.log(`CBOR file saved to ${outputFile}`);
+                    }
+                });
+            })
+
     })
     .catch(err => console.error('Error processing image:', err));

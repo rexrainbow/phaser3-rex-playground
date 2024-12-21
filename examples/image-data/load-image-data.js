@@ -1,5 +1,7 @@
 import * as Phaser from 'phaser';
-import { decode } from 'cbor2'
+import JSZip from 'jszip';
+import { decode } from 'cbor2';
+import AwaitLoaderPlugin from '../../../phaser3-rex-notes/plugins/awaitloader-plugin.js';
 
 class Demo extends Phaser.Scene {
     constructor() {
@@ -9,18 +11,22 @@ class Demo extends Phaser.Scene {
     }
 
     preload() {
-        var key = 'classroom';
-        this.load.binary(key, 'assets/classroom.cbor', Uint8Array);
-        this.load.once(`filecomplete-binary-${key}`, function () {
-            var buffer = this.cache.binary.get(key);
-            var { width, height, data } = decode(buffer);
+        var scene = this;
 
-            var texture = this.textures.createCanvas(key, width, height);
-            var context = texture.getContext();
-            var imageData = new ImageData(new Uint8ClampedArray(data), width, height);
-            context.putImageData(imageData, 0, 0);
-            texture.refresh();
-        }, this);
+        var key = 'classroom';
+        scene.load.rexAwait(function (successCallback, failureCallback) {
+            scene.load.binary(key, 'assets/classroom.zip', Uint8Array);
+            scene.load.once(`filecomplete-binary-${key}`, async function () {
+                var buffer = scene.cache.binary.get(key);
+
+                var zip = await JSZip.loadAsync(buffer);
+                var cborData = await zip.file(key).async('arraybuffer');
+                LoadImageFromCBORBuffer(scene, key, cborData);
+                successCallback()
+            });
+        })
+
+
     }
 
     create() {
@@ -28,6 +34,16 @@ class Demo extends Phaser.Scene {
     }
 
     update() { }
+}
+
+var LoadImageFromCBORBuffer = function (scene, key, buffer) {
+    var { width, height, data } = decode(new Uint8Array(buffer));
+
+    var texture = scene.textures.createCanvas(key, width, height);
+    var context = texture.getContext();
+    var imageData = new ImageData(new Uint8ClampedArray(data), width, height);
+    context.putImageData(imageData, 0, 0);
+    texture.refresh();
 }
 
 var config = {
@@ -39,7 +55,14 @@ var config = {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
-    scene: Demo
+    scene: Demo,
+    plugins: {
+        global: [{
+            key: 'rexAwaitLoader',
+            plugin: AwaitLoaderPlugin,
+            start: true
+        }]
+    }
 };
 
 var game = new Phaser.Game(config);
