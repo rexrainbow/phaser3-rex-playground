@@ -43,10 +43,12 @@
         "webpack": "^5.94.0",
         "webpack-cli": "^5.1.4",
         "webpack-node-externals": "^1.7.2",
-        "webpack-shell-plugin": "^0.5.0"
+        "webpack-shell-plugin": "^0.5.0",
+        "sharp": "^0.33.5",
+        "cbor2": "^1.8.0",
+        "node-cbor": "^5.0.4"
     },
     "dependencies": {
-        "dagre": "^0.8.5",
         "directory-tree": "^3.5.1",
         "file-saver": "^2.0.5",
         "i18next": "^22.5.1",
