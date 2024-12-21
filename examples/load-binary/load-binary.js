@@ -14,16 +14,9 @@ class Demo extends Phaser.Scene {
         var scene = this;
 
         var key = 'classroom';
-        scene.load.rexAwait(function (successCallback, failureCallback) {
-            scene.load.binary(key, 'assets/classroom.zip', Uint8Array);
-            scene.load.once(`filecomplete-binary-${key}`, async function () {
-                var buffer = scene.cache.binary.get(key);
-
-                var zip = await JSZip.loadAsync(buffer);
-                var cborData = await zip.file(key).async('arraybuffer');
-                LoadImageFromCBORBuffer(scene, key, cborData);
-                successCallback()
-            });
+        LoadZipFile(scene, 'assets/classroom.zip', async function (zip) {
+            var cborData = await zip.file(key).async('arraybuffer');
+            await LoadImageFromCBORBuffer(scene, key, cborData);
         })
 
 
@@ -36,7 +29,20 @@ class Demo extends Phaser.Scene {
     update() { }
 }
 
-var LoadImageFromCBORBuffer = function (scene, key, buffer) {
+var LoadZipFile = function (scene, url, callback) {
+    var key = Phaser.Utils.String.UUID()
+    scene.load.rexAwait(function (successCallback, failureCallback) {
+        scene.load.binary(key, url, Uint8Array);
+        scene.load.once(`filecomplete-binary-${key}`, async function () {
+            var zip = await JSZip.loadAsync(scene.cache.binary.get(key));
+            await callback(zip);
+            successCallback()
+            scene.cache.binary.remove(key)
+        });
+    })
+}
+
+var LoadImageFromCBORBuffer = async function (scene, key, buffer) {
     var { width, height, data } = decode(new Uint8Array(buffer));
 
     var texture = scene.textures.createCanvas(key, width, height);

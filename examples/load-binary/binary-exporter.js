@@ -34,10 +34,10 @@ sharp(inputFile)
                     if (err) {
                         console.error('Error processing image:', err)
                     } else {
-                        console.log(`CBOR file saved to ${outputFile}`);
+                        console.log(`Zip file saved to ${outputFile}`);
                     }
                 });
             })
 
     })
-    .catch(err => console.error('Error processing image:', err));
+    .catch(err => console.error('Error processing zip:', err));
