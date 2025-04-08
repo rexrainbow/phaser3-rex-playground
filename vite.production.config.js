@@ -1,29 +1,39 @@
 import { defineConfig } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+import path from 'path';
 import fs from 'fs';
 
 const dist = process.env.dist;
-const distFolder = path.resolve(__dirname, dist);
-
 const projectMain = process.env.main;
 const htmlTemplate = process.env.htmltemplate || './examples/index.tmpl';
 const assetsFolder = process.env.assets || './assets';
 
-console.log(distFolder)
-console.log(projectMain)
-console.log(htmlTemplate)
-console.log(assetsFolder)
+console.log('To            :', dist)
+console.log('JS entry      :', projectMain)
+console.log('HTML template :', htmlTemplate)
+console.log('Assets        :', assetsFolder)
 
 if (!projectMain || !fs.existsSync(projectMain)) {
     throw new Error('No entry point');
 }
 
+var GetRelativePath = function (referencePath, targetPath) {
+    const referenceDir = path.dirname(referencePath);
+    let relPath = path.relative(referenceDir, targetPath);
+
+    if (!relPath.startsWith('./') && !relPath.startsWith('../')) {
+        relPath = './' + relPath;
+    }
+
+    return relPath;
+}
+
+const relatedProjectMain = GetRelativePath(htmlTemplate, projectMain);
+console.log(relatedProjectMain)
+
 export default defineConfig(({ command, mode }) => {
     return {
-        define: {
-            __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'false')),
-            "typeof WEBGL_DEBUG": JSON.stringify(false)
-        },
         build: {
             sourcemap: false,
             minify: 'terser',
@@ -33,15 +43,22 @@ export default defineConfig(({ command, mode }) => {
                     drop_debugger: true
                 }
             },
-            outDir: distFolder,
-            assetsDir: assetsFolder
+            outDir: dist,            
         },
         plugins: [
             createHtmlPlugin({
-                entry: projectMain,
+                entry: relatedProjectMain,
                 template: htmlTemplate,
-                minify: false,
+                minify: true,
             }),
+            viteStaticCopy({
+                targets: [
+                    {
+                        src: assetsFolder,
+                        dest: '/assets'
+                    }
+                ]
+            })
         ],
         resolve: {
             extensions: ['.ts', '.js'],

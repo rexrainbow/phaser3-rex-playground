@@ -7,9 +7,9 @@ const projectMain = process.env.main;
 const htmlTemplate = process.env.htmltemplate || './examples/index.tmpl';
 const assetsFolder = process.env.assets || './assets';
 
-console.log(projectMain)
-console.log(htmlTemplate)
-console.log(assetsFolder)
+console.log('JS entry      :', projectMain)
+console.log('HTML template :', htmlTemplate)
+console.log('Assets        :', assetsFolder)
 
 if (!projectMain || !fs.existsSync(projectMain)) {
     throw new Error('No entry point');
@@ -17,10 +17,6 @@ if (!projectMain || !fs.existsSync(projectMain)) {
 
 export default defineConfig(({ command, mode }) => {
     return {
-        define: {
-            __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
-            "typeof WEBGL_DEBUG": JSON.stringify(false)
-        },
         plugins: [
             createHtmlPlugin({
                 entry: projectMain,
