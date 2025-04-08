@@ -13,6 +13,7 @@ class App extends Phaser.Scene {
     }
 
     create() {
+        this.add.text(300, 300, 'APP', {fontSize: 64})
     }
 
     update() { }

@@ -1,5 +1,5 @@
 @echo off
-set htmlTemplate=./projects/atlas-packer/index.tmpl
+set htmlTemplate=./projects/atlas-packer/index.html
 set main=./projects/atlas-packer/test.js
 set assets=./projects/atlas-packer/assets
 cd ..

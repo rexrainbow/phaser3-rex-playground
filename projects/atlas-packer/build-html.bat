@@ -1,6 +1,6 @@
 @echo off
 set dist=./apps/atlas-packer
-set htmlTemplate=./projects/atlas-packer/index.tmpl
+set htmlTemplate=./projects/atlas-packer/index.html
 set main=./projects/atlas-packer/main.js
 set assets=./projects/atlas-packer/assets
 cd ..

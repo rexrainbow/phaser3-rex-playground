@@ -107,14 +107,6 @@ module.exports = {
                     ]
                 }
             },
-            {
-                test: /phaser-split\.js$/,
-                use: ['expose-loader?Phaser']
-            },
-            {
-                test: [/\.vert$/, /\.frag$/],
-                use: 'raw-loader'
-            }
         ]
     },
     node: {
