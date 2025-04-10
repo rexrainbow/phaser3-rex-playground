@@ -9,6 +9,7 @@
     "keywords": [
         "phaser3"
     ],
+    "type": "module",
     "devDependencies": {
         "vite": "^6.0.0",
         "vite-plugin-html": "^3.2.2",

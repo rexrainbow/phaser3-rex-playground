@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import VitePluginBrowserSync from 'vite-plugin-browser-sync';
 import fs from 'fs';
+import path from 'path';
 
 // All paths are specified as relative paths.
 const projectMain = process.env.main;
@@ -16,11 +17,13 @@ if (!projectMain || !fs.existsSync(projectMain)) {
     throw new Error('No entry point');
 }
 
+const entryUrlPath = '/' + path.posix.normalize(projectMain).replace(/^\.?\//, '');
+
 export default defineConfig(({ command, mode }) => {
     return {
         plugins: [
             createHtmlPlugin({
-                entry: projectMain,
+                entry: entryUrlPath,
                 template: htmlTemplate,
                 minify: false,
             }),
