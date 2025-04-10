@@ -3,6 +3,7 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 import VitePluginBrowserSync from 'vite-plugin-browser-sync';
 import fs from 'fs';
 
+// All paths are specified as relative paths.
 const projectMain = process.env.main;
 const htmlTemplate = process.env.htmltemplate || './examples/index.tmpl';
 const assetsFolder = process.env.assets || './assets';

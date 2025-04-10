@@ -4,7 +4,7 @@
     "description": "Projects of phaser3",
     "scripts": {
         "dev": "vite",
-        "production": "vite build --config vite.production.config.js"
+        "production": "vite build --config vite.production.config.js && vite preview --config vite.production.config.js"
     },
     "keywords": [
         "phaser3"
