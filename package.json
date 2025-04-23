@@ -19,6 +19,7 @@
         "eslint-plugin-import": "^2.29.1",
         "typescript": "^5.3.3",
         "sharp": "^0.33.5",
+        "comlink": "^4.4.2",
         "cbor2": "^1.8.0",
         "node-cbor": "^5.0.4"
     },
