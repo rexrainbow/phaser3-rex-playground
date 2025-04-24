@@ -1,9 +1,46 @@
-import * as Comlink from 'comlink';
+import * as Phaser from 'phaser';
 
-const worker = new Worker('./worker.js');
-const api = Comlink.wrap(worker);
+class Demo extends Phaser.Scene {
+    constructor() {
+        super({
+            key: 'examples'
+        })
+    }
 
-(async () => {
-    console.log(await api.add(2, 3));       // 輸出：5
-    console.log(await api.slowTask());      // 輸出："done"
-})();
+    preload() {
+        this.load.script('comlink', './assets/comlink.js');
+    }
+
+    create() {
+        var filePath = './examples/comlink/test-worker.js';
+        (async () => {
+            var worker = new Worker(filePath);
+            var obj = Comlink.wrap(worker);
+            console.log('test')
+            console.log(`Counter: ${await obj.counter}`);
+            await obj.inc();
+            console.log(`Counter: ${await obj.counter}`);
+
+            var result = await obj.processor({ a: 10, b: 20 });
+            console.log(result);
+        })();
+    }
+
+    update() { }
+}
+
+var config = {
+    type: Phaser.AUTO,
+    parent: 'phaser-example',
+    width: 800,
+    height: 600,
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+    },
+    scene: Demo,
+    plugins: {
+    }
+};
+
+var game = new Phaser.Game(config);

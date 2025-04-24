@@ -1,11 +1,18 @@
-import * as Comlink from 'comlink';
+// import * as Comlink from 'comlink'
+importScripts("./assets/comlink.js");
 
-const api = {
-    add: (a, b) => a + b,
-    async slowTask() {
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        return "done";
-    }
-};
+(() => {
+    const obj = {
+        counter: 0,
+        inc() {
+            // debugger
+            this.counter++;
+        },
 
-Comlink.expose(api);
+        processor(data) {
+            return { a: data.a + 10, b: data.b + 20 };
+        }
+    };
+
+    Comlink.expose(obj);
+})();

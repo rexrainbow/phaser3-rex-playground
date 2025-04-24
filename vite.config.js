@@ -28,9 +28,6 @@ export default defineConfig(({ command, mode }) => {
                 minify: false,
             }),
             VitePluginBrowserSync({
-                host: process.env.IP || 'localhost',
-                port: process.env.PORT ? Number(process.env.PORT) : 3000,
-                proxy: 'http://localhost:3000',
                 open: true,
             })
         ],
