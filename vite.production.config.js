@@ -67,6 +67,17 @@ export default defineConfig(({ command, mode }) => {
                     }
                 ]
             }),
+            {
+                name: 'replace-webgl-debug',
+                enforce: 'pre',
+                transform(code, id) {
+                    const replacedCode = code.replace(/typeof\s+WEBGL_DEBUG/g, JSON.stringify(false));
+                    return {
+                        code: replacedCode,
+                        map: null
+                    };
+                }
+            }
         ],
         build: {
             sourcemap: false,
