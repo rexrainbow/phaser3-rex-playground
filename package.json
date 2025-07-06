@@ -30,7 +30,7 @@
         "i18next-http-backend": "^2.5.2",
         "js-yaml": "^4.1.0",
         "jszip": "^3.10.1",
-        "phaser": "^3.85.2",
+        "phaser": "4.0.0-rc.4",
         "phaser3-rex-plugins": "^1.80.15"
     }
 }
