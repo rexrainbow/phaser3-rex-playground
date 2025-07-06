@@ -1,0 +1,1 @@
+export const EVT_RESTART_GAME = 'app.restart-game';
