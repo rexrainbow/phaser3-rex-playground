@@ -17,7 +17,7 @@ class App extends Phaser.Scene {
         this.load.image('fullscreen-on', 'assets/images/fullscreen-on.png');
         this.load.image('fullscreen-off', 'assets/images/fullscreen-off.png');
 
-        this.load.image('image', 'https://rapi.pixai.art/img/media/594544831722291264/orig');
+        this.load.image('image', 'assets/images/sample.webp');
 
     }
 
