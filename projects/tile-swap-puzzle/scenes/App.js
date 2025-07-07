@@ -14,10 +14,7 @@ class App extends Phaser.Scene {
 
     preload() {
         this.load.bitmapFont('gothic', 'assets/fonts/gothic.png', 'assets/fonts/gothic.xml');
-        this.load.image('check', 'assets/images/check.png');
-        this.load.image('restart', 'assets/images/restart.png');
-        this.load.image('fullscreen-on', 'assets/images/fullscreen-on.png');
-        this.load.image('fullscreen-off', 'assets/images/fullscreen-off.png');
+        this.load.atlas('icons', 'assets/icons/icons.png', 'assets/icons/icons.json');
 
         this.load.image('image', 'assets/images/sample.webp');
 

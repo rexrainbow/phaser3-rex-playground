@@ -22,7 +22,7 @@ class TileContainer extends OverlapSizer {
         this.tilePool;
         this.activeTiles;
 
-        AddSceneEvent(this.targetImage, EVT_RESTART_GAME, function (key) {
+        AddSceneEvent(this, EVT_RESTART_GAME, function (key) {
             scene.setScore(0);
             if (key) {
                 this.setTargetImageKey(key);
