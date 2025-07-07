@@ -1,6 +1,7 @@
 import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
 import ScoreLabel from './ScoreLabel.js';
-import Toolbar from './Toolbar.js';
+import TopToolbar from './TopToolbar.js';
+import BottomToolbar from './BottomToolbar.js';
 
 class SidePanel extends Sizer {
     constructor(scene) {
@@ -15,14 +16,19 @@ class SidePanel extends Sizer {
         var scoreLabel = new ScoreLabel(scene);
         scene.add.existing(scoreLabel);
 
-        var toolbar = new Toolbar(scene);
-        scene.add.existing(toolbar);
+
+        var topToolbar = new TopToolbar(scene);
+        scene.add.existing(topToolbar);
+
+        var bottomToolbar = new BottomToolbar(scene);
+        scene.add.existing(bottomToolbar);
 
         this
+            .add(topToolbar, { align: 'right' })
             .addSpace(2)
             .add(scoreLabel, { align: 'center' })
             .addSpace(3)
-            .add(toolbar, { align: 'right' })
+            .add(bottomToolbar, { align: 'right' })
     }
 }
 

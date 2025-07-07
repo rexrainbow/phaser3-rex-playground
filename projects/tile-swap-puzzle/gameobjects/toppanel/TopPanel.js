@@ -10,7 +10,6 @@ class TopPanel extends OverlapSizer {
                 x: 'center', y: 'center',
                 width: '100%', height: '100%'
             },
-            orientation: 'x'
         })
 
         var innerSizer = CreateInnerSizer(scene);
