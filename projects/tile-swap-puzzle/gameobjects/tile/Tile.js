@@ -2,7 +2,7 @@ import { EaseMoveMethods } from '../../../../../phaser3-rex-notes/plugins/easemo
 import OnCorrectPositionMethods from './OnCorrectPositionMethods.js';
 import OnDropTile from './OnDropTile.js';
 import GetScore from './GetScore.js';
-import { EASE_DURATION } from '../const.js';
+import { EASE_DURATION } from '../../scenes/const.js';
 
 class Tile extends Phaser.GameObjects.Image {
     constructor(scene, x, y, key, frame) {
@@ -68,7 +68,7 @@ class Tile extends Phaser.GameObjects.Image {
 
         if (this.isHitTargetPosition) {
             this.onCorrectPosition();
-            this.scene.data.set('score', GetScore(this.activeTiles));
+            this.scene.setScore(GetScore(this.activeTiles));
         } else {
             this.onIncorrectPosition();
         }

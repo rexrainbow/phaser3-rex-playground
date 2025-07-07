@@ -5,14 +5,16 @@ import FitTo from '../../../../../phaser3-rex-notes/plugins/utils/size/FitTo.js'
 import GenerateTiles from './GenerateTiles.js';
 import ShuffleTiles from './ShuffleTiles.js';
 
+const SIZE = 1024;
+
 class TileContainer extends OverlapSizer {
     constructor(scene) {
-        super(scene);
+        super(scene, { width: SIZE + 40, height: SIZE + 40 });
 
         var background = scene.add.rectangle(0, 0, 1, 1).setStrokeStyle(2, 0xffffff);
         this.addBackground(background);
 
-        this.targetSize = { width: 1024, height: 1024 };
+        this.targetSize = { width: SIZE, height: SIZE };
         this.targetImage = scene.add.image(0, 0).setVisible(false);
         this.add(this.targetImage, { align: 'center', expand: false });
 
@@ -21,7 +23,7 @@ class TileContainer extends OverlapSizer {
         this.activeTiles;
 
         AddSceneEvent(this.targetImage, EVT_RESTART_GAME, function (key) {
-            scene.data.set('score', 0);
+            scene.setScore(0);
             if (key) {
                 this.setTargetImageKey(key);
             }

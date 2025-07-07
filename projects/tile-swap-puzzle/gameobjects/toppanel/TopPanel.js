@@ -1,8 +1,9 @@
+import OverlapSizer from '../../../../../phaser3-rex-notes/templates/ui/overlapsizer/OverlapSizer.js';
 import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
 import TileContainer from '../tilecontainer/TileContainer.js';
 import SidePanel from '../sidepanel/SidePanel.js';
 
-class TopPanel extends Sizer {
+class TopPanel extends OverlapSizer {
     constructor(scene) {
         super(scene, {
             anchor: {
@@ -12,18 +13,29 @@ class TopPanel extends Sizer {
             orientation: 'x'
         })
 
-        var tilecontainer = new TileContainer(scene);
-        scene.add.existing(tilecontainer);
+        var innerSizer = CreateInnerSizer(scene);
 
-        var sidePanel = new SidePanel(scene);
-        scene.add.existing(sidePanel);
-
-        this
-            .addSpace()
-            .add(tilecontainer, { fitRatio: 1, })
-            .add(sidePanel, { expand: true })
-            .addSpace()
+        this.add(innerSizer, {
+            align: 'center', expand: false
+        })
     }
+}
+
+var CreateInnerSizer = function (scene) {
+    var innerSizer = new Sizer(scene, { orientation: 'x' });
+    scene.add.existing(innerSizer);
+
+    var tilecontainer = new TileContainer(scene);
+    scene.add.existing(tilecontainer);
+
+    var sidePanel = new SidePanel(scene);
+    scene.add.existing(sidePanel);
+
+    innerSizer
+        .add(tilecontainer)
+        .add(sidePanel, { expand: true })
+
+    return innerSizer;
 }
 
 export default TopPanel;

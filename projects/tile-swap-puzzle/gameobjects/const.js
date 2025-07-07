@@ -1,1 +1,0 @@
-export const EASE_DURATION = 200;

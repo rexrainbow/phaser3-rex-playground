@@ -1,13 +1,15 @@
 import TopPanel from '../gameobjects/toppanel/TopPanel.js';
 import RegisterCommands from '../commands/RegisterCommands.js';
-import { EVT_RESTART_GAME } from '../commands/const.js';
 
 class App extends Phaser.Scene {
     constructor() {
         super({
             key: 'app'
         })
+    }
 
+    init() {
+        RegisterCommands(this);
     }
 
     preload() {
@@ -22,14 +24,11 @@ class App extends Phaser.Scene {
     }
 
     create() {
-        RegisterCommands(this);
-
-        this.data.set('score', undefined);
-
+        this.setScore(undefined);
         var topPanel = new TopPanel(this).layout();
         this.add.existing(topPanel);
 
-        this.events.emit(EVT_RESTART_GAME, 'image');
+        this.restartGame('image');
     }
 
     update() { }
