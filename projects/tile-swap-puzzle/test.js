@@ -1,5 +1,5 @@
 import 'phaser'
-import StoryBlock from './gameobjects/storyblock/StoryBlock';
+import StoryBlock from './gameobjects/storyblock/StoryBlock.js';
 
 class Demo extends Phaser.Scene {
     constructor() {
@@ -15,15 +15,17 @@ class Demo extends Phaser.Scene {
             this.load.image(`image${i}`, `assets/images/sample${i}.webp`);
             this.load.text(`story${i}`, `assets/storys/story${i}`);
         }
+
+        this.load.atlas('icons', 'assets/icons/icons.png', 'assets/icons/icons.json');
     }
 
     create() {
-        var index = 0;
+        var index = 1;
         var key = `image${index}`
         var text = this.cache.text.get(`story${index}`);
         var storyBlock = new StoryBlock(this, key, text)
             .setPosition(1920 / 2, 1080 / 2)
-            .setMinSize(1920 * 0.99, 1080 * 0.99)
+            .setMinSize(1920 * 0.8, 1080 * 0.95)
             .layout();
 
         this.add.existing(storyBlock);
