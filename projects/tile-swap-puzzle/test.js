@@ -1,5 +1,5 @@
 import 'phaser'
-import StoryBlock from './gameobjects/storyblock/StoryBlock.js';
+import StoryDialog from './gameobjects/storyblock/StoryDialog.js';
 
 class Demo extends Phaser.Scene {
     constructor() {
@@ -12,7 +12,7 @@ class Demo extends Phaser.Scene {
         this.load.bitmapFont('gothic', 'assets/fonts/gothic.png', 'assets/fonts/gothic.xml');
 
         for (var i = 0; i < 2; i++) {
-            this.load.image(`image${i}`, `assets/images/sample${i}.webp`);
+            this.load.image(`sample${i}`, `assets/images/sample${i}.webp`);
             this.load.text(`story${i}`, `assets/storys/story${i}`);
         }
 
@@ -21,14 +21,13 @@ class Demo extends Phaser.Scene {
 
     create() {
         var index = 1;
-        var key = `image${index}`
+        var key = `sample${index}`
         var text = this.cache.text.get(`story${index}`);
-        var storyBlock = new StoryBlock(this, key, text)
-            .setPosition(1920 / 2, 1080 / 2)
-            .setMinSize(1920 * 0.8, 1080 * 0.95)
+        var storyDialog = new StoryDialog(this, key, text)
             .layout();
+        this.add.existing(storyDialog);
 
-        this.add.existing(storyBlock);
+        storyDialog.modalPromise();
     }
 
     update() { }

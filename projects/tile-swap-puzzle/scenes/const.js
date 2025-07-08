@@ -1,5 +1,6 @@
 export const EASE_DURATION = 200;
 export const DATA_KEY_SCORE = 'score';
+export const DATA_KEY_TARGET_TEXTURE = 'image-key';
 
 export const COLOR_1000 = 0x0A0A0A;
 export const COLOR_900 = 0x121212;

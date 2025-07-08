@@ -17,7 +17,7 @@ class App extends Phaser.Scene {
         this.load.bitmapFont('gothic', 'assets/fonts/gothic.png', 'assets/fonts/gothic.xml');
 
         for (var i = 0; i < 2; i++) {
-            this.load.image(`image${i}`, `assets/images/sample${i}.webp`);
+            this.load.image(`sample${i}`, `assets/images/sample${i}.webp`);
             this.load.text(`story${i}`, `assets/storys/story${i}`);
         }
 
@@ -28,7 +28,7 @@ class App extends Phaser.Scene {
         var topPanel = new TopPanel(this).layout();
         this.add.existing(topPanel);
 
-        this.restartGame('image');
+        this.restartGame('sample0');
     }
 
     update() { }
