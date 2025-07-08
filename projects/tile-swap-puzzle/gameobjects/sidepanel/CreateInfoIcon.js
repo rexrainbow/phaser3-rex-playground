@@ -1,5 +1,6 @@
 import ConfirmActionButton from '../../../../../phaser3-rex-notes/templates/ui/confirmactionbutton/ConfirmActionButton.js'
 import { COLOR_DIALOG_BG, COLOR_DIALOG_BOARD, COLOR_DIALOG_TITLE, COLOR_DIALOG_CONTENT } from '../../scenes/const.js';
+import { INFO_HOW_TO_PLAY } from '../../scenes/const.js';
 
 var CreateInfoIcon = function (scene, size) {
     var dialogStyle = {
@@ -20,7 +21,7 @@ var CreateInfoIcon = function (scene, size) {
         title: {
             text: {
                 key: 'gothic',
-                fontSize: 80,
+                fontSize: 60,
                 tint: COLOR_DIALOG_TITLE,
             },
             wrapText: true
@@ -29,7 +30,7 @@ var CreateInfoIcon = function (scene, size) {
         content: {
             text: {
                 key: 'gothic',
-                fontSize: 60,
+                fontSize: 40,
                 tint: COLOR_DIALOG_CONTENT,
             },
             wrapText: true,
@@ -45,7 +46,7 @@ var CreateInfoIcon = function (scene, size) {
 
     var dialogContent = {
         title: 'How to play',
-        content: 'Drag two tiles to swap their positions',
+        content: INFO_HOW_TO_PLAY,
     };
 
     var infoIcon = new ConfirmActionButton(scene, {

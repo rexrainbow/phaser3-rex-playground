@@ -19,3 +19,10 @@ export const COLOR_DIALOG_CONTENT = COLOR_300;
 export const COLOR_DIALOG_BTN_BG = COLOR_700;
 export const COLOR_DIALOG_BTN_TXT = COLOR_100;
 export const COLOR_DIALOG_SPLIT = COLOR_600;
+
+export const INFO_HOW_TO_PLAY = `\
+Drag two tiles to swap their positions
+
+Load new image from local file, or
+Ctrl-C, CTRL-V to load new image from clickboard
+`
