@@ -16,7 +16,10 @@ class App extends Phaser.Scene {
         this.load.atlas('icons', 'assets/icons/icons.png', 'assets/icons/icons.json');
         this.load.bitmapFont('gothic', 'assets/fonts/gothic.png', 'assets/fonts/gothic.xml');
 
-        this.load.image('image', 'assets/images/sample.webp');
+        for (var i = 0; i < 2; i++) {
+            this.load.image(`image${i}`, `assets/images/sample${i}.webp`);
+            this.load.text(`story${i}`, `assets/storys/story${i}`);
+        }
 
     }
 
