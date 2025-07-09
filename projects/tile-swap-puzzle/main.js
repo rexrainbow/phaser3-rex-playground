@@ -1,11 +1,12 @@
 import 'phaser'
+import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/const.js';
 import App from './scenes/App.js';
 
 var config = {
     type: Phaser.AUTO,
     parent: 'game',
-    width: 1920,
-    height: 1080,
+    width: SIZE_WIN_WIDTH,
+    height: SIZE_WIN_HEIGHT,
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,

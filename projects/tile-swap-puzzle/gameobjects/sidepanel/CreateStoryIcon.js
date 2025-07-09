@@ -1,24 +1,36 @@
 import Button from '../../../../../phaser3-rex-notes/plugins/button';
 import StoryDialog from '../storyblock/StoryDialog';
+import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../../scenes/const';
 
 var CreateStoryIcon = function (scene, size) {
     var storyIcon = scene.add.image(0, 0, 'icons', 'story').setDisplaySize(size, size);
+
+    var index = 0;
     new Button(storyIcon)
         .on('click', function () {
-            var index = 0;
             var key = `sample${index}`
             var text = scene.cache.text.get(`story${index}`);
+            PopupStoryDialog(scene, key, text);
 
-            var storyDialog = new StoryDialog(scene, key, text).layout();
-            scene.add.existing(storyDialog);
-            storyDialog.modalPromise({
-                cover: {
-                    alpha: 1
-                }
-            });
+            index = (index + 1) % 2;
         })
 
     return storyIcon;
+}
+
+var PopupStoryDialog = function (scene, key, text) {
+    var storyDialog = new StoryDialog(scene, key, text);
+    scene.add.existing(storyDialog);
+
+    storyDialog
+        .setPosition(SIZE_WIN_WIDTH / 2, SIZE_WIN_HEIGHT / 2)
+        .setMinSize(SIZE_WIN_WIDTH * 0.8, SIZE_WIN_HEIGHT * 0.95)
+        .layout()
+        .modalPromise({
+            cover: {
+                alpha: 1
+            }
+        });
 }
 
 

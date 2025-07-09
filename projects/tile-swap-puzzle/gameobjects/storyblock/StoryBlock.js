@@ -11,12 +11,7 @@ class StoryBlock extends Sizer {
     constructor(scene, key, text) {
         var background = scene.add.rectangle(0, 0, 1, 1, COLOR_DIALOG_BG).setStrokeStyle(6, COLOR_DIALOG_BOARD);
 
-        var image = scene.add.image(0, 0, key);
-        var imageBox = new ImageBox(scene, {
-            image: image
-        });
-
-        var orientation = (image.height >= image.width) ? 'x' : 'y';
+        var imageBox = new ImageBox(scene);
 
         var textArea = new TextArea(scene, {
             space: { left: 20, right: 20, top: 20, bottom: 20, text: 20, },
@@ -34,20 +29,28 @@ class StoryBlock extends Sizer {
                 adaptThumbSize: true,
             },
             alwaysScrollable: false,
-
-            content: text,
         });
         scene.add.existing(textArea);
 
         super(scene, {
-            orientation: orientation,
             space: { left: 30, right: 30, top: 30, bottom: 30, item: 20 },
         });
 
         this
             .addBackground(background)
-            .add(imageBox, { proportion: 1, expand: true })
-            .add(textArea, { proportion: 1, expand: true })
+            .add(imageBox, { proportion: 1, expand: true, key: 'image' })
+            .add(textArea, { proportion: 1, expand: true, key: 'text' })
+
+        this.setStoryContent(key, text);
+    }
+
+    setStoryContent(key, text) {
+        var frame = this.scene.textures.getFrame(key);
+        var orientation = (frame.realWidth > frame.realHeight) ? 'y' : 'x';
+        this.setOrientation(orientation);
+        this.getElement('image').setTexture(key);
+        this.getElement('text').setText(text);
+        return this;
     }
 
 }

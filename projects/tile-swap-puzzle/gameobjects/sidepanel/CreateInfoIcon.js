@@ -8,7 +8,7 @@ var CreateInfoIcon = function (scene, size) {
             x: 'center', y: 'center'
         },
 
-        width: 1000, height: 600,
+        width: 1200, height: 800,
 
         space: { left: 40, right: 40, top: 40, bottom: 40, title: 40, content: 40, },
 
