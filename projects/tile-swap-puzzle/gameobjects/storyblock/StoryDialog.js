@@ -2,7 +2,7 @@ import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js'
 import Label from '../../../../../phaser3-rex-notes/templates/ui/label/Label.js';
 import StoryBlock from './StoryBlock.js';
 import {
-    COLOR_DIALOG_BG, COLOR_DIALOG_BOARD,
+    COLOR_PANEL_BG, COLOR_PANEL_BOARD,
 } from '../../scenes/const.js';
 
 class StoryDialog extends Sizer {
@@ -12,7 +12,7 @@ class StoryDialog extends Sizer {
 
         var exitIcon = new Label(scene, {
             space: { left: 10, right: 20, top: 20, bottom: 20 },
-            background: scene.add.rectangle(0, 0, 1, 1, COLOR_DIALOG_BG).setStrokeStyle(3, COLOR_DIALOG_BOARD),
+            background: scene.add.rectangle(0, 0, 1, 1, COLOR_PANEL_BG).setStrokeStyle(3, COLOR_PANEL_BOARD),
             icon: scene.add.image(0, 0, 'icons', 'exit').setDisplaySize(80, 80)
         })
             .layout();

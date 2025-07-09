@@ -1,5 +1,5 @@
 import ConfirmActionButton from '../../../../../phaser3-rex-notes/templates/ui/confirmactionbutton/ConfirmActionButton.js'
-import { COLOR_DIALOG_BG, COLOR_DIALOG_BOARD, COLOR_TITLE, COLOR_CONTENT } from '../../scenes/const.js';
+import { COLOR_PANEL_BG, COLOR_PANEL_BOARD, COLOR_TITLE, COLOR_CONTENT } from '../../scenes/const.js';
 import { INFO_HOW_TO_PLAY } from '../../scenes/const.js';
 
 var CreateInfoIcon = function (scene, size) {
@@ -13,8 +13,8 @@ var CreateInfoIcon = function (scene, size) {
         space: { left: 40, right: 40, top: 40, bottom: 40, title: 40, content: 40, },
 
         background: {
-            color: COLOR_DIALOG_BG,
-            strokeColor: COLOR_DIALOG_BOARD,
+            color: COLOR_PANEL_BG,
+            strokeColor: COLOR_PANEL_BOARD,
             radius: 20,
             strokeWidth: 6,
         },

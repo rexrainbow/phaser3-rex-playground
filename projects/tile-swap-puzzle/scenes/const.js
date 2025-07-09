@@ -16,14 +16,17 @@ export const COLOR_300 = 0xB0B0B0;
 export const COLOR_200 = 0xD0D0D0;
 export const COLOR_100 = 0xFFFFFFF;
 
-export const COLOR_DIALOG_BG = COLOR_800;
-export const COLOR_DIALOG_BOARD = COLOR_700;
+export const COLOR_PANEL_BG = COLOR_800;
+export const COLOR_PANEL_BOARD = COLOR_700;
 export const COLOR_DIALOG_BTN_BG = COLOR_700;
 export const COLOR_DIALOG_BTN_TXT = COLOR_100;
 export const COLOR_TITLE = COLOR_200;
 export const COLOR_CONTENT = COLOR_300;
 export const COLOR_THUMB = COLOR_400;
 export const COLOR_TRACK = COLOR_100;
+
+export const BITMAP_FONT = 'gothic';
+export const CANVAS_FONT = 'huninn';
 
 export const INFO_HOW_TO_PLAY = `\
 Drag two tiles to swap their positions

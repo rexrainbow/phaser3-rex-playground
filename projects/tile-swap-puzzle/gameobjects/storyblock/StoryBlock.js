@@ -3,14 +3,18 @@ import ImageBox from '../../../../../phaser3-rex-notes/templates/ui/imagebox/Ima
 import TextArea from '../../../../../phaser3-rex-notes/templates/ui/textarea/TextArea.js';
 import BBCodeText from '../../../../../phaser3-rex-notes/templates/ui/bbcodetext/BBCodeText.js';
 import {
-    COLOR_DIALOG_BG, COLOR_DIALOG_BOARD,
+    COLOR_PANEL_BG, COLOR_PANEL_BOARD,
     COLOR_CONTENT,
     COLOR_THUMB, COLOR_TRACK
+} from '../../scenes/const.js';
+import {
+    CANVAS_FONT,
+    BITMAP_FONT
 } from '../../scenes/const.js';
 
 class StoryBlock extends Sizer {
     constructor(scene, key, text) {
-        var background = scene.add.rectangle(0, 0, 1, 1, COLOR_DIALOG_BG).setStrokeStyle(6, COLOR_DIALOG_BOARD);
+        var background = scene.add.rectangle(0, 0, 1, 1, COLOR_PANEL_BG).setStrokeStyle(6, COLOR_PANEL_BOARD);
 
         var imageBox = new ImageBox(scene);
 
@@ -63,17 +67,17 @@ class StoryBlock extends Sizer {
 }
 
 var CreateBitmapTextGameObject = function (scene, size, color) {
-    return scene.add.bitmapText(0, 0, 'gothic', '', size).setTint(color)
+    return scene.add.bitmapText(0, 0, BITMAP_FONT, '', size).setTint(color)
 }
 
 var CreateBBCodeTextGameObject = function (scene, size, color) {
     var text = new BBCodeText(scene, 0, 0, '', {
-        fontFamily: 'huninn',
+        fontFamily: CANVAS_FONT,
         fontSize: `${size}px`,
-        color: color,
         lineSpacing: 16,
         testString: '學'
     })
+    .setTint(color);
     scene.add.existing(text);
     return text;
 }
