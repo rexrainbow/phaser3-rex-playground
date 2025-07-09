@@ -1,6 +1,7 @@
 import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
-import ImageBox from '../../../../../phaser3-rex-notes/plugins/imagebox.js';
+import ImageBox from '../../../../../phaser3-rex-notes/templates/ui/imagebox/ImageBox.js';
 import TextArea from '../../../../../phaser3-rex-notes/templates/ui/textarea/TextArea.js';
+import BBCodeText from '../../../../../phaser3-rex-notes/templates/ui/bbcodetext/BBCodeText.js';
 import {
     COLOR_DIALOG_BG, COLOR_DIALOG_BOARD,
     COLOR_CONTENT,
@@ -14,8 +15,11 @@ class StoryBlock extends Sizer {
         var imageBox = new ImageBox(scene);
 
         var textArea = new TextArea(scene, {
-            space: { left: 20, right: 20, top: 20, bottom: 20, text: 20, },
-            text: scene.add.bitmapText(0, 0, 'gothic', '', 36).setTint(COLOR_CONTENT),
+            space: {
+                left: 20, right: 20, 
+                text: { top: 20, bottom: 20, right: 20 },
+            },
+            text: CreateBBCodeTextGameObject(scene, 36, COLOR_CONTENT),
             slider: {
                 track: {
                     color: COLOR_TRACK,
@@ -53,6 +57,21 @@ class StoryBlock extends Sizer {
         return this;
     }
 
+}
+
+var CreateBitmapTextGameObject = function (scene, size, color) {
+    return scene.add.bitmapText(0, 0, 'gothic', '', size).setTint(color)
+}
+
+var CreateBBCodeTextGameObject = function (scene, size, color) {
+    var text = new BBCodeText(scene, 0, 0, '', {
+        fontSize: `${size}px`,
+        color: color,
+        lineSpacing: 16,
+        testString: '學'
+    })
+    scene.add.existing(text);
+    return text;
 }
 
 export default StoryBlock;

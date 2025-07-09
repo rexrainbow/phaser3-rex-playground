@@ -11,9 +11,10 @@ class Demo extends Phaser.Scene {
     preload() {
         this.load.bitmapFont('gothic', 'assets/fonts/gothic.png', 'assets/fonts/gothic.xml');
 
+        var language = 'en;'
         for (var i = 0; i < 2; i++) {
             this.load.image(`sample${i}`, `assets/images/sample${i}.webp`);
-            this.load.text(`story${i}`, `assets/storys/story${i}`);
+            this.load.text(`story${i}`, `assets/storys/story${i}-${language}`);
         }
 
         this.load.atlas('icons', 'assets/icons/icons.png', 'assets/icons/icons.json');
