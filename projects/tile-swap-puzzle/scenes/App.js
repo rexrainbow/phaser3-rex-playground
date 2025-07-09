@@ -15,6 +15,7 @@ class App extends Phaser.Scene {
     preload() {
         this.load.atlas('icons', 'assets/icons/icons.png', 'assets/icons/icons.json');
         this.load.bitmapFont('gothic', 'assets/fonts/gothic.png', 'assets/fonts/gothic.xml');
+        this.load.font('huninn', 'assets/fonts/jf-openhuninn-2.1.ttf')
 
         var language = 'zh';
         for (var i = 0; i < 2; i++) {

@@ -16,7 +16,7 @@ class StoryBlock extends Sizer {
 
         var textArea = new TextArea(scene, {
             space: {
-                left: 20, right: 20, 
+                left: 20, right: 20,
                 text: { top: 20, bottom: 20, right: 20 },
             },
             text: CreateBBCodeTextGameObject(scene, 36, COLOR_CONTENT),
@@ -65,6 +65,7 @@ var CreateBitmapTextGameObject = function (scene, size, color) {
 
 var CreateBBCodeTextGameObject = function (scene, size, color) {
     var text = new BBCodeText(scene, 0, 0, '', {
+        fontFamily: 'huninn',
         fontSize: `${size}px`,
         color: color,
         lineSpacing: 16,
