@@ -32,6 +32,9 @@ class StoryBlock extends Sizer {
                 },
                 adaptThumbSize: true,
             },
+            mouseWheelScroller: {
+                speed: 0.3
+            },
             alwaysScrollable: false,
         });
         scene.add.existing(textArea);
