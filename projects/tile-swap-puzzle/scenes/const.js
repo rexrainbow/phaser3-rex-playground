@@ -18,8 +18,10 @@ export const COLOR_100 = 0xFFFFFFF;
 
 export const COLOR_PANEL_BG = COLOR_800;
 export const COLOR_PANEL_BOARD = COLOR_700;
-export const COLOR_DIALOG_BTN_BG = COLOR_700;
-export const COLOR_DIALOG_BTN_TXT = COLOR_100;
+export const COLOR_BUTTON_BG = COLOR_700;
+export const COLOR_BUTTON_BOARD = COLOR_600;
+export const COLOR_BUTTON_HOVER_BOARD = COLOR_500;
+export const COLOR_BUTTON_TEXT = COLOR_100;
 export const COLOR_TITLE = COLOR_200;
 export const COLOR_CONTENT = COLOR_300;
 export const COLOR_THUMB = COLOR_400;

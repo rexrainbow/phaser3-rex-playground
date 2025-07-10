@@ -2,7 +2,7 @@ import GridTable from '../../../../../phaser3-rex-notes/templates/ui/gridtable/G
 import Card from './Card.js';
 import {
     COLOR_PANEL_BG, COLOR_PANEL_BOARD,
-    COLOR_CONTENT,
+    COLOR_BUTTON_BG, COLOR_BUTTON_BOARD, COLOR_BUTTON_HOVER_BOARD,
     COLOR_THUMB, COLOR_TRACK
 } from '../../scenes/const.js';
 
@@ -11,11 +11,12 @@ class GalleryPanel extends GridTable {
         var background = scene.add.rectangle(0, 0, 1, 1, COLOR_PANEL_BG).setStrokeStyle(6, COLOR_PANEL_BOARD);
 
         super(scene, {
-            columns: 3,
             space: { left: 30, right: 30, top: 30, bottom: 30, },
 
             background: background,
             table: {
+                columns: 3,
+                cellHeight: 500,
                 slider: {
                     track: {
                         color: COLOR_TRACK,
@@ -43,15 +44,33 @@ class GalleryPanel extends GridTable {
                     index = cell.index;
                 if (cellContainer === null) { // No reusable cell container, create a new one
                     cellContainer = new Card(scene);
-                    cellContainer.setMinSize(width - 20, height - 20);
                 }
-                // Set child properties of cell container ...
+                // Set child properties of cell container
                 cellContainer.setCardContent(item.title, item.image, item.unlocked);
+
+                cellContainer.setMinSize(width - 40, height - 40);
+
+                cellContainer.getElement('background').setFillStyle(COLOR_BUTTON_BG).setStrokeStyle(5, COLOR_BUTTON_BOARD);
+
+                cellContainer.setData('id', item.id);
+
                 cell.setCellContainerAlign('center');  // Set alignment of cellContainer
 
                 return cellContainer; // or null
             }
         })
+
+        this
+            .on('cell.over', function (cellContainer, cellIndex, pointer, event) {
+                cellContainer.getElement('background').setStrokeStyle(10, COLOR_BUTTON_HOVER_BOARD);
+            })
+            .on('cell.out', function (cellContainer, cellIndex, pointer, event) {
+                cellContainer.getElement('background').setStrokeStyle(5, COLOR_BUTTON_BOARD);
+            })
+            .on('cell.click', function (cellContainer, cellIndex, pointer, event) {
+                var id = cellContainer.getData('id')
+                console.log(id)
+            })
     }
 }
 

@@ -1,5 +1,6 @@
 import 'phaser'
-import StoryDialog from './gameobjects/storyblock/StoryDialog.js';
+import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/const.js';
+import GalleryPanel from './gameobjects/gallery/GalleryPanel.js';
 
 class Demo extends Phaser.Scene {
     constructor() {
@@ -21,14 +22,19 @@ class Demo extends Phaser.Scene {
     }
 
     create() {
-        var index = 1;
-        var key = `sample${index}`
-        var text = this.cache.text.get(`story${index}`);
-        var storyDialog = new StoryDialog(this, key, text)
-            .layout();
-        this.add.existing(storyDialog);
+        var items = [
+            { id: 0, title: 'level0', image: 'sample0' },
+            { id: 1, title: 'level1', image: 'sample1' },
+        ]
 
-        storyDialog.modalPromise();
+        var panel = new GalleryPanel(this)
+            .setPosition(SIZE_WIN_WIDTH / 2, SIZE_WIN_HEIGHT / 2)
+            .setMinSize(SIZE_WIN_WIDTH * 0.9, SIZE_WIN_HEIGHT * 0.9)
+            .layout();
+        this.add.existing(panel);
+
+        panel.setItems(items)
+        //.drawBounds(this.add.graphics(), 0xff0000);
     }
 
     update() { }
@@ -37,8 +43,8 @@ class Demo extends Phaser.Scene {
 var config = {
     type: Phaser.AUTO,
     parent: 'phaser-example',
-    width: 1920,
-    height: 1080,
+    width: SIZE_WIN_WIDTH,
+    height: SIZE_WIN_HEIGHT,
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,

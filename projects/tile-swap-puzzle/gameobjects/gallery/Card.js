@@ -1,11 +1,14 @@
 import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
 import ImageBox from '../../../../../phaser3-rex-notes/templates/ui/imagebox/ImageBox.js';
 import {
-    CANVAS_FONT
+    CANVAS_FONT,
+    COLOR_BUTTON_BG, COLOR_BUTTON_BOARD,
 } from '../../scenes/const.js';
 
 class Card extends Sizer {
     constructor(scene) {
+        var background = scene.add.rectangle(0, 0, 1, 1, COLOR_BUTTON_BG).setStrokeStyle(5, COLOR_BUTTON_BOARD);
+
         var text = scene.add.text(0, 0, '', {
             fontFamily: CANVAS_FONT,
             fontSize: `30px`,
@@ -20,6 +23,7 @@ class Card extends Sizer {
         })
 
         this
+            .addBackground(background, undefined, 'background')
             .add(text, { key: 'text' })
             .add(imageBox, { proportion: 1, expand: true, key: 'image' })
 
