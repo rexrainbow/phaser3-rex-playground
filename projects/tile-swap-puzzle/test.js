@@ -1,6 +1,6 @@
 import 'phaser'
 import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/const.js';
-import LoadAssets from './loader/LoadAssets.js';
+import LoadLevelHeader from './loader/LoadLevelHeader.js';
 import GalleryPanel from './gameobjects/gallery/GalleryPanel.js';
 
 class Demo extends Phaser.Scene {
@@ -21,7 +21,7 @@ class Demo extends Phaser.Scene {
 
         this.load.atlas('icons', 'assets/icons/icons.png', 'assets/icons/icons.json');
 
-        LoadAssets(this);
+        LoadLevelHeader(this);
     }
 
     create() {
