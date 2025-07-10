@@ -47,12 +47,9 @@ class GalleryPanel extends GridTable {
                 }
                 // Set child properties of cell container
                 cellContainer.setCardContent(item.title, item.image, item.unlocked);
-
                 cellContainer.setMinSize(width - 40, height - 40);
-
                 cellContainer.getElement('background').setFillStyle(COLOR_BUTTON_BG).setStrokeStyle(5, COLOR_BUTTON_BOARD);
-
-                cellContainer.setData('id', item.id);
+                cellContainer.setData('index', index);
 
                 cell.setCellContainerAlign('center');  // Set alignment of cellContainer
 
@@ -63,14 +60,18 @@ class GalleryPanel extends GridTable {
         this
             .on('cell.over', function (cellContainer, cellIndex, pointer, event) {
                 cellContainer.getElement('background').setStrokeStyle(10, COLOR_BUTTON_HOVER_BOARD);
-            })
+            }, this)
             .on('cell.out', function (cellContainer, cellIndex, pointer, event) {
                 cellContainer.getElement('background').setStrokeStyle(5, COLOR_BUTTON_BOARD);
-            })
+            }, this)
             .on('cell.click', function (cellContainer, cellIndex, pointer, event) {
-                var id = cellContainer.getData('id')
-                console.log(id)
-            })
+                var index = cellContainer.getData('index');
+                var item = this.items[index];
+                var image = item.image,
+                    content = scene.cache.text.get(item.contentKey);
+
+                // TODO: popup story dialog
+            }, this)
     }
 }
 

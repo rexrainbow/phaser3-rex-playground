@@ -1,5 +1,6 @@
 import 'phaser'
 import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/const.js';
+import LoadAssets from './loader/LoadAssets.js';
 import GalleryPanel from './gameobjects/gallery/GalleryPanel.js';
 
 class Demo extends Phaser.Scene {
@@ -12,19 +13,21 @@ class Demo extends Phaser.Scene {
     preload() {
         this.load.bitmapFont('gothic', 'assets/fonts/gothic.png', 'assets/fonts/gothic.xml');
 
-        var language = 'en;'
+        var language = 'zh';
         for (var i = 0; i < 2; i++) {
             this.load.image(`sample${i}`, `assets/images/sample${i}.webp`);
             this.load.text(`story${i}`, `assets/storys/story${i}-${language}`);
         }
 
         this.load.atlas('icons', 'assets/icons/icons.png', 'assets/icons/icons.json');
+
+        LoadAssets(this);
     }
 
     create() {
         var items = [
-            { id: 0, title: 'level0', image: 'sample0' },
-            { id: 1, title: 'level1', image: 'sample1' },
+            { id: 0, title: 'level0', image: 'sample0', contentKey: 'story0' },
+            { id: 1, title: 'level1', image: 'sample1', contentKey: 'story1' },
         ]
 
         var panel = new GalleryPanel(this)
