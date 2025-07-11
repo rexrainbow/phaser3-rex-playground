@@ -1,7 +1,7 @@
 import OverlapSizer from '../../../../../phaser3-rex-notes/templates/ui/overlapsizer/OverlapSizer.js';
 import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
-import TileContainer from '../tilecontainer/TileContainer.js';
-import SidePanel from '../sidepanel/SidePanel.js';
+import TileContainer from './tilecontainer/TileContainer.js';
+import SidePanel from './sidepanel/SidePanel.js';
 
 class TopPanel extends OverlapSizer {
     constructor(scene) {

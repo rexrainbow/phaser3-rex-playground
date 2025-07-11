@@ -1,4 +1,4 @@
-import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
+import Sizer from '../../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
 import CreateStoryIcon from './CreateStoryIcon.js';
 import CreateRestartIcon from './CreateRestartIcon.js';
 import CreateNextLevelIcon from './CreateNextLevelIcon.js';

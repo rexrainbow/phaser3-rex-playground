@@ -1,4 +1,4 @@
-import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
+import Sizer from '../../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
 import CreateFileChooserIcon from './CreateFileChooserIcon.js';
 import CreateInfoIcon from './CreateInfoIcon.js';
 import CreateFullscreenIcon from './CreateFullscreenIcon.js';

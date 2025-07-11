@@ -1,8 +1,8 @@
-import Label from '../../../../../phaser3-rex-notes/templates/ui/label/Label.js';
-import BBCodeText from '../../../../../phaser3-rex-notes/plugins/bbcodetext.js';
-import AddEvent from '../../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddEvent.js';
-import { DATA_KEY_SCORE } from '../../scenes/const.js';
-import { CANVAS_FONT,CANVAS_TEST_STRING } from '../../scenes/const.js';
+import Label from '../../../../../../phaser3-rex-notes/templates/ui/label/Label.js';
+import BBCodeText from '../../../../../../phaser3-rex-notes/plugins/bbcodetext.js';
+import AddEvent from '../../../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddEvent.js';
+import { DATA_KEY_SCORE } from '../../../scenes/const.js';
+import { CANVAS_FONT,CANVAS_TEST_STRING } from '../../../scenes/const.js';
 
 class ScoreLabel extends Label {
     constructor(scene) {

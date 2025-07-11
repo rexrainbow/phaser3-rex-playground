@@ -1,4 +1,4 @@
-import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
+import Sizer from '../../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
 import ScoreLabel from './ScoreLabel.js';
 import TopToolbar from './TopToolbar.js';
 import BottomToolbar from './BottomToolbar.js';

@@ -1,8 +1,8 @@
-import { EaseMoveMethods } from '../../../../../phaser3-rex-notes/plugins/easemove.js';
+import { EaseMoveMethods } from '../../../../../../phaser3-rex-notes/plugins/easemove.js';
 import OnCorrectPositionMethods from './OnCorrectPositionMethods.js';
 import OnDropTile from './OnDropTile.js';
 import GetScore from './GetScore.js';
-import { EASE_DURATION } from '../../scenes/const.js';
+import { EASE_DURATION } from '../../../scenes/const.js';
 
 class Tile extends Phaser.GameObjects.Image {
     constructor(scene, x, y, key, frame) {

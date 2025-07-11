@@ -1,4 +1,4 @@
-import FileSelectorButton from '../../../../../phaser3-rex-notes/templates/ui/fileselectorbutton/FileSelectorButton.js';
+import FileSelectorButton from '../../../../../../phaser3-rex-notes/templates/ui/fileselectorbutton/FileSelectorButton.js';
 
 
 var CreateFileChooserIcon = function (scene, size) {
