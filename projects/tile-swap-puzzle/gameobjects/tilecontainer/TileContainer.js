@@ -1,4 +1,4 @@
-import { EVT_RESTART_GAME } from '../../commands/const.js';
+import { EVT_RESTART_GAME } from '../../scenes/GameplayScene/const.js';
 import OverlapSizer from '../../../../../phaser3-rex-notes/templates/ui/overlapsizer/OverlapSizer.js';
 import AddSceneEvent from '../../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddSceneEvent.js';
 import FitTo from '../../../../../phaser3-rex-notes/plugins/utils/size/FitTo.js';

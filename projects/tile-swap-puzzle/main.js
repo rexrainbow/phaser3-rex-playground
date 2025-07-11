@@ -2,7 +2,7 @@ import 'phaser'
 import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/const.js';
 import BootScene from './scenes/BootScene.js';
 import MenuScene from './scenes/MenuScene.js';
-import GameplayScene from './scenes/GameplayScene.js';
+import GameplayScene from './scenes/GameplayScene/GameplayScene.js';
 import GalleryScene from './scenes/GalleryScene.js';
 
 var config = {

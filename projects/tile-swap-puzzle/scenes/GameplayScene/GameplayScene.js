@@ -1,9 +1,10 @@
-import TopPanel from '../gameobjects/toppanel/TopPanel.js';
-import RegisterCommands from '../commands/RegisterCommands.js';
-import { SCENE_GAMEPLAY } from './const.js';
-import { CANVAS_FONT, BITMAP_FONT } from './const.js';
+import { SCENE_GAMEPLAY } from '../const.js';
+import Methods from './methods/Methods.js';
+import LoadTextureFromClickboard from './methods/LoadTextureFromClickboard.js';
+import TopPanel from '../../gameobjects/toppanel/TopPanel.js';
+import { CANVAS_FONT, BITMAP_FONT } from '../const.js';
 
-class Gameplay extends Phaser.Scene {
+class GameplayScene extends Phaser.Scene {
     constructor() {
         super({
             key: SCENE_GAMEPLAY
@@ -11,10 +12,8 @@ class Gameplay extends Phaser.Scene {
     }
 
     init(data) {
-        if (!this.data.get('initialized')) {
-            RegisterCommands(this);
-            this.data.set('initialized', true);
-        }
+        LoadTextureFromClickboard(this);
+        // TODO
     }
 
     preload() {
@@ -40,4 +39,9 @@ class Gameplay extends Phaser.Scene {
 
     update() { }
 }
-export default Gameplay;
+
+Object.assign(
+    GameplayScene.prototype,
+    Methods
+)
+export default GameplayScene;

@@ -4,7 +4,7 @@ var CreateExitIcon = function (scene, size) {
     var exitIcon = scene.add.image(0, 0, 'icons', 'exit').setDisplaySize(size, size);
     exitIcon.button = new Button(exitIcon)
         .on('click', function () {
-            scene.backToMenuScene();
+            scene.goToMenuScene();
         })
 
     return exitIcon;
