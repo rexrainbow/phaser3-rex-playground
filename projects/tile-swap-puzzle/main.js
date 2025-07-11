@@ -1,6 +1,9 @@
 import 'phaser'
 import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/const.js';
-import App from './scenes/App.js';
+import BootScene from './scenes/BootScene.js';
+import MenuScene from './scenes/MenuScene.js';
+import GameplayScene from './scenes/GameplayScene.js';
+import GalleryScene from './scenes/GalleryScene.js';
 
 var config = {
     type: Phaser.AUTO,
@@ -16,7 +19,7 @@ var config = {
         createContainer: true
     },
     plugins: {},
-    scene: [App],
+    scene: [BootScene, MenuScene, GameplayScene, GalleryScene],
 };
 
 var game = new Phaser.Game(config);

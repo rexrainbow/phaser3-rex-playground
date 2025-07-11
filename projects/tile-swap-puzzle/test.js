@@ -1,7 +1,7 @@
 import 'phaser'
 import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/const.js';
 import { DATA_KEY_LEVELS } from './scenes/const.js';
-import LoadConfiguration from './loader/LoadConfiguration.js';
+import LoadLevels from './levels/LoadLevels.js';
 import GalleryPanel from './gameobjects/gallery/GalleryPanel.js';
 
 class Demo extends Phaser.Scene {
@@ -15,7 +15,7 @@ class Demo extends Phaser.Scene {
         this.load.bitmapFont('gothic', 'assets/fonts/gothic.png', 'assets/fonts/gothic.xml');
         this.load.atlas('icons', 'assets/icons/icons.png', 'assets/icons/icons.json');
 
-        LoadConfiguration(this);
+        LoadLevels(this);
     }
 
     create() {

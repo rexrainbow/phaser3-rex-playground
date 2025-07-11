@@ -1,16 +1,20 @@
 import TopPanel from '../gameobjects/toppanel/TopPanel.js';
 import RegisterCommands from '../commands/RegisterCommands.js';
+import { SCENE_GAMEPLAY } from './const.js';
 import { CANVAS_FONT, BITMAP_FONT } from './const.js';
 
-class App extends Phaser.Scene {
+class Gameplay extends Phaser.Scene {
     constructor() {
         super({
-            key: 'app'
+            key: SCENE_GAMEPLAY
         })
     }
 
-    init() {
-        RegisterCommands(this);
+    init(data) {
+        if (!this.data.get('initialized')) {
+            RegisterCommands(this);
+            this.data.set('initialized', true);
+        }
     }
 
     preload() {
@@ -36,4 +40,4 @@ class App extends Phaser.Scene {
 
     update() { }
 }
-export default App;
+export default Gameplay;

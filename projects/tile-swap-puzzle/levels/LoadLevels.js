@@ -3,24 +3,25 @@ import YAMLLoader from '../../../../phaser3-rex-notes/plugins/yamlloader.js';
 import LoadCompletePromise from '../../../../phaser3-rex-notes/plugins/utils/loader/LoadCompletePromise.js';
 import { DATA_KEY_CONFIGURATION, DATA_KEY_LEVELS } from '../scenes/const.js';
 
-var LoadConfiguration = function (scene) {
+var LoadLevels = function (scene) {
     AwaitLoader.call(scene.load, async function (successCallback, failureCallback) {
-        var configuration = await LoadSequence(scene);
+        await LoadSequence(scene, DATA_KEY_CONFIGURATION);
+
+        var configuration = scene.cache.json.get(DATA_KEY_CONFIGURATION);
         scene.registry.set(DATA_KEY_CONFIGURATION, configuration);
 
-        var levels = configuration.levels;
-        levels = levels.map((levelData) => levelData.data);
-        scene.registry.set(DATA_KEY_LEVELS, levels);
+        var levels = configuration.levels.map((levelData) => levelData.data);
+        scene.registry.set(DATA_KEY_LEVELS, structuredClone(levels));
         // Done
         successCallback();
     })
 }
 
-var LoadSequence = async function (scene) {
+var LoadSequence = async function (scene, configurationKey) {
     var type = 'json';
 
     // 1. Load configuration
-    let key = 'configuration';
+    let key = configurationKey;
     let url = 'assets/configuration.yml';
     var result = await LoadCompletePromise(
         YAMLLoader.call(scene.load, key, url),
@@ -50,4 +51,4 @@ var LoadSequence = async function (scene) {
     return configuration;
 }
 
-export default LoadConfiguration;
+export default LoadLevels;
