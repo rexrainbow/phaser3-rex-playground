@@ -2,7 +2,7 @@ import { SCENE_GAMEPLAY } from '../const.js';
 import Methods from './methods/Methods.js';
 import LoadTextureFromClickboard from './methods/LoadTextureFromClickboard.js';
 import TopPanel from '../../gameobjects/toppanel/TopPanel.js';
-import { CANVAS_FONT, BITMAP_FONT } from '../const.js';
+import { CANVAS_FONT } from '../const.js';
 
 class GameplayScene extends Phaser.Scene {
     constructor() {
@@ -18,7 +18,6 @@ class GameplayScene extends Phaser.Scene {
 
     preload() {
         this.load.atlas('icons', 'assets/icons/icons.png', 'assets/icons/icons.json');
-        this.load.bitmapFont(BITMAP_FONT, 'assets/fonts/gothic.png', 'assets/fonts/gothic.xml');
         this.load.font(CANVAS_FONT, 'assets/fonts/jf-openhuninn-2.1.ttf')
 
         var language = 'zh';

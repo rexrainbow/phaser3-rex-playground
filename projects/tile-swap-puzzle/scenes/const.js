@@ -34,8 +34,8 @@ export const COLOR_CONTENT = COLOR_300;
 export const COLOR_THUMB = COLOR_400;
 export const COLOR_TRACK = COLOR_100;
 
-export const BITMAP_FONT = 'gothic';
 export const CANVAS_FONT = 'huninn';
+export const CANVAS_TEST_STRING = '|MÉqgy學';
 
 export const INFO_HOW_TO_PLAY = `\
 Drag two tiles to swap their positions

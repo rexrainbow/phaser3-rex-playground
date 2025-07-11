@@ -1,7 +1,7 @@
 import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
 import LazyLoadImageBox from '../../../../../phaser3-rex-notes/templates/lazyloadimagebox/LazyLoadImageBox.js';
 import {
-    CANVAS_FONT,
+    CANVAS_FONT, CANVAS_TEST_STRING,
     COLOR_BUTTON_BG, COLOR_BUTTON_BOARD,
 } from '../../scenes/const.js';
 
@@ -12,7 +12,7 @@ class Card extends Sizer {
         var text = scene.add.text(0, 0, '', {
             fontFamily: CANVAS_FONT,
             fontSize: `30px`,
-            testString: '學'
+            testString: CANVAS_TEST_STRING
         })
 
         var imageBox = new LazyLoadImageBox(scene, { scaleUp: true });

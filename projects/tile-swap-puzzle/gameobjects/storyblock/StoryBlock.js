@@ -7,10 +7,7 @@ import {
     COLOR_CONTENT,
     COLOR_THUMB, COLOR_TRACK
 } from '../../scenes/const.js';
-import {
-    CANVAS_FONT,
-    BITMAP_FONT
-} from '../../scenes/const.js';
+import { CANVAS_FONT, CANVAS_TEST_STRING} from '../../scenes/const.js';
 
 class StoryBlock extends Sizer {
     constructor(scene, key, text) {
@@ -66,16 +63,12 @@ class StoryBlock extends Sizer {
 
 }
 
-var CreateBitmapTextGameObject = function (scene, size, color) {
-    return scene.add.bitmapText(0, 0, BITMAP_FONT, '', size).setTint(color)
-}
-
 var CreateBBCodeTextGameObject = function (scene, size, color) {
     var text = new BBCodeText(scene, 0, 0, '', {
         fontFamily: CANVAS_FONT,
         fontSize: `${size}px`,
         lineSpacing: 16,
-        testString: '學'
+        testString: CANVAS_TEST_STRING
     })
         .setTint(color);
     scene.add.existing(text);

@@ -1,4 +1,4 @@
-import { SCENE_MENU, SCENE_GAMEPLAY } from './const.js';
+import { SCENE_MENU, SCENE_GAMEPLAY } from '../const.js';
 
 class MenuScene extends Phaser.Scene {
     constructor() {

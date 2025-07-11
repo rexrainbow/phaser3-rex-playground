@@ -1,4 +1,4 @@
-import { SCENE_GALLERY } from './const.js';
+import { SCENE_GALLERY } from '../const.js';
 
 class GalleryScene extends Phaser.Scene {
     constructor() {
