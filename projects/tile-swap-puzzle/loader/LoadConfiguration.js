@@ -1,10 +1,16 @@
 import AwaitLoader from '../../../../phaser3-rex-notes/plugins/awaitloader.js';
 import YAMLLoader from '../../../../phaser3-rex-notes/plugins/yamlloader.js';
 import LoadCompletePromise from '../../../../phaser3-rex-notes/plugins/utils/loader/LoadCompletePromise.js';
+import { DATA_KEY_CONFIGURATION, DATA_KEY_LEVELS } from '../scenes/const.js';
 
-var LoadLevelHeader = function (scene) {
+var LoadConfiguration = function (scene) {
     AwaitLoader.call(scene.load, async function (successCallback, failureCallback) {
-        LoadSequence(scene);
+        var configuration = await LoadSequence(scene);
+        scene.registry.set(DATA_KEY_CONFIGURATION, configuration);
+
+        var levels = configuration.levels;
+        levels = levels.map((levelData) => levelData.data);
+        scene.registry.set(DATA_KEY_LEVELS, levels);
         // Done
         successCallback();
     })
@@ -22,8 +28,8 @@ var LoadSequence = async function (scene) {
     )
 
     // 2. Load each level data
-    var root = result.data;
-    var levels = root.levels;
+    var configuration = result.data;
+    var levels = configuration.levels;
     var promises = [];
     for (var i = 0, cnt = levels.length; i < cnt; i++) {
         let levelData = levels[i];
@@ -41,28 +47,7 @@ var LoadSequence = async function (scene) {
         )
     }
     var results = await Promise.all(promises);
-    console.log(results);
-
-    // Lazy loading?
-    // 3. Load image of each level
-    // promises.length = 0;
-    // type = 'image';
-    // for (var i = 0, cnt = results.length; i < cnt; i++) {
-    //     var levelData = results[i].data;
-    //     key = levelData.image;
-    //     url = levelData['image-url'];
-    //     promises.push(
-    //         LoadCompletePromise(
-    //             scene,
-    //             { key, type, url }
-    //         )
-    //     )
-    // }
-    // var results = await Promise.all(promises);
-    // console.log(results);
-
-    console.log(root);
-    return root;
+    return configuration;
 }
 
-export default LoadLevelHeader;
+export default LoadConfiguration;

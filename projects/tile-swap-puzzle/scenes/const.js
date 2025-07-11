@@ -4,6 +4,8 @@ export const SIZE_WIN_HEIGHT = 1080;
 export const EASE_DURATION = 200;
 export const DATA_KEY_SCORE = 'score';
 export const DATA_KEY_TARGET_TEXTURE = 'image-key';
+export const DATA_KEY_CONFIGURATION = 'configuration'; // In scene.registry
+export const DATA_KEY_LEVELS = 'levels'; // In scene.registry
 
 export const COLOR_1000 = 0x0A0A0A;
 export const COLOR_900 = 0x121212;

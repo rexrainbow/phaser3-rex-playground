@@ -16,7 +16,7 @@ class StoryBlock extends Sizer {
     constructor(scene, key, text) {
         var background = scene.add.rectangle(0, 0, 1, 1, COLOR_PANEL_BG).setStrokeStyle(6, COLOR_PANEL_BOARD);
 
-        var imageBox = new ImageBox(scene);
+        var imageBox = new ImageBox(scene, { scaleUp: true });
 
         var textArea = new TextArea(scene, {
             space: {
@@ -77,7 +77,7 @@ var CreateBBCodeTextGameObject = function (scene, size, color) {
         lineSpacing: 16,
         testString: '學'
     })
-    .setTint(color);
+        .setTint(color);
     scene.add.existing(text);
     return text;
 }

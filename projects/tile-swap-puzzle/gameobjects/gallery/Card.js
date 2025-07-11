@@ -1,5 +1,5 @@
 import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
-import ImageBox from '../../../../../phaser3-rex-notes/templates/ui/imagebox/ImageBox.js';
+import LazyLoadImageBox from '../../../../../phaser3-rex-notes/templates/lazyloadimagebox/LazyLoadImageBox.js';
 import {
     CANVAS_FONT,
     COLOR_BUTTON_BG, COLOR_BUTTON_BOARD,
@@ -15,7 +15,7 @@ class Card extends Sizer {
             testString: '學'
         })
 
-        var imageBox = new ImageBox(scene);
+        var imageBox = new LazyLoadImageBox(scene, { scaleUp: true });
 
         super(scene, {
             orientation: 'y',
@@ -29,12 +29,9 @@ class Card extends Sizer {
 
     }
 
-    setCardContent(title, key, unlocked) {
+    setCardContent(title, key, url) {
         var text = this.getElement('text').setText(title);
-        var image = this.getElement('image').setTexture(key);
-        if (!unlocked) {
-            //TODO
-        }
+        var image = this.getElement('image').setTexture(key, undefined, url); // Lazy-load
         return this;
     }
 }

@@ -46,7 +46,7 @@ class GalleryPanel extends GridTable {
                     cellContainer = new Card(scene);
                 }
                 // Set child properties of cell container
-                cellContainer.setCardContent(item.title, item.image, item.unlocked);
+                cellContainer.setCardContent(item.title, item.image, item['image-url']);
                 cellContainer.setMinSize(width - 40, height - 40);
                 cellContainer.getElement('background').setFillStyle(COLOR_BUTTON_BG).setStrokeStyle(5, COLOR_BUTTON_BOARD);
                 cellContainer.setData('index', index);
@@ -66,9 +66,11 @@ class GalleryPanel extends GridTable {
             }, this)
             .on('cell.click', function (cellContainer, cellIndex, pointer, event) {
                 var index = cellContainer.getData('index');
-                var item = this.items[index];
-                var image = item.image,
-                    content = scene.cache.text.get(item.contentKey);
+                var level = this.items[index];
+                var image = level.image;
+                var text = level['story-zh'];
+
+                console.log(image, text)
 
                 // TODO: popup story dialog
             }, this)
