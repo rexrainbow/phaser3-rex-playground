@@ -7,10 +7,13 @@ import {
     COLOR_CONTENT,
     COLOR_THUMB, COLOR_TRACK
 } from '../../scenes/const.js';
-import { CANVAS_FONT, CANVAS_TEST_STRING} from '../../scenes/const.js';
+import { CANVAS_FONT, CANVAS_TEST_STRING } from '../../scenes/const.js';
 
 class StoryBlock extends Sizer {
-    constructor(scene, key, text) {
+    constructor(scene, config) {
+        var key = config.key;
+        var text = config.text;
+
         var background = scene.add.rectangle(0, 0, 1, 1, COLOR_PANEL_BG).setStrokeStyle(6, COLOR_PANEL_BOARD);
 
         var imageBox = new ImageBox(scene, { scaleUp: true });

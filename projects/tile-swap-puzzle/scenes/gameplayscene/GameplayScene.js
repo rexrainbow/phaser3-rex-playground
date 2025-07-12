@@ -1,7 +1,7 @@
 import { SCENE_GAMEPLAY } from '../const.js';
 import Methods from './methods/Methods.js';
 import LoadTextureFromClickboard from './methods/LoadTextureFromClickboard.js';
-import TopPanel from '../../gameobjects/toppanel/TopPanel.js';
+import TopPanel from '../../gameobjects/gameplay/TopPanel.js';
 import { CANVAS_FONT } from '../const.js';
 
 class GameplayScene extends Phaser.Scene {

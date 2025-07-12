@@ -1,7 +1,7 @@
 import Sizer from '../../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
 import ScoreLabel from './ScoreLabel.js';
-import TopToolbar from './TopToolbar.js';
-import BottomToolbar from './BottomToolbar.js';
+import TopToolbar from './toptoolbar/TopToolbar.js';
+import BottomToolbar from './bottomtoolbar/BottomToolbar.js';
 
 class SidePanel extends Sizer {
     constructor(scene) {

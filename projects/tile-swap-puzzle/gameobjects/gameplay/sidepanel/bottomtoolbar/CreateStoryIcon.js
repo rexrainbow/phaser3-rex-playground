@@ -1,6 +1,6 @@
-import Button from '../../../../../../phaser3-rex-notes/plugins/button.js';
-import StoryDialog from '../../storyblock/StoryDialog.js';
-import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../../../scenes/const';
+import Button from '../../../../../../../phaser3-rex-notes/plugins/button.js';
+import StoryDialog from '../../../storyblock/StoryDialog.js';
+import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../../../../scenes/const.js';
 
 var CreateStoryIcon = function (scene, size) {
     var storyIcon = scene.add.image(0, 0, 'icons', 'story').setDisplaySize(size, size);
@@ -19,7 +19,7 @@ var CreateStoryIcon = function (scene, size) {
 }
 
 var PopupStoryDialog = function (scene, key, text) {
-    var storyDialog = new StoryDialog(scene, key, text);
+    var storyDialog = new StoryDialog(scene, { key, text });
     scene.add.existing(storyDialog);
 
     storyDialog

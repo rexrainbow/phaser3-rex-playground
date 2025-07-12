@@ -1,5 +1,5 @@
 import CreatePieces from '../../../../../../phaser3-rex-notes/plugins/actions/cutjigsawimage/CreatePieces.js';
-import Tile from '../tile/Tile.js';
+import Tile from './tile/Tile.js';
 
 var GenerateTiles = function (targetImage, piecePool) {
     if (piecePool) {

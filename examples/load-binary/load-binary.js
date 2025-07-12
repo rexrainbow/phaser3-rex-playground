@@ -19,6 +19,11 @@ class Demo extends Phaser.Scene {
             await LoadImageFromCBORBuffer(scene, key, cborData);
         })
 
+        this.load.audio('theme1', [
+            'assets/jungle.ogg',
+            'assets/jungle.mp3'
+        ]);
+
 
     }
 
