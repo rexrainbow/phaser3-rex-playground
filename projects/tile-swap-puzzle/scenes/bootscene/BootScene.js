@@ -1,4 +1,4 @@
-import { SCENE_BOOT, SCENE_MENU } from '../const.js';
+import { SCENE_BOOT, SCENE_MENU } from '../SceneKeys.js';
 import { CANVAS_FONT } from '../const.js';
 import LoadLevels from '../../levels/LoadLevels.js';
 

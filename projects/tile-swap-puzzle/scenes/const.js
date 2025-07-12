@@ -1,38 +1,11 @@
 export const SIZE_WIN_WIDTH = 1920;
 export const SIZE_WIN_HEIGHT = 1080;
 
-export const SCENE_BOOT = 'boot';
-export const SCENE_MENU = 'menu';
-export const SCENE_GAMEPLAY = 'gameplay';
-export const SCENE_GALLERY = 'gallery';
-
 export const EASE_DURATION = 200;
 export const DATA_KEY_SCORE = 'score';
 export const DATA_KEY_TARGET_TEXTURE = 'image-key';
 export const DATA_KEY_CONFIGURATION = 'configuration'; // In scene.registry
 export const DATA_KEY_LEVELS = 'levels'; // In scene.registry
-
-export const COLOR_1000 = 0x0A0A0A;
-export const COLOR_900 = 0x121212;
-export const COLOR_800 = 0x1E1E1E;
-export const COLOR_700 = 0x2C2C2C;
-export const COLOR_600 = 0x3D3D3D;
-export const COLOR_500 = 0x5A5A5A;
-export const COLOR_400 = 0x8A8A8A;
-export const COLOR_300 = 0xB0B0B0;
-export const COLOR_200 = 0xD0D0D0;
-export const COLOR_100 = 0xFFFFFFF;
-
-export const COLOR_PANEL_BG = COLOR_800;
-export const COLOR_PANEL_BOARD = COLOR_700;
-export const COLOR_BUTTON_BG = COLOR_700;
-export const COLOR_BUTTON_BOARD = COLOR_600;
-export const COLOR_BUTTON_HOVER_BOARD = COLOR_500;
-export const COLOR_BUTTON_TEXT = COLOR_100;
-export const COLOR_TITLE = COLOR_200;
-export const COLOR_CONTENT = COLOR_300;
-export const COLOR_THUMB = COLOR_400;
-export const COLOR_TRACK = COLOR_100;
 
 export const CANVAS_FONT = 'huninn';
 export const CANVAS_TEST_STRING = '|MÉqgy學';

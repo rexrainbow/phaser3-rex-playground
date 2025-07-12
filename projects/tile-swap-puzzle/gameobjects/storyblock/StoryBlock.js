@@ -6,7 +6,7 @@ import {
     COLOR_PANEL_BG, COLOR_PANEL_BOARD,
     COLOR_CONTENT,
     COLOR_THUMB, COLOR_TRACK
-} from '../../scenes/const.js';
+} from '../../scenes/ColorPalette.js';
 import { CANVAS_FONT, CANVAS_TEST_STRING } from '../../scenes/const.js';
 
 class StoryBlock extends Sizer {

@@ -2,7 +2,7 @@ import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js'
 import Label from '../../../../../phaser3-rex-notes/templates/ui/label/Label.js';
 import {
     COLOR_PANEL_BG, COLOR_PANEL_BOARD,
-} from '../../scenes/const.js';
+} from '../../scenes/ColorPalette.js';
 
 class ModalDialog extends Sizer {
     constructor(scene, panel) {

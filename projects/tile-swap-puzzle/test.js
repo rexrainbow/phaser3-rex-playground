@@ -1,8 +1,7 @@
 import 'phaser'
 import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/const.js';
-import { DATA_KEY_LEVELS } from './scenes/const.js';
-import LoadLevels from './levels/LoadLevels.js';
-import GalleryPanel from './gameobjects/gallery/GalleryPanel.js';
+import { CANVAS_FONT } from './scenes/const.js';
+import Menu from './gameobjects/menu/Menu.js';
 
 class Demo extends Phaser.Scene {
     constructor() {
@@ -12,24 +11,15 @@ class Demo extends Phaser.Scene {
     }
 
     preload() {
-        this.load.bitmapFont('gothic', 'assets/fonts/gothic.png', 'assets/fonts/gothic.xml');
-        this.load.atlas('icons', 'assets/icons/icons.png', 'assets/icons/icons.json');
-
-        LoadLevels(this);
+        this.load.font(CANVAS_FONT, 'assets/fonts/jf-openhuninn-2.1.ttf');
     }
 
     create() {
-        var levels = this.registry.get(DATA_KEY_LEVELS);
-        console.log(levels);
+        var menu = new Menu(this)
+            .setPosition(SIZE_WIN_WIDTH * 0.7, SIZE_WIN_HEIGHT * 0.6)
+            .layout()
 
-        var panel = new GalleryPanel(this)
-            .setPosition(SIZE_WIN_WIDTH / 2, SIZE_WIN_HEIGHT / 2)
-            .setMinSize(SIZE_WIN_WIDTH * 0.9, SIZE_WIN_HEIGHT * 0.9)
-            .layout();
-        this.add.existing(panel);
-
-        panel.setItems(levels)
-        //.drawBounds(this.add.graphics(), 0xff0000);
+        this.add.existing(menu)
     }
 
     update() { }

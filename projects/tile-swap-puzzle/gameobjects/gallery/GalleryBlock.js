@@ -1,14 +1,21 @@
 import GridTable from '../../../../../phaser3-rex-notes/templates/ui/gridtable/GridTable.js';
 import Card from './Card.js';
+import RoundRectangle from '../../../../../phaser3-rex-notes/plugins/roundrectangle.js';
+import CreateStoryDialog from '../storyblock/CreateStoryDialog.js';
 import {
     COLOR_PANEL_BG, COLOR_PANEL_BOARD,
     COLOR_BUTTON_BG, COLOR_BUTTON_BOARD, COLOR_BUTTON_HOVER_BOARD,
     COLOR_THUMB, COLOR_TRACK
-} from '../../scenes/const.js';
+} from '../../scenes/ColorPalette.js';
 
-class GalleryPanel extends GridTable {
+class GalleryBlock extends GridTable {
     constructor(scene) {
-        var background = scene.add.rectangle(0, 0, 1, 1, COLOR_PANEL_BG).setStrokeStyle(6, COLOR_PANEL_BOARD);
+        var background = new RoundRectangle(scene, {
+            color: COLOR_PANEL_BG,
+            strokeWidth: 6,
+            strokeColor: COLOR_PANEL_BOARD
+        })
+        scene.add.existing(background);
 
         super(scene, {
             space: { left: 30, right: 30, top: 30, bottom: 30, },
@@ -17,6 +24,7 @@ class GalleryPanel extends GridTable {
             table: {
                 columns: 3,
                 cellHeight: 500,
+                reuseCellContainer: true,
                 slider: {
                     track: {
                         color: COLOR_TRACK,
@@ -40,15 +48,21 @@ class GalleryPanel extends GridTable {
                     width = cell.width,
                     height = cell.height,
                     item = cell.item,
-                    items = cell.items,
+                    items = cell.items,     // {title, image, 'image-url', story}[]
                     index = cell.index;
                 if (cellContainer === null) { // No reusable cell container, create a new one
                     cellContainer = new Card(scene);
+                    scene.add.existing(cellContainer);
                 }
                 // Set child properties of cell container
-                cellContainer.setCardContent(item.title, item.image, item['image-url']);
-                cellContainer.setMinSize(width - 40, height - 40);
-                cellContainer.getElement('background').setFillStyle(COLOR_BUTTON_BG).setStrokeStyle(5, COLOR_BUTTON_BOARD);
+                cellContainer
+                    .setMinSize(width - 40, height - 40)
+                    .setCardContent(item.title, item.image, item['image-url'])
+
+                cellContainer.getElement('background')
+                    .setFillStyle(COLOR_BUTTON_BG)
+                    .setStrokeStyle(5, COLOR_BUTTON_BOARD);
+
                 cellContainer.setData('index', index);
 
                 cell.setCellContainerAlign('center');  // Set alignment of cellContainer
@@ -64,17 +78,12 @@ class GalleryPanel extends GridTable {
             .on('cell.out', function (cellContainer, cellIndex, pointer, event) {
                 cellContainer.getElement('background').setStrokeStyle(5, COLOR_BUTTON_BOARD);
             }, this)
-            .on('cell.click', function (cellContainer, cellIndex, pointer, event) {
+            .on('cell.click', async function (cellContainer, cellIndex, pointer, event) {
                 var index = cellContainer.getData('index');
-                var level = this.items[index];
-                var image = level.image;
-                var text = level['story-zh'];
-
-                console.log(image, text)
-
-                // TODO: popup story dialog
+                var item = this.items[index];
+                CreateStoryDialog(scene, item.story, item.image);
             }, this)
     }
 }
 
-export default GalleryPanel;
+export default GalleryBlock;

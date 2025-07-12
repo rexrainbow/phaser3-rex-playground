@@ -1,4 +1,4 @@
-import { SCENE_GAMEPLAY } from '../const.js';
+import { SCENE_GAMEPLAY } from '../SceneKeys.js';
 import Methods from './methods/Methods.js';
 import LoadTextureFromClickboard from './methods/LoadTextureFromClickboard.js';
 import TopPanel from '../../gameobjects/gameplay/TopPanel.js';

@@ -1,25 +1,35 @@
 import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
 import LazyLoadImageBox from '../../../../../phaser3-rex-notes/templates/lazyloadimagebox/LazyLoadImageBox.js';
+import RoundRectangle from '../../../../../phaser3-rex-notes/plugins/roundrectangle.js';
+import {
+    COLOR_BUTTON_BG, COLOR_BUTTON_BOARD,
+} from '../../scenes/ColorPalette.js';
 import {
     CANVAS_FONT, CANVAS_TEST_STRING,
-    COLOR_BUTTON_BG, COLOR_BUTTON_BOARD,
 } from '../../scenes/const.js';
 
 class Card extends Sizer {
     constructor(scene) {
-        var background = scene.add.rectangle(0, 0, 1, 1, COLOR_BUTTON_BG).setStrokeStyle(5, COLOR_BUTTON_BOARD);
+        var background = new RoundRectangle(scene, {
+            color: COLOR_BUTTON_BG,
+            strokeWidth: 5,
+            strokeColor: COLOR_BUTTON_BOARD,
+            radius: -40
+        })
+        scene.add.existing(background);
 
         var text = scene.add.text(0, 0, '', {
             fontFamily: CANVAS_FONT,
-            fontSize: `30px`,
+            fontSize: `40px`,
             testString: CANVAS_TEST_STRING
         })
 
         var imageBox = new LazyLoadImageBox(scene, { scaleUp: true });
+        scene.add.existing(imageBox)
 
         super(scene, {
             orientation: 'y',
-            space: { left: 30, right: 30, top: 30, bottom: 30, item: 10 }
+            space: { left: 40, right: 40, top: 40, bottom: 40, item: 20 }
         })
 
         this
