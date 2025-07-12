@@ -2,8 +2,11 @@ import GalleryDialog from './GalleryDialog';
 import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../../scenes/const';
 
 var CreateGalleryDialog = function (scene, items) {
-    // items: {title, image, 'image-url', story}[]
-    var galleryDialog = new GalleryDialog(scene);
+    // items: {level, title, image, 'image-url', story, completed}[]
+    var galleryDialog = new GalleryDialog(scene, {
+        ccolumns: 3,
+        cellHeight: 500,
+    });
     scene.add.existing(galleryDialog);
 
     galleryDialog.setItems(items);

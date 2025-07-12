@@ -8,8 +8,8 @@ var LoadTextureFromClickboard = function (scene) {
             var key = pingPongKeys[pingPongIndex];
             pingPongIndex = (pingPongIndex + 1) % 2;
             await clickboardToTexture.saveTexturePromise(key);
-            clickboardToTexture.releaseFile();
-            scene.restartGame(key);
+            clickboardToTexture.releaseFile();            
+            // scene.startGame(key);
         })
 }
 

@@ -1,9 +1,12 @@
-import { EVT_RESTART_GAME } from '../../../scenes/GameplayScene/const.js';
+import { EVT_START_GAME } from '../../../scenes/gameplayscene/const.js';
 import OverlapSizer from '../../../../../../phaser3-rex-notes/templates/ui/overlapsizer/OverlapSizer.js';
 import AddSceneEvent from '../../../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddSceneEvent.js';
 import FitTo from '../../../../../../phaser3-rex-notes/plugins/utils/size/FitTo.js';
 import GenerateTiles from './GenerateTiles.js';
 import ShuffleTiles from './ShuffleTiles.js';
+import { DATA_KEY_LEVEL } from '../../../scenes/const.js';
+import Spinner from '../../../../../../phaser3-rex-notes/templates/ui/aiospinner/AIOSpinner.js'
+import LoadCompletePromise from '../../../../../../phaser3-rex-notes/plugins/utils/loader/LoadCompletePromise.js';
 
 const SIZE = 1024;
 
@@ -19,18 +22,32 @@ class TileContainer extends OverlapSizer {
         this.add(this.targetImage, { align: 'center', expand: false });
 
         this.easeDuration = 200;
-        this.tilePool;
-        this.activeTiles;
+        this.tilePool = [];
+        this.activeTiles = [];
 
-        AddSceneEvent(this, EVT_RESTART_GAME, function (key) {
-            scene.setScore(0);
-            if (key) {
-                this.setTargetImageKey(key);
+        AddSceneEvent(this, EVT_START_GAME, this.onStartGame, this);
+
+    }
+
+    async onStartGame() {
+        var scene = this.scene;
+        scene.setScore(0);
+
+        var levelData = scene.data.get(DATA_KEY_LEVEL);
+        var key = levelData.image
+        if (!scene.textures.exists(key)) {
+            this.clearTargetImage();
+            await this.waitUntilTextureLoaded(key, levelData['image-url']);
+
+            // Stop execution if this game object is destroyed
+            if (!this.scene) {
+                return;
             }
-            this.generatePieces();
-            this.shuffleTiles();
-        }, this);
+        }
 
+        this.setTargetImageKey(key);
+        this.generatePieces();
+        this.shuffleTiles();
     }
 
     setTargetImageKey(key) {
@@ -41,7 +58,13 @@ class TileContainer extends OverlapSizer {
     }
 
     generatePieces() {
-        this.tilePool = this.activeTiles;
+        if (this.activeTiles.length > this.tilePool) {
+            this.tilePool = this.activeTiles;
+        }
+        for (var i = 0, cnt = this.tilePool.length; i < cnt; i++) {
+            this.setChildVisible(this.tilePool[i], false);
+        }
+
         this.activeTiles = GenerateTiles(this.targetImage, this.tilePool);
 
         var tiles = this.activeTiles;
@@ -61,6 +84,34 @@ class TileContainer extends OverlapSizer {
     shuffleTiles() {
         ShuffleTiles(this.activeTiles, this.easeDuration);
         return this;
+    }
+
+    clearTargetImage() {
+        for (var i = 0, cnt = this.activeTiles.length; i < cnt; i++) {
+            this.setChildVisible(this.activeTiles[i], false);
+        }
+
+        return this;
+    }
+
+    async waitUntilTextureLoaded(key, url) {
+        var scene = this.scene;
+
+        // Add a temporary spinner
+        var spinner = new Spinner(scene, {
+            x: this.x, y: this.y,
+            width: 1024 * 0.6, height: 1024 * 0.6,
+            animationMode: 'ios',
+        });
+        scene.add.existing(spinner);
+
+        await LoadCompletePromise(scene, {
+            type: 'image',
+            key: key, url: url,
+        })
+
+        spinner.destroy();
+        // Remove spinner
     }
 }
 

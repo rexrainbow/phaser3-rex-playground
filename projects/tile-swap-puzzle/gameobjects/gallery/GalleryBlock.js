@@ -8,8 +8,10 @@ import {
     COLOR_THUMB, COLOR_TRACK
 } from '../../scenes/ColorPalette.js';
 
+const GetValue = Phaser.Utils.Objects.GetValue;
+
 class GalleryBlock extends GridTable {
-    constructor(scene) {
+    constructor(scene, config) {
         var background = new RoundRectangle(scene, {
             color: COLOR_PANEL_BG,
             strokeWidth: 6,
@@ -17,13 +19,16 @@ class GalleryBlock extends GridTable {
         })
         scene.add.existing(background);
 
+        var columns = GetValue(config, 'ccolumns', 2);
+        var cellHeight = GetValue(config, 'cellHeight', 600);
+
         super(scene, {
             space: { left: 30, right: 30, top: 30, bottom: 30, },
 
             background: background,
             table: {
-                columns: 3,
-                cellHeight: 500,
+                columns: columns,
+                cellHeight: cellHeight,
                 reuseCellContainer: true,
                 slider: {
                     track: {
@@ -48,7 +53,7 @@ class GalleryBlock extends GridTable {
                     width = cell.width,
                     height = cell.height,
                     item = cell.item,
-                    items = cell.items,     // {title, image, 'image-url', story}[]
+                    items = cell.items,     // {level, title, image, 'image-url', story, completed}[]
                     index = cell.index;
                 if (cellContainer === null) { // No reusable cell container, create a new one
                     cellContainer = new Card(scene);
@@ -57,13 +62,11 @@ class GalleryBlock extends GridTable {
                 // Set child properties of cell container
                 cellContainer
                     .setMinSize(width - 40, height - 40)
-                    .setCardContent(item.title, item.image, item['image-url'])
+                    .setCardContent(item.title, item.image, item['image-url'], item.completed)
 
                 cellContainer.getElement('background')
                     .setFillStyle(COLOR_BUTTON_BG)
                     .setStrokeStyle(5, COLOR_BUTTON_BOARD);
-
-                cellContainer.setData('index', index);
 
                 cell.setCellContainerAlign('center');  // Set alignment of cellContainer
 
@@ -79,8 +82,10 @@ class GalleryBlock extends GridTable {
                 cellContainer.getElement('background').setStrokeStyle(5, COLOR_BUTTON_BOARD);
             }, this)
             .on('cell.click', async function (cellContainer, cellIndex, pointer, event) {
-                var index = cellContainer.getData('index');
-                var item = this.items[index];
+                var item = this.items[cellIndex];
+                if (!item.completed) {
+                    return;
+                }
                 CreateStoryDialog(scene, item.story, item.image);
             }, this)
     }

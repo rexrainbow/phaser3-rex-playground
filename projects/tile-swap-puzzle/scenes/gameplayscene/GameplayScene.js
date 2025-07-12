@@ -1,8 +1,8 @@
 import { SCENE_GAMEPLAY } from '../SceneKeys.js';
 import Methods from './methods/Methods.js';
-import LoadTextureFromClickboard from './methods/LoadTextureFromClickboard.js';
-import TopPanel from '../../gameobjects/gameplay/TopPanel.js';
-import { CANVAS_FONT } from '../const.js';
+// import LoadTextureFromClickboard from './methods/LoadTextureFromClickboard.js';
+import { DATA_KEY_LEVEL } from '../const.js';
+import GameplayBlock from '../../gameobjects/gameplay/GameplayBlock.js';
 
 class GameplayScene extends Phaser.Scene {
     constructor() {
@@ -11,29 +11,22 @@ class GameplayScene extends Phaser.Scene {
         })
     }
 
-    init(data) {
-        LoadTextureFromClickboard(this);
-        // TODO
+    init() {
+        // LoadTextureFromClickboard(this);
+
+        this.setScore(undefined);
     }
 
     preload() {
-        this.load.atlas('icons', 'assets/icons/icons.png', 'assets/icons/icons.json');
-        this.load.font(CANVAS_FONT, 'assets/fonts/jf-openhuninn-2.1.ttf')
-
-        var language = 'zh';
-        for (var i = 0; i < 2; i++) {
-            this.load.image(`sample${i}`, `assets/images/sample${i}.webp`);
-            this.load.text(`story${i}`, `assets/storys/story${i}-${language}`);
-        }
-
+        // {level, title, image, 'image-url', story}
+        // Lazy loading texture in TileContainer
     }
 
     create() {
-        this.setScore(undefined);
-        var topPanel = new TopPanel(this).layout();
+        var topPanel = new GameplayBlock(this).layout();
         this.add.existing(topPanel);
 
-        this.restartGame('sample0');
+        this.startGame();
     }
 
     update() { }

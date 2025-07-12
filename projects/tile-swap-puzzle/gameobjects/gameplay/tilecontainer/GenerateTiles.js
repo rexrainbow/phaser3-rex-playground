@@ -2,12 +2,6 @@ import CreatePieces from '../../../../../../phaser3-rex-notes/plugins/actions/cu
 import Tile from './tile/Tile.js';
 
 var GenerateTiles = function (targetImage, piecePool) {
-    if (piecePool) {
-        for (var i = 0, cnt = piecePool.length; i < cnt; i++) {
-            piecePool[i].setVisible(false);
-        }
-    }
-
     var columns = Math.ceil(targetImage.width / 256);
     var rows = Math.ceil(targetImage.height / 256);
     var pieces = CreatePieces(targetImage, {

@@ -1,5 +1,5 @@
 import { SCENE_GALLERY, SCENE_MENU } from '../SceneKeys.js';
-import { DATA_KEY_LEVELS } from '../const.js';
+import GetAllLevelData from '../../levels/GetAllLevelData.js';
 import CreateGalleryDialog from '../../gameobjects/gallery/CreateGalleryDialog.js';
 
 class GalleryScene extends Phaser.Scene {
@@ -13,16 +13,21 @@ class GalleryScene extends Phaser.Scene {
     }
 
     preload() {
+        // Image assets are lazy-loading on demand
     }
 
     async create() {
-        var levels = this.registry.get(DATA_KEY_LEVELS);
-        var items = levels.map(function (level) {
+        // Prepare items of gird table from level data
+        // items: {level, title, image, 'image-url', story}[]
+        var levels = GetAllLevelData(this);
+        var items = levels.map(function (level, index) {
             return {
+                level: index,
                 title: level['title-zh'],
                 image: level['image'],
                 'image-url': level['image-url'],
-                story: level['story-zh']
+                story: level['story-zh'],
+                completed: level['completed']
             }
         })
 

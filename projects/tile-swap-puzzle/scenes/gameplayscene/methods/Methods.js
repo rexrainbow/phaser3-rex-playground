@@ -1,9 +1,9 @@
 import SetScore from './SetScore.js';
-import RestartGame from './RestartGame.js';
+import StartGame from './StartGame.js';
 
 var Methods = {
     setScore: SetScore,
-    restartGame: RestartGame,
+    startGame: StartGame,
 }
 
 export default Methods;

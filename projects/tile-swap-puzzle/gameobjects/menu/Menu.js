@@ -7,7 +7,6 @@ import {
 import {
     CANVAS_FONT, CANVAS_TEST_STRING,
 } from '../../scenes/const.js';
-import { SCENE_GALLERY } from '../../scenes/SceneKeys.js';
 
 class Menu extends Buttons {
     constructor(scene) {
@@ -29,18 +28,6 @@ class Menu extends Buttons {
             })
             .on('button.out', function (button, index, pointer, event) {
                 button.getElement('background').setStrokeStyle(5, COLOR_BUTTON_BOARD)
-            })
-            .on('button.click', function (button, index, pointer, event) {
-                switch (button.name) {
-                    case 'new_game':
-                        break;
-                    case 'continue':
-                        break;
-                    case 'gallery':
-                        scene.scene.start(SCENE_GALLERY);
-                        break;
-                }
-                console.log(button.name)
             })
     }
 }

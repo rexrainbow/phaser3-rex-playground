@@ -4,7 +4,7 @@ import TopToolbar from './toptoolbar/TopToolbar.js';
 import BottomToolbar from './bottomtoolbar/BottomToolbar.js';
 
 class SidePanel extends Sizer {
-    constructor(scene) {
+    constructor(scene, levelData) {
         super(scene, {
             orientation: 'y',
             width: 600

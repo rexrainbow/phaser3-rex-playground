@@ -39,9 +39,10 @@ class Card extends Sizer {
 
     }
 
-    setCardContent(title, key, url) {
+    setCardContent(title, key, url, unlocked) {
         var text = this.getElement('text').setText(title);
         var image = this.getElement('image').setTexture(key, undefined, url); // Lazy-load
+        image.setTint((unlocked) ? 0xFFFFFF : 0x222222);
         return this;
     }
 }

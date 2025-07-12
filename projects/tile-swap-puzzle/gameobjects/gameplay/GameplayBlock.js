@@ -3,7 +3,7 @@ import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js'
 import TileContainer from './tilecontainer/TileContainer.js';
 import SidePanel from './sidepanel/SidePanel.js';
 
-class TopPanel extends OverlapSizer {
+class GameplayBlock extends OverlapSizer {
     constructor(scene) {
         super(scene, {
             anchor: {
@@ -37,4 +37,4 @@ var CreateInnerSizer = function (scene) {
     return innerSizer;
 }
 
-export default TopPanel;
+export default GameplayBlock;
