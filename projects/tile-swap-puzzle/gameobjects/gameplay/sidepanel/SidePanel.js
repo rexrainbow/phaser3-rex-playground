@@ -25,11 +25,11 @@ class SidePanel extends Sizer {
         scene.add.existing(bottomToolbar);
 
         this
-            .add(topToolbar, { align: 'right', padding: { top: 40, right: 40 } })
+            .add(topToolbar, { align: 'right', })
             .addSpace(2)
             .add(scoreLabel, { align: 'center' })
             .addSpace(3)
-            .add(bottomToolbar, { align: 'right', padding: { top: 40, right: 40 } })
+            .add(bottomToolbar, { align: 'right' })
     }
 }
 

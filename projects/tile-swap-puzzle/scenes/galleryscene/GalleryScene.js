@@ -19,17 +19,7 @@ class GalleryScene extends Phaser.Scene {
     async create() {
         // Prepare items of gird table from level data
         // items: {level, title, image, 'image-url', story, completed}[]
-        var levels = GetAllLevelData(this);
-        var items = levels.map(function (level, index) {
-            return {
-                level: index,
-                title: level['title-zh'],
-                image: level['image'],
-                'image-url': level['image-url'],
-                story: level['story-zh'],
-                completed: level['completed']
-            }
-        })
+        var items = GetAllLevelData(this, 'zh');
 
         var galleryDialog = CreateGalleryDialog(this)
             .setItems(items);

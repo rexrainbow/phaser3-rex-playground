@@ -5,19 +5,9 @@ import SetContinueLevel from '../../levels/SetContinueLevel.js';
 
 var Play = function (scene, level) {
     // Level index is started from 0
-    var levelData = GetLevelData(scene, level);
+    var levelData = GetLevelData(scene, level, 'zh');
     if (!levelData) {
         console.warn(`Level ${level} is not existed`)
-    }
-
-    // {level, title, image, 'image-url', story, completed}
-    levelData = {
-        level: level,
-        title: levelData['title-zh'],
-        image: levelData.image,
-        'image-url': levelData['image-url'],
-        story: levelData['story-zh'],
-        completed: levelData.completed,
     }
 
     // Pass levelData to GamePlayScene

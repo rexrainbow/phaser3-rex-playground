@@ -7,12 +7,12 @@ class BottomToolbar extends Sizer {
     constructor(scene) {
         super(scene, {
             orientation: 'x',
-            space: { item: 20 }
+            space: { item: 10 }
         })
 
-        var storyIcon = CreateStoryIcon(scene, 100);
-        var restartIcon = CreateRestartIcon(scene, 100);
-        var nextLevelIcon = CreateNextLevelIcon(scene, 100);
+        var storyIcon = CreateStoryIcon(scene, 80);
+        var restartIcon = CreateRestartIcon(scene, 80);
+        var nextLevelIcon = CreateNextLevelIcon(scene, 80);
 
         this
             .add(storyIcon)

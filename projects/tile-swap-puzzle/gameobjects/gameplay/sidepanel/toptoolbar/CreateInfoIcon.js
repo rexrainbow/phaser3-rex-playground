@@ -1,5 +1,9 @@
 import ConfirmActionButton from '../../../../../../../phaser3-rex-notes/templates/ui/confirmactionbutton/ConfirmActionButton.js'
-import { COLOR_PANEL_BG, COLOR_PANEL_BOARD, COLOR_TITLE, COLOR_CONTENT } from '../../../../scenes/ColorPalette.js';
+import {
+    COLOR_PANEL_BG, COLOR_PANEL_BOARD,
+    COLOR_BUTTON_BG, COLOR_BUTTON_BOARD, COLOR_BUTTON_HOVER_BOARD,
+    COLOR_TITLE, COLOR_CONTENT
+} from '../../../../scenes/ColorPalette.js';
 import { INFO_HOW_TO_PLAY } from '../../../../scenes/const.js';
 import { CANVAS_FONT, CANVAS_TEST_STRING } from '../../../../scenes/const.js';
 
@@ -54,7 +58,10 @@ var CreateInfoIcon = function (scene, size) {
         content: INFO_HOW_TO_PLAY,
     };
 
-    var infoIcon = new ConfirmActionButton(scene, {
+    var iconButton = new ConfirmActionButton(scene, {
+        space: { left: 20, right: 20, top: 20, bottom: 20 },
+
+        background: scene.add.rectangle(0, 0, 1, 1, COLOR_BUTTON_BG).setStrokeStyle(3, COLOR_BUTTON_BOARD),
         icon: scene.add.image(0, 0, 'icons', 'info').setDisplaySize(size, size),
 
         confirmDialog: {
@@ -62,9 +69,18 @@ var CreateInfoIcon = function (scene, size) {
             content: dialogContent
         }
     })
-    scene.add.existing(infoIcon);
+    scene.add.existing(iconButton);
 
-    return infoIcon;
+    iconButton.getClickController()
+        .on('over', function () {
+            iconButton.getElement('background').setStrokeStyle(6, COLOR_BUTTON_HOVER_BOARD);
+        })
+        .on('out', function () {
+            iconButton.getElement('background').setStrokeStyle(3, COLOR_BUTTON_BOARD);
+        })
+
+
+    return iconButton;
 }
 
 export default CreateInfoIcon;

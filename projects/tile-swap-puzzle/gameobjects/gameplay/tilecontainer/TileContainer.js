@@ -1,4 +1,4 @@
-import { EVT_START_GAME } from '../../../scenes/gameplayscene/const.js';
+import { EVT_COMPLETE_GAME, EVT_START_GAME } from '../../../scenes/gameplayscene/const.js';
 import OverlapSizer from '../../../../../../phaser3-rex-notes/templates/ui/overlapsizer/OverlapSizer.js';
 import AddSceneEvent from '../../../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddSceneEvent.js';
 import FitTo from '../../../../../../phaser3-rex-notes/plugins/utils/size/FitTo.js';
@@ -27,6 +27,7 @@ class TileContainer extends OverlapSizer {
         this.activeTiles = [];
 
         AddSceneEvent(this, EVT_START_GAME, this.onStartGame, this);
+        AddSceneEvent(this, EVT_COMPLETE_GAME, this.onCompleteGame, this);
 
     }
 
@@ -59,6 +60,8 @@ class TileContainer extends OverlapSizer {
     }
 
     generatePieces() {
+        this.setChildVisible(this.targetImage, false);
+
         if (this.activeTiles.length > this.tilePool) {
             this.tilePool = this.activeTiles;
         }
@@ -113,6 +116,15 @@ class TileContainer extends OverlapSizer {
 
         spinner.destroy();
         // Remove spinner
+    }
+
+    onCompleteGame() {
+        this.setChildVisible(this.targetImage, true);
+        for (var i = 0, cnt = this.activeTiles.length; i < cnt; i++) {
+            this.setChildVisible(this.activeTiles[i], false);
+        }
+
+        return this;
     }
 }
 

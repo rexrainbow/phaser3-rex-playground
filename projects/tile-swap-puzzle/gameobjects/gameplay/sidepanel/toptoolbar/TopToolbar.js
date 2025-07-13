@@ -8,13 +8,13 @@ class BottomToolbar extends Sizer {
     constructor(scene) {
         super(scene, {
             orientation: 'x',
-            space: { item: 20 }
+            space: { item: 10 }
         })
 
-        //var fileChooserIcon = CreateFileChooserIcon(scene, 100);
-        var infoIcon = CreateInfoIcon(scene, 100);
-        // var fullscreenIcon = CreateFullscreenIcon(scene, 100);
-        // var exitIcon = CreateExitIcon(scene, 100);
+        //var fileChooserIcon = CreateFileChooserIcon(scene, 80);
+        var infoIcon = CreateInfoIcon(scene, 80);
+        // var fullscreenIcon = CreateFullscreenIcon(scene, 80);
+        // var exitIcon = CreateExitIcon(scene, 80);
 
         this
             //.add(fileChooserIcon)
