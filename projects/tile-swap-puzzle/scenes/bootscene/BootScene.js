@@ -1,5 +1,6 @@
 import { SCENE_BOOT, SCENE_MENU } from '../SceneKeys.js';
 import { CANVAS_FONT } from '../const.js';
+import InstallLocalStorageData from './InstallLocalStorageData.js';
 import LoadLevels from '../../levels/LoadLevels.js';
 
 class BootScene extends Phaser.Scene {
@@ -10,6 +11,7 @@ class BootScene extends Phaser.Scene {
     }
 
     init() {
+        InstallLocalStorageData(this);
     }
 
     preload() {

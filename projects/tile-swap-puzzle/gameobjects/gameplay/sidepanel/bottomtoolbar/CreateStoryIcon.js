@@ -1,6 +1,6 @@
 import Button from '../../../../../../../phaser3-rex-notes/plugins/button.js';
 import CreateStoryDialog from '../../../storyblock/CreateStoryDialog.js';
-import { DATA_KEY_LEVEL } from '../../../../scenes/const.js';
+import { DATA_KEY_LEVEL } from '../../../../scenes/DataKeys.js';
 import { EVT_START_GAME, EVT_COMPLETE_GAME } from '../../../../scenes/gameplayscene/const.js';
 import AddSceneEvent from '../../../../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddSceneEvent.js';
 

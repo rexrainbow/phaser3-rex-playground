@@ -1,7 +1,7 @@
 import AwaitLoader from '../../../../phaser3-rex-notes/plugins/awaitloader.js';
 import YAMLLoader from '../../../../phaser3-rex-notes/plugins/yamlloader.js';
 import LoadCompletePromise from '../../../../phaser3-rex-notes/plugins/utils/loader/LoadCompletePromise.js';
-import { DATA_KEY_CONFIGURATION, DATA_KEY_LEVELS, DATA_KEY_COMPLETED_LEVELS } from '../scenes/const.js';
+import { DATA_KEY_CONFIGURATION, DATA_KEY_LEVELS } from '../scenes/DataKeys.js';
 
 var LoadLevels = function (scene) {
     AwaitLoader.call(scene.load, async function (successCallback, failureCallback) {
@@ -13,13 +13,11 @@ var LoadLevels = function (scene) {
 
         // Store level data list
         var levels = configuration.levels.map((levelData) => levelData.data);
-        var completedLevels = scene.registry.get(DATA_KEY_COMPLETED_LEVELS);
-        if (completedLevels === undefined) {
-            completedLevels = {};
-            scene.registry.set(DATA_KEY_COMPLETED_LEVELS, completedLevels);
-        }
+
+        var game = scene.sys.game;
+        var completedLevels = game.localStorageData.completedLevels;
         for (var i in levels) {
-            levels[i].completed = !!completedLevels[i];
+            levels[i].completed = !!completedLevels.get(i);
         }
 
         scene.registry.set(DATA_KEY_LEVELS, levels);

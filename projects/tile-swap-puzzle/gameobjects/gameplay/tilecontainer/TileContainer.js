@@ -4,7 +4,7 @@ import AddSceneEvent from '../../../../../../phaser3-rex-notes/plugins/utils/gam
 import FitTo from '../../../../../../phaser3-rex-notes/plugins/utils/size/FitTo.js';
 import GenerateTiles from './GenerateTiles.js';
 import ShuffleTiles from './ShuffleTiles.js';
-import { DATA_KEY_LEVEL } from '../../../scenes/const.js';
+import { DATA_KEY_LEVEL } from '../../../scenes/DataKeys.js';
 import Spinner from '../../../../../../phaser3-rex-notes/templates/ui/aiospinner/AIOSpinner.js'
 import LoadCompletePromise from '../../../../../../phaser3-rex-notes/plugins/utils/loader/LoadCompletePromise.js';
 

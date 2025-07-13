@@ -1,7 +1,6 @@
 import { SCENE_GAMEPLAY } from '../SceneKeys.js';
 import Methods from './methods/Methods.js';
 // import LoadTextureFromClickboard from './methods/LoadTextureFromClickboard.js';
-import { DATA_KEY_LEVEL } from '../const.js';
 import GameplayBlock from '../../gameobjects/gameplay/GameplayBlock.js';
 
 class GameplayScene extends Phaser.Scene {

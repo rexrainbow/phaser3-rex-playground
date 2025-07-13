@@ -1,12 +1,12 @@
 import Label from '../../../../../../phaser3-rex-notes/templates/ui/label/Label.js';
 import BBCodeText from '../../../../../../phaser3-rex-notes/plugins/bbcodetext.js';
 import AddEvent from '../../../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddEvent.js';
-import { DATA_KEY_SCORE } from '../../../scenes/const.js';
+import { DATA_KEY_SCORE } from '../../../scenes/DataKeys.js';
 import { CANVAS_FONT, CANVAS_TEST_STRING } from '../../../scenes/const.js';
 
 class ScoreLabel extends Label {
     constructor(scene) {
-        var background = scene.add.rectangle(0, 0, 1, 1).setStrokeStyle(2, 0xffffff);
+        //var background = scene.add.rectangle(0, 0, 1, 1).setStrokeStyle(2, 0xffffff);
         var txt = new BBCodeText(scene, 0, 0, ' ', {
             fontFamily: CANVAS_FONT,
             fontSize: `100px`,
@@ -17,7 +17,7 @@ class ScoreLabel extends Label {
         super(scene, {
             width: 400,
 
-            background: background,
+            //background: background,
             text: txt,
             align: 'center'
         })

@@ -14,8 +14,8 @@ class Menu extends Buttons {
             orientation: 'y',
             space: { item: 20 },
             buttons: [
-                CreateLabel(scene, 'new_game', '新遊戲'),
-                CreateLabel(scene, 'continue', '繼續'),
+                CreateLabel(scene, 'play', '開始'),
+                CreateLabel(scene, 'level', '選關'),
                 CreateLabel(scene, 'gallery', '圖鑑'),
                 CreateLabel(scene, 'setting', '設定'),
                 CreateLabel(scene, 'credit', '製作群'),
