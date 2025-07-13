@@ -1,84 +1,72 @@
-import ConfirmActionButton from '../../../../../../../phaser3-rex-notes/templates/ui/confirmactionbutton/ConfirmActionButton.js'
+import CreateIconButton from '../../../iconbutton/CreateIconButton.js';
+import ConfirmAction from '../../../../../../../phaser3-rex-notes/templates/ui/confirmdialog/ConfirmAction.js';
 import {
     COLOR_PANEL_BG, COLOR_PANEL_BOARD,
-    COLOR_BUTTON_BG, COLOR_BUTTON_BOARD, COLOR_BUTTON_HOVER_BOARD,
     COLOR_TITLE, COLOR_CONTENT
 } from '../../../../scenes/ColorPalette.js';
 import { INFO_HOW_TO_PLAY } from '../../../../scenes/const.js';
 import { CANVAS_FONT, CANVAS_TEST_STRING } from '../../../../scenes/const.js';
 
+const DialogStyle = {
+    anchor: {
+        x: 'center', y: 'center'
+    },
+
+    width: 1200, height: 800,
+
+    space: { left: 40, right: 40, top: 40, bottom: 40, title: 40, content: 40, },
+
+    background: {
+        color: COLOR_PANEL_BG,
+        strokeColor: COLOR_PANEL_BOARD,
+        radius: 20,
+        strokeWidth: 6,
+    },
+
+    title: {
+        text: {
+            color: '#' + (COLOR_TITLE).toString(16),
+            fontFamily: CANVAS_FONT,
+            fontSize: `60px`,
+            testString: CANVAS_TEST_STRING,
+        },
+        wrapText: true
+    },
+
+    content: {
+        text: {
+            color: '#' + (COLOR_CONTENT).toString(16),
+            fontFamily: CANVAS_FONT,
+            fontSize: `40px`,
+            testString: CANVAS_TEST_STRING,
+            lineSpacing: 8
+        },
+        wrapText: true,
+    },
+
+    align: {
+        title: 'left',
+        content: 'left',
+    },
+
+    buttonMode: 0,
+};
+
+const DialogContent = {
+    title: '如何遊玩',
+    content: '拖曳兩個方塊以交換它們的位置',
+};
+
 var CreateInfoIcon = function (scene, size) {
-    var dialogStyle = {
-        anchor: {
-            x: 'center', y: 'center'
-        },
+    var iconButton = CreateIconButton(scene, 'icons', 'info', size);
 
-        width: 1200, height: 800,
-
-        space: { left: 40, right: 40, top: 40, bottom: 40, title: 40, content: 40, },
-
-        background: {
-            color: COLOR_PANEL_BG,
-            strokeColor: COLOR_PANEL_BOARD,
-            radius: 20,
-            strokeWidth: 6,
-        },
-
-        title: {
-            text: {
-                color: '#' + (COLOR_TITLE).toString(16),
-                fontFamily: CANVAS_FONT,
-                fontSize: `60px`,
-                testString: CANVAS_TEST_STRING,
-            },
-            wrapText: true
-        },
-
-        content: {
-            text: {
-                color: '#' + (COLOR_CONTENT).toString(16),
-                fontFamily: CANVAS_FONT,
-                fontSize: `40px`,
-                testString: CANVAS_TEST_STRING,
-                lineSpacing: 8
-            },
-            wrapText: true,
-        },
-
-        align: {
-            title: 'left',
-            content: 'left',
-        },
-
-        buttonMode: 0,
-    };
-
-    var dialogContent = {
-        title: 'How to play',
-        content: INFO_HOW_TO_PLAY,
-    };
-
-    var iconButton = new ConfirmActionButton(scene, {
-        space: { left: 20, right: 20, top: 20, bottom: 20 },
-
-        background: scene.add.rectangle(0, 0, 1, 1, COLOR_BUTTON_BG).setStrokeStyle(3, COLOR_BUTTON_BOARD),
-        icon: scene.add.image(0, 0, 'icons', 'info').setDisplaySize(size, size),
-
-        confirmDialog: {
-            style: dialogStyle,
-            content: dialogContent
-        }
-    })
-    scene.add.existing(iconButton);
-
-    iconButton.getClickController()
-        .on('over', function () {
-            iconButton.getElement('background').setStrokeStyle(6, COLOR_BUTTON_HOVER_BOARD);
+    iconButton.button
+        .on('click', function () {
+            ConfirmAction(scene, {
+                style: DialogStyle,
+                content: DialogContent
+            })
         })
-        .on('out', function () {
-            iconButton.getElement('background').setStrokeStyle(3, COLOR_BUTTON_BOARD);
-        })
-
 
     return iconButton;
 }
