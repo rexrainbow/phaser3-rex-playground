@@ -4,6 +4,7 @@ import BootScene from './scenes/bootscene/BootScene.js';
 import MenuScene from './scenes/menuscene/MenuScene.js';
 import GameplayScene from './scenes/gameplayscene/GameplayScene.js';
 import GalleryScene from './scenes/galleryscene/GalleryScene.js';
+import LevelScene from './scenes/levelscene/LevelScene.js';
 
 var config = {
     type: Phaser.AUTO,
@@ -19,7 +20,7 @@ var config = {
         createContainer: true
     },
     plugins: {},
-    scene: [BootScene, MenuScene, GameplayScene, GalleryScene],
+    scene: [BootScene, MenuScene, GameplayScene, GalleryScene, LevelScene],
 };
 
 var game = new Phaser.Game(config);

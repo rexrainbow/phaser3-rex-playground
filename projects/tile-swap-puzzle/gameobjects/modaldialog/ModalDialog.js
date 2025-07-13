@@ -37,7 +37,7 @@ class ModalDialog extends Sizer {
 
 
         exitIcon.onClick(function () {
-            this.emit('modal.requestClose');
+            this.emit('modal.requestClose', null);
         }, this)
     }
 }

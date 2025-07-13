@@ -10,17 +10,21 @@ var CreateStoryIcon = function (scene, size) {
         .on('click', function () {
             var level = scene.data.get(DATA_KEY_LEVEL);
             CreateStoryDialog(scene, level.story, level.image);
-
+        })
+        .on('enable', function () {
+            storyIcon.setTint(0xFFFFFF);
+        })
+        .on('disable', function () {
+            storyIcon.setTint(0x888888);
         })
 
     AddSceneEvent(storyIcon, EVT_START_GAME, function () {
-        storyIcon.setTint(0x888888);
-        storyIcon.button.setEnable(false);
+        var levelData = scene.data.get(DATA_KEY_LEVEL);
+        storyIcon.button.setEnable(levelData.completed);
     }, this);
 
     AddSceneEvent(storyIcon, EVT_COMPLETE_GAME, function () {
-        storyIcon.setTint(0xFFFFFF);
-        storyIcon.button.setEnable(true);
+        storyIcon.setEnable(true);
     }, this);
 
     return storyIcon;

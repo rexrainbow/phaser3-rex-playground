@@ -1,11 +1,12 @@
-import { SCENE_GALLERY, SCENE_MENU } from '../SceneKeys.js';
+import { SCENE_LEVEL, SCENE_MENU } from '../SceneKeys.js';
 import GetAllLevelData from '../../levels/GetAllLevelData.js';
-import CreateGalleryDialog from './CreateGalleryDialog.js';
+import CreateLevelDialog from './CreateLevelDialog.js';
+import Play from '../gameplayscene/Play.js';
 
-class GalleryScene extends Phaser.Scene {
+class LevelScene extends Phaser.Scene {
     constructor() {
         super({
-            key: SCENE_GALLERY
+            key: SCENE_LEVEL
         })
     }
 
@@ -31,19 +32,23 @@ class GalleryScene extends Phaser.Scene {
             }
         })
 
-        var galleryDialog = CreateGalleryDialog(this)
-            .setItems(items);
+        var levelDialog = CreateLevelDialog(this)
+            .setItems(items)
 
-        await galleryDialog.modalPromise({
+        var levelData = await levelDialog.modalPromise({
             duration: { in: 0, out: 0 },    // No popup
             cover: { alpha: 1 }
         });
 
-        this.scene.start(SCENE_MENU);    // Back to menu scene
+        if (levelData) {
+            Play(this, levelData.level);
+        } else {
+            this.scene.start(SCENE_MENU);    // Back to menu scene
+        }
     }
 
     update() { }
 
 }
 
-export default GalleryScene;
+export default LevelScene;

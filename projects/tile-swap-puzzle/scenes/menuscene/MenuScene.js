@@ -1,5 +1,5 @@
 import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../const.js';
-import { SCENE_MENU, SCENE_GALLERY } from '../SceneKeys.js';
+import { SCENE_MENU, SCENE_GALLERY, SCENE_LEVEL } from '../SceneKeys.js';
 import Menu from '../../gameobjects/menu/Menu.js';
 import GetContinueLevel from '../../levels/GetContinueLevel.js';
 import Play from '../gameplayscene/Play.js';
@@ -30,7 +30,7 @@ class MenuScene extends Phaser.Scene {
                         Play(this, level);
                         break;
                     case 'level':
-                        // TODO
+                        this.scene.start(SCENE_LEVEL);
                         break;
                     case 'gallery':
                         this.scene.start(SCENE_GALLERY);

@@ -10,8 +10,6 @@ var CreateGameplayDialog = function (scene) {
         .setMinSize(SIZE_WIN_WIDTH * 0.8, SIZE_WIN_HEIGHT * 0.95)
         .layout()
 
-    console.log(SIZE_WIN_WIDTH * 0.8, gameplayDialog.width)
-
     return gameplayDialog;
 }
 

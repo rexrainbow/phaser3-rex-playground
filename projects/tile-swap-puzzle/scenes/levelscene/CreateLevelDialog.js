@@ -1,8 +1,7 @@
 import LevelSelectorDialog from '../../gameobjects/levelselector/LevelSelectorDialog.js';
-import CreateStoryDialog from '../../gameobjects/storyblock/CreateStoryDialog.js';
-import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../const';
+import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../const.js';
 
-var CreateGalleryDialog = function (scene) {
+var CreateLevelDialog = function (scene) {
     var galleryDialog = new LevelSelectorDialog(scene, {
         ccolumns: 3,
         cellHeight: 500,
@@ -19,11 +18,10 @@ var CreateGalleryDialog = function (scene) {
             if (!levelData.completed) {
                 return;
             }
-
-            CreateStoryDialog(scene, levelData.story, levelData.image);
+            galleryDialog.emit('modal.requestClose', levelData);
         })
 
     return galleryDialog;
 }
 
-export default CreateGalleryDialog;
+export default CreateLevelDialog;

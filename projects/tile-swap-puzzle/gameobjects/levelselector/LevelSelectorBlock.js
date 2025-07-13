@@ -1,7 +1,6 @@
 import GridTable from '../../../../../phaser3-rex-notes/templates/ui/gridtable/GridTable.js';
 import Card from './Card.js';
 import RoundRectangle from '../../../../../phaser3-rex-notes/plugins/roundrectangle.js';
-import CreateStoryDialog from '../storyblock/CreateStoryDialog.js';
 import {
     COLOR_PANEL_BG, COLOR_PANEL_BOARD,
     COLOR_BUTTON_BG, COLOR_BUTTON_BOARD, COLOR_BUTTON_HOVER_BOARD,
@@ -10,7 +9,7 @@ import {
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
-class GalleryBlock extends GridTable {
+class LevelSelectorBlock extends GridTable {
     constructor(scene, config) {
         var background = new RoundRectangle(scene, {
             color: COLOR_PANEL_BG,
@@ -83,12 +82,14 @@ class GalleryBlock extends GridTable {
             }, this)
             .on('cell.click', async function (cellContainer, cellIndex, pointer, event) {
                 var item = this.items[cellIndex];
-                if (!item.completed) {
-                    return;
-                }
-                CreateStoryDialog(scene, item.story, item.image);
+                // if (!item.completed) {
+                //     return;
+                // }
+
+                this.emit('select', item);
             }, this)
+
     }
 }
 
-export default GalleryBlock;
+export default LevelSelectorBlock;
