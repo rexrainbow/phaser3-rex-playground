@@ -2,6 +2,7 @@ import { SCENE_BOOT, SCENE_MENU } from '../SceneKeys.js';
 import { CANVAS_FONT } from '../const.js';
 import InstallLocalStorageData from './InstallLocalStorageData.js';
 import LoadLevels from '../../levels/LoadLevels.js';
+import CompleteLevel from '../../levels/CompleteLevel.js';
 
 class BootScene extends Phaser.Scene {
     constructor() {
@@ -23,6 +24,8 @@ class BootScene extends Phaser.Scene {
     }
 
     create() {
+        CompleteLevel(this, 0); // Open 1st level for testing
+
         this.scene.start(SCENE_MENU);
     }
 
