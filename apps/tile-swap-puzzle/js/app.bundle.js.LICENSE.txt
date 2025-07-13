@@ -1,3 +1,5 @@
+/*! js-yaml 4.1.0 https://github.com/nodeca/js-yaml @license MIT */
+
 /**
  * @author       Ben Richards <benjamindrichards@gmail.com>
  * @copyright    2024 Photon Storm Ltd.
