@@ -1,6 +1,6 @@
 import { SCENE_GALLERY, SCENE_MENU } from '../SceneKeys.js';
 import GetAllLevelData from '../../levels/GetAllLevelData.js';
-import CreateGalleryDialog from '../../gameobjects/gallery/CreateGalleryDialog.js';
+import CreateGalleryDialog from './CreateGalleryDialog.js';
 
 class GalleryScene extends Phaser.Scene {
     constructor() {
@@ -18,7 +18,7 @@ class GalleryScene extends Phaser.Scene {
 
     async create() {
         // Prepare items of gird table from level data
-        // items: {level, title, image, 'image-url', story}[]
+        // items: {level, title, image, 'image-url', story, completed}[]
         var levels = GetAllLevelData(this);
         var items = levels.map(function (level, index) {
             return {
@@ -31,7 +31,15 @@ class GalleryScene extends Phaser.Scene {
             }
         })
 
-        await CreateGalleryDialog(this, items); // Modal
+        var galleryDialog = CreateGalleryDialog(this);
+
+        galleryDialog.setItems(items);
+
+        await galleryDialog.modalPromise({
+            duration: { in: 0, out: 0 },    // No popup
+            cover: { alpha: 1 }
+        });
+
         this.scene.start(SCENE_MENU);    // Back to menu scene
     }
 

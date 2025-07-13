@@ -34,13 +34,14 @@ class Menu extends Buttons {
 
 var CreateLabel = function (scene, name, text) {
     var label = new Label(scene, {
-        space: { left: 20, right: 20, top: 20, bottom: 20 },
+        space: { left: 40, right: 40, top: 20, bottom: 20 },
         background: scene.add.rectangle(0, 0, 1, 1, COLOR_BUTTON_BG).setStrokeStyle(5, COLOR_BUTTON_BOARD),
         text: scene.add.text(0, 0, text, {
             fontFamily: CANVAS_FONT,
             fontSize: `60px`,
             testString: CANVAS_TEST_STRING
         }),
+        align: 'center',
 
         name: name
     })

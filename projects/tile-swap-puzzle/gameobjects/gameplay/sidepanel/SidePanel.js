@@ -4,14 +4,15 @@ import TopToolbar from './toptoolbar/TopToolbar.js';
 import BottomToolbar from './bottomtoolbar/BottomToolbar.js';
 
 class SidePanel extends Sizer {
-    constructor(scene, levelData) {
+    constructor(scene) {
+        // Fixed width, expand height
         super(scene, {
             orientation: 'y',
-            width: 600
+            width: 450
         })
 
-        var background = scene.add.rectangle(0, 0, 1, 1).setStrokeStyle(2, 0xffffff);
-        this.addBackground(background);
+        // var background = scene.add.rectangle(0, 0, 1, 1).setStrokeStyle(2, 0xffffff);
+        // this.addBackground(background);
 
         var scoreLabel = new ScoreLabel(scene);
         scene.add.existing(scoreLabel);
@@ -24,11 +25,11 @@ class SidePanel extends Sizer {
         scene.add.existing(bottomToolbar);
 
         this
-            .add(topToolbar, { align: 'right' })
+            .add(topToolbar, { align: 'right', padding: { top: 40, right: 40 } })
             .addSpace(2)
             .add(scoreLabel, { align: 'center' })
             .addSpace(3)
-            .add(bottomToolbar, { align: 'right' })
+            .add(bottomToolbar, { align: 'right', padding: { top: 40, right: 40 } })
     }
 }
 

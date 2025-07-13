@@ -10,9 +10,7 @@ var CreateStoryDialog = function (scene, text, key) {
         .setMinSize(SIZE_WIN_WIDTH * 0.8, SIZE_WIN_HEIGHT * 0.95)
         .layout()
         .modalPromise({
-            cover: {
-                alpha: 1
-            }
+            cover: { alpha: 1 }
         });
 }
 

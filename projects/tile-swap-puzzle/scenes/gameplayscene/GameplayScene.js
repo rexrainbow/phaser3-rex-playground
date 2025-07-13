@@ -1,7 +1,7 @@
-import { SCENE_GAMEPLAY } from '../SceneKeys.js';
+import { SCENE_GAMEPLAY, SCENE_MENU } from '../SceneKeys.js';
 import Methods from './methods/Methods.js';
 // import LoadTextureFromClickboard from './methods/LoadTextureFromClickboard.js';
-import GameplayBlock from '../../gameobjects/gameplay/GameplayBlock.js';
+import CreateGameplayDialog from './CreateGameplayDialog.js';
 
 class GameplayScene extends Phaser.Scene {
     constructor() {
@@ -21,11 +21,17 @@ class GameplayScene extends Phaser.Scene {
         // Lazy loading texture in TileContainer
     }
 
-    create() {
-        var topPanel = new GameplayBlock(this).layout();
-        this.add.existing(topPanel);
+    async create() {
+        var gameplayDialog = CreateGameplayDialog(this);
 
         this.startGame();
+
+        await gameplayDialog.modalPromise({
+            duration: { in: 0, out: 0 },    // No popup
+            cover: { alpha: 1 }
+        });
+
+        this.scene.start(SCENE_MENU);    // Back to menu scene
     }
 
     update() { }

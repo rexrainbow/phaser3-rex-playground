@@ -12,10 +12,11 @@ const SIZE = 1024;
 
 class TileContainer extends OverlapSizer {
     constructor(scene) {
+        // Fixed width, fixed height
         super(scene, { width: SIZE + 40, height: SIZE + 40 });
 
-        var background = scene.add.rectangle(0, 0, 1, 1).setStrokeStyle(2, 0xffffff);
-        this.addBackground(background);
+        //var background = scene.add.rectangle(0, 0, 1, 1).setStrokeStyle(2, 0xffffff);
+        //this.addBackground(background);
 
         this.targetSize = { width: SIZE, height: SIZE };
         this.targetImage = scene.add.image(0, 0).setVisible(false);
