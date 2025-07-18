@@ -1,5 +1,5 @@
 import GameplayDialog from '../../gameobjects/gameplay/GameplayDialog.js';
-import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../const.js';
+import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../Size.js';
 
 var CreateGameplayDialog = function (scene) {
     var gameplayDialog = new GameplayDialog(scene);

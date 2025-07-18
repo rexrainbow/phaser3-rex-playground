@@ -7,7 +7,7 @@ import {
     COLOR_CONTENT,
     COLOR_THUMB, COLOR_TRACK
 } from '../../scenes/ColorPalette.js';
-import { CANVAS_FONT, CANVAS_TEST_STRING } from '../../scenes/const.js';
+import { CANVAS_FONT, CANVAS_TEST_STRING } from '../../scenes/Font.js';
 
 class StoryBlock extends Sizer {
     constructor(scene, config) {

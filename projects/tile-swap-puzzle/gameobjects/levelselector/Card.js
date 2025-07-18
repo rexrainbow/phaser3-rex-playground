@@ -6,7 +6,7 @@ import {
 } from '../../scenes/ColorPalette.js';
 import {
     CANVAS_FONT, CANVAS_TEST_STRING,
-} from '../../scenes/const.js';
+} from '../../scenes/Font.js';
 
 class Card extends Sizer {
     constructor(scene) {

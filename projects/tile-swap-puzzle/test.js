@@ -1,6 +1,6 @@
 import 'phaser'
-import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/const.js';
-import { CANVAS_FONT } from './scenes/const.js';
+import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/Size.js';
+import { CANVAS_FONT } from './scenes/Font.js';
 import Menu from './gameobjects/menu/Menu.js';
 
 class Demo extends Phaser.Scene {

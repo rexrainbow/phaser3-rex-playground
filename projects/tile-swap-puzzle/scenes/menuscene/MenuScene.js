@@ -1,4 +1,4 @@
-import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../const.js';
+import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../Size.js';
 import { SCENE_MENU, SCENE_GALLERY, SCENE_LEVEL } from '../SceneKeys.js';
 import Menu from '../../gameobjects/menu/Menu.js';
 import GetContinueLevel from '../../levels/GetContinueLevel.js';

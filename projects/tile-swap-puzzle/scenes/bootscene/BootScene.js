@@ -1,5 +1,5 @@
 import { SCENE_BOOT, SCENE_MENU } from '../SceneKeys.js';
-import { CANVAS_FONT } from '../const.js';
+import { CANVAS_FONT } from '../Font.js';
 import InstallLocalStorageData from './InstallLocalStorageData.js';
 import LoadLevels from '../../levels/LoadLevels.js';
 import CompleteLevel from '../../levels/CompleteLevel.js';

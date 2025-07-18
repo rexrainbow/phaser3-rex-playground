@@ -4,8 +4,7 @@ import {
     COLOR_PANEL_BG, COLOR_PANEL_BOARD,
     COLOR_TITLE, COLOR_CONTENT
 } from '../../../../scenes/ColorPalette.js';
-import { INFO_HOW_TO_PLAY } from '../../../../scenes/const.js';
-import { CANVAS_FONT, CANVAS_TEST_STRING } from '../../../../scenes/const.js';
+import { CANVAS_FONT, CANVAS_TEST_STRING } from '../../../../scenes/Font.js';
 
 const DialogStyle = {
     anchor: {

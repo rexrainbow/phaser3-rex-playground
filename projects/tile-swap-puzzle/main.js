@@ -1,5 +1,5 @@
 import 'phaser'
-import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/const.js';
+import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/Size.js';
 import BootScene from './scenes/bootscene/BootScene.js';
 import MenuScene from './scenes/menuscene/MenuScene.js';
 import GameplayScene from './scenes/gameplayscene/GameplayScene.js';

@@ -1,5 +1,5 @@
 import LevelSelectorDialog from '../../gameobjects/levelselector/LevelSelectorDialog.js';
-import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../const.js';
+import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../Size.js';
 
 var CreateLevelDialog = function (scene) {
     var galleryDialog = new LevelSelectorDialog(scene, {

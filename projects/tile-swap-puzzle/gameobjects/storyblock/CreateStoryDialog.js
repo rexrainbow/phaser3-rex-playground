@@ -1,5 +1,5 @@
 import StoryDialog from './StoryDialog.js';
-import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../../scenes/const';
+import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../../scenes/Size.js';
 
 var CreateStoryDialog = function (scene, text, key) {
     var storyDialog = new StoryDialog(scene, { text, key });

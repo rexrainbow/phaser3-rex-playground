@@ -2,7 +2,6 @@ import { EaseMoveMethods } from '../../../../../../../phaser3-rex-notes/plugins/
 import OnCorrectPositionMethods from './OnCorrectPositionMethods.js';
 import OnDropTile from './OnDropTile.js';
 import GetScore from './GetScore.js';
-import { EASE_DURATION } from '../../../../scenes/const.js';
 
 class Tile extends Phaser.GameObjects.Image {
     constructor(scene, x, y, key, frame) {
@@ -21,7 +20,7 @@ class Tile extends Phaser.GameObjects.Image {
                 this.scene.children.bringToTop(this);
             }, this)
             .on('dragend', function (pointer, dragX, dragY, dropped) {
-                OnDropTile(this, this.activeTiles, EASE_DURATION);
+                OnDropTile(this, this.activeTiles, 200);
             }, this)
 
         this.onCorrectPosition();
