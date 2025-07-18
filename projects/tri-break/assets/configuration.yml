@@ -1,0 +1,6 @@
+levels:
+  - id: level0
+    url: assets/levels/level0.yml
+
+  - id: level1
+    url: assets/levels/level1.yml
