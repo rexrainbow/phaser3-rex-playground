@@ -1,10 +1,18 @@
 import 'phaser'
-import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/const.js';
-import BootScene from './scenes/bootscene/BootScene.js';
-import MenuScene from './scenes/menuscene/MenuScene.js';
+import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from './scenes/Size.js';
+// import BootScene from './scenes/bootscene/BootScene.js';
+// import MenuScene from './scenes/menuscene/MenuScene.js';
 import GameplayScene from './scenes/gameplayscene/GameplayScene.js';
-import GalleryScene from './scenes/galleryscene/GalleryScene.js';
-import LevelScene from './scenes/levelscene/LevelScene.js';
+// import GalleryScene from './scenes/galleryscene/GalleryScene.js';
+// import LevelScene from './scenes/levelscene/LevelScene.js';
+
+const PhysicsConfig = {
+    default: 'matter',
+    matter: {
+        gravity: { y: 0 },
+        debug: false
+    }
+};
 
 var config = {
     type: Phaser.AUTO,
@@ -19,8 +27,10 @@ var config = {
     dom: {
         createContainer: true
     },
+    physics: PhysicsConfig,
     plugins: {},
-    scene: [BootScene, MenuScene, GameplayScene, GalleryScene, LevelScene],
+    // scene: [BootScene, MenuScene, GameplayScene, GalleryScene, LevelScene],
+    scene: [GameplayScene]
 };
 
 var game = new Phaser.Game(config);
