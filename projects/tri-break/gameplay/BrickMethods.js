@@ -1,4 +1,4 @@
-import RectangleToTriangles from '../../../../../phaser3-rex-notes/plugins/utils/math/rectangletotriangles/delaunay/RectangleToTriangles.js';
+import RectangleToTriangles from '../../../../phaser3-rex-notes/plugins/utils/math/rectangletotriangles/delaunay/RectangleToTriangles.js';
 
 const GetAABB = Phaser.Geom.Polygon.GetAABB;
 const Translate = Phaser.Geom.Polygon.Translate;

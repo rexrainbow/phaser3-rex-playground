@@ -1,4 +1,4 @@
-import EventEmitter from '../../../../../phaser/src/events/EventEmitter.js';
+import EventEmitter from '../../../../phaser/src/events/EventEmitter.js';
 import BackgroundMethods from './BackgroundMethods.js';
 import PaddleMethods from './PaddleMethods.js';
 import BallMethods from './BallMethods.js';
@@ -21,6 +21,8 @@ class PhysicsWorld extends EventEmitter {
     }
 
     destroy() {
+        this.emit('destroy');
+
         this.background.destroy();
         this.background = undefined;
 
@@ -34,8 +36,6 @@ class PhysicsWorld extends EventEmitter {
         this.bricksBackgroundImageBox = undefined;
         this.removeBricks();
 
-        this.matter.world.off('collisionstart', this.onCollisionstart, this);
-
         this.scene = undefined;
         this.matter = undefined;
     }
@@ -45,25 +45,35 @@ class PhysicsWorld extends EventEmitter {
     }
 
     registerCollisionEvent() {
-        this.onCollisionstart = function (event) {
+        var onCollisionstart = function (event) {
             event.pairs.forEach(({ bodyA, bodyB }) => {
-                if ((bodyA.label === 'ball' && bodyB.label === 'brick') ||
-                    (bodyB.label === 'ball' && bodyA.label === 'brick')) {
-
-                    var brickBody = (bodyA.label === 'brick') ? bodyA : bodyB;
-                    this.emit('hit-brick', brickBody.gameObject);
+                var ballBody, hitTargetBody;
+                if (bodyA.label === 'ball') {
+                    ballBody = bodyA;
+                    hitTargetBody = bodyB;
+                } else if (bodyB.label === 'ball') {
+                    ballBody = bodyB;
+                    hitTargetBody = bodyA;
                 }
 
-                if ((bodyA.label === 'ball' && bodyB.label === 'floor') ||
-                    (bodyB.label === 'ball' && bodyA.label === 'floor')) {
+                if (ballBody) {
+                    switch (hitTargetBody.label) {
+                        case 'brick':
+                            this.emit('hit-brick', hitTargetBody.gameObject);
+                            break;
 
-                    var ball = (bodyA.label === 'ball') ? bodyA.gameObject : bodyB.gameObject;
-
-                    this.emit('hit-floor', ball, this.paddle);
+                        case 'floor':
+                            this.emit('hit-floor', hitTargetBody.gameObject, this.paddle);
+                            break;
+                    }
                 }
             });
         }
-        this.matter.world.on('collisionstart', this.onCollisionstart, this);
+        this.matter.world.on('collisionstart', onCollisionstart, this);
+
+        this.on('destroy', function () {
+            this.matter.world.off('collisionstart', onCollisionstart, this);
+        }, this)
 
         return this;
     }

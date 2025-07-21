@@ -45,6 +45,20 @@ export default {
         return this;
     },
 
+    isBallInIdleState() {
+        if (!this.ball) {
+            return undefined;
+        }
+        return this.ball.isStatic();
+    },
+
+    isBallInActiveState() {
+        if (!this.ball) {
+            return undefined;
+        }
+        return !this.ball.isStatic();
+    },
+
     resetBallPosition() {
         // Put ball above middle of paddle
         if (!this.ball || !this.ball.isStatic() || !this.paddle) {

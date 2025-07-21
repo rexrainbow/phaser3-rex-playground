@@ -1,7 +1,7 @@
 import {
     WORLD_LEFT, WORLD_RIGHT, WORLD_BOTTOM, PADDLE_YOFFSET,
     WORLD_CENTER_X
-} from '../../scenes/Physics.js';
+} from '../scenes/Physics.js';
 
 const Clamp = Phaser.Math.Clamp;
 
@@ -29,6 +29,7 @@ export default {
             return this;
         }
 
+        // Place paddle at centerY of world
         var x = WORLD_CENTER_X;
         var y = WORLD_BOTTOM + PADDLE_YOFFSET - (this.paddle.displayHeight / 2);
 
@@ -51,7 +52,9 @@ export default {
         this.paddle.setPosition(x, y);
 
         // Put ball above middle of paddle, if ball is in IDLE state
-        this.resetBallPosition();
+        if (this.ball && this.isBallInIdleState()) {
+            this.resetBallPosition();
+        }
 
         return this;
     }
