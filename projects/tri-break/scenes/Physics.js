@@ -18,7 +18,7 @@ export const PADDLE_HEIGHT = 20;
 export const PADDLE_COLOR = 0xffffff;
 
 // Ball
-export const BALL_RADIUS = 10;
+export const BALL_RADIUS = 15;
 export const BALL_COLOR = 0xffcc00;
 export const BALL_SPEED = 8;
 

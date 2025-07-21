@@ -53,10 +53,10 @@ export default {
             this.matter.add.gameObject(brick, {
                 isStatic: true,
                 label: 'brick',
-                restitution: 1,
-                friction: 0,
-                frictionStatic: 0,
-                frictionAir: 0,
+                // restitution: 1,
+                // friction: 0,
+                // frictionStatic: 0,
+                // frictionAir: 0,
                 inertia: Infinity,
                 shape: {
                     type: 'fromVerts',
