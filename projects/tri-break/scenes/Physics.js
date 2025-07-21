@@ -23,10 +23,10 @@ export const BALL_COLOR = 0xffcc00;
 export const BALL_SPEED = 8;
 
 // Bricks background
-export const BRICKSBG_WIDTH = 1024 - 240;
-export const BRICKSBG_HEIGHT = BRICKSBG_WIDTH;
+export const BRICKSBG_WIDTH = 1024;
+export const BRICKSBG_HEIGHT = 1024 - 200;
 export const BRICKSBG_CENTER_X = WORLD_CENTER_X;
-export const BRICKSBG_CENTER_Y = WORLD_TOP + (BRICKSBG_HEIGHT / 2) + 60;
+export const BRICKSBG_CENTER_Y = WORLD_TOP + (BRICKSBG_HEIGHT / 2);
 
 // Brick
 export const BRICK_COLOR = 0x111111;

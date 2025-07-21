@@ -21,6 +21,7 @@ export default {
         var vertices = result.vertices;
         var indices = result.indices;
 
+        var scene = this.scene;
         var bricks = [];
         for (var i = 0, cnt = indices.length; i < cnt; i += 3) {
             var p0 = vertices[indices[i + 0]];
@@ -28,7 +29,7 @@ export default {
             var p2 = vertices[indices[i + 2]];
             var points = [{ x: p0[0], y: p0[1] }, { x: p1[0], y: p1[1] }, { x: p2[0], y: p2[1] }];
 
-            var polygonShapeGameObject = CreateBoundingPolygon(this.scene, points);
+            var polygonShapeGameObject = CreateBoundingPolygon(scene, points);
             scene.add.existing(polygonShapeGameObject);
 
             bricks.push(polygonShapeGameObject);
