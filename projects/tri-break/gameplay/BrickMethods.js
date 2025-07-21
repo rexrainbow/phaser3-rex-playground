@@ -1,10 +1,5 @@
 import RectangleToTriangles from '../../../../phaser3-rex-notes/plugins/utils/math/rectangletotriangles/delaunay/RectangleToTriangles.js';
-
-const GetAABB = Phaser.Geom.Polygon.GetAABB;
-const Translate = Phaser.Geom.Polygon.Translate;
-
-var tmpPolygon = {};
-var tmpRectangle = new Phaser.Geom.Rectangle();
+import CreateBoundingPolygon from '../../../../phaser3-rex-notes/plugins/utils/shape/polygon/CreateBoundingPolygon.js';
 
 export default {
     addBricksBackgroundImagebox(imageBox) {
@@ -33,10 +28,9 @@ export default {
             var p2 = vertices[indices[i + 2]];
             var points = [{ x: p0[0], y: p0[1] }, { x: p1[0], y: p1[1] }, { x: p2[0], y: p2[1] }];
 
-            tmpPolygon.points = points;
-            var aabb = GetAABB(tmpPolygon, tmpRectangle);
-            Translate(tmpPolygon, -aabb.left, -aabb.top);
-            var polygonShapeGameObject = this.scene.add.polygon(aabb.centerX, aabb.centerY, points).setOrigin(0.5);
+            var polygonShapeGameObject = CreateBoundingPolygon(this.scene, points);
+            scene.add.existing(polygonShapeGameObject);
+
             bricks.push(polygonShapeGameObject);
 
             this.emit('create-brick', polygonShapeGameObject);
