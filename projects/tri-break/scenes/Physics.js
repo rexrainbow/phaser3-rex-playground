@@ -12,7 +12,7 @@ export const WORLD_BOTTOM = WORLD_TOP + WORLD_HEIGHT;
 export const WORLD_BG = 0x333333;
 
 // Paddle
-export const PADDLE_YOFFSET = -20;
+export const PADDLE_YOFFSET = -40;
 export const PADDLE_WIDTH = 140;
 export const PADDLE_HEIGHT = 20;
 export const PADDLE_COLOR = 0xffffff;

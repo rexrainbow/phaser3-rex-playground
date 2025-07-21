@@ -19,6 +19,8 @@ class PhysicsWorld extends EventEmitter {
         this.bricksBackgroundImageBox;
         this.bricks = [];
 
+        this.ballSpeed = 0;
+
         RegisterCollisionEvent.call(this);
         RegisterTickingEvent.call(this);
     }

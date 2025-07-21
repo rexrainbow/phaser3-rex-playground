@@ -11,11 +11,7 @@ export default {
         this.matter.add.gameObject(paddle, {
             isStatic: true,
             label: 'paddle',
-            // restitution: 1,
-            // friction: 0,
-            // frictionStatic: 0,
-            // frictionAir: 0,
-            inertia: Infinity,
+            friction: 0,
             chamfer: { radius: 10 }
         });
 

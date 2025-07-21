@@ -13,9 +13,8 @@ export default {
             label: 'ball',
             restitution: 1,
             friction: 0,
-            frictionStatic: 0,
             frictionAir: 0,
-            inertia: Infinity
+            slop: 0
         })
 
         this.setBallState('IDLE').resetBallPosition();
@@ -35,6 +34,7 @@ export default {
         switch (state) {
             case 0: // IDLE
                 this.ball.setStatic(true);
+                this.ballSpeed = 0;
                 break;
 
             default: // ACTIVE
@@ -78,7 +78,7 @@ export default {
             return this;
         }
 
-        this.speed = speed;
+        this.ballSpeed = speed;
 
         if (angle === undefined) {
             angle = 0;
@@ -99,5 +99,16 @@ export default {
 
         return this;
     },
+
+    setBallSpeed(speed) {
+        var velocity = this.ball.body.velocity;
+        var vx = velocity.x, vy = velocity.y;
+        var currentSpeed = Math.sqrt(vx * vx + vy * vy) || 1;
+        var scale = speed / currentSpeed;
+        vx *= scale;
+        vy *= scale;
+        this.ball.setVelocity(vx, vy);
+        return this;
+    }
 
 }
