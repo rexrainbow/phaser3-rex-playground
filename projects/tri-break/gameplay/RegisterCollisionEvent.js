@@ -13,11 +13,15 @@ var RegisterCollisionEvent = function () {
             if (ballBody) {
                 switch (hitTargetBody.label) {
                     case 'brick':
-                        this.emit('hit-brick', hitTargetBody.gameObject);
+                        this.emit('hit-brick', hitTargetBody.gameObject, ballBody.gameObject);
                         break;
 
                     case 'floor':
-                        this.emit('hit-floor', hitTargetBody.gameObject, this.paddle);
+                        this.emit('hit-floor', hitTargetBody.gameObject, ballBody.gameObject);
+                        break;
+
+                    case 'paddle':
+                        this.emit('hit-floor', hitTargetBody.gameObject, ballBody.gameObject);
                         break;
                 }
             }
