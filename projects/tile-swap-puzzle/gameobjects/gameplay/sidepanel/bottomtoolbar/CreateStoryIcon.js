@@ -24,7 +24,7 @@ var CreateStoryIcon = function (scene, size) {
     }, this);
 
     AddSceneEvent(iconButton, EVT_COMPLETE_GAME, function () {
-        iconButton.setEnable(true);
+        iconButton.button.setEnable(true);
     }, this);
 
     return iconButton;
