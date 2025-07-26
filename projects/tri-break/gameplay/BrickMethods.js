@@ -13,6 +13,7 @@ export default {
     },
 
     generateBricks(amount) {
+        this.totalBricks = amount;
         var result = RectangleToTriangles({
             rectangle: this.bricksBackgroundImageBox.image.getBounds(),
             amount: amount,
@@ -97,5 +98,13 @@ export default {
 
     getBrickCount() {
         return this.bricks.length;
+    },
+
+    getEliminatedCount() {
+        return this.totalBricks - this.bricks.length;
+    },
+
+    getProgress() {
+        return (this.totalBricks - this.bricks.length) / this.totalBricks;
     }
 }

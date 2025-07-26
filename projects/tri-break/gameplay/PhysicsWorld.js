@@ -3,6 +3,7 @@ import BackgroundMethods from './BackgroundMethods.js';
 import PaddleMethods from './PaddleMethods.js';
 import BallMethods from './BallMethods.js';
 import BrickMethods from './BrickMethods.js';
+import ObstacleMethods from './ObstacleMethods.js';
 import RegisterCollisionEvent from './RegisterCollisionEvent.js';
 import RegisterTickingEvent from './RegisterTickingEvent.js';
 
@@ -75,6 +76,7 @@ Object.assign(
     PaddleMethods,
     BallMethods,
     BrickMethods,
+    ObstacleMethods,
 )
 
 export default PhysicsWorld;

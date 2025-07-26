@@ -21,7 +21,7 @@ var RegisterCollisionEvent = function () {
                         break;
 
                     case 'paddle':
-                        this.emit('hit-floor', hitTargetBody.gameObject, ballBody.gameObject);
+                        this.emit('hit-paddle', hitTargetBody.gameObject, ballBody.gameObject);
                         break;
                 }
             }
