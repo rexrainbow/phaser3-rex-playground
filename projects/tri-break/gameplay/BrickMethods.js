@@ -2,20 +2,20 @@ import RectangleToTriangles from '../../../../phaser3-rex-notes/plugins/utils/ma
 import CreateBoundingPolygon from '../../../../phaser3-rex-notes/plugins/utils/shape/polygon/CreateBoundingPolygon.js';
 
 export default {
-    addBricksBackgroundImagebox(imageBox) {
-        this.bricksBackgroundImageBox = imageBox;
+    addBricksBackgroundImagebox(brickBackgroundImage) {
+        this.brickBackgroundImage = brickBackgroundImage;
         return this;
     },
 
     setBricksBackgroundImageKey(key) {
-        this.bricksBackgroundImageBox.setTexture(key);
+        this.brickBackgroundImage.setTexture(key);
         return this;
     },
 
     generateBricks(amount) {
         this.totalBricks = amount;
         var result = RectangleToTriangles({
-            rectangle: this.bricksBackgroundImageBox.image.getBounds(),
+            rectangle: this.brickBackgroundImage.image.getBounds(),
             amount: amount,
             triangleOutput: false
         })

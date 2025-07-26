@@ -14,10 +14,17 @@ class PhysicsWorld extends EventEmitter {
         this.scene = scene;
         this.matter = scene.matter;
 
+        this.WorldLeft;
+        this.WorldRight;
+        this.WorldTop;
+        this.WorldBottom;
+        this.WorldCenterX;
+        this.WorldCenterY;
+
         this.background;
         this.paddle;
         this.ball;
-        this.bricksBackgroundImageBox;
+        this.brickBackgroundImage;
         this.bricks = [];
 
         this.ballSpeed = 0;
@@ -38,8 +45,8 @@ class PhysicsWorld extends EventEmitter {
         this.ball.destroy();
         this.ball = undefined;
 
-        this.bricksBackgroundImageBox.destroy();
-        this.bricksBackgroundImageBox = undefined;
+        this.brickBackgroundImage.destroy();
+        this.brickBackgroundImage = undefined;
         this.removeBricks();
 
         this.scene = undefined;

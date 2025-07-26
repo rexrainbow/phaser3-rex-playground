@@ -1,26 +1,44 @@
-import { SCENE_GAMEPLAY } from '../SceneKeys.js';
-import BuildWorld from './BuildWorld.js';
+import { SCENE_GAMEPLAY, SCENE_MENU } from '../SceneKeys.js';
+import Methods from './methods/Methods.js';
+// import LoadTextureFromClickboard from './methods/LoadTextureFromClickboard.js';
+import CreateGameplayDialog from './CreateGameplayDialog.js';
 
-class GamePlayScene extends Phaser.Scene {
+class GameplayScene extends Phaser.Scene {
     constructor() {
         super({
             key: SCENE_GAMEPLAY
         })
     }
 
+    init() {
+        // LoadTextureFromClickboard(this);
+
+        this.setScore(undefined);
+    }
+
     preload() {
-        this.load.image('sample0', 'assets/images/sample0.webp');
-        this.load.image('sample1', 'assets/images/sample1.webp');
+        // {level, title, image, 'image-url', story}
+        // Lazy loading texture in TileContainer
     }
 
-    create() {
-        var physicsWorld = BuildWorld(this)
-            // Load image
-            .setBricksBackgroundImageKey('sample1')
-            // Generate bricks
-            .generateBricks(10)
+    async create() {
+        var gameplayDialog = CreateGameplayDialog(this);
 
+        this.startGame();
+
+        await gameplayDialog.modalPromise({
+            duration: { in: 0, out: 0 },    // No popup
+            cover: { alpha: 1 }
+        });
+
+        this.scene.start(SCENE_MENU);    // Back to menu scene
     }
+
+    update() { }
 }
 
-export default GamePlayScene;
+Object.assign(
+    GameplayScene.prototype,
+    Methods
+)
+export default GameplayScene;
