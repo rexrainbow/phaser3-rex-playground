@@ -53,7 +53,7 @@ const DialogStyle = {
 
 const DialogContent = {
     title: '如何遊玩',
-    content: '拖曳兩個方塊以交換它們的位置',
+    content: '點擊球的移動空間後開始，滑鼠左右移動或拖曳移動板子',
 };
 
 var CreateInfoIcon = function (scene, size) {
