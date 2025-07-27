@@ -34,13 +34,14 @@ const DialogStyle = {
 
     content: {
         text: {
+            $type: 'bbcodetext',
             color: '#' + (COLOR_CONTENT).toString(16),
             fontFamily: CANVAS_FONT,
             fontSize: `40px`,
             testString: CANVAS_TEST_STRING,
-            lineSpacing: 8
+            lineSpacing: 8,
         },
-        wrapText: true,
+        wrapText: 'character',
     },
 
     align: {

@@ -34,13 +34,14 @@ const DialogStyle = {
 
     content: {
         text: {
+            $type: 'bbcodetext',
             color: '#' + (COLOR_CONTENT).toString(16),
             fontFamily: CANVAS_FONT,
             fontSize: `40px`,
             testString: CANVAS_TEST_STRING,
-            lineSpacing: 8
+            lineSpacing: 8,
         },
-        wrapText: true,
+        wrapText: 'character',
     },
 
     align: {
@@ -53,7 +54,7 @@ const DialogStyle = {
 
 const DialogContent = {
     title: '如何遊玩',
-    content: '點擊球的移動空間後開始，滑鼠左右移動或拖曳移動板子',
+    content: '點擊球的移動空間後開始，滑鼠左右移動或拖曳移動板子，再次點擊可旋轉拍子',
 };
 
 var CreateInfoIcon = function (scene, size) {
