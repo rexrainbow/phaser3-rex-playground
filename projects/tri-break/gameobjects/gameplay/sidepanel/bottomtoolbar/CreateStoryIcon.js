@@ -3,9 +3,10 @@ import CreateStoryDialog from '../../../storyblock/CreateStoryDialog.js';
 import { DATA_KEY_LEVEL } from '../../../../scenes/DataKeys.js';
 import { EVT_START_GAME, EVT_COMPLETE_GAME } from '../../../../scenes/gameplayscene/const.js';
 import AddSceneEvent from '../../../../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddSceneEvent.js';
+import { StoryIcon } from '../../../../scenes/Icons.js';
 
 var CreateStoryIcon = function (scene, size) {
-    var iconButton = CreateIconButton(scene, 'icons', 'story', size);
+    var iconButton = CreateIconButton(scene, StoryIcon.key, StoryIcon.frame, size);
     iconButton.button
         .on('click', async function () {
             var level = scene.data.get(DATA_KEY_LEVEL);

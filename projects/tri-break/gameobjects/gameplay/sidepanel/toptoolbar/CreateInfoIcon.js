@@ -5,6 +5,7 @@ import {
     COLOR_TITLE, COLOR_CONTENT
 } from '../../../../scenes/ColorPalette.js';
 import { CANVAS_FONT, CANVAS_TEST_STRING } from '../../../../scenes/Font.js';
+import { InfoIcon } from '../../../../scenes/Icons.js';
 
 const DialogStyle = {
     anchor: {
@@ -58,7 +59,7 @@ const DialogContent = {
 };
 
 var CreateInfoIcon = function (scene, size) {
-    var iconButton = CreateIconButton(scene, 'icons', 'info', size);
+    var iconButton = CreateIconButton(scene, InfoIcon.key, InfoIcon.frame, size);
 
     iconButton.button
         .on('click', async function () {
