@@ -62,7 +62,11 @@ class PhysicsWorld extends EventEmitter {
     }
 
     start() {
-        this.resume();
+        this
+            .resume()
+            .setBallState('IDLE')
+            .resetPaddlePosition()
+
         return this;
     }
 

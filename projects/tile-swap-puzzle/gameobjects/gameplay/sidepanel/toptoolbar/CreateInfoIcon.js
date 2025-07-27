@@ -1,5 +1,5 @@
 import CreateIconButton from '../../../iconbutton/CreateIconButton.js';
-import ConfirmAction from '../../../../../../../phaser3-rex-notes/templates/ui/confirmdialog/ConfirmAction.js';
+import ConfirmActionPromise from '../../../../../../../phaser3-rex-notes/templates/ui/confirmdialog/ConfirmActionPromise.js';
 import {
     COLOR_PANEL_BG, COLOR_PANEL_BOARD,
     COLOR_TITLE, COLOR_CONTENT
@@ -61,11 +61,13 @@ var CreateInfoIcon = function (scene, size) {
     var iconButton = CreateIconButton(scene, 'icons', 'info', size);
 
     iconButton.button
-        .on('click', function () {
-            ConfirmAction(scene, {
+        .on('click', async function () {
+            scene.pauseGame();
+            await ConfirmActionPromise(scene, {
                 style: DialogStyle,
                 content: DialogContent
             })
+            scene.resumeGame();
         })
 
     return iconButton;

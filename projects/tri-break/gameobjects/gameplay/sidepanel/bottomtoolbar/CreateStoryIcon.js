@@ -7,9 +7,11 @@ import AddSceneEvent from '../../../../../../../phaser3-rex-notes/plugins/utils/
 var CreateStoryIcon = function (scene, size) {
     var iconButton = CreateIconButton(scene, 'icons', 'story', size);
     iconButton.button
-        .on('click', function () {
+        .on('click', async function () {
             var level = scene.data.get(DATA_KEY_LEVEL);
-            CreateStoryDialog(scene, level.story, level.image);
+            scene.pauseGame();
+            await CreateStoryDialog(scene, level.story, level.image);
+            scene.resumeGame();
         })
         .on('enable', function () {
             iconButton.getElement('icon').setTint(0xFFFFFF);
