@@ -1,8 +1,8 @@
 import GameplayDialog from '../../gameobjects/gameplay/GameplayDialog.js';
 import GetWindowSize from '../utils/GetWindowSize.js';
 
-var CreateGameplayDialog = function (scene) {
-    var gameplayDialog = new GameplayDialog(scene);
+var CreateGameplayDialog = function (scene, config) {
+    var gameplayDialog = new GameplayDialog(scene, config);
     scene.add.existing(gameplayDialog);
 
     var windowSize = GetWindowSize(scene);

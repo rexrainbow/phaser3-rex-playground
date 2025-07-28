@@ -22,7 +22,9 @@ class GameplayScene extends Phaser.Scene {
     }
 
     async create() {
-        var gameplayDialog = CreateGameplayDialog(this);
+        var gameplayDialog = CreateGameplayDialog(this, {
+            createGamePlayBlock: this.createGameplayBlock
+        });
 
         this.startGame();
 
