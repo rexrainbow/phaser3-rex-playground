@@ -1,6 +1,5 @@
 import BuildGame from './game/BuildGame.js';
 
-debugger
 BuildGame({
     // Use default gameplayBlock
     // createGameplayBlock(scene) {
