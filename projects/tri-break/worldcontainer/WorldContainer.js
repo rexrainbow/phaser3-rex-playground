@@ -1,11 +1,11 @@
 import { WORLD_WIDTH, WORLD_HEIGHT, WORLD_BG } from './Physics.js';
 import BuildWorld from './BuildWorld.js';
-import { EVT_AFTER_LAYOUT, EVT_START_GAME, EVT_COMPLETE_GAME, EVT_PAUSE_GAME, EVT_RESUME_GAME } from '../../../scenes/gameplayscene/const.js';
-import OverlapSizer from '../../../../../../phaser3-rex-notes/templates/ui/overlapsizer/OverlapSizer.js';
-import AddSceneEvent from '../../../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddSceneEvent.js';
-import { DATA_KEY_LEVEL } from '../../../scenes/DataKeys.js';
-import Spinner from '../../../../../../phaser3-rex-notes/templates/ui/aiospinner/AIOSpinner.js'
-import LoadCompletePromise from '../../../../../../phaser3-rex-notes/plugins/utils/loader/LoadCompletePromise.js';
+import { EVT_AFTER_LAYOUT, EVT_START_GAME, EVT_COMPLETE_GAME, EVT_PAUSE_GAME, EVT_RESUME_GAME } from '../../../templates/story-blocks/scenes/gameplayscene/EventName.js';
+import OverlapSizer from '../../../../phaser3-rex-notes/templates/ui/overlapsizer/OverlapSizer.js';
+import AddSceneEvent from '../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddSceneEvent.js';
+import { DATA_KEY_LEVEL } from '../../../templates/story-blocks/scenes/DataKeys.js';
+import Spinner from '../../../../phaser3-rex-notes/templates/ui/aiospinner/AIOSpinner.js'
+import LoadCompletePromise from '../../../../phaser3-rex-notes/plugins/utils/loader/LoadCompletePromise.js';
 
 class WorldContainer extends OverlapSizer {
     constructor(scene) {

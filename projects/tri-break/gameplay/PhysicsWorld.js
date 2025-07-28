@@ -1,4 +1,3 @@
-import EventEmitter from '../../../../phaser/src/events/EventEmitter.js';
 import BackgroundMethods from './BackgroundMethods.js';
 import PaddleMethods from './PaddleMethods.js';
 import BallMethods from './BallMethods.js';
@@ -7,7 +6,7 @@ import ObstacleMethods from './ObstacleMethods.js';
 import RegisterCollisionEvent from './RegisterCollisionEvent.js';
 import RegisterTickingEvent from './RegisterTickingEvent.js';
 
-class PhysicsWorld extends EventEmitter {
+class PhysicsWorld extends Phaser.Events.EventEmitter {
     constructor(scene) {
         super();
 
