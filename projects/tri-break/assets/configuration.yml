@@ -85,5 +85,5 @@ InfoDialog:
   title-en: How to play
   title-zh: 如何遊玩
 
-  content-en: Drag the two blocks to swap their positions
-  content-zh: 拖曳兩個方塊以交換它們的位置
+  content-en: Click the play area to begin. Move the paddle with the mouse. Click again to rotate it
+  content-zh: 點擊球的移動空間後開始，滑鼠左右移動或拖曳移動板子，再次點擊可旋轉拍子

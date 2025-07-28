@@ -1,6 +1,89 @@
-levels:
+Levels:
   - id: level0
     url: assets/levels/level0.yml
-
+  
   - id: level1
     url: assets/levels/level1.yml
+
+
+WindowSize:
+  width: 1920
+  height: 1080
+
+ColorPalette:
+  COLOR_1000: 0x0A0A0A
+  COLOR_900: 0x121212
+  COLOR_800: 0x1E1E1E
+  COLOR_700: 0x2C2C2C
+  COLOR_600: 0x3D3D3D
+  COLOR_500: 0x5A5A5A
+  COLOR_400: 0x8A8A8A
+  COLOR_300: 0xB0B0B0
+  COLOR_200: 0xD0D0D0
+  COLOR_100: 0xFFFFFFF
+
+Assets:
+  - type: font
+    key: huninn
+    url: assets/fonts/jf-openhuninn-2.1.ttf
+
+  - type: atlas
+    key: icons
+    textureURL: assets/icons/icons.png
+    atlasURL: assets/icons/icons.json
+
+Icons:
+  Exit:
+    key: icons
+    frame: exit
+
+  NextLevel:
+    key: icons
+    frame: next
+
+  Restart:
+    key: icons
+    frame: restart
+
+  Story:
+    key: icons
+    frame: story
+
+  Info:
+    key: icons
+    frame: info
+
+  FullscreenOn:
+    key: icons
+    frame: fullscreen-on
+
+  FullscreenOff:
+    key: icons
+    frame: fullscreen-off
+
+Font:
+  family: huninn
+  testString: "|MÉqgy學"
+
+Menu:
+  play-en: Play
+  play-zh: 開始
+
+  level-en: Level
+  level-zh: 選關
+
+  gallery-en: Gallery
+  gallery-zh: 圖鑑
+
+  setting-en: Setting
+  setting-zh: 設定
+
+  credit-en: Credit
+  credit-zh: 製作群
+
+InfoDialog:
+  title-en: How to play
+  title-zh: 如何遊玩
+
+  content-en: Click the play area to begin. Move the paddle with the mouse. Click again to rotate it
+  content-zh: 點擊球的移動空間後開始，滑鼠左右移動或拖曳移動板子，再次點擊可旋轉拍子
