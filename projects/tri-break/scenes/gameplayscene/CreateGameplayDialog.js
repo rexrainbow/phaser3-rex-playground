@@ -9,7 +9,6 @@ var CreateGameplayDialog = function (scene) {
         .setPosition(SIZE_WIN_WIDTH / 2, SIZE_WIN_HEIGHT / 2)
         .setMinSize(SIZE_WIN_WIDTH * 0.8, SIZE_WIN_HEIGHT * 0.95)
         .layout()
-        .buildWorld()
 
     return gameplayDialog;
 }

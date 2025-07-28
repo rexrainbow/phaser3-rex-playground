@@ -6,7 +6,6 @@ import SidePanel from './sidepanel/SidePanel.js';
 import {
     COLOR_PANEL_BG, COLOR_PANEL_BOARD,
 } from '../../scenes/ColorPalette.js';
-import { WORLD } from './worldcontainer/const.js';
 
 class GameplayBlock extends OverlapSizer {
     constructor(scene) {
@@ -33,7 +32,7 @@ var CreateInnerSizer = function (scene) {
     var innerSizer = new Sizer(scene, { orientation: 'x' });
     scene.add.existing(innerSizer);
 
-    var worldContainer = new WorldContainer(scene).setName(WORLD);
+    var worldContainer = new WorldContainer(scene);
     scene.add.existing(worldContainer);
 
     var sidePanel = new SidePanel(scene);

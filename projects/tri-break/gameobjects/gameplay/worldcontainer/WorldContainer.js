@@ -1,6 +1,6 @@
-import { WORLD_WIDTH, WORLD_HEIGHT, WORLD_BG } from '../../../scenes/Physics.js';
+import { WORLD_WIDTH, WORLD_HEIGHT, WORLD_BG } from './Physics.js';
 import BuildWorld from './BuildWorld.js';
-import { EVT_COMPLETE_GAME, EVT_PAUSE_GAME, EVT_RESUME_GAME, EVT_START_GAME } from '../../../scenes/gameplayscene/const.js';
+import { EVT_AFTER_LAYOUT, EVT_START_GAME, EVT_COMPLETE_GAME, EVT_PAUSE_GAME, EVT_RESUME_GAME } from '../../../scenes/gameplayscene/const.js';
 import OverlapSizer from '../../../../../../phaser3-rex-notes/templates/ui/overlapsizer/OverlapSizer.js';
 import AddSceneEvent from '../../../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddSceneEvent.js';
 import { DATA_KEY_LEVEL } from '../../../scenes/DataKeys.js';
@@ -16,6 +16,7 @@ class WorldContainer extends OverlapSizer {
         this.background = scene.add.rectangle(0, 0, 1, 1, WORLD_BG).setStrokeStyle(2, 0xffffff);
         this.addBackground(this.background);
 
+        AddSceneEvent(this, EVT_AFTER_LAYOUT, this.buildWorld, this);
         AddSceneEvent(this, EVT_START_GAME, this.onStartGame, this);
         AddSceneEvent(this, EVT_PAUSE_GAME, this.onPauseGame, this);
         AddSceneEvent(this, EVT_RESUME_GAME, this.onResumeGame, this);

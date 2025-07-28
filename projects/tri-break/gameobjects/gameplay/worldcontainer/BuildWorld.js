@@ -7,7 +7,7 @@ import {
     PADDLE_YOFFSET,
     PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_COLOR,
     BALL_RADIUS, BALL_COLOR, BALL_SPEED,
-} from '../../../scenes/Physics.js';
+} from './Physics.js';
 import PhysicsWorld from '../../../gameplay/PhysicsWorld.js';
 import ImageBox from '../../../../../../phaser3-rex-notes/plugins/imagebox.js';
 

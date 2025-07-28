@@ -1,4 +1,5 @@
 import { SCENE_GAMEPLAY, SCENE_MENU } from '../SceneKeys.js';
+import { EVT_AFTER_LAYOUT } from './const.js';
 import Methods from './methods/Methods.js';
 // import LoadTextureFromClickboard from './methods/LoadTextureFromClickboard.js';
 import CreateGameplayDialog from './CreateGameplayDialog.js';
@@ -22,7 +23,11 @@ class GameplayScene extends Phaser.Scene {
     }
 
     async create() {
-        var gameplayDialog = CreateGameplayDialog(this);
+        var gameplayDialog = CreateGameplayDialog(this, {
+            createGamePlayBlock: this.createGameplayBlock
+        });
+
+        this.events.emit(EVT_AFTER_LAYOUT);
 
         this.startGame();
 

@@ -27,7 +27,7 @@ class GameplayScene extends Phaser.Scene {
             createGamePlayBlock: this.createGameplayBlock
         });
 
-        this.emit(EVT_AFTER_LAYOUT);
+        this.events.emit(EVT_AFTER_LAYOUT);
 
         this.startGame();
 
