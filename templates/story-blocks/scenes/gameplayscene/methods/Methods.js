@@ -9,7 +9,7 @@ var Methods = {
     startGame: StartGame,
     pauseGame: PauseGame,
     resumeGame: ResumeGame,
-    CreateGameplayBlock: CreateGameplayBlock,
+    createGameplayBlock: CreateGameplayBlock,
 }
 
 export default Methods;

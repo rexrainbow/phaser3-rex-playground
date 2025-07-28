@@ -1,12 +1,12 @@
 import BuildGame from './game/BuildGame.js';
-import TileContainer from './gameobjects/gameplay/tilecontainer/TileContainer.js';
 
+debugger
 BuildGame({
-    createGameplayBlock(scene) {
-        var gameObject = new TileContainer(scene);
-        scene.add.existing(gameObject);
-        return gameObject;
-    },
+    // Use default gameplayBlock
+    // createGameplayBlock(scene) {
+    //     // ...
+    //     return gameObject;
+    // },
 
     configurationURL: 'assets/configuration.yml',
 
