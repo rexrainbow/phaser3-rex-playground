@@ -1,5 +1,5 @@
 
-import { EVT_PAUSE_GAME } from '../const.js';
+import { EVT_PAUSE_GAME } from '../EventName.js';
 
 var PauseGame = function () {
     this.events.emit(EVT_PAUSE_GAME);

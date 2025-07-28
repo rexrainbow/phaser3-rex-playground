@@ -1,7 +1,7 @@
 import CreateIconButton from '../../../iconbutton/CreateIconButton.js';
 import CreateStoryDialog from '../../../storyblock/CreateStoryDialog.js';
 import { DATA_KEY_LEVEL } from '../../../../scenes/DataKeys.js';
-import { EVT_START_GAME, EVT_COMPLETE_GAME } from '../../../../scenes/gameplayscene/const.js';
+import { EVT_START_GAME, EVT_COMPLETE_GAME } from '../../../../scenes/gameplayscene/EventName.js';
 import AddSceneEvent from '../../../../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddSceneEvent.js';
 import GetIconSetting from '../../../../scenes/utils/GetIconSetting.js';
 

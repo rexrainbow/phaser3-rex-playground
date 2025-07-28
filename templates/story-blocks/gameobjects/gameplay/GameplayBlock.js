@@ -22,14 +22,14 @@ class GameplayBlock extends OverlapSizer {
         var innerSizer = new Sizer(scene, { orientation: 'x' });
         scene.add.existing(innerSizer);
 
-        var gamePlayBlock = config.createGamePlayBlock(scene);
-        scene.add.existing(gamePlayBlock);
+        var gameplayBlock = config.createGamePlayBlock(scene);
+        scene.add.existing(gameplayBlock);
 
         var sidePanel = new SidePanel(scene);
         scene.add.existing(sidePanel);
 
         innerSizer
-            .add(gamePlayBlock)                 // Fixed width, fixed height
+            .add(gameplayBlock)                 // Fixed width, fixed height
             .add(sidePanel, { expand: true })   // Fixed width, expand height
 
         this.add(innerSizer, {

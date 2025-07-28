@@ -1,12 +1,12 @@
-import { EVT_COMPLETE_GAME, EVT_START_GAME } from '../../../scenes/gameplayscene/const.js';
-import OverlapSizer from '../../../../../../phaser3-rex-notes/templates/ui/overlapsizer/OverlapSizer.js';
-import AddSceneEvent from '../../../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddSceneEvent.js';
-import FitTo from '../../../../../../phaser3-rex-notes/plugins/utils/size/FitTo.js';
+import { EVT_COMPLETE_GAME, EVT_START_GAME } from '../../../templates/story-blocks/scenes/gameplayscene/EventName.js';
+import OverlapSizer from '../../../../phaser3-rex-notes/templates/ui/overlapsizer/OverlapSizer.js';
+import AddSceneEvent from '../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddSceneEvent.js';
+import FitTo from '../../../../phaser3-rex-notes/plugins/utils/size/FitTo.js';
 import GenerateTiles from './GenerateTiles.js';
 import ShuffleTiles from './ShuffleTiles.js';
-import { DATA_KEY_LEVEL } from '../../../scenes/DataKeys.js';
-import Spinner from '../../../../../../phaser3-rex-notes/templates/ui/aiospinner/AIOSpinner.js'
-import LoadCompletePromise from '../../../../../../phaser3-rex-notes/plugins/utils/loader/LoadCompletePromise.js';
+import { DATA_KEY_LEVEL } from '../../../templates/story-blocks/scenes/DataKeys.js';
+import Spinner from '../../../../phaser3-rex-notes/templates/ui/aiospinner/AIOSpinner.js'
+import LoadCompletePromise from '../../../../phaser3-rex-notes/plugins/utils/loader/LoadCompletePromise.js';
 
 const SIZE = 1024;
 

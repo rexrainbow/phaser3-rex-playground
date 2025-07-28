@@ -1,5 +1,5 @@
 import { DATA_KEY_SCORE, DATA_KEY_LEVEL } from '../../DataKeys.js';
-import { EVT_COMPLETE_GAME } from '../const.js';
+import { EVT_COMPLETE_GAME } from '../EventName.js';
 import CompleteLevel from '../../../levels/CompleteLevel.js';
 
 var SetScore = function (score) {

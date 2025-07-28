@@ -1,4 +1,4 @@
-import Shuffle from '../../../../../../phaser3-rex-notes/plugins/utils/array/Shuffle.js';
+import Shuffle from '../../../../phaser3-rex-notes/plugins/utils/array/Shuffle.js';
 
 var ShuffleTiles = function (tiles, easeDuration) {
     var tilePositionList = [];
