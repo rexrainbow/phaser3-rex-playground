@@ -9,4 +9,6 @@ BuildGame({
     },
 
     configurationURL: 'assets/configuration.yml',
+
+    // ... more phaser game configuration ...
 });

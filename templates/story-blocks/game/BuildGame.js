@@ -8,14 +8,20 @@ import GalleryScene from '../scenes/galleryscene/GalleryScene.js';
 import LevelScene from '../scenes/levelscene/LevelScene.js';
 import { SCENE_BOOT, SCENE_MENU, SCENE_GAMEPLAY, SCENE_GALLERY, SCENE_LEVEL } from '../scenes/SceneKeys';
 
-var BuildGame = async function (config) {
-    var createGameplayBlock = config.createGameplayBlock;
-    delete config.createGameplayBlock;
-    // Override default createGameplayBlock method
-    GameplayScene.prototype.createGameplayBlock = createGameplayBlock;
+var PopupProperty = function (item, property) {
+    var data = item[property];
+    delete item[property];
+    return data;
+}
 
-    var configurationURL = config.configurationURL;
-    delete config.configurationURL;
+var BuildGame = async function (config) {
+    var createGameplayBlock = PopupProperty(config, 'createGameplayBlock');
+    // Override default createGameplayBlock method
+    if (createGameplayBlock) {
+        GameplayScene.prototype.createGameplayBlock = createGameplayBlock;
+    }
+
+    var configurationURL = PopupProperty(config, 'configurationURL');
     // Load configuration YAML file
     var configuration = await LoadYamlFromUrl(configurationURL);
 
