@@ -2,6 +2,7 @@ import Buttons from '../../../../../phaser3-rex-notes/templates/ui/buttons/Butto
 import Label from '../../../../../phaser3-rex-notes/templates/ui/label/Label.js';
 import GetColorPalette from '../../scenes/utils/GetColorPalette.js';
 import GetFontSetting from '../../scenes/utils/GetFontSetting.js';
+import GetMenuLabelText from '../../scenes/utils/GetMenuLabelText.js';
 
 class Menu extends Buttons {
     constructor(scene) {
@@ -9,11 +10,11 @@ class Menu extends Buttons {
             orientation: 'y',
             space: { item: 20 },
             buttons: [
-                CreateLabel(scene, 'play', '開始'),
-                CreateLabel(scene, 'level', '選關'),
-                CreateLabel(scene, 'gallery', '圖鑑'),
-                CreateLabel(scene, 'setting', '設定'),
-                CreateLabel(scene, 'credit', '製作群'),
+                CreateLabel(scene, 'play', GetMenuLabelText(scene, 'play', 'zh')),
+                CreateLabel(scene, 'level', GetMenuLabelText(scene, 'level', 'zh')),
+                CreateLabel(scene, 'gallery', GetMenuLabelText(scene, 'gallery', 'zh')),
+                CreateLabel(scene, 'setting', GetMenuLabelText(scene, 'setting', 'zh')),
+                CreateLabel(scene, 'credit', GetMenuLabelText(scene, 'credit', 'zh')),
             ],
         })
 
@@ -21,7 +22,7 @@ class Menu extends Buttons {
 
         this
             .on('button.over', function (button, index, pointer, event) {
-                button.getElement('background').setStrokeStyle(10,colorPalette.BUTTON_HOVER_BOARD)
+                button.getElement('background').setStrokeStyle(10, colorPalette.BUTTON_HOVER_BOARD)
             })
             .on('button.out', function (button, index, pointer, event) {
                 button.getElement('background').setStrokeStyle(5, colorPalette.BUTTON_BOARD)

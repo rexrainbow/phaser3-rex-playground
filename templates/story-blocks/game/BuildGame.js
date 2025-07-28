@@ -8,20 +8,18 @@ import GalleryScene from '../scenes/galleryscene/GalleryScene.js';
 import LevelScene from '../scenes/levelscene/LevelScene.js';
 import { SCENE_BOOT, SCENE_MENU, SCENE_GAMEPLAY, SCENE_GALLERY, SCENE_LEVEL } from '../scenes/SceneKeys';
 
-var BuildGame = async function (config) {
+var BuildGame = async function (configurationURL, config) {
     if (config === undefined) {
         config = {};
     }
 
-    var configuration = await LoadYamlFromUrl('assets/configuration.yml');
-    var windowWidth = configuration.WindowSize.width;
-    var windowHeight = configuration.WindowSize.height;
+    var configuration = await LoadYamlFromUrl(configurationURL);
 
     config = {
         type: Phaser.AUTO,
         parent: 'game',
-        width: windowWidth,
-        height: windowHeight,
+        width: configuration.WindowSize.width,
+        height: configuration.WindowSize.height,
         scale: {
             mode: Phaser.Scale.FIT,
             autoCenter: Phaser.Scale.CENTER_BOTH,

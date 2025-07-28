@@ -1,3 +1,3 @@
 import BuildGame from './game/BuildGame.js';
 
-BuildGame();
+BuildGame('assets/configuration.yml');

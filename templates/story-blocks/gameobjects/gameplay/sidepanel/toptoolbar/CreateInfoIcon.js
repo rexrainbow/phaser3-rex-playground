@@ -3,12 +3,7 @@ import ConfirmActionPromise from '../../../../../../../phaser3-rex-notes/templat
 import GetIconSetting from '../../../../scenes/utils/GetIconSetting.js';
 import GetFontSetting from '../../../../scenes/utils/GetFontSetting.js';
 import GetColorPalette from '../../../../scenes/utils/GetColorPalette.js';
-
-
-const DialogContent = {
-    title: '如何遊玩',
-    content: '拖曳兩個方塊以交換它們的位置',
-};
+import GetInfoDialogText from '../../../../scenes/utils/GetInfoDialogText.js';
 
 var CreateInfoIcon = function (scene, size) {
 
@@ -64,13 +59,17 @@ var CreateInfoIcon = function (scene, size) {
         buttonMode: 0,
     };
 
+    var dialogContent = {
+        title: GetInfoDialogText(scene, 'title', 'zh'),
+        content: GetInfoDialogText(scene, 'content', 'zh'),
+    };
 
     iconButton.button
         .on('click', async function () {
             scene.pauseGame();
             await ConfirmActionPromise(scene, {
                 style: dialogStyle,
-                content: DialogContent
+                content: dialogContent
             })
             scene.resumeGame();
         })
