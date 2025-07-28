@@ -2,19 +2,17 @@ import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js'
 import ImageBox from '../../../../../phaser3-rex-notes/templates/ui/imagebox/ImageBox.js';
 import TextArea from '../../../../../phaser3-rex-notes/templates/ui/textarea/TextArea.js';
 import BBCodeText from '../../../../../phaser3-rex-notes/templates/ui/bbcodetext/BBCodeText.js';
-import {
-    COLOR_PANEL_BG, COLOR_PANEL_BOARD,
-    COLOR_CONTENT,
-    COLOR_THUMB, COLOR_TRACK
-} from '../../scenes/ColorPalette.js';
-import { CANVAS_FONT, CANVAS_TEST_STRING } from '../../scenes/Font.js';
+import GetFontSetting from '../../scenes/utils/GetFontSetting.js';
+import GetColorPalette from '../../scenes/utils/GetColorPalette.js';
 
 class StoryBlock extends Sizer {
     constructor(scene, config) {
+        var colorPalette = GetColorPalette(scene);
+
         var key = config.key;
         var text = config.text;
 
-        var background = scene.add.rectangle(0, 0, 1, 1, COLOR_PANEL_BG).setStrokeStyle(6, COLOR_PANEL_BOARD);
+        var background = scene.add.rectangle(0, 0, 1, 1, colorPalette.PANEL_BG).setStrokeStyle(6, colorPalette.PANEL_BOARD);
 
         var imageBox = new ImageBox(scene, { scaleUp: true });
 
@@ -23,15 +21,15 @@ class StoryBlock extends Sizer {
                 left: 20, right: 20,
                 text: { top: 20, bottom: 20, right: 20 },
             },
-            text: CreateBBCodeTextGameObject(scene, 36, COLOR_CONTENT),
+            text: CreateBBCodeTextGameObject(scene, 36, colorPalette.CONTENT),
             slider: {
                 track: {
-                    color: COLOR_TRACK,
+                    color: colorPalette.TRACK,
                     alpha: 0.5,
                     width: 30,
                 },
                 thumb: {
-                    color: COLOR_THUMB,
+                    color: colorPalette.THUMB,
                     width: 40,
                 },
                 adaptThumbSize: true,
@@ -67,11 +65,12 @@ class StoryBlock extends Sizer {
 }
 
 var CreateBBCodeTextGameObject = function (scene, size, color) {
+    var fontSetting = GetFontSetting(scene);
     var text = new BBCodeText(scene, 0, 0, '', {
-        fontFamily: CANVAS_FONT,
+        fontFamily: fontSetting.family,
         fontSize: `${size}px`,
         lineSpacing: 16,
-        testString: CANVAS_TEST_STRING
+        testString: fontSetting.testString
     })
         .setTint(color);
     scene.add.existing(text);

@@ -1,6 +1,6 @@
 import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
 import CreateIconButton from '../iconbutton/CreateIconButton.js';
-import { ExitIcon } from '../../scenes/Icons.js';
+import GetIconSetting from '../../scenes/utils/GetIconSetting.js';
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
@@ -9,6 +9,8 @@ class ModalDialog extends Sizer {
         super(scene, {
             orientation: 'x',
         })
+
+        var ExitIcon = GetIconSetting(scene).Exit;
 
         var exitIcon = CreateIconButton(scene, ExitIcon.key, ExitIcon.frame, 80)
             .layout()

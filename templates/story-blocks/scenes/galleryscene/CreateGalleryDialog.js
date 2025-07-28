@@ -1,6 +1,6 @@
 import LevelSelectorDialog from '../../gameobjects/levelselector/LevelSelectorDialog.js';
 import CreateStoryDialog from '../../gameobjects/storyblock/CreateStoryDialog.js';
-import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../Size.js';
+import GetWindowSize from '../utils/GetWindowSize.js';
 
 var CreateGalleryDialog = function (scene) {
     var galleryDialog = new LevelSelectorDialog(scene, {
@@ -9,9 +9,11 @@ var CreateGalleryDialog = function (scene) {
     });
     scene.add.existing(galleryDialog);
 
+    var windowSize = GetWindowSize(scene);
+
     galleryDialog
-        .setPosition(SIZE_WIN_WIDTH / 2, SIZE_WIN_HEIGHT / 2)
-        .setMinSize(SIZE_WIN_WIDTH * 0.8, SIZE_WIN_HEIGHT * 0.95)
+        .setPosition(windowSize.width / 2, windowSize.height / 2)
+        .setMinSize(windowSize.width * 0.8, windowSize.height * 0.95)
         .layout()
 
     galleryDialog

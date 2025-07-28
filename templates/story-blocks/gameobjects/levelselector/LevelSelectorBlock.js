@@ -1,20 +1,18 @@
 import GridTable from '../../../../../phaser3-rex-notes/templates/ui/gridtable/GridTable.js';
 import Card from './Card.js';
 import RoundRectangle from '../../../../../phaser3-rex-notes/plugins/roundrectangle.js';
-import {
-    COLOR_PANEL_BG, COLOR_PANEL_BOARD,
-    COLOR_BUTTON_BG, COLOR_BUTTON_BOARD, COLOR_BUTTON_HOVER_BOARD,
-    COLOR_THUMB, COLOR_TRACK
-} from '../../scenes/ColorPalette.js';
+import GetColorPalette from '../../scenes/utils/GetColorPalette.js';
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
 class LevelSelectorBlock extends GridTable {
     constructor(scene, config) {
+        var colorPalette = GetColorPalette(scene);
+
         var background = new RoundRectangle(scene, {
-            color: COLOR_PANEL_BG,
+            color: colorPalette.PANEL_BG,
             strokeWidth: 6,
-            strokeColor: COLOR_PANEL_BOARD
+            strokeColor: colorPalette.PANEL_BOARD
         })
         scene.add.existing(background);
 
@@ -31,12 +29,12 @@ class LevelSelectorBlock extends GridTable {
                 reuseCellContainer: true,
                 slider: {
                     track: {
-                        color: COLOR_TRACK,
+                        color: colorPalette.TRACK,
                         alpha: 0.5,
                         width: 30,
                     },
                     thumb: {
-                        color: COLOR_THUMB,
+                        color: colorPalette.THUMB,
                         width: 40,
                     },
                     adaptThumbSize: true,
@@ -64,8 +62,8 @@ class LevelSelectorBlock extends GridTable {
                     .setCardContent(item.title, item.image, item['image-url'], item.completed)
 
                 cellContainer.getElement('background')
-                    .setFillStyle(COLOR_BUTTON_BG)
-                    .setStrokeStyle(5, COLOR_BUTTON_BOARD);
+                    .setFillStyle(colorPalette.BUTTON_BG)
+                    .setStrokeStyle(5, colorPalette.BUTTON_BOARD);
 
                 cell.setCellContainerAlign('center');  // Set alignment of cellContainer
 
@@ -75,10 +73,10 @@ class LevelSelectorBlock extends GridTable {
 
         this
             .on('cell.over', function (cellContainer, cellIndex, pointer, event) {
-                cellContainer.getElement('background').setStrokeStyle(10, COLOR_BUTTON_HOVER_BOARD);
+                cellContainer.getElement('background').setStrokeStyle(10, colorPalette.BUTTON_HOVER_BOARD);
             }, this)
             .on('cell.out', function (cellContainer, cellIndex, pointer, event) {
-                cellContainer.getElement('background').setStrokeStyle(5, COLOR_BUTTON_BOARD);
+                cellContainer.getElement('background').setStrokeStyle(5, colorPalette.BUTTON_BOARD);
             }, this)
             .on('cell.click', async function (cellContainer, cellIndex, pointer, event) {
                 var item = this.items[cellIndex];

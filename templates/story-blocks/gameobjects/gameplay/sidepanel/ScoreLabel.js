@@ -2,15 +2,17 @@ import Label from '../../../../../../phaser3-rex-notes/templates/ui/label/Label.
 import BBCodeText from '../../../../../../phaser3-rex-notes/plugins/bbcodetext.js';
 import AddEvent from '../../../../../../phaser3-rex-notes/plugins/utils/gameobject/addevent/AddEvent.js';
 import { DATA_KEY_SCORE } from '../../../scenes/DataKeys.js';
-import { CANVAS_FONT, CANVAS_TEST_STRING } from '../../../scenes/Font.js';
+import GetFontSetting from '../../../scenes/utils/GetFontSetting.js';
 
 class ScoreLabel extends Label {
     constructor(scene) {
+        var fontSetting = GetFontSetting(scene);
+
         //var background = scene.add.rectangle(0, 0, 1, 1).setStrokeStyle(2, 0xffffff);
         var txt = new BBCodeText(scene, 0, 0, ' ', {
-            fontFamily: CANVAS_FONT,
+            fontFamily: fontSetting.family,
             fontSize: `100px`,
-            testString: CANVAS_TEST_STRING,
+            testString: fontSetting.testString,
         }).setOrigin(0.5, 0.5)
         scene.add.existing(txt);
 

@@ -4,9 +4,12 @@ import AddSceneEvent from '../../../../../../../phaser3-rex-notes/plugins/utils/
 import { DATA_KEY_LEVEL } from '../../../../scenes/DataKeys.js';
 import HasLevel from '../../../../levels/HasLevel.js';
 import Play from '../../../../scenes/gameplayscene/Play.js';
-import { NextLevelIcon } from '../../../../scenes/Icons.js';
+import GetIconSetting from '../../../../scenes/utils/GetIconSetting.js';
 
 var CreateNextLevelIcon = function (scene, size) {
+
+    var NextLevelIcon = GetIconSetting(scene).NextLevel;
+
     var iconButton = CreateIconButton(scene, NextLevelIcon.key, NextLevelIcon.frame, size);
     iconButton.button
         .on('click', function () {

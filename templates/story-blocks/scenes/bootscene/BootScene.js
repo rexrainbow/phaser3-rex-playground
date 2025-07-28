@@ -1,5 +1,5 @@
 import { SCENE_BOOT, SCENE_MENU } from '../SceneKeys.js';
-import { CANVAS_FONT } from '../Font.js';
+import { DATA_KEY_CONFIGURATION } from '../DataKeys.js';
 import InstallLocalStorageData from './InstallLocalStorageData.js';
 import LoadLevels from '../../levels/LoadLevels.js';
 import CompleteLevel from '../../levels/CompleteLevel.js';
@@ -16,10 +16,10 @@ class BootScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.atlas('icons', 'assets/icons/icons.png', 'assets/icons/icons.json');
-        this.load.font(CANVAS_FONT, 'assets/fonts/jf-openhuninn-2.1.ttf');
+        // Load assets
+        var configuration = this.registry.get(DATA_KEY_CONFIGURATION);
+        this.load.pack('boot', { boot: { files: configuration.Assets } });
 
-        // Store configuration json at key DATA_KEY_CONFIGURATION
         LoadLevels(this);
     }
 

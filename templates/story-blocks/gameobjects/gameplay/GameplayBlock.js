@@ -3,18 +3,18 @@ import RoundRectangle from '../../../../../phaser3-rex-notes/plugins/roundrectan
 import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
 import TileContainer from './tilecontainer/TileContainer.js';
 import SidePanel from './sidepanel/SidePanel.js';
-import {
-    COLOR_PANEL_BG, COLOR_PANEL_BOARD,
-} from '../../scenes/ColorPalette.js';
+import GetColorPalette from '../../scenes/utils/GetColorPalette.js';
 
 class GameplayBlock extends OverlapSizer {
     constructor(scene) {
-        super(scene)
+        super(scene);
+
+        var colorPalette = GetColorPalette(scene);
 
         var background = new RoundRectangle(scene, {
-            color: COLOR_PANEL_BG,
+            color: colorPalette.PANEL_BG,
             strokeWidth: 6,
-            strokeColor: COLOR_PANEL_BOARD
+            strokeColor: colorPalette.PANEL_BOARD
         })
         scene.add.existing(background);
 

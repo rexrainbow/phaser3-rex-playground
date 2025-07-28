@@ -1,7 +1,10 @@
 import CreateIconButton from '../../../iconbutton/CreateIconButton.js';
-import { RestartIcon } from '../../../../scenes/Icons.js';
+import GetIconSetting from '../../../../scenes/utils/GetIconSetting.js';
 
 var CreateRestartIcon = function (scene, size) {
+
+    var RestartIcon = GetIconSetting(scene).Restart;
+
     var iconButton = CreateIconButton(scene, RestartIcon.key, RestartIcon.frame, size);
     iconButton.button
         .on('click', function () {

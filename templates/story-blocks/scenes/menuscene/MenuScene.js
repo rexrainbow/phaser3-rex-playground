@@ -1,8 +1,8 @@
-import { SIZE_WIN_WIDTH, SIZE_WIN_HEIGHT } from '../Size.js';
 import { SCENE_MENU, SCENE_GALLERY, SCENE_LEVEL } from '../SceneKeys.js';
 import Menu from '../../gameobjects/menu/Menu.js';
 import GetContinueLevel from '../../levels/GetContinueLevel.js';
 import Play from '../gameplayscene/Play.js';
+import GetWindowSize from '../utils/GetWindowSize.js';
 
 class MenuScene extends Phaser.Scene {
     constructor() {
@@ -18,8 +18,10 @@ class MenuScene extends Phaser.Scene {
     }
 
     create() {
+        var windowSize = GetWindowSize(this);
+
         var menu = new Menu(this)
-            .setPosition(SIZE_WIN_WIDTH * 0.7, SIZE_WIN_HEIGHT * 0.6)
+            .setPosition(windowSize.width * 0.7, windowSize.height * 0.6)
             .layout()
 
         menu
