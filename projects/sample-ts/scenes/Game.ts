@@ -1,6 +1,5 @@
 import 'phaser'
 import RexUI from 'phaser3-rex-plugins/templates/ui/ui-plugin';
-import Create3x3NinePatch from '../../utils/Create3x3NinePatch.js';
 
 class Game extends Phaser.Scene {
     rexUI: RexUI;
@@ -50,4 +49,13 @@ class Game extends Phaser.Scene {
 
     update() { }
 }
+
+var Create3x3NinePatch = function (scene, key, config) {
+    return scene.rexUI.add.ninePatch({
+        key: key,
+        columns: [config.left, undefined, config.right],
+        rows: [config.top, undefined, config.bottom]
+    });
+}
+
 export default Game;
