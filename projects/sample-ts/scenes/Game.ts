@@ -1,7 +1,10 @@
 import 'phaser'
+import RexUI from 'phaser3-rex-plugins/templates/ui/ui-plugin';
 import Create3x3NinePatch from '../../utils/Create3x3NinePatch.js';
 
 class Game extends Phaser.Scene {
+    rexUI: RexUI;
+
     constructor() {
         super({
             key: 'game'
