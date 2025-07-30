@@ -8,6 +8,7 @@ var InstallLocalStorageData = function (scene) {
         name: 'Common',
         default: {
             'continue-level': 0,
+            'locate': 'zh'
         }
     });
 

@@ -2,19 +2,21 @@ import Buttons from '../../../../../phaser3-rex-notes/templates/ui/buttons/Butto
 import Label from '../../../../../phaser3-rex-notes/templates/ui/label/Label.js';
 import GetColorPalette from '../../scenes/utils/GetColorPalette.js';
 import GetFontSetting from '../../scenes/utils/GetFontSetting.js';
+import GetLocate from '../../scenes/utils/GetLocate.js';
 import GetMenuLabelText from '../../scenes/utils/GetMenuLabelText.js';
 
 class Menu extends Buttons {
     constructor(scene) {
+        var locate = GetLocate(scene);
         super(scene, {
             orientation: 'y',
             space: { item: 20 },
             buttons: [
-                CreateLabel(scene, 'play', GetMenuLabelText(scene, 'play', 'zh')),
-                CreateLabel(scene, 'level', GetMenuLabelText(scene, 'level', 'zh')),
-                CreateLabel(scene, 'gallery', GetMenuLabelText(scene, 'gallery', 'zh')),
-                CreateLabel(scene, 'setting', GetMenuLabelText(scene, 'setting', 'zh')),
-                CreateLabel(scene, 'credit', GetMenuLabelText(scene, 'credit', 'zh')),
+                CreateLabel(scene, 'play', GetMenuLabelText(scene, 'play', locate)),
+                CreateLabel(scene, 'level', GetMenuLabelText(scene, 'level', locate)),
+                CreateLabel(scene, 'gallery', GetMenuLabelText(scene, 'gallery', locate)),
+                CreateLabel(scene, 'setting', GetMenuLabelText(scene, 'setting', locate)),
+                CreateLabel(scene, 'credit', GetMenuLabelText(scene, 'credit', locate)),
             ],
         })
 

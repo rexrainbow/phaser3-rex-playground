@@ -3,7 +3,8 @@ import GetLocateText from '../../utils/GetLocateText.js'
 
 var GetMenuLabelText = function (scene, label, locate) {
     var configuration = scene.registry.get(DATA_KEY_CONFIGURATION);
-    return GetLocateText(configuration.Menu, label, locate);
+    var text = GetLocateText(configuration.Menu, label, locate);
+    return text;
 }
 
 export default GetMenuLabelText;

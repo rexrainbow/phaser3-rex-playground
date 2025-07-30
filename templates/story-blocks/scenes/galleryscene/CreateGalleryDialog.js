@@ -1,6 +1,9 @@
 import LevelSelectorDialog from '../../gameobjects/levelselector/LevelSelectorDialog.js';
 import CreateStoryDialog from '../../gameobjects/storyblock/CreateStoryDialog.js';
+import GetLocate from '../utils/GetLocate.js';
+import GetLocateText from '../../utils/GetLocateText.js';
 import GetWindowSize from '../utils/GetWindowSize.js';
+
 
 var CreateGalleryDialog = function (scene) {
     var galleryDialog = new LevelSelectorDialog(scene, {
@@ -22,7 +25,9 @@ var CreateGalleryDialog = function (scene) {
                 return;
             }
 
-            CreateStoryDialog(scene, levelData.$story, levelData.image);
+            var locate = GetLocate(scene);
+            var story = GetLocateText(levelData, 'story', locate)
+            CreateStoryDialog(scene, story, levelData.image);
         })
 
     return galleryDialog;

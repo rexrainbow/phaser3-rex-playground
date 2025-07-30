@@ -2,6 +2,9 @@ import GridTable from '../../../../../phaser3-rex-notes/templates/ui/gridtable/G
 import Card from './Card.js';
 import RoundRectangle from '../../../../../phaser3-rex-notes/plugins/roundrectangle.js';
 import GetColorPalette from '../../scenes/utils/GetColorPalette.js';
+import GetLocate from '../../scenes/utils/GetLocate.js';
+import GetLocateText from '../../utils/GetLocateText.js';
+
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
@@ -50,16 +53,18 @@ class LevelSelectorBlock extends GridTable {
                     width = cell.width,
                     height = cell.height,
                     item = cell.item,
-                    items = cell.items,     // {$level, title, image, 'image-url', $story, $completed}[]
+                    items = cell.items,
                     index = cell.index;
                 if (cellContainer === null) { // No reusable cell container, create a new one
                     cellContainer = new Card(scene);
                     scene.add.existing(cellContainer);
                 }
                 // Set child properties of cell container
+                var locate = GetLocate(scene);
+                var title = GetLocateText(item, 'title', locate);
                 cellContainer
                     .setMinSize(width - 40, height - 40)
-                    .setCardContent(item.$title, item.image, item['image-url'], item.$completed)
+                    .setCardContent(title, item.image, item['image-url'], item.$completed)
 
                 cellContainer.getElement('background')
                     .setFillStyle(colorPalette.BUTTON_BG)

@@ -3,7 +3,9 @@ import ConfirmActionPromise from '../../../../../../../phaser3-rex-notes/templat
 import GetIconSetting from '../../../../scenes/utils/GetIconSetting.js';
 import GetFontSetting from '../../../../scenes/utils/GetFontSetting.js';
 import GetColorPalette from '../../../../scenes/utils/GetColorPalette.js';
+import GetLocate from '../../../../scenes/utils/GetLocate.js';
 import GetInfoDialogText from '../../../../scenes/utils/GetInfoDialogText.js';
+
 
 var CreateInfoIcon = function (scene, size) {
 
@@ -59,9 +61,10 @@ var CreateInfoIcon = function (scene, size) {
         buttonMode: 0,
     };
 
+    var locate = GetLocate(scene);
     var dialogContent = {
-        title: GetInfoDialogText(scene, 'title', 'zh'),
-        content: GetInfoDialogText(scene, 'content', 'zh'),
+        title: GetInfoDialogText(scene, 'title', locate),
+        content: GetInfoDialogText(scene, 'content', locate),
     };
 
     iconButton.button
