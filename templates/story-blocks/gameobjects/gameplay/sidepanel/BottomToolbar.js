@@ -1,7 +1,7 @@
-import Sizer from '../../../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
-import CreateStoryIcon from './CreateStoryIcon.js';
-import CreateRestartIcon from './CreateRestartIcon.js';
-import CreateNextLevelIcon from './CreateNextLevelIcon.js';
+import Sizer from '../../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
+import CreateStoryIcon from './icons/CreateStoryIcon.js';
+import CreateRestartIcon from './icons/CreateRestartIcon.js';
+import CreateNextLevelIcon from './icons/CreateNextLevelIcon.js';
 
 class BottomToolbar extends Sizer {
     constructor(scene) {
