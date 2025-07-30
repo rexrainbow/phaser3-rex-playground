@@ -19,7 +19,7 @@ class LevelScene extends Phaser.Scene {
 
     async create() {
         // Prepare items of gird table from level data
-        // items: {level, title, image, 'image-url', story, completed}[]
+        // items: {$level, $title, image, 'image-url', story, $completed}[]
         var items = GetAllLevelData(this, 'zh');
 
         var levelDialog = CreateLevelDialog(this)
@@ -31,7 +31,7 @@ class LevelScene extends Phaser.Scene {
         });
 
         if (levelData) {
-            Play(this, levelData.level);
+            Play(this, levelData.$level);
         } else {
             this.scene.start(SCENE_MENU);    // Back to menu scene
         }

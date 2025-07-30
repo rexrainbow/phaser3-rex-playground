@@ -19,7 +19,7 @@ class GalleryDialog extends ModalDialog {
     }
 
     setItems(items) {
-        // items: {level, title, image, 'image-url', story, completed}[]
+        // items: {$level, $title, image, 'image-url', $story, $completed}[]
         this.levelSelectorBlock.setItems(items);
         return this;
     }

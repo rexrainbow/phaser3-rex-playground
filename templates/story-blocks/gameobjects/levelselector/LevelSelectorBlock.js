@@ -50,7 +50,7 @@ class LevelSelectorBlock extends GridTable {
                     width = cell.width,
                     height = cell.height,
                     item = cell.item,
-                    items = cell.items,     // {level, title, image, 'image-url', story, completed}[]
+                    items = cell.items,     // {$level, title, image, 'image-url', $story, $completed}[]
                     index = cell.index;
                 if (cellContainer === null) { // No reusable cell container, create a new one
                     cellContainer = new Card(scene);
@@ -59,7 +59,7 @@ class LevelSelectorBlock extends GridTable {
                 // Set child properties of cell container
                 cellContainer
                     .setMinSize(width - 40, height - 40)
-                    .setCardContent(item.title, item.image, item['image-url'], item.completed)
+                    .setCardContent(item.$title, item.image, item['image-url'], item.$completed)
 
                 cellContainer.getElement('background')
                     .setFillStyle(colorPalette.BUTTON_BG)
@@ -80,7 +80,7 @@ class LevelSelectorBlock extends GridTable {
             }, this)
             .on('cell.click', async function (cellContainer, cellIndex, pointer, event) {
                 var item = this.items[cellIndex];
-                // if (!item.completed) {
+                // if (!item.$completed) {
                 //     return;
                 // }
 

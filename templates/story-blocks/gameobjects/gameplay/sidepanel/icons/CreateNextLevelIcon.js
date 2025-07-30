@@ -14,7 +14,7 @@ var CreateNextLevelIcon = function (scene, size) {
     iconButton.button
         .on('click', function () {
             var levelData = scene.data.get(DATA_KEY_LEVEL);
-            Play(scene, levelData.level + 1);
+            Play(scene, levelData.$level + 1);
         })
         .on('enable', function () {
             iconButton.getElement('icon').setTint(0xFFFFFF);
@@ -25,13 +25,13 @@ var CreateNextLevelIcon = function (scene, size) {
 
     AddSceneEvent(iconButton, EVT_START_GAME, function () {
         var levelData = scene.data.get(DATA_KEY_LEVEL);
-        var hasNextLevel = HasLevel(scene, levelData.level + 1);
-        iconButton.button.setEnable(levelData.completed && hasNextLevel);
+        var hasNextLevel = HasLevel(scene, levelData.$level + 1);
+        iconButton.button.setEnable(levelData.$completed && hasNextLevel);
     }, this);
 
     AddSceneEvent(iconButton, EVT_COMPLETE_GAME, function () {
         var levelData = scene.data.get(DATA_KEY_LEVEL);
-        var hasNextLevel = HasLevel(scene, levelData.level + 1);
+        var hasNextLevel = HasLevel(scene, levelData.$level + 1);
         iconButton.button.setEnable(hasNextLevel);
     }, this);
 

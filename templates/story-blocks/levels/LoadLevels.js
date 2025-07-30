@@ -3,6 +3,7 @@ import YAMLLoader from '../../../../phaser3-rex-notes/plugins/yamlloader.js';
 import LoadCompletePromise from '../../../../phaser3-rex-notes/plugins/utils/loader/LoadCompletePromise.js';
 import { DATA_KEY_CONFIGURATION, DATA_KEY_LEVELS } from '../scenes/DataKeys.js';
 
+const UUID = Phaser.Utils.String.UUID;
 var LoadLevels = function (scene) {
     AwaitLoader.call(scene.load, async function (successCallback, failureCallback) {
         var configuration = scene.registry.get(DATA_KEY_CONFIGURATION);
@@ -11,9 +12,9 @@ var LoadLevels = function (scene) {
         var type = 'json';
         var levels = configuration.Levels;
         var promises = [];
-        for (var i = 0, cnt = levels.length; i < cnt; i++) {
+        for (let i = 0, cnt = levels.length; i < cnt; i++) {
             let levelData = levels[i];
-            let key = levelData.id;
+            let key = UUID();
             let url = levelData.url
             promises.push(
                 LoadCompletePromise(
@@ -21,7 +22,9 @@ var LoadLevels = function (scene) {
                     { key, type }
                 )
                     .then(function (result) {
-                        levelData.data = result.data;
+                        levels[i] = result.data;
+                        // Release loaded data
+                        scene.cache[type].remove(key);
                         return result;
                     })
             )
@@ -29,16 +32,19 @@ var LoadLevels = function (scene) {
 
         await Promise.all(promises);
 
-        // Store level data list
-        var levelDataArray = levels.map((levelData) => levelData.data);
+        // Deep clone raw level data
+        var levels = structuredClone(configuration.Levels);
 
         var game = scene.sys.game;
         var completedLevels = game.localStorageData.completedLevels;
-        for (var i in levelDataArray) {
-            levelDataArray[i].completed = !!completedLevels.get(i);
+        // Add index and complete flag
+        for (let i in levels) {
+            let levelData = levels[i];
+            levelData.$level = i;
+            levelData.$completed = !!completedLevels.get(i);
         }
 
-        scene.registry.set(DATA_KEY_LEVELS, levelDataArray);
+        scene.registry.set(DATA_KEY_LEVELS, levels);
 
         // Done
         successCallback();

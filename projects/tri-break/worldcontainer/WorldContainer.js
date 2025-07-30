@@ -46,7 +46,7 @@ class WorldContainer extends OverlapSizer {
         scene.setScore(0);
 
         var levelData = scene.data.get(DATA_KEY_LEVEL);
-        var key = levelData.image
+        var key = levelData.image;
         if (!scene.textures.exists(key)) {
             this.clearTargetImage();
             await this.waitUntilTextureLoaded(key, levelData['image-url']);
@@ -77,6 +77,7 @@ class WorldContainer extends OverlapSizer {
 
     clearTargetImage() {
         this.world.setBricksBackgroundImageKey();
+        this.world.removeBricks();
         return this;
     }
 
@@ -105,7 +106,7 @@ class WorldContainer extends OverlapSizer {
     }
 
     onCompleteGame() {
-
+        this.world.removeBricks();
         return this;
     }
 }

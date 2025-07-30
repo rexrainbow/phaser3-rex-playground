@@ -17,7 +17,7 @@ var CreateLevelDialog = function (scene) {
 
     galleryDialog
         .on('select', function (levelData) {
-            if (!levelData.completed) {
+            if (!levelData.$completed) {
                 return;
             }
             galleryDialog.emit('modal.requestClose', levelData);

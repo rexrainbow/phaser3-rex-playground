@@ -6,7 +6,7 @@ var CompleteLevel = function (scene, level) {
         return;
     }
 
-    scene.registry.get(DATA_KEY_LEVELS)[level].completed = true;
+    scene.registry.get(DATA_KEY_LEVELS)[level].$completed = true;
 
     var game = scene.sys.game;
     var completedLevels = game.localStorageData.completedLevels;

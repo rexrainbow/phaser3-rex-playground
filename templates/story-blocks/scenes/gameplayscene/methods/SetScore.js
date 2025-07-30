@@ -7,9 +7,9 @@ var SetScore = function (score) {
     this.data.set(DATA_KEY_SCORE, score);
 
     if (!isCompleted && (score === 100)) {
-        // The level has been completed.
+        // The level has been completed
         var levelData = this.data.get(DATA_KEY_LEVEL);
-        CompleteLevel(this, levelData.level);
+        CompleteLevel(this, levelData.$level);
         this.events.emit(EVT_COMPLETE_GAME);
     }
 }

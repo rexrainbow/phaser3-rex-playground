@@ -19,7 +19,7 @@ class GameplayScene extends Phaser.Scene {
     }
 
     preload() {
-        // {level, title, image, 'image-url', story}
+        // {$level, $title, image, 'image-url', story}
         // Lazy loading texture in TileContainer
     }
 

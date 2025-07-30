@@ -18,11 +18,11 @@ var CreateGalleryDialog = function (scene) {
 
     galleryDialog
         .on('select', function (levelData) {
-            if (!levelData.completed) {
+            if (!levelData.$completed) {
                 return;
             }
 
-            CreateStoryDialog(scene, levelData.story, levelData.image);
+            CreateStoryDialog(scene, levelData.$story, levelData.image);
         })
 
     return galleryDialog;

@@ -12,9 +12,9 @@ var CreateStoryIcon = function (scene, size) {
     var iconButton = CreateIconButton(scene, StoryIcon.key, StoryIcon.frame, size);
     iconButton.button
         .on('click', async function () {
-            var level = scene.data.get(DATA_KEY_LEVEL);
+            var levelData = scene.data.get(DATA_KEY_LEVEL);
             scene.pauseGame();
-            await CreateStoryDialog(scene, level.story, level.image);
+            await CreateStoryDialog(scene, levelData.$story, levelData.image);
             scene.resumeGame();
         })
         .on('enable', function () {
@@ -26,7 +26,7 @@ var CreateStoryIcon = function (scene, size) {
 
     AddSceneEvent(iconButton, EVT_START_GAME, function () {
         var levelData = scene.data.get(DATA_KEY_LEVEL);
-        iconButton.button.setEnable(levelData.completed);
+        iconButton.button.setEnable(levelData.$completed);
     }, this);
 
     AddSceneEvent(iconButton, EVT_COMPLETE_GAME, function () {
