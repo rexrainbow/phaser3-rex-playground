@@ -1,4 +1,5 @@
 import { SCENE_GAMEPLAY, SCENE_MENU } from '../SceneKeys.js';
+import { DATA_KEY_LEVEL } from '../DataKeys.js';
 import { EVT_AFTER_LAYOUT } from './EventName.js';
 import Methods from './methods/Methods.js';
 // import LoadTextureFromClickboard from './methods/LoadTextureFromClickboard.js';
@@ -23,8 +24,10 @@ class GameplayScene extends Phaser.Scene {
     }
 
     async create() {
+        var levelData = this.data.get(DATA_KEY_LEVEL);
         var gameplayDialog = CreateGameplayDialog(this, {
-            createGamePlayBlock: this.createGameplayBlock
+            createGamePlayBlock: this.createGameplayBlock,
+            data: levelData
         });
 
         this.events.emit(EVT_AFTER_LAYOUT);

@@ -2,7 +2,7 @@ import OverlapSizer from '../../../../../../phaser3-rex-notes/templates/ui/overl
 
 const SIZE = 1024;
 
-var CreateGameplayBlock = function (scene) {
+var CreateGameplayBlock = function (scene, data) {
     var gameplayBlock = new OverlapSizer(scene, { width: SIZE + 40, height: SIZE + 40 });
     scene.add.existing(gameplayBlock);
 

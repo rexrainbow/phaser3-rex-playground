@@ -2,7 +2,7 @@ import BuildGame from '../../templates/story-blocks/game/BuildGame.js';
 import WorldContainer from './worldcontainer/WorldContainer.js';
 
 BuildGame({
-    createGameplayBlock(scene) {
+    createGameplayBlock(scene, data) {
         var gameObject = new WorldContainer(scene);
         scene.add.existing(gameObject);
         return gameObject;
