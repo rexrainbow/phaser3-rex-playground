@@ -5,6 +5,9 @@ Levels:
   - id: level1
     url: assets/levels/level1.yml
 
+  - id: level2
+    url: assets/levels/level2.yml
+
 
 WindowSize:
   width: 1920
