@@ -15,7 +15,12 @@ var LoadLevels = function (scene) {
         for (let i = 0, cnt = levels.length; i < cnt; i++) {
             let levelData = levels[i];
             let key = UUID();
-            let url = levelData.url
+            let url;
+            if (typeof (levelData) === 'string') {
+                url = levelData;
+            } else {
+                url = levelData.url;
+            }
             promises.push(
                 LoadCompletePromise(
                     YAMLLoader.call(scene.load, key, url),
