@@ -46,6 +46,7 @@ var LoadLevels = function (scene) {
         for (let i in levels) {
             let levelData = levels[i];
             levelData.$level = i;
+            levelData.$image = UUID();
             levelData.$completed = !!completedLevels.get(i);
         }
 

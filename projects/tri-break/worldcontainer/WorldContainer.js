@@ -46,10 +46,10 @@ class WorldContainer extends OverlapSizer {
         scene.setScore(0);
 
         var levelData = scene.data.get(DATA_KEY_LEVEL);
-        var key = levelData.image;
+        var key = levelData.$image;
         if (!scene.textures.exists(key)) {
             this.clearTargetImage();
-            await this.waitUntilTextureLoaded(key, levelData['image-url']);
+            await this.waitUntilTextureLoaded(key, levelData.image);
 
             // Stop execution if this game object is destroyed
             if (!this.scene) {

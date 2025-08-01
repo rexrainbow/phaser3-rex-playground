@@ -1,6 +1,7 @@
 Levels:
   - assets/levels/level0.yml
   - assets/levels/level1.yml
+  - assets/levels/level2.yml
 
 
 WindowSize:

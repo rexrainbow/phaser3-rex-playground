@@ -64,7 +64,7 @@ class LevelSelectorBlock extends GridTable {
                 var title = GetLocateText(item, 'title', locate);
                 cellContainer
                     .setMinSize(width - 40, height - 40)
-                    .setCardContent(title, item.image, item['image-url'], item.$completed)
+                    .setCardContent(title, item.$image, item.image, item.$completed)
 
                 cellContainer.getElement('background')
                     .setFillStyle(colorPalette.BUTTON_BG)
