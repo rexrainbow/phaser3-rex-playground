@@ -29,7 +29,7 @@
         "vite-plugin-html": "^3.2.2",
         "vite-plugin-browser-sync": "^4.0.0",
         "vite-plugin-static-copy": "^2.3.0",
-        "eslint": "^5.16.0",
+        "eslint": "^9.32.0",
         "eslint-plugin-import": "^2.29.1",
         "expose-loader": "^4.1.0",
         "html-webpack-plugin": "^5.6.0",
