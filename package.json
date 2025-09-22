@@ -28,7 +28,7 @@
         "vite": "^6.0.0",
         "vite-plugin-html": "^3.2.2",
         "vite-plugin-browser-sync": "^4.0.0",
-        "vite-plugin-static-copy": "^2.3.0",
+        "vite-plugin-static-copy": "^2.3.2",
         "eslint": "^9.32.0",
         "eslint-plugin-import": "^2.29.1",
         "expose-loader": "^4.1.0",
