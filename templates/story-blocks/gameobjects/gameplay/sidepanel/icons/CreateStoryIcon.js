@@ -19,7 +19,7 @@ var CreateStoryIcon = function (scene, size) {
             var locate = GetLocate(scene);
             var story = GetLocateText(levelData, 'story', locate);
             scene.pauseGame();
-            await CreateStoryDialog(scene, story, levelData.image);
+            await CreateStoryDialog(scene, story, levelData.$image);
             scene.resumeGame();
         })
         .on('enable', function () {

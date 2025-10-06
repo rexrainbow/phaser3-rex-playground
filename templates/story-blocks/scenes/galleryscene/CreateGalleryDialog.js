@@ -27,7 +27,7 @@ var CreateGalleryDialog = function (scene) {
 
             var locate = GetLocate(scene);
             var story = GetLocateText(levelData, 'story', locate)
-            CreateStoryDialog(scene, story, levelData.image);
+            CreateStoryDialog(scene, story, levelData.$image);
         })
 
     return galleryDialog;

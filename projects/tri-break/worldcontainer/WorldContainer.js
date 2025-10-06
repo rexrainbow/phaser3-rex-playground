@@ -102,7 +102,7 @@ class WorldContainer extends OverlapSizer {
     }
 
     generateBricks() {
-        this.world.generateBricks(10);
+        this.world.generateBricks(Phaser.Math.Between(10, 30));
     }
 
     onCompleteGame() {
