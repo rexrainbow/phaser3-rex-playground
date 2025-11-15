@@ -57,7 +57,7 @@
         "file-saver": "^2.0.5",
         "i18next": "^22.5.1",
         "i18next-http-backend": "^2.5.2",
-        "js-yaml": "^4.1.0",
+        "js-yaml": "^4.1.1",
         "jszip": "^3.10.1",
         "phaser": "4.0.0-rc.4",
         "phaser3-rex-plugins": "^1.80.15"
