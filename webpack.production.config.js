@@ -6,10 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 
-// Phaser webpack config
-const phaserModule = path.join(__dirname, '/node_modules/phaser/');
-const phaser = path.join(phaserModule, 'src/phaser.js');
-
+const PhaserPath = process.env.phaser || 'node_modules/phaser';
 const dist = process.env.dist;
 const projectMain = process.env.main;
 const assetsFolder = process.env.assets;
@@ -112,6 +109,9 @@ module.exports = {
     node: {
     },
     resolve: {
+        alias: {
+            phaser$: path.resolve(__dirname, PhaserPath),
+        },
         extensions: ['.ts', '.js'],
         fallback: {
             "fs": false,
