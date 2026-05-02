@@ -4,19 +4,11 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import path from 'path';
 import fs from 'fs';
 
-var getRelativePath = function (referencePath, targetPath) {
-    const referenceDir = path.dirname(referencePath);
-    let relPath = normalizePath(path.relative(referenceDir, targetPath));
-
-    if (!relPath.startsWith('./') && !relPath.startsWith('../')) {
-        relPath = './' + relPath;
-    }
-
-    return relPath;
-}
-
 // root path, build.outDir
 const dist = process.env.dist;
+
+// Phaser import path
+const PhaserPath = process.env.phaser || 'node_modules/phaser';
 
 // JS entry, get related path based on htmlTemplate
 const projectMain = process.env.main;
@@ -28,6 +20,7 @@ const htmlTemplate = process.env.htmltemplate || './examples/index.tmpl';
 const assetsFolder = process.env.assets || './assets';
 
 console.log('To            :', dist)
+console.log('Phaser path   :', PhaserPath)
 console.log('JS entry      :', projectMain)
 console.log('HTML template :', htmlTemplate)
 console.log('Assets        :', assetsFolder)
@@ -41,24 +34,73 @@ if (!projectMain || !fs.existsSync(projectMain)) {
     throw new Error('No entry point');
 }
 
-// JS entry, get related path based on htmlTemplate
-const relatedProjectMain = getRelativePath(htmlTemplate, projectMain);
-// console.log(relatedProjectMain)
+const getRelativePath = function (from, to) {
+    const fromFolder = path.dirname(from);
+    let relativePath = normalizePath(path.relative(fromFolder, to));
+
+    if (!relativePath.startsWith('.')) {
+        relativePath = './' + relativePath;
+    }
+
+    return relativePath;
+}
+
+const entryUrlPath = getRelativePath(htmlTemplate, projectMain);
+
 // Output JS entry file
 const fileNameWithoutExt = path.basename(projectMain, path.extname(projectMain));
-const fileExt = path.extname(projectMain);
-const entryFileNames = `${fileNameWithoutExt}-[hash]${fileExt}`;
+const entryFileNames = `${fileNameWithoutExt}-[hash].js`;
 
 const assetsFromFolder = normalizePath(path.resolve(__dirname, assetsFolder));
 
+const escapeRegExp = function (text) {
+    return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+const fixHtmlEntryPathPlugin = function () {
+    return {
+        name: 'fix-html-entry-path',
+        enforce: 'post',
+        generateBundle(options, bundle) {
+            const entryPattern = new RegExp(
+                `(<script\\b[^>]*\\bsrc=")[^"]*(${escapeRegExp(fileNameWithoutExt)}-[^"/]+\\.js)(")`,
+                'g'
+            );
+
+            for (const asset of Object.values(bundle)) {
+                if (asset.type !== 'asset' || !asset.fileName.endsWith('.html') || typeof asset.source !== 'string') {
+                    continue;
+                }
+
+                asset.source = asset.source.replace(entryPattern, '$1./$2$3');
+            }
+        }
+    };
+}
+
 export default defineConfig(({ command, mode }) => {
-    const baseConfig = {
-        plugins: [
-            createHtmlPlugin({
-                entry: relatedProjectMain,
-                template: htmlTemplate,
-                minify: true,
-            }),
+    const plugins = [
+        createHtmlPlugin({
+            entry: entryUrlPath,
+            template: htmlTemplate,
+            minify: true,
+        }),
+        {
+            name: 'replace-webgl-debug',
+            enforce: 'pre',
+            transform(code, id) {
+                const replacedCode = code.replace(/typeof\s+WEBGL_DEBUG/g, JSON.stringify(false));
+                return {
+                    code: replacedCode,
+                    map: null
+                };
+            }
+        },
+        fixHtmlEntryPathPlugin()
+    ];
+
+    if (fs.existsSync(assetsFromFolder)) {
+        plugins.push(
             viteStaticCopy({
                 targets: [
                     {
@@ -66,19 +108,18 @@ export default defineConfig(({ command, mode }) => {
                         dest: './'
                     }
                 ]
-            }),
-            {
-                name: 'replace-webgl-debug',
-                enforce: 'pre',
-                transform(code, id) {
-                    const replacedCode = code.replace(/typeof\s+WEBGL_DEBUG/g, JSON.stringify(false));
-                    return {
-                        code: replacedCode,
-                        map: null
-                    };
-                }
-            }
-        ],
+            })
+        );
+    }
+
+    const baseConfig = {
+        base: './',
+        plugins,
+        define: {
+            __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'false')),
+            WEBGL_RENDERER: JSON.stringify(true),
+            CANVAS_RENDERER: JSON.stringify(true),
+        },
         build: {
             sourcemap: false,
             minify: 'terser',
@@ -92,8 +133,8 @@ export default defineConfig(({ command, mode }) => {
                 }
             },
             outDir: dist,
+            emptyOutDir: true,
             rollupOptions: {
-                input: projectMain,
                 output: {
                     entryFileNames: entryFileNames,
                 }
@@ -101,8 +142,17 @@ export default defineConfig(({ command, mode }) => {
         },
         resolve: {
             extensions: ['.ts', '.js'],
-            alias: {
-            }
+            alias: [
+                {
+                    find: /^phaser$/,
+                    replacement: path.resolve(__dirname, PhaserPath)
+                },
+                {
+                    find: '/assets',
+                    replacement: assetsFromFolder
+                }
+            ],
+            dedupe: ['phaser']
         },
     }
 

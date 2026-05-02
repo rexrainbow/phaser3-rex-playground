@@ -5,4 +5,4 @@ set main=./projects/tile-swap-puzzle/main.js
 set assets=./projects/tile-swap-puzzle/assets
 cd ..
 cd ..
-npm run production
+npm run vite-production

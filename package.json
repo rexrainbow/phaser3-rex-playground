@@ -4,7 +4,9 @@
     "description": "Projects of phaser3",
     "scripts": {
         "dev": "webpack serve --config webpack.config.js",
-        "production": "webpack --config webpack.production.config.js"
+        "production": "webpack --config webpack.production.config.js",
+        "vite-dev": "vite --config vite.config.js",
+        "vite-production": "vite build --config vite.production.config.js"
     },
     "keywords": [
         "phaser3"
