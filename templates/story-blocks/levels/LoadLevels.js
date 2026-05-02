@@ -1,9 +1,10 @@
+import { Utils as PhaserUnits } from 'phaser';
 import AwaitLoader from '../../../../phaser3-rex-notes/plugins/awaitloader.js';
 import YAMLLoader from '../../../../phaser3-rex-notes/plugins/yamlloader.js';
 import LoadCompletePromise from '../../../../phaser3-rex-notes/plugins/utils/loader/LoadCompletePromise.js';
 import { DATA_KEY_CONFIGURATION, DATA_KEY_LEVELS } from '../scenes/DataKeys.js';
 
-const UUID = Phaser.Utils.String.UUID;
+const UUID = PhaserUnits.String.UUID;
 var LoadLevels = function (scene) {
     AwaitLoader.call(scene.load, async function (successCallback, failureCallback) {
         var configuration = scene.registry.get(DATA_KEY_CONFIGURATION);
@@ -45,7 +46,7 @@ var LoadLevels = function (scene) {
         // Add index and complete flag
         for (let i in levels) {
             let levelData = levels[i];
-            levelData.$level = i;
+            levelData.$level = parseInt(i);
             levelData.$image = UUID();
             levelData.$completed = !!completedLevels.get(i);
         }

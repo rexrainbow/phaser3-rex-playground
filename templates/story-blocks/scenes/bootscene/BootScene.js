@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import { SCENE_BOOT, SCENE_MENU } from '../SceneKeys.js';
 import { DATA_KEY_CONFIGURATION } from '../DataKeys.js';
 import InstallLocalStorageData from './InstallLocalStorageData.js';

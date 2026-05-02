@@ -1,6 +1,6 @@
+import { Math as PhaserMath } from 'phaser';
 
-const DistanceBetween = Phaser.Math.Distance.Between;
-
+const DistanceBetween = PhaserMath.Distance.Between;
 
 var OnDropTile = function (droppedTile, tiles, easeDuration) {
     var minDistance = Infinity;

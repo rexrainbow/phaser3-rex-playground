@@ -1,4 +1,4 @@
-import phaser from 'phaser';
+import Phaser from 'phaser';
 import { FileDropZone } from '../../../phaser3-rex-notes/templates/ui/ui-components.js';
 import PSD from './lib/psd-standalone.js';
 

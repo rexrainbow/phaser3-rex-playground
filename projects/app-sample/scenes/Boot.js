@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import { SCENE_BOOT, SCENE_APP } from './const.js';
 
 class Boot extends Phaser.Scene {

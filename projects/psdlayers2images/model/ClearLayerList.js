@@ -1,4 +1,6 @@
-const CanvasPool = Phaser.Display.Canvas.CanvasPool;
+import { Display as PhaserDisplay } from 'phaser';
+
+const CanvasPool = PhaserDisplay.Canvas.CanvasPool;
 
 var ClearLayerList = function () {
     var layers = this.layerList.list;

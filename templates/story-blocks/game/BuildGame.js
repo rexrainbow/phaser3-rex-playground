@@ -1,4 +1,4 @@
-import '../../../../phaser/src/phaser.js';
+import Phaser from 'phaser';
 import LoadYamlFromUrl from './LoadYAMLFromURL.js';
 import { DATA_KEY_CONFIGURATION } from '../scenes/DataKeys.js';
 import BootScene from '../scenes/bootscene/BootScene.js';

@@ -1,8 +1,9 @@
+import { Utils as PhaserUnits } from 'phaser';
 import Sizer from '../../../../../phaser3-rex-notes/templates/ui/sizer/Sizer.js';
 import CreateIconButton from '../iconbutton/CreateIconButton.js';
 import GetIconSetting from '../../scenes/utils/GetIconSetting.js';
 
-const GetValue = Phaser.Utils.Objects.GetValue;
+const GetValue = PhaserUnits.Objects.GetValue;
 
 class ModalDialog extends Sizer {
     constructor(scene, panel, config) {

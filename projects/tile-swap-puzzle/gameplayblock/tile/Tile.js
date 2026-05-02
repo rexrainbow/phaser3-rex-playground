@@ -1,9 +1,12 @@
+import { GameObjects as PhaserGameObjects } from 'phaser';
 import { EaseMoveMethods } from '../../../../../phaser3-rex-notes/plugins/easemove.js';
 import OnCorrectPositionMethods from './OnCorrectPositionMethods.js';
 import OnDropTile from './OnDropTile.js';
 import GetScore from './GetScore.js';
 
-class Tile extends Phaser.GameObjects.Image {
+const PhaserImage = PhaserGameObjects.Image;
+
+class Tile extends PhaserImage {
     constructor(scene, x, y, key, frame) {
         super(scene, x, y, key, frame);
 

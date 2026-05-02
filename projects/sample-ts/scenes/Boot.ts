@@ -1,4 +1,4 @@
-import 'phaser'
+import Phaser from 'phaser';
 
 class Boot extends Phaser.Scene {
     constructor() {

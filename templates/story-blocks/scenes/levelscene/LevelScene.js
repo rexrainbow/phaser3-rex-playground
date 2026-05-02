@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import { SCENE_LEVEL, SCENE_MENU } from '../SceneKeys.js';
 import GetAllLevelData from '../../levels/GetAllLevelData.js';
 import CreateLevelDialog from './CreateLevelDialog.js';

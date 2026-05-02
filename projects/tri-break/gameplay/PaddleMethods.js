@@ -1,4 +1,6 @@
-const Clamp = Phaser.Math.Clamp;
+import { Clamp as PhaserClamp } from 'phaser';
+
+const Clamp = PhaserClamp.Clamp;
 
 export default {
     addPaddle(paddle) {

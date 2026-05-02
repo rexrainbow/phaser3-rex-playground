@@ -1,3 +1,4 @@
+import { Utils as PhaserUnits } from 'phaser';
 import GridTable from '../../../../../phaser3-rex-notes/templates/ui/gridtable/GridTable.js';
 import Card from './Card.js';
 import RoundRectangle from '../../../../../phaser3-rex-notes/plugins/roundrectangle.js';
@@ -6,7 +7,7 @@ import GetLocate from '../../scenes/utils/GetLocate.js';
 import GetLocateText from '../../utils/GetLocateText.js';
 
 
-const GetValue = Phaser.Utils.Objects.GetValue;
+const GetValue = PhaserUnits.Objects.GetValue;
 
 class LevelSelectorBlock extends GridTable {
     constructor(scene, config) {

@@ -1,8 +1,9 @@
+import { Utils as PhaserUtils } from 'phaser';
 import { OverlapSizer } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
 import CreateBackground from '../../../../../phaser3-rex-notes/templates/ui/utils/build/CreateBackground.js';
 import CreatePSDDropZone from '../builders/CreatePSDDropZone.js';
 
-const GetValue = Phaser.Utils.Objects.GetValue;
+const GetValue = PhaserUtils.Objects.GetValue;
 
 class MainPanel extends OverlapSizer {
     constructor(scene, configObj, model) {

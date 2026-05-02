@@ -1,7 +1,8 @@
+import { Utils as PhaserUtils } from 'phaser';
 import CreateBoundingPolygon from '../../../../phaser3-rex-notes/plugins/utils/shape/polygon/CreateBoundingPolygon.js';
 
-const GetValue = Phaser.Utils.Objects.GetValue;
-const IsPlainObject = Phaser.Utils.Objects.IsPlainObject;
+const GetValue = PhaserUtils.Objects.GetValue;
+const IsPlainObject = PhaserUtils.Objects.IsPlainObject;
 
 var SetStyle = function (shapeGameObject, config) {
     var color = GetValue(config, 'color');

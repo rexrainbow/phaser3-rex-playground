@@ -1,9 +1,10 @@
+import { Utils as PhaserUtils } from 'phaser';
 import IsImageFile from '../utils/IsImageFile.js';
 import IsJSONFile from '../utils/IsJSONFile.js';
 import FileObjectToCache from '../../../../phaser3-rex-notes/plugins/utils/loader/FileObjectToCache.js';
 import CreateImageData from './CreateImageData.js';
 
-const UUID = Phaser.Utils.String.UUID;
+const UUID = PhaserUtils.String.UUID;
 
 var AddAtlasFiles = function (files) {
     var self = this;

@@ -1,4 +1,6 @@
-const DegToRad = Phaser.Math.DegToRad;
+import { Math as PhaserMath } from 'phaser';
+
+const DegToRad = PhaserMath.DegToRad;
 
 const BALL_STATE_MAP = {
     IDLE: 0,
@@ -87,7 +89,7 @@ export default {
         this.setBallState('ACTIVE');
 
         if (Array.isArray(angle)) {
-            angle = Phaser.Math.RND.realInRange(angle[0], angle[1]);
+            angle = PhaserMath.RND.realInRange(angle[0], angle[1]);
         }
 
         angle = DegToRad(angle + 270);

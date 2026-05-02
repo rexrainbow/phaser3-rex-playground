@@ -1,8 +1,8 @@
-import 'phaser'
-import RexUI from 'phaser3-rex-plugins/templates/ui/ui-plugin';
+import Phaser from 'phaser';
+import RexUI from 'phaser4-rex-plugins/templates/ui/ui-plugin';
 
 class Game extends Phaser.Scene {
-    rexUI: RexUI;
+    declare rexUI: RexUI;
 
     constructor() {
         super({

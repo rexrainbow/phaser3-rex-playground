@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import { SCENE_MENU, SCENE_GALLERY, SCENE_LEVEL } from '../SceneKeys.js';
 import Menu from '../../gameobjects/menu/Menu.js';
 import GetContinueLevel from '../../levels/GetContinueLevel.js';

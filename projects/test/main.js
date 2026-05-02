@@ -1,5 +1,5 @@
-import * as Phaser from 'phaser';
-import { OverlapSizer } from 'phaser3-rex-plugins/templates/ui/ui-components.js';
+import Phaser from 'phaser';
+import { OverlapSizer } from 'phaser4-rex-plugins/templates/ui/ui-components.js';
 
 class MyOverlapSizer extends OverlapSizer { }
 

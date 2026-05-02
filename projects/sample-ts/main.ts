@@ -1,5 +1,5 @@
-import * as Phaser from 'phaser';
-import RexUI from 'phaser3-rex-plugins/templates/ui/ui-plugin';
+import Phaser from 'phaser';
+import RexUI from 'phaser4-rex-plugins/templates/ui/ui-plugin';
 
 import Boot from './scenes/Boot';
 import Game from './scenes/Game';

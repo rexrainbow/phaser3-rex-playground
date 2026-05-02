@@ -1,7 +1,8 @@
+import { Structs as PhaserStructs, Events as PhaserEvents } from 'phaser';
 import Methods from './Methods.js';
 
-const EE = Phaser.Events.EventEmitter;
-const List = Phaser.Structs.List;
+const List = PhaserStructs.List;
+const EE = PhaserEvents.EventEmitter;
 
 class Model extends EE {
     constructor(scene) {

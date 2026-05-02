@@ -1,4 +1,4 @@
-import 'phaser'
+import Phaser from 'phaser';
 import RexUI from '../../../phaser3-rex-notes/templates/ui/ui-plugin.js';
 
 import Boot from './scenes/Boot.js';

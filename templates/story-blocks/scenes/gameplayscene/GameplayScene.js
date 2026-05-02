@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import { SCENE_GAMEPLAY, SCENE_MENU } from '../SceneKeys.js';
 import { DATA_KEY_LEVEL } from '../DataKeys.js';
 import { EVT_AFTER_LAYOUT } from './EventName.js';

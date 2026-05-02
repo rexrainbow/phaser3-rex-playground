@@ -1,8 +1,9 @@
+import { Structs as PhaserStructs } from 'phaser';
 import { Container } from '../../../../../phaser3-rex-notes/templates/ui/ui-components';
 import Methods from './Methods.js';
 // import OnUpdateImages from './OnUpdateImages';
 
-const List = Phaser.Structs.List;
+const List = PhaserStructs.List;
 
 class ImageContainer extends Container {
     constructor(scene, config, model) {

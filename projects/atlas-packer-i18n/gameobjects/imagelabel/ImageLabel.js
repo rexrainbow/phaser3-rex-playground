@@ -1,8 +1,9 @@
+import { Utils as PhaserUtils } from 'phaser';
 import { SimpleLabel } from '../../../../../phaser3-rex-notes/templates/ui/ui-components.js';
 import SetValue from '../../../../../phaser3-rex-notes/plugins/utils/object/SetValue.js';
 import CreateImageIcon from '../builders/CreateImageIcon.js';
 
-const GetValue = Phaser.Utils.Objects.GetValue;
+const GetValue = PhaserUtils.Objects.GetValue;
 const Creators = {
     icon: CreateImageIcon,
 }

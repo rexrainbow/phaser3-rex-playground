@@ -1,3 +1,4 @@
+import { Math as PhaserMath } from 'phaser';
 import { WORLD_WIDTH, WORLD_HEIGHT, WORLD_BG } from './Physics.js';
 import BuildWorld from './BuildWorld.js';
 import { EVT_AFTER_LAYOUT, EVT_START_GAME, EVT_COMPLETE_GAME, EVT_PAUSE_GAME, EVT_RESUME_GAME } from '../../../templates/story-blocks/scenes/gameplayscene/EventName.js';
@@ -102,7 +103,7 @@ class WorldContainer extends OverlapSizer {
     }
 
     generateBricks() {
-        this.world.generateBricks(Phaser.Math.Between(10, 30));
+        this.world.generateBricks(PhaserMath.Between(10, 30));
     }
 
     onCompleteGame() {

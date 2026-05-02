@@ -1,6 +1,6 @@
-import 'phaser';
-import UIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin';
-import { CustomShapes } from 'phaser3-rex-plugins/templates/ui/ui-components';
+import Phaser from 'phaser';
+import UIPlugin from 'phaser4-rex-plugins/templates/ui/ui-plugin';
+import { CustomShapes } from 'phaser4-rex-plugins/templates/ui/ui-components';
 
 const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = 0x7b5e57;
@@ -48,7 +48,7 @@ class SpeechBubble extends CustomShapes {
 }
 
 class Demo extends Phaser.Scene {
-    rexUI: UIPlugin;
+    declare rexUI: UIPlugin;
 
     constructor() {
         super({

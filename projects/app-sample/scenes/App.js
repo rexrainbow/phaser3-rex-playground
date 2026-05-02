@@ -1,4 +1,4 @@
-import 'phaser'
+import Phaser from 'phaser';
 import { SCENE_APP } from './const.js';
 
 class App extends Phaser.Scene {
@@ -13,7 +13,7 @@ class App extends Phaser.Scene {
     }
 
     create() {
-        this.add.text(300, 300, 'APP', {fontSize: 64})
+        this.add.text(300, 300, 'APP', { fontSize: 64 })
     }
 
     update() { }

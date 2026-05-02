@@ -1,4 +1,4 @@
-import 'phaser'
+import Phaser from 'phaser';
 import App from './scenes/App.js'
 
 var config = {
